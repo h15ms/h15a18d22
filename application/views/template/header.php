@@ -84,7 +84,7 @@
                       </a>
                     </li>
                     <li id="menu-item-139" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-top-level menu-item-top-level-2 <?php if($_GET["c"]=="service"){ echo "current-menu-item"; } ?>">
-                      <a href="<?php echo URL;?>service/" itemprop="url">
+                      <a href="<?php echo URL;?>index.php/service/" itemprop="url">
                         <span class="avia-bullet">
                         </span>
                         <span class="avia-menu-text">Services
@@ -98,7 +98,7 @@
                       </a>
                       <ul class="sub-menu">
                         <li id="menu-item-299" class="menu-item menu-item-type-post_type menu-item-object-page">
-                          <a href="<?php echo URL;?>service/visaservices/" itemprop="url">
+                          <a href="<?php echo URL;?>index.php/service/visaservices/" itemprop="url">
                             <span class="avia-bullet">
                             </span>
                             <span class="avia-menu-text">Visa Services
@@ -106,7 +106,7 @@
                           </a>
                         </li>
                         <li id="menu-item-300" class="menu-item menu-item-type-post_type menu-item-object-page">
-                          <a href="<?php echo URL;?>service/businessservices/" itemprop="url">
+                          <a href="<?php echo URL;?>index.php/service/businessservices/" itemprop="url">
                             <span class="avia-bullet">
                             </span>
                             <span class="avia-menu-text">Business Services
@@ -114,7 +114,7 @@
                           </a>
                         </li>
                         <li id="menu-item-301" class="menu-item menu-item-type-post_type menu-item-object-page">
-                          <a href="<?php echo URL;?>service/passportservices/" itemprop="url">
+                          <a href="<?php echo URL;?>index.php/service/passportservices/" itemprop="url">
                             <span class="avia-bullet">
                             </span>
                             <span class="avia-menu-text">Passport Services
@@ -122,7 +122,7 @@
                           </a>
                         </li>
                         <li id="menu-item-302" class="menu-item menu-item-type-post_type menu-item-object-page">
-                          <a href="<?php echo URL;?>service/travelingservices/" itemprop="url">
+                          <a href="<?php echo URL;?>index.php/service/travelingservices/" itemprop="url">
                             <span class="avia-bullet">
                             </span>
                             <span class="avia-menu-text">Traveling Services
@@ -130,7 +130,7 @@
                           </a>
                         </li>
                         <li id="menu-item-304" class="menu-item menu-item-type-post_type menu-item-object-page">
-                          <a href="<?php echo URL;?>service/ticketingservices/" itemprop="url">
+                          <a href="<?php echo URL;?>index.php/service/ticketingservices/" itemprop="url">
                             <span class="avia-bullet">
                             </span>
                             <span class="avia-menu-text">Ticketing Services
@@ -138,7 +138,7 @@
                           </a>
                         </li>
                         <li id="menu-item-305" class="menu-item menu-item-type-post_type menu-item-object-page">
-                          <a href="<?php echo URL;?>service/medicalservices/" itemprop="url">
+                          <a href="<?php echo URL;?>index.php/service/medicalservices/" itemprop="url">
                             <span class="avia-bullet">
                             </span>
                             <span class="avia-menu-text">Medical Services
@@ -146,7 +146,7 @@
                           </a>
                         </li>
                         <li id="menu-item-306" class="menu-item menu-item-type-post_type menu-item-object-page">
-                          <a href="<?php echo URL;?>service/touristvisa/" itemprop="url">
+                          <a href="<?php echo URL;?>index.php/service/touristvisa/" itemprop="url">
                             <span class="avia-bullet">
                             </span>
                             <span class="avia-menu-text">Tourism Services
@@ -154,7 +154,7 @@
                           </a>
                         </li>
                         <li id="menu-item-307" class="menu-item menu-item-type-post_type menu-item-object-page">
-                          <a href="<?php echo URL;?>service/accommodationservices/" itemprop="url">
+                          <a href="<?php echo URL;?>index.php/service/accommodationservices/" itemprop="url">
                             <span class="avia-bullet">
                             </span>
                             <span class="avia-menu-text">Accommodation Services
@@ -162,7 +162,7 @@
                           </a>
                         </li>
                         <li id="menu-item-308" class="menu-item menu-item-type-post_type menu-item-object-page">
-                          <a href="<?php echo URL;?>service/entertainmentservices/" itemprop="url">
+                          <a href="<?php echo URL;?>index.php/service/entertainmentservices/" itemprop="url">
                             <span class="avia-bullet">
                             </span>
                             <span class="avia-menu-text">Entertainment Services
@@ -172,7 +172,7 @@
                       </ul>
                     </li>
                     <li id="menu-item-103" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-top-level menu-item-top-level-3 <?php if($_GET["c"]=="about"){ echo "current-menu-item"; } ?>">
-                      <a href="<?php echo URL;?>about/" itemprop="url">
+                      <a href="<?php echo URL;?>index.php/about/" itemprop="url">
                         <span class="avia-bullet">
                         </span>
                         <span class="avia-menu-text">About us
@@ -186,7 +186,7 @@
                       </a>
                     </li>
                      <li id="menu-item-105" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-top-level menu-item-top-level-5 <?php if($_GET["c"]=="contact"){ echo "current-menu-item"; } ?>">
-                      <a href="<?php echo URL;?>contact/" itemprop="url">
+                      <a href="<?php echo URL;?>index.php/contact/" itemprop="url">
                         <span class="avia-bullet">
                         </span>
                         <span class="avia-menu-text">Contact
@@ -201,7 +201,7 @@
                     </li>
                     <?php if($_SESSION[user_key]){?>
                     <li id="menu-item-104" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-top-level menu-item-top-level-4 <?php if($_GET["c"]=="apply"){ echo "current-menu-item"; } ?>">
-                      <a href="<?php echo URL;?>apply/" itemprop="url">
+                      <a href="<?php echo URL;?>index.php/apply/" itemprop="url">
                         <span class="avia-bullet">
                         </span>
                         <span class="avia-menu-text">Apply
@@ -216,7 +216,7 @@
                     </li>
                       <?php }else{ ?>
                     <li id="menu-item-104" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-top-level menu-item-top-level-4 <?php if($_GET["l"]=="login"){ echo "current-menu-item"; } ?>">
-                      <a href="<?php echo URL;?>login/" itemprop="url">
+                      <a href="<?php echo URL;?>index.php/login/" itemprop="url">
                         <span class="avia-bullet">
                         </span>
                         <span class="avia-menu-text">Login
@@ -234,7 +234,7 @@
                     <?php if($_SESSION[user_key]){ ?>
 
                     <li id="menu-item-104" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-top-level menu-item-top-level-4 <?php if($_GET["l"]=="login"){ echo "current-menu-item"; } ?>">
-                      <a href="<?php echo URL;?>dashboard/" itemprop="url">
+                      <a href="<?php echo URL;?>index.php/dashboard/" itemprop="url">
                         <span class="avia-bullet"></span>
                         <span class="avia-menu-text">Dashboard</span>
                         <span class="avia-menu-fx">
@@ -245,7 +245,7 @@
                       </a>
                     </li>
                     <li id="menu-item-104" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-top-level menu-item-top-level-4 <?php if($_GET["l"]=="login"){ echo "current-menu-item"; } ?>">
-                      <a href="<?php echo URL;?>login/logout" itemprop="url">
+                      <a href="<?php echo URL;?>index.php/login/logout" itemprop="url">
                         <span class="avia-bullet"></span>
                         <span class="avia-menu-text">Logout</span>
                         <span class="avia-menu-fx">
