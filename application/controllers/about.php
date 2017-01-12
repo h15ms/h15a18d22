@@ -12,8 +12,8 @@ class about extends CI_Controller {
 //    $this->_view->canonical = URL."about/";
 //    $this->_view->display('about/index.php');
      $this->load->view('template/header');
-		$this->load->view('about/index.php');
-		$this->load->view('template/footer');
+     $this->load->view('about/index.php');
+     $this->load->view('template/footer');
   }  
   
 }
