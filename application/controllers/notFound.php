@@ -1,6 +1,6 @@
 <?php 
 
-class notFoundController extends CI_Controller
+class notFound  extends CI_Controller
 {
 
 	function index()
@@ -19,3 +19,4 @@ class notFoundController extends CI_Controller
 
 
  ?>
+ 

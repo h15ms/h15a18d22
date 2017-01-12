@@ -54,7 +54,7 @@ public function index()
 					// Add user data in session
 
 					$this->session->set_userdata('logged_in', $session_data);
-					$this->load->view('homeController/index');
+					$this->load->view('home/index');
 					}
 				}
 			  else
@@ -62,7 +62,7 @@ public function index()
 				$data = array(
 					'error_message' => 'Invalid Username or Password'
 				);
-				$this->load->view('notFoundController/index', $data);
+				$this->load->view('notFound/index', $data);
 				}
 		}
 		
