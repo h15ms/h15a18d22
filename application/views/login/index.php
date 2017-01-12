@@ -11,7 +11,7 @@
         <!--div class="col-xs-12 col-sm-12 col-md-12" style="margin-bottom:40px;">
         <h2 style="font-weight:100;">Welcome to Premiumleasing</h2>        
         </div-->
-        <?php if($err == "1"){ ?>
+        <!-- <?php if($err == "1"){ ?>
         <div class="col-xs-12 col-sm-12 col-md-12">
           <div class="col-xs-12 col-sm-12 col-md-12" style="padding-left:40px;padding-right:40px;">
             <div class="alert alert-warning alert-dismissible" role="alert">
@@ -99,7 +99,7 @@
             </div>
           </div>  
         </div>  
-        <?php } ?>
+        <?php } ?> -->
         <style type="text/css">
           div.test1 
           {
@@ -118,7 +118,7 @@
             <h2 style="font-weight:100;color:#0084d0;margin:20px 0 60px 0;">
               <i class="fa fa-sign-in"></i> Sign In
             </h2>
-            <form action="" method="post">
+            <form action="login_check" method="post">
               <input type="hidden" name="send" value="signin">
               <input type="email" name="username" value="" placeholder="Email address" class="form-control input-lg" required>
               <input type="password" name="pass" value="" placeholder="Password" class="form-control input-lg" style="margin-top:10px;" required>

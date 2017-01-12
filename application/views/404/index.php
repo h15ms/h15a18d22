@@ -1,7 +1,3 @@
-ankit
-
-
-
 
 <div id='main' data-scroll-offset='88'>
 
