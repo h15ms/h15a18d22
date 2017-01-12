@@ -1,4 +1,4 @@
-hello ankit
+
 <div id='main' data-scroll-offset='88'>
   <div id='layer_slider_1' class='avia-layerslider main_color avia-shadow  avia-builder-el-0  el_before_av_one_full  avia-builder-el-first  container_wrap fullsize'    style='height: 581px;' >
     <script data-cfasync="false" type="text/javascript">var lsjQuery = jQuery;
