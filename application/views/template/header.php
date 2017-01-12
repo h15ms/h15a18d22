@@ -1,4 +1,4 @@
-<?php define('URL', 'http://localhost/miconsul_3/'); ?>
+<?php define('URL', 'http://localhost/miconsulting/'); ?>
 
 
 <?php error_reporting(0); ?>
