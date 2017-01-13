@@ -66,12 +66,17 @@ class login extends CI_Controller
 				}
 			  else
 				{
-				$data = array(
-					'error_message' => 'Invalid Username or Password'
-				);
+					if ($result == "1") {
+						$data = array('error_message' => 'User not exist');
+					}elseif($result == "2"){
+						$data = array('error_message' => 'Password not matched');
+					}elseif($result == "3"){
+						$data = array('error_message' => 'Account locked');
+					}
 				
-				 header("Location:".base_url()."login");
-				// $this->load->view('404/index', $data);
+				$this->load->view('template/header');
+				$this->load->view('login/index', $data);
+				$this->load->view('template/footer');
 				}
 		}
 		

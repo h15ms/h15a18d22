@@ -112,7 +112,7 @@
           }
         </style>
         
-
+<?php echo "ankit   ".print_r($data); ?>
         <div class="col-xs-12 col-sm-6 col-md-6">
           <div class="col-md-10 col-md-offset-1 test1" style="text-align:center;background:rgba(255,255,255,1.0);">
             <h2 style="font-weight:100;color:#0084d0;margin:20px 0 60px 0;">

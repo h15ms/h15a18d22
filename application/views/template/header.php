@@ -199,7 +199,7 @@
                         </span>
                       </a>
                     </li>
-                    <?php if($_SESSION[user_key]){?>
+                    <?php if($_SESSION['logged_in']['user_id']){?>
                     <li id="menu-item-104" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-top-level menu-item-top-level-4 <?php if($_GET["c"]=="apply"){ echo "current-menu-item"; } ?>">
                       <a href="<?php echo URL;?>index.php/apply/" itemprop="url">
                         <span class="avia-bullet">
@@ -231,7 +231,7 @@
                     </li>
                     <?php } ?>
                    
-                    <?php if($_SESSION[user_key]){ ?>
+                    <?php if($_SESSION['logged_in']['user_id']){ ?>
 
                     <li id="menu-item-104" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-top-level menu-item-top-level-4 <?php if($_GET["l"]=="login"){ echo "current-menu-item"; } ?>">
                       <a href="<?php echo URL;?>index.php/dashboard/" itemprop="url">

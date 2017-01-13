@@ -47,11 +47,11 @@ Class login_model extends CI_Model
 		    
 		}elseif ($user[0]->password <> $data['password'])
 		{ 
-		      $out = "2";
+		      $out = "2"; //password not same
 		    
 		}elseif ($user[0]->status == "1")
 		{ 
-		     $out = "3";
+		     $out = "3"; // account locked
 		    
 		}else 
 		{                
