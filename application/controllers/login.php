@@ -1,7 +1,7 @@
 <?php 
 
 
-class login  extends CI_Controller
+class login extends CI_Controller
 {
 	
 	function __construct()
@@ -18,17 +18,15 @@ class login  extends CI_Controller
 		$this->load->library('session');
 
 		// Load database
-		$this->load->model('loginModel');
+		$this->load->model('login');
 	}
 
 
-public function index()
-{
-	// $ank = $this->session();
-	// print_r($ank);
+	public function index()
+	{
 
-	$this->load->view('login/index');
-}
+		$this->load->view('login/index');
+	}
 
 	public function login_check()
 		{
@@ -37,12 +35,12 @@ public function index()
 				'password' => $this->input->post('pass')
 			);
 
-			echo $result = $this->loginModel->login($data); 
+			echo $result = $this->login->login($data); 
 
 			if ($result == TRUE)
 				{
 				$username = $this->input->post('username');
-			$result = $this->loginModel->login_fetch($username); 
+				$result = $this->login->login_fetch($username); 
 
 				if ($result != false)
 					{
@@ -153,8 +151,8 @@ public function index()
 	//           if($_POST['username']!="" and $_POST['pass']!="" and $_POST['send']=="signin")
 	//           {
 	//               // Login 
-	//               require 'models/loginModel.php';
-	//               $login = new loginModel();
+	//               require 'models/login.php';
+	//               $login = new login();
 	//               $user = $login->userSignIn($_POST['username'],$_POST['pass']);  
 
 	//               if($_SESSION[user_id]!=""){
