@@ -60,21 +60,6 @@ Class login_model extends CI_Model
 		
 		return $out;
 
-
-
-
-
-
-
-
-		// if ($getdata->num_rows() == 1)
-		// 	{
-		// 	return true;
-		// 	}
-		//   else
-		// 	{
-		// 	return false;
-		// 	}
 		}
 
 	// Read data from database to show data in admin page

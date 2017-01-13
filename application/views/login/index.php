@@ -11,7 +11,7 @@
         <!--div class="col-xs-12 col-sm-12 col-md-12" style="margin-bottom:40px;">
         <h2 style="font-weight:100;">Welcome to Premiumleasing</h2>        
         </div-->
-        <!-- <?php if($err == "1"){ ?>
+         <?php if($error_message == "1"){ ?>
         <div class="col-xs-12 col-sm-12 col-md-12">
           <div class="col-xs-12 col-sm-12 col-md-12" style="padding-left:40px;padding-right:40px;">
             <div class="alert alert-warning alert-dismissible" role="alert">
@@ -26,7 +26,7 @@
           </div>  
         </div>  
         <?php } ?>
-        <?php if($err == "2"){ ?>
+        <?php if($error_message == "2"){ ?>
         <div class="col-xs-12 col-sm-12 col-md-12">
           <div class="col-xs-12 col-sm-12 col-md-12" style="padding-left:40px;padding-right:40px;">
             <div class="alert alert-warning alert-dismissible" role="alert">
@@ -40,7 +40,7 @@
           </div>  
         </div>  
         <?php } ?>
-        <?php if($err == "3"){ ?>
+        <?php if($error_message == "3"){ ?>
         <div class="col-xs-12 col-sm-12 col-md-12">
           <div class="col-xs-12 col-sm-12 col-md-12" style="padding-left:40px;padding-right:40px;">
             <div class="alert alert-warning alert-dismissible" role="alert">
@@ -99,7 +99,7 @@
             </div>
           </div>  
         </div>  
-        <?php } ?> -->
+        <?php } ?> 
         <style type="text/css">
           div.test1 
           {
@@ -112,10 +112,9 @@
           }
         </style>
         
-<?php echo "ankit   ".print_r($data); ?>
         <div class="col-xs-12 col-sm-6 col-md-6">
           <div class="col-md-10 col-md-offset-1 test1" style="text-align:center;background:rgba(255,255,255,1.0);">
-            <h2 style="font-weight:100;color:#0084d0;margin:20px 0 60px 0;">
+            <h2 style="font-weight:100;color:#0084d0;margin:20px 0 120px 0;">
               <i class="fa fa-sign-in"></i> Sign In
             </h2>
             <form action="index.php/login/login_check" method="post">
@@ -137,15 +136,12 @@
               <i class="fa fa-user">
               </i> Create an account
             </h2>                    
-            <form action="" method="post">
+            <form action="index.php/login/registration" method="post">
               <input type="hidden" name="send" value="signup">
               <input type="text" name="firstname" value="" placeholder="First Name" class="form-control input-lg" required>
               <input type="text" name="lastname" value="" placeholder="Last Name" class="form-control input-lg" style="margin-top:10px;" required>                     
               <input type="email" name="email" value="" placeholder="Email Address" class="form-control input-lg" style="margin-top:10px;" required>
-                  <!--input type="password" name="password" value="" placeholder="Password" class="form-control" style="margin-top:10px;">
-                <input type="password" name="password_agian" value="" placeholder="Type your password agian" class="form-control" style="margin-top:10px;">
-                <p style="text-align:left;margin-top:10px;"><small>Minimum of eight characters</small></p>
-                <p style="text-align:left;margin-top:10px;"><label><input type="checkbox" name="newsletter"> I want updates and news of Premiumleasing</label></p-->
+              <input type="password" name="password" value="" placeholder="Password" class="form-control input-lg" style="margin-top:10px;" required>
               <p style="margin-top:10px;">
                 <label for="terms">
                   <input type="checkbox" id="terms" name="terms" value="1"> I accept the Terms and Condition of Ngine

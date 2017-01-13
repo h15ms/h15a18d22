@@ -1,43 +1,25 @@
 <?php
 class dashboard extends CI_Controller
 {
+    
+  public function __construct(){
+    parent::__construct();
 
-  private $_view;
-  private $_model;
-  private $_login;
-
-  public function __construct() 
-  {
-        require_once 'library/View.php';
-        $this->_view = new View();        
-        require_once 'library/Login.php'; 
-        $this->_login = new Login();
+    // Load database
+    //$this->load->model('login_model','login_model');
   }
 
-    
-  public function __call($name, $args) 
-  {
-        header('Location: '.URL.'404/');
-  }
-
-    
   public function index() 
   { 
 
-        if($_SESSION[user_id] == ""){
-                header('Location: '.URL.'login/'); 
+        if($_SESSION['logged_in']['user_id'] == ""){
+                header('Location: '.base_url().'/login'); 
         }
         else
         {        
-            require_once 'models/dashboardModel.php';
-            $model = new dashboardModel();
-            $this->_view->displayAll = $model->displayAll(); 
-
-            $this->_view->title = "Customer Dashboard | Premiumleasing";
-            $this->_view->description = "";
-            $this->_view->headline = "Customer Dashboard";    
-            $this->_view->canonical = URL."dashboard/";       
-            $this->_view->display('dashboard/index.php');    
+            $this->load->view('template/header');   
+            $this->load->view('dashboard/index');   
+            $this->load->view('template/footer');   
         }
   } 
   

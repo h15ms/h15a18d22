@@ -1,5 +1,5 @@
 <?php
-class dashboardModel 
+class dashboard 
 {
 
   private $_con;
