@@ -40,34 +40,25 @@ Class login_model extends CI_Model
 		$getdata=$this->db->get_where('mi_customer', array('username' => $data['username'],'password'=>$data['password']) );
 	
 
-
-echo "<pre>";
-print_r($getdata->result());
-echo "</pre>";
-exit;
-
-
-		// if (!$user)
-		// { 
-		//       $out = "1";
+		$user = $getdata->result();
+		if ($getdata->num_rows() != 1)
+		{ 
+		      $out = "1"; //user not exist
 		    
-		// }elseif ($user["password"] <> $pass)
-		// { 
-		//       $out = "2";
+		}elseif ($user[0]->password <> $data['password'])
+		{ 
+		      $out = "2";
 		    
-		// }elseif ($user["status"] == "1")
-		// { 
-		//      $out = "3";
+		}elseif ($user[0]->status == "1")
+		{ 
+		     $out = "3";
 		    
-		// }else 
-		// {                
-		//       $_SESSION[user_id] = $user["id"];
-		//       $_SESSION[user_email] = $user["email"];
-		//       $_SESSION[user_name] = $user["firstname"]." ".$user["lastname"];			    
-		//       $_SESSION[user_key] = md5($user["id"].session_id().session_secret_key);              
-		//       $_SESSION['avatar'] = $user["avatar"];
-		//       $out = $user;
-		// }
+		}else 
+		{                
+		      $out = "TRUE";
+		}
+		
+		return $out;
 
 
 
@@ -76,15 +67,14 @@ exit;
 
 
 
-
-		if ($getdata->num_rows() == 1)
-			{
-			return true;
-			}
-		  else
-			{
-			return false;
-			}
+		// if ($getdata->num_rows() == 1)
+		// 	{
+		// 	return true;
+		// 	}
+		//   else
+		// 	{
+		// 	return false;
+		// 	}
 		}
 
 	// Read data from database to show data in admin page

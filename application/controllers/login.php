@@ -24,7 +24,6 @@ class login extends CI_Controller
 
 	public function index()
 	{
-
 		$this->load->view('template/header');
 		$this->load->view('login/index');
 		$this->load->view('template/footer');
@@ -39,7 +38,7 @@ class login extends CI_Controller
 
 			 $result = $this->login_model->login($data); 
 
-			if ($result == TRUE)
+			if ($result == 'TRUE')
 				{
 				$username = $this->input->post('username');
 				$result = $this->login_model->login_fetch($username); 
@@ -51,7 +50,7 @@ class login extends CI_Controller
 						'user_id' => $result[0]->id,
 						'user_email' => $result[0]->email,
 						'user_name' => $result[0]->firstname." ".$result[0]->lastname,
-						'user_key' => md5($result[0]->id.session_id().session_secret_key),
+						'user_key' => md5($result[0]->id.session_id()),
 						'avatar' => $result[0]->avatar,
 					);
 
@@ -59,8 +58,10 @@ class login extends CI_Controller
 					// Add user data in session
 
 					$this->session->set_userdata('logged_in', $session_data);
+					
+					$this->load->view('template/header');
 					$this->load->view('home/index');
-					header("Location: ".base_url()."home");
+					$this->load->view('template/footer');
 					}
 				}
 			  else
@@ -69,7 +70,7 @@ class login extends CI_Controller
 					'error_message' => 'Invalid Username or Password'
 				);
 				
-				 header("Location:".base_url()."notFound");
+				 header("Location:".base_url()."login");
 				// $this->load->view('404/index', $data);
 				}
 		}
