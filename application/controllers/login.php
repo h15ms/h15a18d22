@@ -48,8 +48,26 @@ class login extends CI_Controller
 				'email' => $this->input->post('email'),
 				'password' => $this->input->post('password')
 			);
-		print_r($data);
-		exit;
+
+		$result = $this->login_model->check_new_user($data);
+		
+		if($result->result_id->num_rows == "1")
+		{
+			$reg = "1"; // There is already an account with this email address provided
+		
+		}elseif($result->result_id->num_rows == "0"){
+			
+			$out = $this->login_model->registration_insert($data);
+
+			$this->load->view('template/header');
+			$this->load->view('login/index', $out);
+			$this->load->view('template/footer');
+		}
+		
+
+		$this->load->view('template/header');
+		$this->load->view('login/index', $out);
+		$this->load->view('template/footer');
 	}
 
 	public function login_check()
@@ -137,3 +155,5 @@ class login extends CI_Controller
 
 
  ?>
+
+ 

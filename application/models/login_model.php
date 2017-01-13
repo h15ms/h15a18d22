@@ -4,6 +4,13 @@ Class login_model extends CI_Model
 
 	// Insert registration data in database
 
+	public function check_new_user($data)
+	{
+		 $result = $this->db->get_where('mi_customer', array('email' => $data['email']));
+		 return $result;
+	}
+
+
 	public function registration_insert($data)
 		{
 
