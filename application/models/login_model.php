@@ -79,21 +79,18 @@ Class login_model extends CI_Model
 
 	// Read data from database to show data in admin page
 
-	public function login_fetch($data)
-		{
+	public function login_fetch($data) {
 
-			$getdata=$this->db->select('id, username, password, firstname, lastname, zip, email, avatar, email_confirm, status')->get_where('mi_customer', array('username' => $data,'email_confirm'=>'1') );
-		
-		if ($getdata->num_rows() == 1)
-			{
-			return $getdata->result();
-			}
-		  else
-			{
-			return false;
-			}
-		}
-	}
+        $getdata = $this->db->select('id, username, password, firstname, lastname, zip, email, avatar, email_confirm, status')->get_where('mi_customer', array('username' => $data, 'email_confirm' => '1'));
+
+        if ($getdata->num_rows() == 1) {
+            return $getdata->result();
+        } else {
+            return false;
+        }
+    }
+
+}
 
 ?>
 
