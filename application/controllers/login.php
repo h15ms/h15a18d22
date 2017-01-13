@@ -18,14 +18,16 @@ class login extends CI_Controller
 		$this->load->library('session');
 
 		// Load database
-		$this->load->model('login');
+		$this->load->model('login_model','login_model');
 	}
 
 
 	public function index()
 	{
 
+		$this->load->view('template/header');
 		$this->load->view('login/index');
+		$this->load->view('template/footer');
 	}
 
 	public function login_check()
@@ -35,24 +37,30 @@ class login extends CI_Controller
 				'password' => $this->input->post('pass')
 			);
 
-			echo $result = $this->login->login($data); 
+			 $result = $this->login_model->login($data); 
 
 			if ($result == TRUE)
 				{
 				$username = $this->input->post('username');
-				$result = $this->login->login_fetch($username); 
+				$result = $this->login_model->login_fetch($username); 
 
 				if ($result != false)
+					
 					{
 					$session_data = array(
-						'username' => $result[0]->username,
-						'email' => $result[0]->email,
+						'user_id' => $result[0]->id,
+						'user_email' => $result[0]->email,
+						'user_name' => $result[0]->firstname." ".$result[0]->lastname,
+						'user_key' => md5($result[0]->id.session_id().session_secret_key),
+						'avatar' => $result[0]->avatar,
 					);
+
 
 					// Add user data in session
 
 					$this->session->set_userdata('logged_in', $session_data);
 					$this->load->view('home/index');
+					header("Location: ".base_url()."home");
 					}
 				}
 			  else
@@ -60,7 +68,9 @@ class login extends CI_Controller
 				$data = array(
 					'error_message' => 'Invalid Username or Password'
 				);
-				$this->load->view('notFound/index', $data);
+				
+				 header("Location:".base_url()."notFound");
+				// $this->load->view('404/index', $data);
 				}
 		}
 		

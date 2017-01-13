@@ -26,9 +26,8 @@
             , cbNext: function(data) {
             }
             , skinsPath: ''}
-                                                  ) }
-      }
-                                                                                 );
+        ) }
+      });
     </script>
     <div class="ls-wp-fullwidth-container" style="height:580px;">
       <div class="ls-wp-fullwidth-helper">
@@ -36,7 +35,7 @@
           <div class="ls-slide" data-ls="slidedelay:7000;transition2d:11,13,23;transition3d:all;">
             <img src="assets/img/bg-home2.jpg" class="ls-bg" alt="bg-home2" />
             <div class="ls-l" style="top:60%;left:50%;white-space: nowrap;" data-ls="delayin:800;">
-              <?php if($_SESSION[user_key]){ ?>
+              <?php if($_SESSION['logged_in']['user_id']){ ?>
               <a href="<?php echo URL;?>apply/" class="avia-button avia-icon_select-no avia-color-green avia-size-x-large avia-position-center ">
                 <span class="avia_iconbox_title" style="font-size:28px;">Apply now
                 </span>
