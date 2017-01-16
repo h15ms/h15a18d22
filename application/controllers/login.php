@@ -25,7 +25,7 @@ class login extends CI_Controller
 	public function index()
 	{
 
-		if($_SESSION['logged_in']['user_id'] != NULL){
+		if(isset($_SESSION['logged_in']['user_id'])){
 
 		$this->load->view('template/header');
 		$this->load->view('dashboard/index');
