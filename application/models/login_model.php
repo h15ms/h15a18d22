@@ -17,7 +17,7 @@ Class login_model extends CI_Model
 		$string = array('email' => $data['email'],'firstname' => $data['firstname'], 'lastname' => $data['lastname'], 'password' => $data['password'], 'user_type' => $data['type_of_user'], 'phone' => $data['mobile'], 'regtime' => time() );
 		$getData = $this->db->insert('mi_customer', $string);
 		
-		return $getData;
+		return $this->db->insert_id();
 		}
 
 	// Read data using username and password
@@ -62,9 +62,9 @@ Class login_model extends CI_Model
         }
     }
 
-    public function retrieve_sess_data()
+    public function retrieve_sess_data($inserted_id)
     {
-    	$get = $this->db->select('*')->get_where('mi_customer', array('email' => 'sdfkjh'));
+    	return $this->db->select('*')->get_where('mi_customer', array('id' => $inserted_id));
     }
 
 }

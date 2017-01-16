@@ -62,12 +62,18 @@ class login extends CI_Controller
 		
 		}else{
 
-			$this->login_model->registration_insert($data);
-			$data = $this->login_model->retrieve_sess_data($_SESSION['logged_in']['user_id']);
+			$inserted_id = $this->login_model->registration_insert($data);
+			
+			if(isset($inserted_id))
+			{
+				$data = $this->login_model->retrieve_sess_data($inserted_id);
+				$result = $data->result();
 
-			$this->load->view('template/header');
-			$this->load->view('user/index', $data);
-			$this->load->view('template/footer');
+				$this->load->view('template/header');
+				$this->load->view('user', $data);
+				$this->load->view('template/footer');	
+			}
+			
 		}
 		
 	}

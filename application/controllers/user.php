@@ -9,8 +9,10 @@ class user extends CI_Controller
 		$this->load->model('user_model', 'um');
 	}
 
-	function index()
+	function index($data = '0')
 	{
+print_r($data);
+
 		$this->load->view('template/header');
 		$this->load->view('user/user_edit' , $data);
 		$this->load->view('template/footer');

@@ -1,10 +1,4 @@
 <div id='main' data-scroll-offset='88'>
- 
-
-<?php print_r($_SESSION); ?>
-
-
-
 
   <div id='after_layer_slider_1' class='main_color container_wrap fullsize'>
     <div class='container'>
