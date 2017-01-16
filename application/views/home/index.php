@@ -47,7 +47,7 @@
               </a> 
               <?php } ?>
             </div>
-            <h1 class="ls-l" style="top:30%;left:50%;@media (max-width: 767px) { font-size: 18px; };color:#ffffff;white-space: nowrap;">We Support Your Journey to India
+            <h1 class="ls-l" style="top:30%;left:50%;@media (max-width: 767px) { font-size: 18px; };color:#ffffff; white-space: nowrap;">We Support Your Journey to India
             </h1>
             <div class="ls-l" style="top:36%;left:50%;font-size:18px;color:#ffffff;white-space: nowrap;">
               <p>People matter, results count  </p> 
@@ -116,7 +116,7 @@
                 </span>
               </div>
               <div class='avia-button-wrap avia-button-center  avia-builder-el-9  el_after_av_hr  avia-builder-el-last '>
-                <a href='<?php echo URL;?>service/medicalservices/' class='avia-button  avia-icon_select-no avia-color-dark avia-size-small avia-position-center '   >
+                <a href='<?php echo URL;?>/service/medicalservices/' class='avia-button  avia-icon_select-no avia-color-dark avia-size-small avia-position-center '   >
                   <span class='avia_iconbox_title' >read more
                   </span>
                 </a>
@@ -152,7 +152,7 @@
                 </span>
               </div>
               <div class='avia-button-wrap avia-button-center  avia-builder-el-15  el_after_av_hr  avia-builder-el-last '>
-                <a href='<?php echo URL;?>service/businessservices/' class='avia-button  avia-icon_select-no avia-color-dark avia-size-small avia-position-center '   >
+                <a href='<?php echo URL;?>/service/businessservices/' class='avia-button  avia-icon_select-no avia-color-dark avia-size-small avia-position-center '   >
                   <span class='avia_iconbox_title' >read more
                   </span>
                 </a>
@@ -188,7 +188,7 @@
                 </span>
               </div>
               <div class='avia-button-wrap avia-button-center  avia-builder-el-21  el_after_av_hr  avia-builder-el-last '>
-                <a href='<?php echo URL;?>service/touristvisa/' class='avia-button  avia-icon_select-no avia-color-dark avia-size-small avia-position-center '   >
+                <a href='<?php echo URL;?>/service/touristvisa/' class='avia-button  avia-icon_select-no avia-color-dark avia-size-small avia-position-center '   >
                   <span class='avia_iconbox_title' >read more
                   </span>
                 </a>

@@ -53,9 +53,9 @@
   <body id="top" class="home page page-id-2 page-template-default logged-in stretched open_sans " itemscope="itemscope" itemtype="https://schema.org/WebPage" >
     <div id='wrap_all'>
       <header id='header' class=' header_color light_bg_color  av_header_top av_logo_left av_main_nav_header av_menu_right av_slim av_header_sticky av_header_shrinking av_header_stretch_disabled av_mobile_menu_phone av_header_searchicon_disabled av_header_unstick_top_disabled av_seperator_big_border av_bottom_nav_disabled '  role="banner" itemscope="itemscope" itemtype="https://schema.org/WPHeader" >
-        <a id="advanced_menu_toggle" href="#" aria-hidden='true' data-av_icon='' data-av_iconfont='entypo-fontello'>
+        <a id="advanced_menu_toggle" href="#" aria-hidden='true' data-av_icon='?' data-av_iconfont='entypo-fontello'>
         </a>
-        <a id="advanced_menu_hide" href="#" 	aria-hidden='true' data-av_icon='' data-av_iconfont='entypo-fontello'>
+        <a id="advanced_menu_hide" href="#" 	aria-hidden='true' data-av_icon='?' data-av_iconfont='entypo-fontello'>
         </a>
         <div  id='header_main' class='container_wrap container_wrap_logo'>
           <!-- li class: current-menu-item : for active page  -->
