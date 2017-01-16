@@ -17,6 +17,9 @@ Class login_model extends CI_Model
 		// Query to check whether username already exist or not
 
 		$condition = "username = ".$data['username']."AND email_confirm = 1";
+
+		$this->db->insert_string()
+
 		$this->db->select('`id`, `username`, `password`, `firstname`, `lastname`, `zip`, `email`, `avatar`, `email_confirm`, `status`');
 		$this->db->from('mi_customer');
 		$this->db->where($condition);
