@@ -46,23 +46,27 @@ class login extends CI_Controller
 				'firstname' => $this->input->post('firstname'),
 				'lastname' => $this->input->post('lastname'),
 				'email' => $this->input->post('email'),
+				'type_of_user' => $this->input->post('type_of_user'),
+				'mobile' => $this->input->post('mobile'),
 				'password' => $this->input->post('password')
 			);
 
 		$result = $this->login_model->check_new_user($data);
-		$out = "";
-
 
 		if($result->result_id->num_rows == "1")
 		{
-			$reg = "1"; // There is already an account with this email address provided
+			$data['reg'] = "1"; // There is already an account with this email address provided
+			$this->load->view('template/header');
+			$this->load->view('login/index', $data);
+			$this->load->view('template/footer');
 		
 		}else{
-			
-			echo $out = $this->login_model->registration_insert($data);
-exit;
+
+			$this->login_model->registration_insert($data);
+			$data = $this->login_model->retrieve_sess_data($_SESSION['logged_in']['user_id']);
+
 			$this->load->view('template/header');
-			$this->load->view('login/index', $out);
+			$this->load->view('user/index', $data);
 			$this->load->view('template/footer');
 		}
 		
@@ -71,16 +75,17 @@ exit;
 	public function login_check()
 	{
 		$data = array(
-			'username' => $this->input->post('username') ,
+			'email' => $this->input->post('email') ,
 			'password' => $this->input->post('pass')
 		);
+
 
 		 $result = $this->login_model->login($data); 
 
 		if ($result == 'TRUE')
 			{
-			$username = $this->input->post('username');
-			$result = $this->login_model->login_fetch($username); 
+			$email = $this->input->post('email');
+			$result = $this->login_model->login_fetch($email); 
 
 			if ($result != false)
 				

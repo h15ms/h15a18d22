@@ -114,12 +114,12 @@
         
         <div class="col-xs-12 col-sm-6 col-md-6">
           <div class="col-md-10 col-md-offset-1 test1" style="text-align:center;background:rgba(255,255,255,1.0);">
-            <h2 style="font-weight:100;color:#0084d0;margin:20px 0 120px 0;">
+            <h2 style="font-weight:100;color:#0084d0;margin:20px 0 60px 0;">
               <i class="fa fa-sign-in"></i> Sign In
             </h2>
             <form action="index.php/login/login_check" method="post">
               <input type="hidden" name="send" value="signin">
-              <input type="email" name="username" value="" placeholder="Email address" class="form-control input-lg" required>
+              <input type="email" name="email" value="" placeholder="Email address" class="form-control input-lg" required>
               <input type="password" name="pass" value="" placeholder="Password" class="form-control input-lg" style="margin-top:10px;" required>
               <p style="text-align:left;margin:30px 0 40px 0;">
                 <a href="" class="text-primary">
@@ -137,14 +137,31 @@
               </i> Create an account
             </h2>                    
             <form action="index.php/login/registration" method="post">
-              <input type="hidden" name="send" value="signup">
-              <input type="text" name="firstname" value="" placeholder="First Name" class="form-control input-lg" required>
-              <input type="text" name="lastname" value="" placeholder="Last Name" class="form-control input-lg" style="margin-top:10px;" required>                     
-              <input type="email" name="email" value="" placeholder="Email Address" class="form-control input-lg" style="margin-top:10px;" required>
-              <input type="password" name="password" value="" placeholder="Password" class="form-control input-lg" style="margin-top:10px;" required>
+              <div class="col-md-6">
+                <input type="text" name="firstname" value="" placeholder="First Name*" class="form-control input-lg" autocomplete="off" required>
+              </div>
+              <div class="col-md-6">
+                <input type="text" name="lastname" value="" placeholder="Last Name*" class="form-control input-lg" autocomplete="off" required>                     
+              </div>
+              <div class="col-md-6">
+                <input type="email" name="email" value="" placeholder="Email Address*" class="form-control input-lg" autocomplete="off" required>
+              </div>
+              <div class="col-md-6">
+                <input type="password" name="password" value="" placeholder="Password*" class="form-control input-lg" autocomplete="off" required>
+              </div>
+              <div class="col-md-6" autocomplete="off">
+                <select class="form-control input-lg" name="type_of_user" required="">
+                  <option>Type of User</option>
+                  <option value="3">Customer / Patient</option>
+                  <option value="2">Agent</option>
+                </select>
+              </div>
+              <div class="col-md-6">
+                <input type="text" name="mobile" value="" placeholder="Mobile Number*" class="form-control input-lg" autocomplete="off" required>
+              </div>
               <p style="margin-top:10px;">
                 <label for="terms">
-                  <input type="checkbox" id="terms" name="terms" value="1"> I accept the Terms and Condition of Ngine
+                  <input type="checkbox" id="terms" name="terms" value="1" checked="" required> I accept the Terms and Condition of MI Consulting
                 </label>
               </p>
               <button type="submit" class="btn btn-primary btn-lg btn-block">SIGN UP
