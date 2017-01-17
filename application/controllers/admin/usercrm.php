@@ -1,34 +1,28 @@
 <?php
-class userController 
+class usercrm extends CI_Controller
 {
 
-  private $_view;
-  private $_model;
-
-    
-  public function __construct() 
+ function __construct() 
   {
-    require 'library/View.php';
-    $this->_view = new View();
-    require 'models/userModel.php';
-    $this->_model = new userModel();    
+       parent:: __construct();
+      $this->load->model('admin/userModelCrm' , 'umc');
+      
+   
   }
 
     
-  public function __call($name, $args) 
-  {
-    $this->_view->title         = TITEL_404;
-    $this->_view->headline      = HEADLINE_404;
-    $this->_view->display('404/error.tpl.php');
-  }
 
     
-  public function indexAction() 
+  public function index() 
   { 
-    $this->_view->title         = "Manage employees | MiConsulting";
-    $this->_view->headline      = "Manage employees";
-    $this->_view->users         = $this->_model->allUsers();     
-    $this->_view->display('user/index.tpl.php');
+    $title         = "Manage employees | MiConsulting";
+    $headline      = "Manage employees";
+    $users         = $this->umc->allUsers();
+   
+    $data=array('title'=>$title,'headline'=>$headline,'users'=>$users);
+    $this->load->view('admin/temp/headercrm');
+    $this->load->view('admin/usercrm/index',$data);
+    $this->load->view('admin/temp/footercrm');
   }
 
     

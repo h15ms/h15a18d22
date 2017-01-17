@@ -1,4 +1,4 @@
-
+<?php error_reporting(0);?>
 
 <div id="page-content">
     <div id="wrap">
@@ -51,16 +51,17 @@
 					</tr>
 					</thead>
 					<tbody>
-                        <?php foreach($users as $user){ ?>
+                                       
+                        <?php foreach($users as $user){   ?>
                         <tr>
-                            <td><?php echo $user['id'];?></td>
-                            <td><?php echo $user['position'];?></td>
-                            <td><?php echo $user['vorname']." ".$user['nachname'];?></td>
-                            <td><?php echo $user['email'];?></td>
-                            <td><?php echo $user['telefon'];?></td>
-                            <td><?php echo $user['mobil'];?></td>
-                            <td><?php echo $user['datum'];?></td>
-                            <td align="center"><a href="index.php?c=user&a=user&id=<?php echo $user['id'];?>"><i class="fa fa-pencil"></i></a></td>
+                            <td><?php echo $user->id;?></td>
+                            <td><?php echo $user->position;?></td>
+                            <td><?php echo $user->vorname." ".$user->nachname;?></td>
+                            <td><?php echo $user->email;?></td>
+                            <td><?php echo $user->telefon;?></td>
+                            <td><?php echo $user->mobil;?></td>
+                            <td><?php echo $user->datum;?></td>
+                            <td align="center"><a href="index.php?c=user&a=user&id=<?php echo $user->id;?>"><i class="fa fa-pencil"></i></a></td>
                         </tr>
                         <?php } ?>
 					</tbody>
