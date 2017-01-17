@@ -2,12 +2,11 @@
 class apply extends CI_Controller
 {
 
-  private $_view;
 
   public function __construct() 
   {
-        require 'library/View.php';
-        $this->_view = new View();
+       parent:: __construct();
+      // $this->load->model('apply');
   }
 
 
@@ -15,45 +14,16 @@ class apply extends CI_Controller
 
   public function index()
   {      
-   
-   if($_SESSION['user_id'] == ""){
-        //   header('Location: '.URL.'login/'); 
-   }
-   else
-   {
     
-    require_once 'config/data.inc.php';
-    require_once 'models/applyModel.php';
-     $apply = new applyModel();  
-        
-        $mail = $_POST['ReEnterEmail'];
+$data = $this->input->post();
+echo "<pre>";
+print_r($data);
+echo "</pre>";
 
-        if($_POST['applyform']=="send"){   
-            $ar = $apply->saveForm($_POST);
-            $apply->imgInsertdb($_FILES);
-            $this->imageInsert($_FILES);
-            if($ar == 0){
-                echo "list of missing fields";
-            }elseif($ar == 1){
-              
-               $this->mailapplyAction();
-               $this->thanksAction();
-              exit;
-            }
-        }
-      
-//        $userid = md5(get_IP().$_SERVER['HTTP_USER_AGENT']);
-//
-//        $this->_view->data = $data;
-//        $this->_view->title = "Apply | MiConsulting.in";
-//        $this->_view->description = "";
-//        $this->_view->headline = "Suche"; 
-//        $this->_view->canonical = URL.ltrim($_SERVER['REQUEST_URI'], '/'); 
-//        $this->_view->display('apply/index.php');
-         $this->load->view('template/header');
+    $this->load->view('template/header');
 		$this->load->view('apply/index.php');
 		$this->load->view('template/footer');
-   }
+   
   }  
 
     public function imageInsert($arr)
@@ -132,7 +102,7 @@ class apply extends CI_Controller
 //        //$this->_view->canonical = URL."apply/thanksAction/";       
 //        $this->_view->display('apply/thankyou.php');
         
-               $this->load->view('template/header');
+    $this->load->view('template/header');
 		$this->load->view('apply/thankyou.php');
 		$this->load->view('template/footer');
   }

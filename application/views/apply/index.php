@@ -1,10 +1,3 @@
-<?php 
-// echo "<pre>";
-// print_r($data);
-// echo "</pre>";
-// exit;
- ?>
-
 <div id='main' data-scroll-offset='88'>
   <div id='layer_slider_1' class='avia-layerslider main_color avia-shadow  avia-builder-el-0  el_before_av_codeblock  avia-builder-el-first  container_wrap fullsize'    style='height: 151px;' >
     <script data-cfasync="false" type="text/javascript">var lsjQuery = jQuery; </script>
@@ -39,9 +32,8 @@
           <div class='entry-content-wrapper clearfix'>
             <section class="avia_codeblock_section avia_code_block_0"  itemscope="itemscope" itemtype="https://schema.org/CreativeWork" >
               <div class='avia_codeblock '  itemprop="text"> 
-                <h3>Apply for our Service
-                </h3>
-                <form action="" method="post" enctype="multipart/form-data">
+                <h3>Apply for our Service</h3>
+                <form action="apply" method="post" enctype="multipart/form-data">
                   <input type="hidden" value="send" name="applyform">
                   <div class="row rowspace">
                     <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
@@ -112,7 +104,7 @@
                     <div  class="col-xs-12 col-sm-3 col-md-3 col-lg-3 formspace">
                       Indian Mission*
                       <br>
-                      <select class="form-control" name="indian_mission" id="indian_mission" required="">
+                      <select class="form-control" name="indian_mission" id="indian_mission" >
                         <option value="AFGH - AFGANISTAN-HERAT">AFGH - AFGANISTAN-HERAT</option>
                         <option value="AFGJ - AFGANISTAN-JALALABAD">AFGJ - AFGANISTAN-JALALABAD</option>
                         <option value="AFGK - AFGANISTAN-KABUL">AFGK - AFGANISTAN-KABUL</option>
@@ -123,7 +115,7 @@
                     <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3 formspace">
                       Nationality
                       <br>
-                      <select class="form-control" name="nationality" id="nationality" required="">
+                      <select class="form-control" name="nationality" id="nationality" >
                       <?php foreach($data['country'] as $cname){?>
                           <option value="<?php echo $cname; ?>"><?php echo $cname; ?></option>
                       <?php } ?>
@@ -132,24 +124,24 @@
                     <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3 formspace">
                       Date of Birth*
                       <br>
-                      <input class="form-control" name="date_of_birth" type="text" placeholder="Date of Birth" id="date_of_birth" required="" />
+                      <input class="form-control" name="date_of_birth" type="text" placeholder="Date of Birth" id="date_of_birth"  />
                     </div>
                   </div>
                   <div class="row rowspace"> 
                     <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3 formspace">
                       Email*
                       <br>
-                      <input class="form-control" name="email" type="email" placeholder="Email" id="email" required="">
+                      <input class="form-control" name="email" type="email" placeholder="Email" id="email" >
                     </div>
                     <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3 formspace">
                       Re Enter Email*
                       <br>
-                      <input class="form-control" name="ReEnterEmail" type="email" placeholder="Re Enter Email" id="ReEnterEmail" required="" />
+                      <input class="form-control" name="ReEnterEmail" type="email" placeholder="Re Enter Email" id="ReEnterEmail"  />
                     </div>
                     <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3 formspace">
                       Expected Date of Arrival*
                       <br>
-                      <input class="form-control" name="date_of_arrival" type="text" placeholder="Expected Date of Arrival" id="date_of_arrival" required="" />
+                      <input class="form-control" name="date_of_arrival" type="text" placeholder="Expected Date of Arrival" id="date_of_arrival"  />
                     </div>
                     <div  class="col-xs-12 col-sm-3 col-md-3 col-lg-3 formspace">
                       Visa Type
@@ -169,12 +161,12 @@
                     <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3 formspace">
                       Surname (as shown in your Passport)*
                       <br>
-                      <input type="text" value="" class="form-control" name="surname" placeholder="Surname" id="surname" required="" />
+                      <input type="text" value="" class="form-control" name="surname" placeholder="Surname" id="surname"  />
                     </div>
                     <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3 formspace">
                       Given Name (Complete as in Passport)*
                       <br>
-                      <input type="text" value="" name="given_name" class="form-control" placeholder="Given Name" id="given_name" required="" />
+                      <input type="text" value="" name="given_name" class="form-control" placeholder="Given Name" id="given_name"  />
                     </div>
                     <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 formspace" style="padding-top:25px;">
                       <b>
@@ -202,7 +194,7 @@
                     <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3 formspace"> 
                       Sex*
                       <br>
-                      <select class="form-control" name="sex" id="sex" required="">
+                      <select class="form-control" name="sex" id="sex" >
                         <option value="Male">Male</option>
                         <option value="Female">Female</option>
                         <option value="Transgender">Transgender</option>
@@ -211,7 +203,7 @@
                     <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3 formspace">
                       Place of Birth*
                       <br>
-                      <input class="form-control" name="city_of_birth" type="text" placeholder="Place of Birth" id="city_of_birth" required="" />
+                      <input class="form-control" name="city_of_birth" type="text" placeholder="Place of Birth" id="city_of_birth"  />
                     </div>
                     <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3 formspace">
                       Country of birth*
@@ -224,14 +216,14 @@
                     </div>
                     <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3 formspace">
                       Citizenship/National Id No.*
-                      <input class="form-control" name="national_id" type="text" placeholder="Citizenship/National Id No." id="national_id" required="" />
+                      <input class="form-control" name="national_id" type="text" placeholder="Citizenship/National Id No." id="national_id"  />
                     </div>
                   </div>
                   <div class="row rowspace">      
                     <div  class="col-xs-12 col-sm-6 col-md-6 col-lg-6 formspace">
                       Religion*
                       <br>
-                      <select class="form-control"  name="religion" id="religion" onclick="religion1(this);" required="">
+                      <select class="form-control"  name="religion" id="religion" onclick="religion1(this);" >
                         <option value="Bahai">BAHAI</option>
                         <option value="Buddhism">BUDDHISM</option>
                         <option value="Christian">CHRISTIAN</option>
@@ -263,12 +255,12 @@
                     <div  class="col-xs-12 col-sm-3 col-md-3 col-lg-3 formspace">
                       Visible Identification Marks*
                       <br>
-                      <input class="form-control" name="visible_identification_marks" type="text" placeholder="Visible Identification Marks" id="visible_identification_marks" required="">
+                      <input class="form-control" name="visible_identification_marks" type="text" placeholder="Visible Identification Marks" id="visible_identification_marks" >
                     </div>
                     <div  class="col-xs-12 col-sm-3 col-md-3 col-lg-3 formspace">
                       Eduational Qualification*
                       <br>
-                      <select class="form-control"  name="educational_qualification" id="educational_qualification" required="">
+                      <select class="form-control"  name="educational_qualification" id="educational_qualification" >
                         <option value="BELOW MATRICULATION">BELOW MATRICULATION</option>
                         <option value="GRADUATE">GRADUATE</option>
                         <option value="HIGHER SECONDARY">HIGHER SECONDARY</option>
@@ -314,22 +306,22 @@
                     <div  class="col-xs-12 col-sm-3 col-md-3 col-lg-3 formspace">
                       Passport No.*
                       <br>
-                      <input class="form-control" name="passport_no" type="text" placeholder="Passport No." id="passport_no" required="" />
+                      <input class="form-control" name="passport_no" type="text" placeholder="Passport No." id="passport_no"  />
                     </div>
                     <div  class="col-xs-12 col-sm-3 col-md-3 col-lg-3 formspace">
                       Place of Issue*
                       <br>
-                      <input class="form-control" name="place_of_issue" type="text" placeholder="Place of Issue" id="place_of_issue" required="" />
+                      <input class="form-control" name="place_of_issue" type="text" placeholder="Place of Issue" id="place_of_issue"  />
                     </div>
                     <div  class="col-xs-12 col-sm-3 col-md-3 col-lg-3 formspace">
                       Date of Issue*
                       <br>
-                      <input class="form-control" name="date_of_issue" type="text" placeholder="Date of Issue" id="date_of_issue" required="" />
+                      <input class="form-control" name="date_of_issue" type="text" placeholder="Date of Issue" id="date_of_issue"  />
                     </div>
                     <div  class="col-xs-12 col-sm-3 col-md-3 col-lg-3 formspace">
                       Expiration Date*
                       <br>
-                      <input class="form-control" name="date_of_expiry" type="text" placeholder="Expiration Date" id="date_of_expiry" required="" />
+                      <input class="form-control" name="date_of_expiry" type="text" placeholder="Expiration Date" id="date_of_expiry"  />
                     </div>
                   </div>
                   <div class="row rowspace">
@@ -396,22 +388,22 @@
                     <div  class="col-xs-12 col-sm-3 col-md-3 col-lg-3 formspace">
                       House No./Street*
                       <br>
-                      <input class="form-control" name="street_present" type="text" placeholder="House No./Street" id="street_present" required="" />
+                      <input class="form-control" name="street_present" type="text" placeholder="House No./Street" id="street_present"  />
                     </div>
                     <div  class="col-xs-12 col-sm-3 col-md-3 col-lg-3 formspace">
                       Village/Town/City*
                       <br>
-                      <input class="form-control" name="city_present" type="text" placeholder="Village/Town/City" id="city_present" required="" />
+                      <input class="form-control" name="city_present" type="text" placeholder="Village/Town/City" id="city_present"  />
                     </div>
                     <div  class="col-xs-12 col-sm-3 col-md-3 col-lg-3 formspace">
                       State/Province/District*
                       <br>
-                      <input class="form-control" name="state_present" type="text" placeholder="State/Province/District" id="state_present" required="" />
+                      <input class="form-control" name="state_present" type="text" placeholder="State/Province/District" id="state_present"  />
                     </div>
                     <div  class="col-xs-12 col-sm-3 col-md-3 col-lg-3 formspace">
                       Country of Issue*
                       <br>
-                      <select class="form-control" name="country" id="country_present" required="" >
+                      <select class="form-control" name="country" id="country_present"  >
                         <?php foreach($data['country'] as $cname){?>
                           <option value="<?php echo $cname; ?>"><?php echo $cname; ?></option>
                         <?php } ?>
@@ -454,17 +446,17 @@
                     <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3 formspace">
                       House No./Street*
                       <br>
-                      <input class="form-control" name="street_permanent" type="text" placeholder="House No./Street" id="street_permanent" required="" />
+                      <input class="form-control" name="street_permanent" type="text" placeholder="House No./Street" id="street_permanent"  />
                     </div>
                     <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3 formspace">
                       Village/Town/City*
                       <br>
-                      <input class="form-control" name="city_permanent" type="text" placeholder="Village/Town/City" id="city_permanent" required=""/>
+                      <input class="form-control" name="city_permanent" type="text" placeholder="Village/Town/City" id="city_permanent" />
                     </div>
                     <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3 formspace">
                       State/Province/District*
                       <br>
-                      <input class="form-control" name="state_permanent" type="text" placeholder="State/Province/District" id="state_permanent" required="" />
+                      <input class="form-control" name="state_permanent" type="text" placeholder="State/Province/District" id="state_permanent"  />
                     </div>
                   </div>
                   <div class="row rowspace">
@@ -476,7 +468,7 @@
                     <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3 formspace">
                       Father Name*
                       <br>
-                      <input class="form-control" name="name_father" type="text" placeholder="Father Name" id="name_father" required="" />
+                      <input class="form-control" name="name_father" type="text" placeholder="Father Name" id="name_father"  />
                     </div>
                     <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3 formspace">
                       Nationality of Father*
@@ -499,7 +491,7 @@
                     <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3 formspace">
                       Place of Birth*
                       <br>
-                      <input name="place_of_birth_father" type="text" class="form-control" placeholder="Place of Birth" id="place_of_birth_father" required="" />
+                      <input name="place_of_birth_father" type="text" class="form-control" placeholder="Place of Birth" id="place_of_birth_father"  />
                     </div>
                   </div>
                   <div class="row rowspace">
@@ -520,12 +512,12 @@
                     <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3 formspace">
                       Mother Name*
                       <br>
-                      <input required="" class="form-control" name="name_mother" type="text" placeholder="Mother Name" id="name_mother" >
+                      <input  class="form-control" name="name_mother" type="text" placeholder="Mother Name" id="name_mother" >
                     </div>
                     <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3 formspace">
                       Nationality of Mother*
                       <br>
-                      <select class="form-control" name="nationality_mother" id="nationality_mother" required="">
+                      <select class="form-control" name="nationality_mother" id="nationality_mother" >
                         <?php foreach($data['country'] as $cname){?>
                           <option value="<?php echo $cname; ?>"><?php echo $cname; ?></option>
                         <?php } ?>
@@ -543,14 +535,14 @@
                     <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3 formspace">
                       Place of Birth*
                       <br>
-                      <input required="" name="place_of_birth_mother" type="text" class="form-control" placeholder="Place of Birth" id="place_of_birth_mother" >
+                      <input  name="place_of_birth_mother" type="text" class="form-control" placeholder="Place of Birth" id="place_of_birth_mother" >
                     </div>
                   </div>
                   <div class="row rowspace">
                     <div  class="col-xs-12 col-sm-3 col-md-3 col-lg-3 formspace">
                       Country of Birth*
                       <br>
-                      <select class="form-control" name="country_of_birth_mother" id="country_of_birth_mother" required="">
+                      <select class="form-control" name="country_of_birth_mother" id="country_of_birth_mother" >
                         <?php foreach($data['country'] as $cname){?>
                           <option value="<?php echo $cname; ?>"><?php echo $cname; ?></option>
                         <?php } ?>
@@ -670,16 +662,16 @@
                 </div>
                 <div class="row rowspace">
                   <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3 formspace">
-                    <input class="form-control" name="business_name" type="text" placeholder="Employer Name/business*" id="business_name" required="" />
+                    <input class="form-control" name="business_name" type="text" placeholder="Employer Name/business*" id="business_name"  />
                   </div>
                   <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3 formspace">
-                    <input class="form-control" name="designation" type="text" placeholder="Designation*" id="designation" required="" />
+                    <input class="form-control" name="designation" type="text" placeholder="Designation*" id="designation"  />
                   </div>
                   <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3 formspace">
-                    <input class="form-control" name="address" type="text" placeholder="Address*" id="address" required="" />
+                    <input class="form-control" name="address" type="text" placeholder="Address*" id="address"  />
                   </div>
                   <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3 formspace">
-                    <input class="form-control" name="phone" type="text" placeholder="Phone*" id="phone" required="" />
+                    <input class="form-control" name="phone" type="text" placeholder="Phone*" id="phone"  />
                   </div>
                 </div>
                 <div class="row rowspace">
@@ -1050,16 +1042,16 @@
               </h4>
             </div>
             <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
-              <input class="form-control" name="reference_name_india" type="text" placeholder="Reference Name in India*" id="reference_name_india" required="" /> 
+              <input class="form-control" name="reference_name_india" type="text" placeholder="Reference Name in India*" id="reference_name_india"  /> 
             </div>
             <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
-              <input class="form-control" name="reference_address_india_1" type="text" placeholder="Address line 1*" id="reference_address_india_1" required="" /> 
+              <input class="form-control" name="reference_address_india_1" type="text" placeholder="Address line 1*" id="reference_address_india_1"  /> 
             </div>
             <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
               <input class="form-control" name="reference_address_india_2" type="text" placeholder="Address line 2" id="reference_address_india_2" /> 
             </div>
             <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
-              <input class="form-control" name="reference_phone_india" type="text" placeholder="Phone No.*" id="reference_phone_india" required="" /> 
+              <input class="form-control" name="reference_phone_india" type="text" placeholder="Phone No.*" id="reference_phone_india"  /> 
             </div>
           </div>
           <div class="row rowspace">
@@ -1068,21 +1060,21 @@
               </h4>
             </div>
             <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
-              <input class="form-control" name="reference_name_country" type="text" placeholder="Reference Name in AFGHANISTAN*" id="reference_name_country" required="" /> 
+              <input class="form-control" name="reference_name_country" type="text" placeholder="Reference Name in AFGHANISTAN*" id="reference_name_country"  /> 
             </div>
             <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
-              <input class="form-control" name="reference_address_country_1" type="text" placeholder="Address line 1*" id="reference_address_country_1" required="" /> 
+              <input class="form-control" name="reference_address_country_1" type="text" placeholder="Address line 1*" id="reference_address_country_1"  /> 
             </div>
             <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
               <input class="form-control" name="reference_address_country_2" type="text" placeholder="Address line 2" id="reference_address_country_2" /> 
             </div>
             <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
-              <input class="form-control" name="reference_phone_country" type="text" placeholder="Phone No.*" id="reference_phone_country" required="" /> 
+              <input class="form-control" name="reference_phone_country" type="text" placeholder="Phone No.*" id="reference_phone_country"  /> 
             </div>
           </div>
           <div class="row">
             <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4 input-bmargin">
-              <input type="file" name="photos[]" id="picture" class="inputfile inputfile-1" data-multiple-caption="{count} files selected" multiple="true" required="" />
+              <input type="file" name="photos[]" id="picture" class="inputfile inputfile-1" data-multiple-caption="{count} files selected" multiple="true"  />
               
                  
               <table border="0">

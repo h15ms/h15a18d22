@@ -114,6 +114,7 @@ class login extends CI_Controller
 		if ($result == 'TRUE')
 			{
 			$email = $this->input->post('email');
+
 			$result = $this->login_model->login_fetch($email); 
 
 			if ($result != false)

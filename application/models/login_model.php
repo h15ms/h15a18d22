@@ -53,7 +53,7 @@ Class login_model extends CI_Model
 
 	public function login_fetch($data) {
 
-		$getdata = $this->db->select('id, username, password, firstname, lastname, zip, email, avatar, email_confirm, status')->get_where('mi_customer', array('email' => $data, 'email_confirm' => '1'));
+		$getdata = $this->db->select('id, username, password, firstname, lastname, zip, email, avatar, email_confirm, status')->get_where('mi_customer', array('email' => $data));
 
         if ($getdata->num_rows() == 1) {
             return $getdata->result();

@@ -151,7 +151,7 @@
               </div>
               <div class="col-md-6" autocomplete="off">
                 <select class="form-control input-lg" name="type_of_user" required="">
-                  <option>Type of User</option>
+                  <option value="">Type of User</option>
                   <option value="3">Customer / Patient</option>
                   <option value="2">Agent</option>
                 </select>
