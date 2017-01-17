@@ -9,9 +9,22 @@ class user extends CI_Controller
 		$this->load->model('user_model', 'um');
 	}
 
-	function index($data = '0')
+	function index()
 	{
-print_r($data);
+		$result = $this->um->retrieve_sess_data($_SESSION['logged_in']['user_id'])->result();
+
+		$data = array(
+			'firstname' => $result['0']->firstname,
+			'lastname' => $result['0']->lastname,
+			'street' => $result['0']->street,
+			'zip' => $result['0']->zip,
+			'city' => $result['0']->city,
+			'state' => $result['0']->state,
+			'country' => $result['0']->country,
+			'email' => $result['0']->email,
+			'phone' => $result['0']->phone,
+			'avatar' => $result['0']->avatar
+			);
 
 		$this->load->view('template/header');
 		$this->load->view('user/user_edit' , $data);
@@ -44,11 +57,12 @@ print_r($data);
 			'avatar' => $avatar
 			);
 
-		$this->um->user_info_edit($data);
+		$sess_user_id = $_SESSION['logged_in']['user_id'];
 
+		$result = $this->um->user_info_edit($data , $sess_user_id);
 
 		$this->load->view('template/header');
-		$this->load->view('user/user_edit');
+		$this->load->view('user/user_edit', $result);
 		$this->load->view('template/footer');
 	}
 

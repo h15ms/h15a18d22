@@ -69,8 +69,32 @@ class login extends CI_Controller
 				$data = $this->login_model->retrieve_sess_data($inserted_id);
 				$result = $data->result();
 
+				$session_data = array(
+					'user_id' => $inserted_id,
+					'user_email' => $result[0]->email,
+					'user_name' => $result[0]->firstname." ".$result[0]->lastname,
+					'user_key' => md5($inserted_id.session_id()),
+					'avatar' => $result[0]->avatar,
+				);
+				$this->session->set_userdata('logged_in', $session_data);
+
+				$data = array(
+					'firstname' => $result[0]->firstname,
+					'lastname' => $result[0]->lastname,
+					'username' => $result[0]->username,
+					'password' => $result[0]->password,
+					'street' => $result[0]->street,
+					'zip' => $result[0]->zip,
+					'city' => $result[0]->city,
+					'state' => $result[0]->state,
+					'country' => $result[0]->country,
+					'email' => $result[0]->email,
+					'phone' => $result[0]->phone,
+					'avatar' => $result[0]->avatar
+					);
+
 				$this->load->view('template/header');
-				$this->load->view('user', $data);
+				$this->load->view('user/user_edit', $data);
 				$this->load->view('template/footer');	
 			}
 			
@@ -84,7 +108,6 @@ class login extends CI_Controller
 			'email' => $this->input->post('email') ,
 			'password' => $this->input->post('pass')
 		);
-
 
 		 $result = $this->login_model->login($data); 
 

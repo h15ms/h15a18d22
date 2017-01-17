@@ -27,7 +27,7 @@ Class login_model extends CI_Model
 		
 		$getdata=$this->db->get_where('mi_customer', array('email' => $data['email'],'password'=>$data['password']));
 		$user = $getdata->result();
-	
+
 		if ($getdata->num_rows() != 1)
 		{ 
 		      $out = "1"; //user not exist
@@ -44,7 +44,7 @@ Class login_model extends CI_Model
 		{                
 		      $out = "TRUE";
 		}
-		
+
 		return $out;
 
 		}
