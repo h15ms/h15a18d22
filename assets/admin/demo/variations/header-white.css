@@ -1,0 +1,7 @@
+.navbar-inverse{background-color:#FFFFFF;}
+.navbar-inverse .navbar-collapse,.navbar-inverse .navbar-form{border-color:#cecece}
+.navbar-inverse .navbar-nav>.active>a,.navbar-inverse .navbar-nav>.open>a,.navbar-inverse .navbar-nav>.active>a:focus,.navbar-inverse .navbar-nav>.open>a:focus,.navbar-inverse .navbar-nav>.active>a:hover,.navbar-inverse .navbar-nav>.open>a:hover{background-color:#cecece; color: #565656;}
+.navbar-inverse a{color: #565656;}
+header .toolbar .dropdown,header #headerbardropdown,header #rightmenu-trigger{border-left:1px solid #cecece}
+header #leftmenu-trigger{border-right:1px solid #cecece}
+@media (max-width:480px){ul.toolbar{background-color:#c0c0c0}}

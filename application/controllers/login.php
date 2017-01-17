@@ -18,7 +18,7 @@ class login extends CI_Controller
 		$this->load->library('session');
 
 		// Load database
-		$this->load->model('login_model','login_model');
+		$this->load->model('login_model');
 	}
 
 
