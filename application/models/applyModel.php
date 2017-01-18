@@ -211,7 +211,7 @@ public function saveApply($arr)
          'reference_address_country_2' => $arr['reference_address_country_2'],
          'reference_phone_country' => $arr['reference_phone_country'],
          // 'picture' => $arr['picture'],
-         'status' => $arr['status'],
+         'status' => '0',
          'user_id' => $_SESSION['logged_in']['user_id'],
          //'notice' => $arr['notice'],
          //'app_update' => $arr['app_update'],
