@@ -7,15 +7,15 @@
     
         <div id="page-heading">
             <ol class="breadcrumb">
-                <li><a href="index.php">Dashboard</a></li>
-                <li><a href="index.php?c=user">Employees</a></li>
+                <li><a href="<?php echo base_url()?>admin">Dashboard</a></li>
+                <li><a href="<?php echo base_url()?>admin/usercrm">Employees</a></li>
                 <li class='active'><?php echo $headline; ?></li>
             </ol>
 
             <h1><?php echo $headline; ?></h1>
             <div class="options">
                 <div class="btn-toolbar">
-                	<a href='index.php?c=user' class="btn btn-default hidden-xs"><i class="fa fa-files-o"></i> All Employees</a>
+                	<a href="<?php echo base_url()?>admin/usercrm" class="btn btn-default hidden-xs"><i class="fa fa-files-o"></i> All Employees</a>
                 </div>
             </div>
         </div>

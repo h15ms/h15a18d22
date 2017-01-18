@@ -33,15 +33,20 @@ class applyModelCrm extends CI_Model
   }
     
     
-//  public function applyById($appid) 
-//  {          
-//        $con = new Database();
-//        $con = $con->con();        
-//        $pro = $con->query('SELECT * from '.PREFIX.'apply WHERE app_id = "'.$appid.'" LIMIT 1 ')->fetch(PDO::FETCH_ASSOC);  
-//        return $pro;      
-//  }
-//    
-//  
+  public function applyById($appid) 
+  {     
+       
+     $getdata = $this->db->select('*')->get_where('mi_apply',array('app_id'=>$appid ));
+    //  $result = $getdata->get();
+          
+        if ($getdata->num_rows() > 0) {
+            return $getdata->result();
+        } else {
+            return false;
+        }   
+  }
+    
+  
 //  public function countApplys($appid) 
 //  {          
 //        $con = new Database();

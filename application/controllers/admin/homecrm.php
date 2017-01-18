@@ -25,25 +25,23 @@ class homeCrm extends CI_Controller {
           'allnewapplys' => $allNewApplys,
           'allupdatedapplys' => $allUpdatedApplys
       );
-      
-      $this->load->view('admin/temp/headercrm');
+        $data1=array('page_title'=>"Dashboard | MiConsulting");
+        $this->load->view('admin/temp/headercrm' , $data1);
         $this->load->view('admin/homecrm/index', $data);
         $this->load->view('admin/temp/footercrm');
     }
-
-  public function listAction() 
-  {      
-    //require 'models/homeModel.php';
-//    $model = new homeModel();
-//    $this->_view->title = "Dashboard | MiConsulting";    
-//    $this->_view->headline = "Dashboard";
-//    $this->_view->countnewapplys = $model->countNewApplys();
-//    $this->_view->countapplys = $model->countApplys();   
-//
-//    $this->_view->allnewapplys = $model->allNewApplys();   
-//    $this->_view->allupdatedapplys = $model->allUpdatedApplys();   
-//
-//    $this->_view->display('home/index.php');
-  }  
+ public function applyprofil() {
+      
+      $apply = $this->hmc->applyById($this->uri->segment('4')); 
+   
+      $data = array(
+          'headline' => "Application Profile",
+          'apply' => $apply);
+        $data1=array('page_title'=>"Application Profile | MiConsulting");
+        $this->load->view('admin/temp/headercrm' , $data1);
+        $this->load->view('admin/applycrm/profil', $data);
+        $this->load->view('admin/temp/footercrm');
+    }
+ 
   
 }

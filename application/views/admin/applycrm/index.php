@@ -76,7 +76,7 @@
                                 }
                               ?>
                             </td>
-                            <td align="center"><a href="index.php?c=applyprofil&id=<?php echo $client->app_id; ?>"><i class="fa fa-user"></i></a></td>
+                            <td align="center"><a href="<?php echo base_url(); ?>admin/applycrm/profil/<?php echo $client->app_id; ?>"><i class="fa fa-user"></i></a></td>
                         </tr>
                         <?php endforeach; ?>
 					</tbody>

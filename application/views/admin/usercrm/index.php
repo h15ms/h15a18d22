@@ -7,7 +7,7 @@
     
         <div id="page-heading">
             <ol class="breadcrumb">
-                <li><a href="index.php">Dashboard</a></li>
+                <li><a href="<?php base_url()?>/admin">Dashboard</a></li>
                 <li>Employees</li>
                 <li class='active'><?php echo $headline; ?></li>
             </ol>
@@ -15,7 +15,7 @@
             <h1><?php echo $headline; ?></h1>
             <div class="options">
                 <div class="btn-toolbar">
-                	<a href='index.php?c=user&a=adduser' class="btn btn-success hidden-xs"><i class="fa fa-plus-circle"></i> Add Employee</a>					           
+                	<a href='<?php base_url()?>usercrm/adduser' class="btn btn-success hidden-xs"><i class="fa fa-plus-circle"></i> Add Employee</a>					           
                 </div>
             </div>
         </div>
@@ -61,7 +61,7 @@
                             <td><?php echo $user->telefon;?></td>
                             <td><?php echo $user->mobil;?></td>
                             <td><?php echo $user->datum;?></td>
-                            <td align="center"><a href="index.php?c=user&a=user&id=<?php echo $user->id;?>"><i class="fa fa-pencil"></i></a></td>
+                            <td align="center"><a href="usercrm/user/<?php echo $user->id;?>"><i class="fa fa-pencil"></i></a></td>
                         </tr>
                         <?php } ?>
 					</tbody>
