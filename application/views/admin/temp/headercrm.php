@@ -67,10 +67,10 @@ function linktag($address) {echo "<link rel='stylesheet' type='text/css' href='$
         			</li>
         			<li class="userlinks">
         				<ul class="dropdown-menu">        					
-        					<li><a href="index.php?c=user&a=user&id=<?php //echo $user['id'];?>">Edit Profile <i class="pull-right fa fa-cog"></i></a></li>
-        					<li><a href="index.php?c=pwchange">Change Password <i class="pull-right fa fa-pencil"></i></a></li>        					
+                                            <li><a href="<?php echo base_url();?>admin/usercrm/user&id=<?php //echo $user['id'];?>">Edit Profile <i class="pull-right fa fa-cog"></i></a></li>
+        					<li><a href="<?php echo base_url();?>admin/pwchange">Change Password <i class="pull-right fa fa-pencil"></i></a></li>        					
         					<li class="divider"></li>
-        					<li><a href="index.php?c=login&a=logout" class="">Sign out <i class="pull-right fa fa-sign-out"></i></a></li>
+        					<li><a href="<?php echo base_url();?>admin/login/logout" class="">Sign out <i class="pull-right fa fa-sign-out"></i></a></li>
         				</ul>
         			</li>
         		</ul>
@@ -99,7 +99,7 @@ function linktag($address) {echo "<link rel='stylesheet' type='text/css' href='$
                 </li>
                 <li class="divider"></li>
                 <li><a href="<?php echo base_url();?>admin/homecrm"><i class="fa fa-tachometer"></i> <span>Dashboard</span></a></li>                
-                <li><a href="<?php echo base_url();?>admin/applycrm"><i class="fa fa-file-text-o"></i> <span>Applies</span></a></li>                
+                <li><a href="<?php echo base_url();?>admin/applycrm"><i class="fa fa-file-text-o"></i> <span>ALL Applications</span></a></li>                
                 
                 <li><a href="<?php echo base_url();?>admin/usercrm"><i class="fa fa-group"></i> <span>Employees</span></a></li>    
                 
