@@ -16,12 +16,14 @@ class apply extends CI_Controller
   {      
     $this->load->helper('data_helper');
     $data = getdata();
-
+    if(isset($_POST['applyform']) && ($_POST['applyform']=='send')){
+    $this->model->saveApply($this->input->post());
+    }
     $this->load->view('template/header');
     $this->load->view('apply/index.php', $data);
     $this->load->view('template/footer');
 
-    //$this->model->saveApply($this->input->post());
+
   }  
 
     public function imageInsert($arr)
