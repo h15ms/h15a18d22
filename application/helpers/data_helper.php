@@ -3,42 +3,11 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 
-
- // echo "dgfds";
-/**
-* 
-*/
-class data
-{
-	
-	function __construct()
-	{
-		# code...
-	}
-
-
-public function getdata(){
-
-
-$res='harpreet';
-
-return $res;
-
-
-
-
-}
-
-
-
-}
-
-
-
+ function getdata(){
 
 		// country's name
 
-	/*	$data['country']['0'] = "Afghanistan";
+		$data['country']['0'] = "Afghanistan";
 		$data['country']['1'] = "Aland Islands";
 		$data['country']['2'] = "Albania";
 		$data['country']['3'] = "Algeria";
@@ -365,7 +334,7 @@ return $res;
 		$data['religion']['4'] = "Islam";
 		$data['religion']['5'] = "Jainism";
 		$data['religion']['6'] = "Judaism";
-		$data['religion']['7'] = "Others";
+
 		$data['religion']['8'] = "Parsi";
 		$data['religion']['9'] = "Sikh";
 		$data['religion']['10'] = "Zoroastrian";
@@ -383,7 +352,11 @@ return $res;
 		$data['qualification']['6'] = "POST GRADUATE";
 		$data['qualification']['7'] = "PROFESSIONAL";
 
-*/
+
+return $data;
+
+
+}
 
 
  ?>

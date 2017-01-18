@@ -5,9 +5,8 @@ class apply extends CI_Controller
 
   public function __construct() 
   {
-       parent:: __construct();
-        require_once(APPPATH.'helpers/data_helper.php');
-
+      parent:: __construct();
+      $this->load->model('applyModel', 'model');
   }
 
 
@@ -15,13 +14,14 @@ class apply extends CI_Controller
 
   public function index()
   {      
-    
-// $data = $this->input->post();
+    $this->load->helper('data_helper');
+    $data = getdata();
 
     $this->load->view('template/header');
-		$this->load->view('apply/index.php');
-		$this->load->view('template/footer');
-   
+    $this->load->view('apply/index.php', $data);
+    $this->load->view('template/footer');
+
+    //$this->model->saveApply($this->input->post());
   }  
 
     public function imageInsert($arr)
