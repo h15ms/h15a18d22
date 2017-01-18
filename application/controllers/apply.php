@@ -6,7 +6,8 @@ class apply extends CI_Controller
   public function __construct() 
   {
        parent:: __construct();
-      // $this->load->model('apply');
+        require_once(APPPATH.'helpers/data_helper.php');
+
   }
 
 
@@ -15,10 +16,7 @@ class apply extends CI_Controller
   public function index()
   {      
     
-$data = $this->input->post();
-echo "<pre>";
-print_r($data);
-echo "</pre>";
+// $data = $this->input->post();
 
     $this->load->view('template/header');
 		$this->load->view('apply/index.php');
