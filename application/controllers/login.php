@@ -19,6 +19,8 @@ class login extends CI_Controller
 
 		// Load database
 		$this->load->model('login_model');
+		
+		$this->active['current_page'] = $this->uri->segment(1);
 	}
 
 
@@ -27,13 +29,13 @@ class login extends CI_Controller
 
 		if(isset($_SESSION['logged_in']['user_id'])){
 
-		$this->load->view('template/header');
+		$this->load->view('template/header' , $this->active);
 		$this->load->view('dashboard/index');
 		$this->load->view('template/footer');
 			
 		}else{
 
-		$this->load->view('template/header');
+		$this->load->view('template/header' , $this->active);
 		$this->load->view('login/index');
 		$this->load->view('template/footer');
 		}
@@ -56,7 +58,7 @@ class login extends CI_Controller
 		if($result->result_id->num_rows == "1")
 		{
 			$data['reg'] = "1"; // There is already an account with this email address provided
-			$this->load->view('template/header');
+			$this->load->view('template/header' , $this->active);
 			$this->load->view('login/index', $data);
 			$this->load->view('template/footer');
 		
@@ -93,7 +95,7 @@ class login extends CI_Controller
 					'avatar' => $result[0]->avatar
 					);
 
-				$this->load->view('template/header');
+				$this->load->view('template/header' , $this->active);
 				$this->load->view('user/user_edit', $data);
 				$this->load->view('template/footer');	
 			}
@@ -133,7 +135,7 @@ class login extends CI_Controller
 
 				$this->session->set_userdata('logged_in', $session_data);
 				
-				$this->load->view('template/header');
+				$this->load->view('template/header' , $this->active);
 				$this->load->view('home/index');
 				$this->load->view('template/footer');
 				}
@@ -148,7 +150,7 @@ class login extends CI_Controller
 					$data = array('error_message' => '3');
 				}
 			
-			$this->load->view('template/header');
+			$this->load->view('template/header' , $this->active);
 			$this->load->view('login/index', $data);
 			$this->load->view('template/footer');
 			}
@@ -164,7 +166,7 @@ class login extends CI_Controller
 		$this->session->unset_userdata('logged_in', $sess_array);
 
 		$data['message_display'] = 'Successfully Logout';
-		$this->load->view('template/header');
+		$this->load->view('template/header' , $this->active);
 		$this->load->view('login/index', $data);
 		$this->load->view('template/footer');
 	}

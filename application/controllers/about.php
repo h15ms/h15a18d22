@@ -1,8 +1,13 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
+
 class about extends CI_Controller {
 
-
+  public function __construct()
+  {
+    parent:: __construct();
+    $this->active['current_page'] = $this->uri->segment(1);
+  }
   
   public function index() 
   {      
@@ -11,7 +16,7 @@ class about extends CI_Controller {
 //    $this->_view->headline = "About";
 //    $this->_view->canonical = URL."about/";
 //    $this->_view->display('about/index.php');
-     $this->load->view('template/header');
+     $this->load->view('template/header' , $this->active);
      $this->load->view('about/index.php');
      $this->load->view('template/footer');
   }  

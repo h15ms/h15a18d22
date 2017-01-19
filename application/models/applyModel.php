@@ -34,8 +34,8 @@ class applyModel extends CI_Model
 public function saveApply($arr)
 {
 
+   if($arr['email_main'] == $arr['ReEnterEmail']){ $email = $arr['email_main']; }else{ return 'Email Not Mached!'; }
    $app_id = $this->newApplyId();
-   if($arr['email_main'] == $arr['ReEnterEmail']){ $email = $arr['email_main']; }
   
    $saarc_country_name_1 = $arr['saarc_country_name']['0'];
    $saarc_country_year_1 = $arr['saarc_country_year']['0'];
@@ -61,6 +61,31 @@ public function saveApply($arr)
    $saarc_country_name_8 = $arr['saarc_country_name']['7'];
    $saarc_country_year_8 = $arr['saarc_country_year']['7'];
    $saarc_country_no_visits_8 = $arr['saarc_country_no_visits']['7'];
+   if($saarc_country_name_1 == NULL){$saarc_country_name_1 = '0';}
+   if($saarc_country_year_1 == NULL){$saarc_country_year_1 = '0';}
+   if($saarc_country_no_visits_1 == NULL){$saarc_country_no_visits_1 = '0';}
+   if($saarc_country_name_2 == NULL){$saarc_country_name_2 = '0';}
+   if($saarc_country_year_2 == NULL){$saarc_country_year_2 = '0';}
+   if($saarc_country_no_visits_2 == NULL){$saarc_country_no_visits_2 = '0';}
+   if($saarc_country_name_3 == NULL){$saarc_country_name_3 = '0';}
+   if($saarc_country_year_3 == NULL){$saarc_country_year_3 = '0';}
+   if($saarc_country_no_visits_3 == NULL){$saarc_country_no_visits_3 = '0';}
+   if($saarc_country_name_4 == NULL){$saarc_country_name_4 = '0';}
+   if($saarc_country_year_4 == NULL){$saarc_country_year_4 = '0';}
+   if($saarc_country_no_visits_4 == NULL){$saarc_country_no_visits_4 = '0';}
+   if($saarc_country_name_5 == NULL){$saarc_country_name_5 = '0';}
+   if($saarc_country_year_5 == NULL){$saarc_country_year_5 = '0';}
+   if($saarc_country_no_visits_5 == NULL){$saarc_country_no_visits_5 = '0';}
+   if($saarc_country_name_6 == NULL){$saarc_country_name_6 = '0';}
+   if($saarc_country_year_6 == NULL){$saarc_country_year_6 = '0';}
+   if($saarc_country_no_visits_6 == NULL){$saarc_country_no_visits_6 = '0';}
+   if($saarc_country_name_7 == NULL){$saarc_country_name_7 = '0';}
+   if($saarc_country_year_7 == NULL){$saarc_country_year_7 = '0';}
+   if($saarc_country_no_visits_7 == NULL){$saarc_country_no_visits_7 = '0';}
+   if($saarc_country_name_8 == NULL){$saarc_country_name_8 = '0';}
+   if($saarc_country_year_8 == NULL){$saarc_country_year_8 = '0';}
+   if($saarc_country_no_visits_8 == NULL){$saarc_country_no_visits_8 = '0';}
+
 
    $string = array(
          'app_id' => $app_id,

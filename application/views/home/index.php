@@ -36,12 +36,12 @@
             <img src="assets/img/bg-home2.jpg" class="ls-bg" alt="bg-home2" />
             <div class="ls-l" style="top:60%;left:50%;white-space: nowrap;" data-ls="delayin:800;">
               <?php if($_SESSION['logged_in']['user_id']){ ?>
-              <a href="<?php echo URL;?>apply/" class="avia-button avia-icon_select-no avia-color-green avia-size-x-large avia-position-center ">
+              <a href="<?php echo URL;?>apply/" class="avia-button avia-icon_select-no avia-size-x-large avia-position-center ">
                 <span class="avia_iconbox_title" style="font-size:28px;">Apply now
                 </span>
               </a> 
               <?php }else{ ?>
-              <a href="<?php echo URL;?>login/" class="avia-button avia-icon_select-no avia-color-green avia-size-x-large avia-position-center ">
+              <a href="<?php echo URL;?>login/" class="avia-button avia-icon_select-no avia-size-x-large avia-position-center ">
                 <span class="avia_iconbox_title" style="font-size:28px;">Apply now
                 </span>
               </a> 

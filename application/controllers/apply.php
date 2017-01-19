@@ -7,23 +7,50 @@ class apply extends CI_Controller
   {
       parent:: __construct();
       $this->load->model('applyModel', 'model');
+      $this->active['current_page'] = $this->uri->segment(1);
   }
-
-
 
 
   public function index()
   {      
-    $this->load->helper('data_helper');
-    $data = getdata();
     
-    if(isset($_POST['applyform']) && ($_POST['applyform']=='send')){
-      $this->model->saveApply($this->input->post());
+    if(isset($_SESSION['logged_in']['user_id']))
+    {
+      $this->load->helper('data_helper');
+      $data = getdata();
+      
+      if(isset($_POST['applyform']) && ($_POST['applyform']=='send'))
+      {  
+        $image_upload = $this->imageInsert($_FILES);
+        if($image_upload == 'done'){
+          
+          $result = $this->model->saveApply($this->input->post());
+          if($result == '1'){
+            $this->load->view('template/header' , $this->active);
+            $this->load->view('apply/thankyou.php');
+            $this->load->view('template/footer');
+          }else{            
+            $data1 = array('image_upload_error' => $result);
+          }
+        
+        }else{
+          $data1 = array('image_upload_error' => $image_upload);
+        }
+
+      }
+      
+      $this->load->view('template/header' , $this->active);
+      $this->load->view('apply/index.php', array('data' => $data, 'error' => $data1));
+      $this->load->view('template/footer');
+    
+    }else{
+
+      $data = array('login_first' => '1');
+
+      $this->load->view('template/header' , $this->active);
+      $this->load->view('login/index', $data);
+      $this->load->view('template/footer');
     }
-    
-    $this->load->view('template/header');
-    $this->load->view('apply/index.php', $data);
-    $this->load->view('template/footer');
 
 
   }  
@@ -34,15 +61,12 @@ class apply extends CI_Controller
       define ("MAX_SIZE","300"); 
       function getExtension($str)
       {
-               $i = strrpos($str,".");
-               if (!$i) { return ""; }
-               $l = strlen($str) - $i;
-               $ext = substr($str,$i+1,$l);
-               return $ext;
+           $i = strrpos($str,".");
+           if (!$i) { return ""; }
+           $l = strlen($str) - $i;
+           $ext = substr($str,$i+1,$l);
+           return $ext;
       }
-
-      $errors=0;
-
         $uploaddir = getcwd()."/assets/img/photos/";
 
           foreach ($_FILES['photos']['name'] as $name => $value)
@@ -51,30 +75,22 @@ class apply extends CI_Controller
                 $extension = getExtension($filename);
                $extension = strtolower($extension);
 
-               // if (isset($_FILES['image'])) {
-               //     $filename = $_FILES['image']['tmp_name'];
-               //     list($width, $height) = getimagesize($filename);
-               //     echo $width; 
-               //     echo $height;    
-               // }
-
                if ( ($extension != "jpeg") && ($extension != "jpg")) 
                {
 
-                echo "Unknown extension!";
+                $out = "Unknown extension!";
                }
               else
               {
                 $filedimnsn = $_FILES['photos']['tmp_name'][$name];
                 list($width, $height) = getimagesize($filedimnsn);
-                echo $width;
-                echo $height;
-                if( $width<=1000 && $width>=350 && $height <= 1000 && $height >= 350 )
-                {
+
+                // if( $width<=1000 && $width>=350 && $height <= 1000 && $height >= 350 )
+                // {
                   $size=filesize($_FILES['photos']['tmp_name'][$name]);
                   if ($size > MAX_SIZE*1024)
                   {
-                    echo "You have exceeded the size limit!";
+                    $out = "You have exceeded the size limit!";
                   }
                   else
                   {
@@ -83,16 +99,18 @@ class apply extends CI_Controller
                      $copied = move_uploaded_file($_FILES['photos']['tmp_name'][$name], $newname);
                      if (!$copied) 
                      {       
-                         echo "unsuccessful";
+                         $out = "unsuccessful";
                      }
                      else 
                      {       
-                         echo "Done!";                     
+                         $out = "done";                     
                      }
                   }
-                }
+                // }
               }
           }
+
+          return $out;
 
       }
   
@@ -104,7 +122,7 @@ class apply extends CI_Controller
 //        //$this->_view->canonical = URL."apply/thanksAction/";       
 //        $this->_view->display('apply/thankyou.php');
         
-    $this->load->view('template/header');
+    $this->load->view('template/header' , $this->active);
 		$this->load->view('apply/thankyou.php');
 		$this->load->view('template/footer');
   }

@@ -25,9 +25,9 @@
       <div class="col-xs-12 col-sm-12 col-md-12" style="margin:50px 0;">
         <div style="border:4px dashed #cdced1;text-align:center;padding-top:50px;padding-bottom:50px;">
           <table>
-              <h3>No Applies!!</h3>
+              <h3>No Applications!!</h3>
           </table>
-          <a href="<?php echo URL;?>/apply/" class="btn btn-success"><i class="fa fa-hand-o-up"></i> Apply    </a>
+          <a href="<?php echo URL;?>apply" class="btn btn-success"><i class="fa fa-hand-o-up"></i> Apply    </a>
         </div>
       </div>
              

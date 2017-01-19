@@ -7,6 +7,7 @@ class user extends CI_Controller
 	{
 		parent::__construct();
 		$this->load->model('user_model', 'um');
+		$this->active['current_page'] = $this->uri->segment(1);
 	}
 
 	function index()
@@ -26,7 +27,7 @@ class user extends CI_Controller
 			'avatar' => $result['0']->avatar
 			);
 
-		$this->load->view('template/header');
+		$this->load->view('template/header' , $this->active);
 		$this->load->view('user/user_edit' , $data);
 		$this->load->view('template/footer');
 	}
@@ -61,7 +62,7 @@ class user extends CI_Controller
 
 		$result = $this->um->user_info_edit($data , $sess_user_id);
 
-		$this->load->view('template/header');
+		$this->load->view('template/header' , $this->active);
 		$this->load->view('user/user_edit', $result);
 		$this->load->view('template/footer');
 	}

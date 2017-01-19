@@ -30,8 +30,9 @@
 				</main>
 
 				<aside class='sidebar sidebar_right  alpha units'  role="complementary" itemscope="itemscope" itemtype="" ><div class='inner_sidebar extralight-border'><nav class='widget widget_nav_menu widget_nav_hide_child'>
+
 				
-<?php include("views/services/service_nav.tpl.php"); ?>        
+<?php include(APPPATH."views/services/service_nav.php"); ?>        
         
         </nav></div></aside>
 			</div><!--end container-->

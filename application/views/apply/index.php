@@ -30,6 +30,22 @@
       <div class='template-page content  av-content-full alpha units'>
         <div class='post-entry post-entry-type-page post-entry-11'>
           <div class='entry-content-wrapper clearfix'>
+
+          <?php if(isset($error)){ ?>
+
+              <div class="alert alert-warning alert-dismissible" role="alert">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                  <span aria-hidden="true">&times;
+                  </span>
+                </button>
+                <i class="fa fa-exclamation-triangle"></i> 
+                <b><?php echo $error; ?></b>
+              </div>
+ 
+          <?php } ?>
+
+          <?php //print_r($data); ?>
+
             <section class="avia_codeblock_section avia_code_block_0"  itemscope="itemscope" itemtype="https://schema.org/CreativeWork" >
               <div class='avia_codeblock '  itemprop="text"> 
                 <h3>Apply for our Service</h3>
@@ -116,8 +132,8 @@
                     <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3 formspace">
                       Nationality
                       <br>
-                      <select class="form-control" name="nationality" id="nationality" >
-                      <?php foreach($country as $cname){?>
+                      <select class="form-control" name="nationality" id="nationality" required="">
+                      <?php foreach($data['country'] as $cname){?>
                           <option <?php if($_POST['nationality'] == $cname){echo 'selected';} ?> value="<?php echo $cname; ?>"><?php echo $cname; ?></option>
                       <?php } ?>
                       </select>
@@ -210,7 +226,7 @@
                       Country of birth*
                       <br>
                       <select class="form-control" name="country_of_birth" id="country_of_birth">
-                        <?php foreach($country as $cname){?>
+                        <?php foreach($data['country'] as $cname){?>
                           <option <?php if($_POST['country_of_birth'] == $cname){echo 'selected';} ?> value="<?php echo $cname; ?>"><?php echo $cname; ?></option>
                         <?php } ?>
                       </select>
@@ -225,7 +241,7 @@
                       Religion*
                       <br>
                       <select class="form-control"  name="religion" id="religion" onclick="religion1(this);" >
-                        <?php foreach($religion as $rel){ ?>
+                        <?php foreach($data['religion'] as $rel){ ?>
                             <option <?php if($_POST['religion'] == $rel){echo 'selected';} ?> value="<?php echo $rel; ?>"><?php echo $rel; ?></option>
                         <?php } ?>
                         <option id="o_rel_dis" value="Others">Others</option>
@@ -255,7 +271,7 @@
                       Eduational Qualification*
                       <br>
                       <select class="form-control"  name="educational_qualification" id="educational_qualification" >
-                        <?php foreach ($qualification as $qualification) { ?>
+                        <?php foreach ($data['qualification'] as $qualification) { ?>
                           <option <?php if($_POST['educational_qualification'] == $qualification){echo 'selected';} ?> value="<?php echo $qualification; ?>"><?php echo $qualification; ?></option>
                         <?php } ?>
                       </select>
@@ -280,7 +296,7 @@
                       Prev. Nationality
                       <br>
                       <select class="form-control" name="previous_nationality" id="previous_nationality">
-                        <?php foreach($country as $cname){?>
+                        <?php foreach($data['country'] as $cname){?>
                           <option <?php if($_POST['previous_nationality'] == $cname){echo 'selected';} ?> value="<?php echo $cname; ?>"><?php echo $cname; ?></option>
                         <?php } ?>
                       </select>
@@ -335,7 +351,7 @@
                       Country of Issue
                       <br>
                       <select class="form-control" name="other_country_of_issue" id="other_country_of_issue">
-                        <?php foreach($country as $cname){?>
+                        <?php foreach($data['country'] as $cname){?>
                           <option <?php if($_POST['other_country_of_issue'] == $cname){echo 'selected';} ?> value="<?php echo $cname; ?>"><?php echo $cname; ?></option>
                         <?php } ?>
                       </select>
@@ -360,7 +376,7 @@
                       Nationality mentioned therein
                       <br>
                       <select class="form-control" name="other_nationality_mentioned" id="other_nationality_mentioned">
-                        <?php foreach($country as $cname){?>
+                        <?php foreach($data['country'] as $cname){?>
                           <option <?php if($_POST['other_nationality_mentioned'] == $cname){echo 'selected';} ?> value="<?php echo $cname; ?>"><?php echo $cname; ?></option>
                         <?php } ?>
                       </select>
@@ -392,7 +408,7 @@
                       Country of Issue*
                       <br>
                       <select class="form-control" name="country_present" id="country_present"  >
-                        <?php foreach($country as $cname){?>
+                        <?php foreach($data['country'] as $cname){?>
                           <option <?php if($_POST['country_present'] == $cname){echo 'selected';} ?> value="<?php echo $cname; ?>"><?php echo $cname; ?></option>
                         <?php } ?>
                       </select>
@@ -462,7 +478,7 @@
                       Nationality of Father*
                       <br>
                       <select class="form-control" name="nationality_father" id="nationality_father">
-                        <?php foreach($country as $cname){?>
+                        <?php foreach($data['country'] as $cname){?>
                           <option <?php if($_POST['nationality_father'] == $cname){echo 'selected';} ?> value="<?php echo $cname; ?>"><?php echo $cname; ?></option>
                         <?php } ?>
                       </select>
@@ -471,7 +487,7 @@
                       Previous Nationality <small>(Optional)</small>
                       <br>
                       <select class="form-control" name="previous_nationality_father" id="previous_nationality_father">
-                        <?php foreach($country as $cname){?>
+                        <?php foreach($data['country'] as $cname){?>
                           <option <?php if($_POST['previous_nationality_father'] == $cname){echo 'selected';} ?> value="<?php echo $cname; ?>"><?php echo $cname; ?></option>
                         <?php } ?>
                       </select>
@@ -487,7 +503,7 @@
                       Country of Birth*
                       <br>
                       <select class="form-control" name="country_of_birth_father" id="country_of_birth_father">
-                        <?php foreach($country as $cname){?>
+                        <?php foreach($data['country'] as $cname){?>
                           <option <?php if($_POST['country_of_birth_father'] == $cname){echo 'selected';} ?> value="<?php echo $cname; ?>"><?php echo $cname; ?></option>
                         <?php } ?>
                       </select>
@@ -506,7 +522,7 @@
                       Nationality of Mother*
                       <br>
                       <select class="form-control" name="nationality_mother" id="nationality_mother" >
-                        <?php foreach($country as $cname){?>
+                        <?php foreach($data['country'] as $cname){?>
                           <option <?php if($_POST['nationality_mother'] == $cname){echo 'selected';} ?> value="<?php echo $cname; ?>"><?php echo $cname; ?></option>
                         <?php } ?>
                       </select>
@@ -515,7 +531,7 @@
                       Previous Nationality <small>(Optional)</small>
                       <br>
                       <select class="form-control" name="previous_nationality_mother" id="previous_nationality_mother">
-                        <?php foreach($country as $cname){?>
+                        <?php foreach($data['country'] as $cname){?>
                           <option <?php if($_POST['previous_nationality_mother'] == $cname){echo 'selected';} ?> value="<?php echo $cname; ?>"><?php echo $cname; ?></option>
                         <?php } ?>
                       </select>
@@ -531,7 +547,7 @@
                       Country of Birth*
                       <br>
                       <select class="form-control" name="country_of_birth_mother" id="country_of_birth_mother" >
-                        <?php foreach($country as $cname){?>
+                        <?php foreach($data['country'] as $cname){?>
                           <option <?php if($_POST['country_of_birth_mother'] == $cname){echo 'selected';} ?> value="<?php echo $cname; ?>"><?php echo $cname; ?></option>
                         <?php } ?>
                       </select>
@@ -570,7 +586,7 @@
                         Nationality
                         <br>
                         <select class="form-control" name="nationality_married" id="nationality_married">
-                          <?php foreach($country as $cname){?>
+                          <?php foreach($data['country'] as $cname){?>
                             <option <?php if($_POST['nationality_married'] == $cname){echo 'selected';} ?> value="<?php echo $cname; ?>"><?php echo $cname; ?></option>
                           <?php } ?>
                         </select>
@@ -579,7 +595,7 @@
                         Previous Nationality
                         <br>
                         <select class="form-control" name="previous_nationality_married" id="previous_nationality_married">
-                          <?php foreach($country as $cname){?>
+                          <?php foreach($data['country'] as $cname){?>
                             <option <?php if($_POST['previous_nationality_married'] == $cname){echo 'selected';} ?> value="<?php echo $cname; ?>"><?php echo $cname; ?></option>
                           <?php } ?>
                         </select>
@@ -595,7 +611,7 @@
                         Country of Birth
                         <br>
                         <select class="form-control" name="country_of_birth_married" id="country_of_birth_married">
-                            <?php foreach($country as $cname){?>
+                            <?php foreach($data['country'] as $cname){?>
                               <option <?php if($_POST['country_of_birth_married'] == $cname){echo 'selected';} ?> value="<?php echo $cname; ?>"><?php echo $cname; ?></option>
                             <?php } ?>
                         </select>
@@ -632,7 +648,7 @@
                   </div>
                   <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3 formspace">
                     <select class="form-control" name="present_occupation" id="present_occupation" onclick="Profession(this);">
-                      <?php foreach($occupation as $occu){?>
+                      <?php foreach($data['occupation'] as $occu){?>
                         <option <?php if($_POST['present_occupation'] == $cname){echo 'selected';} ?> value="<?php echo $occu; ?>"><?php echo $occu; ?></option>
                       <?php } ?>
                     </select>
@@ -665,7 +681,7 @@
                 <div class="row rowspace">
                   <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3 formspace">    
                     <select class="form-control" name="past_occupation" id="past_occupation">
-                      <?php foreach($occupation as $occu){?>
+                      <?php foreach($data['occupation'] as $occu){?>
                         <option <?php if($_POST['past_occupation'] == $occu){echo 'selected';} ?> value="<?php echo $occu; ?>"><?php echo $occu; ?></option>
                       <?php } ?>
                     </select>
@@ -832,7 +848,7 @@
                   <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3 formspace">
                     <select class="form-control" name="PurposeofVisit" id="v_purpose_of_visit">
                       <option value="">Purpose of Visit</option>
-                      <?php foreach ($purpose as $purpose) { ?>
+                      <?php foreach ($data['purpose'] as $purpose) { ?>
                         <option <?php if($_POST['PurposeofVisit'] == $purpose){echo 'selected';} ?> value="<?php echo $purpose; ?>"><?php echo $purpose; ?></option>
                       <?php } ?>   
                     </select>
@@ -971,7 +987,7 @@
                   }
                 </script>
                 <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
-                  <button id="add_field_button1" class="btn btn-primary" disabled="" type="button">
+                  <button id="add_field_button1" class="btn" style="outline: 0" disabled="" type="button">
                     <i class="fa fa-plus"></i> Add More Fields
                   </button>
                 </div>

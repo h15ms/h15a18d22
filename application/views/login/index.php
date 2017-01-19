@@ -54,6 +54,20 @@
           </div>  
         </div>  
         <?php } ?>
+        <?php if(isset($login_first)){ ?>
+        <div class="col-xs-12 col-sm-12 col-md-12">
+          <div class="col-xs-12 col-sm-12 col-md-12" style="padding-left:40px;padding-right:40px;">
+            <div class="alert alert-warning alert-dismissible" role="alert">
+              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;
+                </span>
+              </button>
+              <i class="fa fa-exclamation-triangle"></i> 
+              <b>Please login first !!!</b>
+            </div>
+          </div>  
+        </div>  
+        <?php } ?>
         <?php if($reg == "1"){ ?>
         <div class="col-xs-12 col-sm-12 col-md-12">
           <div class="col-xs-12 col-sm-12 col-md-12" style="padding-left:40px;padding-right:40px;">
@@ -114,7 +128,7 @@
         
         <div class="col-xs-12 col-sm-6 col-md-6">
           <div class="col-md-10 col-md-offset-1 test1" style="text-align:center;background:rgba(255,255,255,1.0);">
-            <h2 style="font-weight:100;color:#0084d0;margin:20px 0 60px 0;">
+            <h2 style="font-weight:100;color:#404040;margin:20px 0 60px 0;">
               <i class="fa fa-sign-in"></i> Sign In
             </h2>
             <form action="index.php/login/login_check" method="post">
@@ -122,17 +136,17 @@
               <input type="email" name="email" value="" placeholder="Email address" class="form-control input-lg" required>
               <input type="password" name="pass" value="" placeholder="Password" class="form-control input-lg" style="margin-top:10px;" required>
               <p style="text-align:left;margin:30px 0 40px 0;">
-                <a href="" class="text-primary">
+                <a href="" class="text" style="color: #404040">
                   <small>Forgot Password?</small>
                 </a>
               </p>
-              <button type="submit" class="btn btn-primary btn-lg btn-block">SIGN IN</button>
+              <button type="submit" style="outline: 0" class="btn btn-lg btn-block">SIGN IN</button>
             </form>
           </div>
         </div>
         <div class="col-xs-12 col-sm-6 col-md-6">        
           <div class="col-md-10 col-md-offset-1 test1" style="text-align:center;background:rgba(255,255,255,1.0);">
-            <h2 style="font-weight:100;color:#0084d0;margin:20px 0 30px 0;">
+            <h2 style="font-weight:100;color:#404040;margin:20px 0 30px 0;">
               <i class="fa fa-user">
               </i> Create an account
             </h2>                    
@@ -164,7 +178,7 @@
                   <input type="checkbox" id="terms" name="terms" value="1" checked="" required> I accept the Terms and Condition of MI Consulting
                 </label>
               </p>
-              <button type="submit" class="btn btn-primary btn-lg btn-block">SIGN UP
+              <button type="submit" class="btn btn-lg btn-block" style="outline: 0">SIGN UP
               </button>
             </form>
           </div>

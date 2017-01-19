@@ -54,7 +54,7 @@
               </div>
               <section class="av_textblock_section"  itemscope="itemscope" itemtype="https://schema.org/CreativeWork" >
                 <div class='avia_textblock  av_inherit_color'  style='color:00438f; '  itemprop="text" >
-                  <h3 style="text-align: center;">Welcome to MI Conusting
+                  <h3 style="text-align: center;">Welcome to MI Consulting
                   </h3>
                   <p style="text-align: center;">The increasingly globalized and competitive business environment means that companies are looking for new ways to improve cost efficiency and leverage global opportunities.
                   </p>

@@ -42,11 +42,11 @@
 
 <div class="col-xs-12 col-sm-12 col-md-12">
    Message*:
-   <textarea class="form-control" name="msg" placeholder="Your Message..." id="message" cols="30" rows="10"></textarea>
+   <textarea class="form-control" style="resize: none;" name="msg" placeholder="Your Message..." id="message" cols="30" rows="10"></textarea>
 </div>
 
 <div class="col-xs-12 col-sm-12 col-md-12">
-    <button id="send_contact" type="submit" class="btn btn-primary btn-lg">Absenden</button>
+    <button id="send_contact" type="submit" style="outline: 0" class="btn btn-lg">Send</button>
 </div>
 </form>
 
@@ -76,3 +76,23 @@
        });
      });
    </script>
+
+<!-- 
+   <head> 
+        <meta charset = "utf-8"> 
+        <title>CodeIgniter Email Example</title> 
+     </head>
+   
+     <body> 
+        <?php 
+           // echo $this->session->flashdata('email_sent'); 
+           // echo form_open('/Email_controller/send_mail'); 
+        ?> 
+    
+        <input type = "email" name = "email" required /> 
+        <input type = "submit" value = "SEND MAIL"> 
+    
+        <?php 
+           // echo form_close(); 
+        ?> 
+     </body> -->

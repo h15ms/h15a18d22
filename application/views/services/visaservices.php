@@ -36,7 +36,7 @@ To avoid any future hassles or last minute issues, clients can rely on our exper
 				<aside class='sidebar sidebar_right  alpha units'  role="complementary" itemscope="itemscope" itemtype="https://schema.org/WPSideBar" ><div class='inner_sidebar extralight-border'><nav class='widget widget_nav_menu widget_nav_hide_child'>
 				
 				
-<?php include("views/services/service_nav.tpl.php"); ?>
+<?php include(APPPATH."views/services/service_nav.php"); ?> 
        
         
         </nav></div></aside>
