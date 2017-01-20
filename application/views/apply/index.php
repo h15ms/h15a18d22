@@ -441,7 +441,7 @@
                     </div>
                     <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3 formspace" style="padding-top:25px;">
                       <label id="click_same_address_permanent" for="same_address_permanent">
-                        <input name="same_address_permanent" type="checkbox" value="" id="same_address_permanent" /> 
+                        <input name="same_address_permanent" type="checkbox" value="Yes" id="same_address_permanent" /> 
                         <b style="color:#000;"> Click Here for Same Address
                         </b> 
                       </label>

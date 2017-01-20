@@ -6,6 +6,7 @@ class apply extends CI_Controller
   public function __construct() 
   {
       parent:: __construct();
+      error_reporting(0);
       $this->load->model('applyModel', 'model');
       $this->active['current_page'] = $this->uri->segment(1);
   }
@@ -22,7 +23,7 @@ class apply extends CI_Controller
       if(isset($_POST['applyform']) && ($_POST['applyform']=='send'))
       {  
         
-       echo $image_upload = $this->imageInsert($_FILES);
+       $image_upload = $this->imageInsert($_FILES);
         
 
         if($image_upload == 'done'){
@@ -41,11 +42,12 @@ class apply extends CI_Controller
           $data1 = array('image_upload_error' => $image_upload);
         }
 
-      }
-      
+      }else{
+
       $this->load->view('template/header' , $this->active);
       $this->load->view('apply/index.php', array('data' => $data, 'error' => $data1));
       $this->load->view('template/footer');
+      }
     
     }else{
 
@@ -76,7 +78,7 @@ class apply extends CI_Controller
           foreach ($_FILES['photos']['name'] as $name => $value)
           {
               
-            $out = "ank";
+            $out = "";
               $filename = stripslashes($_FILES['photos']['name'][$name]);
                 $extension = getExtension($filename);
                $extension = strtolower($extension);
@@ -112,6 +114,10 @@ class apply extends CI_Controller
                          $out = "done";                     
                      }
                   }
+                }
+                else
+                {
+                  $out = "<small>Photograph MUST be .JPEG or .jpg , min size(10KB), max size(300KB), min dimention(350x350), max dimention(1000x1000)</small>";
                 }
               }
           }
