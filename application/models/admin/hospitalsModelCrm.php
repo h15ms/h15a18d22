@@ -36,7 +36,20 @@ class hospitalsModelCrm extends CI_Model
             return false;
         }   
   }
-  
+ public function getallhospitallist(){
+    $this->db->select('*')->from('mi_hospital_detail  d');
+    $this->db->join('mi_hospital  h' , 'h.id=d.	hospital_id ', 'left');
+    $this->db->where('h.status',1);
+    $this->db->order_by('d.id','asc');         
+    $getdata = $this->db->get(); 
+    //$result = $getdata->get();
+       
+        if ($getdata->num_rows() > 0) {
+            return $getdata->result();
+        } else {
+            return false;
+        }   
+} 
 
 public function gethospitallist(){
     $getdata = $this->db->select('*')->get_where('mi_hospital', array('status'=>1));
@@ -56,32 +69,25 @@ public function addHospitalname($arr){
 }
 
 public function addhospitalDetail($arr){
-    echo '<pre>'; print_r($arr); 
+   $hosId=explode('_',$arr['hospitalssel']); 
     
-        echo '<pre>';
+  
         $sess = $this->session->userdata();
-        print_r($sess['logged_in']);
-    exit;
-      $data=array('hospital_id'=>$arr,
-          'address'=> time(),
-          'city'=> time(),
-          'state'=> time(),
-          'phone_no'=> time(),
-          'email'=> time(),
-          'website'=> time(),
-          'rating'=> time(),
-          'distance_from_airport'=> time(),
-          'emergency_services'=> time(),
-          'hospital_type'=> time(),
-          'address'=> time(),
-          'specialization'=> time(),
+ 
+      $data=array('hospital_id'=>$hosId[0],
+          'address'=> $arr['address'],
+          'city'=> $arr['city'],
+          'state'=> $arr['state'],
+          'phone_no'=> $arr['phone_no'],
+          'email'=> $arr['email'],
+          'website'=> $arr['website'],
+          'rating'=> $arr['rating'],
+          'distance_from_airport'=>$arr['distance_from_airport'],
+          'emergency_services'=> $arr['emergency_services'],
+          'hospital_type'=> $arr['hospital_type'],
+          'specialization'=> $arr['specialization'],
           'createdtime'=>time(),
-          'createdby'=>time()
-          
-          
-          
-          
-          ); 
+          'createdby'=> $sess['logged_in']['user_id'] ); 
       $insertID = $this->db->insert('mi_hospital_detail', $data);
       return $insertID;  
 } 

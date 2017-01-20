@@ -22,15 +22,8 @@ class hospitalscrm extends CI_Controller {
   {
    
 
-//require 'models/applyModel.php';
-   // $model = new applyModel();
-    $applys = $this->app->allApplys(); 
-//    $this->_view->title = "All Applies | MiConsulting";
-//    $this->_view->headline = "All Applies";
-//    $this->_view->applys = $applys;
-//    $this->_view->display('apply/index.tpl.php');
-
-     $data=array('headlines' => 'All Hospitals','applys'=>$applys);
+     $hospitals = $this->app->getallhospitallist(); 
+     $data=array('headlines' => 'All Hospitals','hospitals'=>$hospitals);
      $data1=array('page_title'=>"All Hospitals | MiConsulting");
      
      

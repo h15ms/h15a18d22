@@ -196,10 +196,10 @@
                     <p><b>Surname:</b> <?php echo $apply[0]->surname;?><p>                
                     <p><b>Given Name:</b> <?php echo $apply[0]->given_name;?><p>                
                     <p><b>Have you ever changed your name?:</b> <?php echo $apply[0]->changed_name;?><br>
-                    <?php if($apply[0]->changed_name=="Yes") //{ ?>
+                    <?php if($apply[0]->changed_name=="Yes") : ?>
                     <b>Previous Surname:</b> <?php echo $apply[0]->previous_surname;?><br>
                     <b>Previous Name:</b> <?php echo $apply[0]->previous_name;?>
-                    <?php //} ?>
+                    <?php endif; ?>
                     <p>
                     <p><b>Sex:</b> <?php echo $apply[0]->sex;?><p>
                     <p><b>Town/City of birth:</b> <?php echo $apply[0]->city_of_birth;?><p>
@@ -209,17 +209,17 @@
               
               <div class="col-xs-12 col-sm-4 col-md-4">              
                     <p><b>Religion:</b> <?php echo $apply[0]->religion;?>
-                    <?php if($apply[0]->religion=="OTHERS")//{ ?>
+                    <?php if($apply[0]->religion=="OTHERS"): ?>
                     <br>
                     <b>Other Religion:</b> <?php echo $apply[0]->other_religion;?>
-                    <?php //} ?>
+                    <?php endif; ?>
                     <p>
                     <p><b>Visible identification marks:</b> <?php echo $apply[0]->visible_identification_marks;?>
                     <p><b>Educational Qualification:</b> <?php echo $apply[0]->educational_qualification;?>
                     <p><b>Did you acquire Nationality by birth or by naturalization?:</b> <?php echo $apply[0]->acquire_nationality;?></p>
-                    <?php if($apply[0]->acquire_nationality=="Naturalization")//{ ?>
+                    <?php if($apply[0]->acquire_nationality=="Naturalization"): ?>
                     <p><b>Prev. Nationality:</b> <?php echo $apply[0]->previous_nationality;?>
-                    <?php //} ?> 
+                    <?php endif; ?> 
               </div> 
              
               
@@ -251,7 +251,7 @@
                   <p><b>Date of Issue:</b> <?php echo $apply[0]->date_of_issue;?></p>                  
                   <p><b>Date of Expiry:</b> <?php echo $apply[0]->date_of_expiry;?></p>                  
                   <p><b>Any other valid Passport/Identity Certificate(IC) held:</b><br><?php echo $apply[0]->other_valid_passport;?></p>
-                  <?php if($apply[0]->other_valid_passport=="Yes") //{ ?>
+                  <?php if($apply[0]->other_valid_passport=="Yes") : ?>
                   <p>
                    <b>Country of Issue:</b> <?php echo $apply[0]->other_country_of_issue;?><br>
                    <b>Passport/IC No.:</b> <?php echo $apply[0]->other_passport_no;?><br>
@@ -259,7 +259,7 @@
                    <b>Place of Issue:</b> <?php echo $apply[0]->other_place_of_issue;?><br>
                    <b>Nationality mentioned therein:</b> <?php echo $apply[0]->other_nationality_mentioned;?>                     
                   </p>                  
-                  <?php //} ?>    
+                  <?php endif; ?>    
                               
                   
               
@@ -332,21 +332,21 @@
             
               <div class="col-xs-12 col-sm-4 col-md-4">
                   <p><b>Applicant's Marital Status:</b> <?php echo $apply[0]->applicant_marital_status;?><br>                  
-                  <?php if($apply[0]->applicant_marital_status=="Married")//{ ?>
+                  <?php if($apply[0]->applicant_marital_status=="Married"): ?>
                       <b>Name:</b> <?php echo $apply[0]->name_married;?><br>
                       <b>Nationality:</b> <?php echo $apply[0]->nationality_married;?><br>
                       <b>Previous Nationality:</b> <?php echo $apply[0]->previous_nationality_married;?><br>
                       <b>Place of Birth:</b> <?php echo $apply[0]->place_of_birth_married;?><br>
                       <b>Country of Birth:</b> <?php echo $apply[0]->country_of_birth_married;?><br>
-                  <?php //} ?>
+                  <?php endif; ?>
                   </p>
                   
                   <p><b>Were your Grandfather/ Grandmother (paternal/maternal) Pakistan Nationals or Belong to Pakistan held area.</b><br>
                   <?php echo $apply[0]->grandparents_pakistan;?><br><br>
-                  <?php if($apply[0]->grandparents_pakistan=="Yes") //{ ?>
+                  <?php if($apply[0]->grandparents_pakistan=="Yes") : ?>
                   <b>Grandparents details:</b><br>
                   <?php echo $apply[0]->grandparents_pakistan_details ;?>
-                  <?php //} ?>
+                  <?php endif; ?>
                   </p>
                   
                   
@@ -356,9 +356,9 @@
               <div class="col-xs-12 col-sm-4 col-md-4">
                     <p>
                     <b>Present Occupation:</b> <?php echo $apply[0]->present_occupation;?><br>
-                    <?php if($apply[0]->present_occupation=="OTHERS") //{ ?>
+                    <?php if($apply[0]->present_occupation=="OTHERS") : ?>
                     <b>Present Occupation:</b> <?php echo $apply[0]->occupation_other;?>
-                    <?php //} ?>
+                    <?php endif; ?>
                     </p>
                     <p><b>Employer Name/business:</b> <?php echo $apply[0]->business_name;?></p>
                     <p><b>Designation:</b> <?php echo $apply[0]->designation;?></p>
@@ -368,12 +368,12 @@
                     
                     <p><b>Are/were you in a Military/Semi-Military/Police/Security. Organization?:</b><br>
                     <?php echo $apply[0]->military;?>
-                    <?php if($apply[0]->military=="Yes") //{ ?>
+                    <?php if($apply[0]->military=="Yes") : ?>
                     <b>Organisation:</b> <?php echo $apply[0]->military_organisation;?><br>
                     <b>Designation :</b> <?php echo $apply[0]->military_designation;?><br>
                     <b>Rank:</b> <?php echo $apply[0]->military_rank;?><br>
                     <b>Place of Posting:</b> <?php echo $apply[0]->military_place_of_posting;?><br>
-                    <?php // } ?>
+                    <?php endif; ?>
                     
                     
                     </p>

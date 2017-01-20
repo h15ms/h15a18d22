@@ -35,52 +35,56 @@
                 
             </div>
           <div class="panel-body collapse in">                                  
-          
+          <?php //print_r($hospitals);?>
             <div class="table-flipscroll">
                <table cellpadding="0" cellspacing="0" border="0" class="table table-striped table-bordered table-hover datatable" id="customer_table">
 					<thead>
 					<tr>
-						<th style="width:auto;">APP ID</th>
-						<th style="width:auto;">Visa Type</th>
-						<th style="width:auto;">Mission</th>
-						<th style="width:auto;">Name</th>						
-						<th style="width:auto;">City</th>		
-						<th style="width:auto;">Email</th>
+						<th style="width:auto;">#</th>
+						<th style="width:auto;">Hospital Name</th>
+						<th style="width:auto;">Address</th>
+						<th style="width:auto;">City</th>						
+						<th style="width:auto;">State</th>		
 						<th style="width:auto;">Phone</th>
-						<th style="width:auto;">Date</th>
-                        <th style="width:auto;" align="center">Status</th>  				
-						<th style="width:auto;" align="center">Profile</th>						
+						<th style="width:auto;">Email</th>
+                                                <th style="width:auto;">Website</th>
+						<th style="width:auto;">Emergency Services </th>
+                                                <th style="width:auto;">Hospital Type</th>
+                                                <th style="width:auto;">Specialization </th>
+                                                <th style="width:auto;">Distance From Airport</th>
+                        			<th style="width:auto;" align="center">Status</th>						
 					</tr>
 					</thead>
 					<tbody>
                                             
                                             
-                        <?php foreach($applys as $client): ?>
+                        <?php $i=1; foreach($hospitals as $hospital): ?>
                         <tr>
-                            <td><?php echo $client->app_id; ?></td>
-                            <td><?php echo $client->visa_type; ?></td>
-                            <td><?php echo $client->indian_mission; ?></td>
-                            <td><?php echo $client->given_name; ?></td>                            
-                            <td><?php echo $client->city_present; ?></td>                            
-                            <td><?php echo $client->email; ?></td>
-                            <td><?php echo $client->phone_no; ?></td>
-                            <td><?php echo $client->apply_date; ?></td>
-                            <td align="center">
-                            <?php 
-                                if($client->status =="0"){ 
-                                    echo "New";
-                                }elseif($client->status =="1"){ 
-                                    echo "In Progress";
-                                }elseif($client->status =="2"){ 
-                                    echo "Confirmed";
-                                }elseif($client->status =="3"){ 
-                                  echo "Rejected";
-                                }
-                              ?>
+                            <td><?php echo $i; ?></td>
+                            <td><?php echo $hospital->name; ?></td>
+                            <td><?php echo $hospital->address; ?></td>
+                            <td><?php echo $hospital->city; ?></td>
+                            <td><?php echo $hospital->state; ?></td>                            
+                            <td><?php echo $hospital->phone_no; ?></td>                            
+                            <td><?php echo $hospital->email; ?></td>
+                            <td><?php echo $hospital->website; ?></td>
+                            <td><?php echo $hospital->emergency_services; ?></td>
+                            <td><?php echo $hospital->hospital_type; ?></td>
+                            <td><?php $va= explode(',',$hospital->specialization);?>
+                                <ul style="list-style: none;">
+                           <?php  foreach($va as $a):?>
+                                <li> <?php echo $a; ?> </li>
+                                
+                                
+                           <?php  endforeach;?>
+                            </ul>
+                            
                             </td>
-                            <td align="center"><a href="<?php echo base_url(); ?>admin/applycrm/profil/<?php echo $client->app_id; ?>"><i class="fa fa-user"></i></a></td>
+                            <td><?php echo $hospital->distance_from_airport; ?></td>
+                           
+                            <td align="center"><a href="#"><i class="fa fa-user"></i></a></td>
                         </tr>
-                        <?php endforeach; ?>
+                        <?php $i++; endforeach; ?>
 					</tbody>
 				</table>
 
