@@ -266,7 +266,7 @@
     <!-- close content main div -->
   </div>
 </div>
-<div id='av_section_2' class='avia-section main_color avia-section-default avia-no-shadow avia-bg-style-scroll  avia-builder-el-29  el_after_av_section  el_before_av_one_full  av-minimum-height av-minimum-height-custom container_wrap fullsize' style = 'background-repeat: no-repeat; background-image: url(assets/img/bg-clients.png); background-attachment: scroll; background-position: top center; background-color: #ffffff; ' data-section-bg-repeat='no-repeat' >
+<div id='av_section_2' class='avia-section main_color avia-section-default avia-no-shadow avia-bg-style-scroll  avia-builder-el-29  el_after_av_section  el_before_av_one_full  av-minimum-height av-minimum-height-custom container_wrap fullsize' style = 'background-repeat: no-repeat; background-image: url(assets/img/bg-clients.png); background-attachment: scroll; background-position: top center; background-color: #ffffff; margin-bottom: -12px; ' data-section-bg-repeat='no-repeat' >
   <div class='container' style='height:460px'>
     <div class='template-page content  av-content-full alpha units'>
       <div class='post-entry post-entry-type-page post-entry-2'>

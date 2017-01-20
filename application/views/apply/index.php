@@ -113,14 +113,16 @@
                     <div  class="col-xs-12 col-sm-3 col-md-3 col-lg-3 formspace">
                       Country you are applying visa from*
                       <br>
-                      <select class="form-control" name="applying_country" id="applying_country">
+                      <select class="form-control" name="applying_country" id="applying_country" required="">
+                        <option value="">Select Country</option>
                         <option value="AFGHANISTAN">AFGHANISTAN</option>
                       </select>
                     </div>
                     <div  class="col-xs-12 col-sm-3 col-md-3 col-lg-3 formspace">
                       Indian Mission*
                       <br>
-                      <select class="form-control" name="indian_mission" id="indian_mission" >
+                      <select class="form-control" name="indian_mission" id="indian_mission" required="">
+                        <option value="">Select Mission</option>
                         <option value="AFGH - AFGANISTAN-HERAT">AFGH - AFGANISTAN-HERAT</option>
                         <option value="AFGJ - AFGANISTAN-JALALABAD">AFGJ - AFGANISTAN-JALALABAD</option>
                         <option value="AFGK - AFGANISTAN-KABUL">AFGK - AFGANISTAN-KABUL</option>
@@ -129,9 +131,10 @@
                       </select>
                     </div>
                     <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3 formspace">
-                      Nationality
+                      Nationality*
                       <br>
                       <select class="form-control" name="nationality" id="nationality" required="">
+                      <option value="">Select Nationality</option>
                       <?php foreach($data['country'] as $cname){?>
                           <option <?php if($_POST['nationality'] == $cname){echo 'selected';} ?> value="<?php echo $cname; ?>"><?php echo $cname; ?></option>
                       <?php } ?>
@@ -140,29 +143,30 @@
                     <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3 formspace">
                       Date of Birth*
                       <br>
-                      <input class="form-control" name="date_of_birth" value="<?php echo $_POST['date_of_birth']; ?>" type="text" placeholder="Date of Birth" id="date_of_birth"  />
+                      <input class="form-control" name="date_of_birth" value="<?php echo $_POST['date_of_birth']; ?>" type="text" placeholder="Date of Birth" id="date_of_birth" required="" />
                     </div>
                   </div>
                   <div class="row rowspace"> 
                     <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3 formspace">
                       Email*
                       <br>
-                      <input class="form-control" name="email_main" type="email" value="<?php echo $_POST['email_main']; ?>" placeholder="Email" id="email" >
+                      <input class="form-control" name="email_main" type="email" value="<?php echo $_POST['email_main']; ?>" placeholder="Email" id="email" required="">
                     </div>
                     <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3 formspace">
                       Re Enter Email*
                       <br>
-                      <input class="form-control" name="ReEnterEmail" type="email" placeholder="Re Enter Email" value="<?php echo $_POST['ReEnterEmail']; ?>" id="ReEnterEmail"  />
+                      <input class="form-control" name="ReEnterEmail" type="email" placeholder="Re Enter Email" value="<?php echo $_POST['ReEnterEmail']; ?>" id="ReEnterEmail" required="" />
                     </div>
                     <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3 formspace">
                       Expected Date of Arrival*
                       <br>
-                      <input class="form-control" name="date_of_arrival" type="text" value="<?php echo $_POST['date_of_arrival']; ?>" placeholder="Expected Date of Arrival" id="date_of_arrival"  />
+                      <input class="form-control" name="date_of_arrival" type="text" value="<?php echo $_POST['date_of_arrival']; ?>" placeholder="Expected Date of Arrival" id="date_of_arrival" required="" />
                     </div>
                     <div  class="col-xs-12 col-sm-3 col-md-3 col-lg-3 formspace">
-                      Visa Type
+                      Visa Type*
                       <br>
                       <select class="form-control" name="visa_type" required>
+                        <option value="">Select Visatype</option>
                         <option value="BUSINESS VISA">BUSINESS VISA</option>
                         <option value="MEDICAL VISA">MEDICAL VISA</option>
                         <option value="TOURIST VISA">TOURIST VISA</option>    
@@ -177,12 +181,12 @@
                     <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3 formspace">
                       Surname (as shown in your Passport)*
                       <br>
-                      <input type="text" value="" class="form-control" value="<?php echo $_POST['surname']; ?>" name="surname" placeholder="Surname" id="surname"  />
+                      <input type="text" value="" class="form-control" value="<?php echo $_POST['surname']; ?>" name="surname" placeholder="Surname" id="surname" required="" />
                     </div>
                     <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3 formspace">
                       Given Name (Complete as in Passport)*
                       <br>
-                      <input type="text" value="" name="given_name" value="<?php echo $_POST['given_name']; ?>" class="form-control" placeholder="Given Name" id="given_name"  />
+                      <input type="text" value="" name="given_name" value="<?php echo $_POST['given_name']; ?>" class="form-control" placeholder="Given Name" id="given_name" required="" />
                     </div>
                     <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 formspace" style="padding-top:25px;">
                       <b>
@@ -210,7 +214,8 @@
                     <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3 formspace"> 
                       Sex*
                       <br>
-                      <select class="form-control" name="sex" id="sex" >
+                      <select class="form-control" name="sex" id="sex" required="">
+                        <option value="">Select Sex</option>
                         <option value="Male">Male</option>
                         <option value="Female">Female</option>
                         <option value="Transgender">Transgender</option>
@@ -219,12 +224,13 @@
                     <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3 formspace">
                       Place of Birth*
                       <br>
-                      <input class="form-control" name="city_of_birth" type="text" value="<?php echo $_POST['city_of_birth']; ?>" placeholder="Place of Birth" id="city_of_birth"  />
+                      <input class="form-control" name="city_of_birth" type="text" value="<?php echo $_POST['city_of_birth']; ?>" placeholder="Place of Birth" id="city_of_birth" required="" />
                     </div>
                     <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3 formspace">
                       Country of birth*
                       <br>
-                      <select class="form-control" name="country_of_birth" id="country_of_birth">
+                      <select class="form-control" name="country_of_birth" id="country_of_birth" required="">
+                        <option value="">Select Birth Country</option>
                         <?php foreach($data['country'] as $cname){?>
                           <option <?php if($_POST['country_of_birth'] == $cname){echo 'selected';} ?> value="<?php echo $cname; ?>"><?php echo $cname; ?></option>
                         <?php } ?>
@@ -232,14 +238,15 @@
                     </div>
                     <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3 formspace">
                       Citizenship/National Id No.*
-                      <input class="form-control" value="<?php echo $_POST['national_id']; ?>" name="national_id" type="text" placeholder="Citizenship/National Id No." id="national_id"  />
+                      <input class="form-control" value="<?php echo $_POST['national_id']; ?>" name="national_id" type="text" placeholder="Citizenship/National Id No." id="national_id" required="" />
                     </div>
                   </div>
                   <div class="row rowspace">      
                     <div  class="col-xs-12 col-sm-6 col-md-6 col-lg-6 formspace">
                       Religion*
                       <br>
-                      <select class="form-control"  name="religion" id="religion" onclick="religion1(this);" >
+                      <select class="form-control"  name="religion" id="religion" onclick="religion1(this);" required="">
+                        <option value="">Select Religion</option>
                         <?php foreach($data['religion'] as $rel){ ?>
                             <option <?php if($_POST['religion'] == $rel){echo 'selected';} ?> value="<?php echo $rel; ?>"><?php echo $rel; ?></option>
                         <?php } ?>
@@ -264,12 +271,13 @@
                     <div  class="col-xs-12 col-sm-3 col-md-3 col-lg-3 formspace">
                       Visible Identification Marks*
                       <br>
-                      <input class="form-control" value="<?php echo $_POST['visible_identification_marks']; ?>" name="visible_identification_marks" type="text" placeholder="Visible Identification Marks" id="visible_identification_marks" >
+                      <input class="form-control" value="<?php echo $_POST['visible_identification_marks']; ?>" name="visible_identification_marks" type="text" placeholder="Visible Identification Marks" id="visible_identification_marks" required="">
                     </div>
                     <div  class="col-xs-12 col-sm-3 col-md-3 col-lg-3 formspace">
                       Eduational Qualification*
                       <br>
-                      <select class="form-control"  name="educational_qualification" id="educational_qualification" >
+                      <select class="form-control"  name="educational_qualification" id="educational_qualification" required="">
+                        <option value="">Select Qualification</option>
                         <?php foreach ($data['qualification'] as $qualification) { ?>
                           <option <?php if($_POST['educational_qualification'] == $qualification){echo 'selected';} ?> value="<?php echo $qualification; ?>"><?php echo $qualification; ?></option>
                         <?php } ?>
@@ -278,7 +286,7 @@
                     <div  class="col-xs-12 col-sm-3 col-md-3 col-lg-3 formspace">
                       Nationality by birth or Naturalization?
                       <br>
-                      <select class="form-control"  name="acquire_nationality" id="acquire_nationality" onclick="nationality_pre(this);"> 
+                      <select class="form-control" name="acquire_nationality" id="acquire_nationality" onclick="nationality_pre(this);"> 
                         <option value="">Select</option>
                         <option value="By_Birth">By Birth</option>
                         <option value="Naturalization">Naturalization</option>
@@ -309,22 +317,22 @@
                     <div  class="col-xs-12 col-sm-3 col-md-3 col-lg-3 formspace">
                       Passport No.*
                       <br>
-                      <input class="form-control" value="<?php echo $_POST['passport_no']; ?>" name="passport_no" type="text" placeholder="Passport No." id="passport_no"  />
+                      <input class="form-control" value="<?php echo $_POST['passport_no']; ?>" name="passport_no" type="text" placeholder="Passport No." id="passport_no" required="" />
                     </div>
                     <div  class="col-xs-12 col-sm-3 col-md-3 col-lg-3 formspace">
                       Place of Issue*
                       <br>
-                      <input class="form-control" value="<?php echo $_POST['place_of_issue']; ?>" name="place_of_issue" type="text" placeholder="Place of Issue" id="place_of_issue"  />
+                      <input class="form-control" value="<?php echo $_POST['place_of_issue']; ?>" name="place_of_issue" type="text" placeholder="Place of Issue" id="place_of_issue" required="" />
                     </div>
                     <div  class="col-xs-12 col-sm-3 col-md-3 col-lg-3 formspace">
                       Date of Issue*
                       <br>
-                      <input class="form-control" value="<?php echo $_POST['date_of_issue']; ?>" name="date_of_issue" type="text" placeholder="Date of Issue" id="date_of_issue"  />
+                      <input class="form-control" value="<?php echo $_POST['date_of_issue']; ?>" name="date_of_issue" type="text" placeholder="Date of Issue" id="date_of_issue" required="" />
                     </div>
                     <div  class="col-xs-12 col-sm-3 col-md-3 col-lg-3 formspace">
                       Expiration Date*
                       <br>
-                      <input class="form-control" value="<?php echo $_POST['date_of_expiry']; ?>" name="date_of_expiry" type="text" placeholder="Expiration Date" id="date_of_expiry"  />
+                      <input class="form-control" value="<?php echo $_POST['date_of_expiry']; ?>" name="date_of_expiry" type="text" placeholder="Expiration Date" id="date_of_expiry" required="" />
                     </div>
                   </div>
                   <div class="row rowspace">
@@ -391,22 +399,23 @@
                     <div  class="col-xs-12 col-sm-3 col-md-3 col-lg-3 formspace">
                       House No./Street*
                       <br>
-                      <input class="form-control" name="street_present" value="<?php echo $_POST['street_present']; ?>" type="text" placeholder="House No./Street" id="street_present"  />
+                      <input class="form-control" name="street_present" value="<?php echo $_POST['street_present']; ?>" type="text" placeholder="House No./Street" id="street_present" required="" />
                     </div>
                     <div  class="col-xs-12 col-sm-3 col-md-3 col-lg-3 formspace">
                       Village/Town/City*
                       <br>
-                      <input class="form-control" name="city_present" value="<?php echo $_POST['city_present']; ?>" type="text" placeholder="Village/Town/City" id="city_present"  />
+                      <input class="form-control" name="city_present" value="<?php echo $_POST['city_present']; ?>" type="text" placeholder="Village/Town/City" id="city_present" required="" />
                     </div>
                     <div  class="col-xs-12 col-sm-3 col-md-3 col-lg-3 formspace">
                       State/Province/District*
                       <br>
-                      <input class="form-control" name="state_present" value="<?php echo $_POST['state_present']; ?>" type="text" placeholder="State/Province/District" id="state_present"  />
+                      <input class="form-control" name="state_present" value="<?php echo $_POST['state_present']; ?>" type="text" placeholder="State/Province/District" id="state_present" required="" />
                     </div>
                     <div  class="col-xs-12 col-sm-3 col-md-3 col-lg-3 formspace">
                       Country of Issue*
                       <br>
-                      <select class="form-control" name="country_present" id="country_present"  >
+                      <select class="form-control" name="country_present" id="country_present" required="" >
+                        <option value="">Select Country</option>
                         <?php foreach($data['country'] as $cname){?>
                           <option <?php if($_POST['country_present'] == $cname){echo 'selected';} ?> value="<?php echo $cname; ?>"><?php echo $cname; ?></option>
                         <?php } ?>
@@ -449,17 +458,17 @@
                     <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3 formspace">
                       House No./Street*
                       <br>
-                      <input class="form-control" name="street_permanent" value="<?php echo $_POST['street_permanent']; ?>" type="text" placeholder="House No./Street" id="street_permanent"  />
+                      <input class="form-control" name="street_permanent" value="<?php echo $_POST['street_permanent']; ?>" type="text" placeholder="House No./Street" id="street_permanent" required="" />
                     </div>
                     <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3 formspace">
                       Village/Town/City*
                       <br>
-                      <input class="form-control" name="city_permanent" value="<?php echo $_POST['city_permanent']; ?>" type="text" placeholder="Village/Town/City" id="city_permanent" />
+                      <input class="form-control" name="city_permanent" value="<?php echo $_POST['city_permanent']; ?>" type="text" placeholder="Village/Town/City" id="city_permanent" required=""/>
                     </div>
                     <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3 formspace">
                       State/Province/District*
                       <br>
-                      <input class="form-control" name="state_permanent" value="<?php echo $_POST['state_permanent']; ?>" type="text" placeholder="State/Province/District" id="state_permanent"  />
+                      <input class="form-control" name="state_permanent" value="<?php echo $_POST['state_permanent']; ?>" type="text" placeholder="State/Province/District" id="state_permanent" required="" />
                     </div>
                   </div>
                   <div class="row rowspace">
@@ -471,12 +480,13 @@
                     <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3 formspace">
                       Father Name*
                       <br>
-                      <input class="form-control" name="name_father" value="<?php echo $_POST['name_father']; ?>" type="text" placeholder="Father Name" id="name_father"  />
+                      <input class="form-control" name="name_father" value="<?php echo $_POST['name_father']; ?>" type="text" placeholder="Father Name" id="name_father" required="" />
                     </div>
                     <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3 formspace">
                       Nationality of Father*
                       <br>
-                      <select class="form-control" name="nationality_father" id="nationality_father">
+                      <select class="form-control" name="nationality_father" id="nationality_father" required="">
+                      <option value="">Select Nationality</option>
                         <?php foreach($data['country'] as $cname){?>
                           <option <?php if($_POST['nationality_father'] == $cname){echo 'selected';} ?> value="<?php echo $cname; ?>"><?php echo $cname; ?></option>
                         <?php } ?>
@@ -494,14 +504,15 @@
                     <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3 formspace">
                       Place of Birth*
                       <br>
-                      <input name="place_of_birth_father" type="text" value="<?php echo $_POST['place_of_birth_father']; ?>" class="form-control" placeholder="Place of Birth" id="place_of_birth_father"  />
+                      <input name="place_of_birth_father" type="text" value="<?php echo $_POST['place_of_birth_father']; ?>" class="form-control" placeholder="Place of Birth" id="place_of_birth_father" required="" />
                     </div>
                   </div>
                   <div class="row rowspace">
                     <div  class="col-xs-12 col-sm-3 col-md-3 col-lg-3 formspace">
                       Country of Birth*
                       <br>
-                      <select class="form-control" name="country_of_birth_father" id="country_of_birth_father">
+                      <select class="form-control" name="country_of_birth_father" id="country_of_birth_father" required="">
+                        <option value="">Select Country of Birth</option>
                         <?php foreach($data['country'] as $cname){?>
                           <option <?php if($_POST['country_of_birth_father'] == $cname){echo 'selected';} ?> value="<?php echo $cname; ?>"><?php echo $cname; ?></option>
                         <?php } ?>
@@ -515,12 +526,13 @@
                     <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3 formspace">
                       Mother Name*
                       <br>
-                      <input  class="form-control" name="name_mother" value="<?php echo $_POST['name_mother']; ?>" type="text" placeholder="Mother Name" id="name_mother" >
+                      <input  class="form-control" name="name_mother" value="<?php echo $_POST['name_mother']; ?>" type="text" placeholder="Mother Name" id="name_mother" required="">
                     </div>
                     <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3 formspace">
                       Nationality of Mother*
                       <br>
-                      <select class="form-control" name="nationality_mother" id="nationality_mother" >
+                      <select class="form-control" name="nationality_mother" id="nationality_mother" required="">
+                        <option value="">Select Nationality</option>
                         <?php foreach($data['country'] as $cname){?>
                           <option <?php if($_POST['nationality_mother'] == $cname){echo 'selected';} ?> value="<?php echo $cname; ?>"><?php echo $cname; ?></option>
                         <?php } ?>
@@ -538,7 +550,7 @@
                     <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3 formspace">
                       Place of Birth*
                       <br>
-                      <input name="place_of_birth_mother" type="text" value="<?php echo $_POST['place_of_birth_mother']; ?>" class="form-control" placeholder="Place of Birth" id="place_of_birth_mother" >
+                      <input name="place_of_birth_mother" type="text" value="<?php echo $_POST['place_of_birth_mother']; ?>" class="form-control" placeholder="Place of Birth" id="place_of_birth_mother" required="">
                     </div>
                   </div>
                   <div class="row rowspace">
@@ -546,6 +558,7 @@
                       Country of Birth*
                       <br>
                       <select class="form-control" name="country_of_birth_mother" id="country_of_birth_mother" >
+                        <option value="">Select Country of Birth</option>
                         <?php foreach($data['country'] as $cname){?>
                           <option <?php if($_POST['country_of_birth_mother'] == $cname){echo 'selected';} ?> value="<?php echo $cname; ?>"><?php echo $cname; ?></option>
                         <?php } ?>
@@ -1071,7 +1084,7 @@
                  
               <table border="0">
                 <tr>
-                  <td><svg xmlns="http://www.w3.org/2000/svg" width="20" height="17" viewBox="0 0 20 17"><path d="M10 0l-5.2 4.9h3.3v5.1h3.8v-5.1h3.3l-5.2-4.9zm9.3 11.5l-3.2-2.1h-2l3.4 2.6h-3.5c-.1 0-.2.1-.2.1l-.8 2.3h-6l-.8-2.2c-.1-.1-.1-.2-.2-.2h-3.6l3.4-2.6h-2l-3.2 2.1c-.4.3-.7 1-.6 1.5l.6 3.1c.1.5.7.9 1.2.9h16.3c.6 0 1.1-.4 1.3-.9l.6-3.1c.1-.5-.2-1.2-.7-1.5z"/></svg>
+                  <td><svg xmlns="http://www.w3.org/2000/svg" width="40" height="17" viewBox="0 0 20 17"><path d="M10 0l-5.2 4.9h3.3v5.1h3.8v-5.1h3.3l-5.2-4.9zm9.3 11.5l-3.2-2.1h-2l3.4 2.6h-3.5c-.1 0-.2.1-.2.1l-.8 2.3h-6l-.8-2.2c-.1-.1-.1-.2-.2-.2h-3.6l3.4-2.6h-2l-3.2 2.1c-.4.3-.7 1-.6 1.5l.6 3.1c.1.5.7.9 1.2.9h16.3c.6 0 1.1-.4 1.3-.9l.6-3.1c.1-.5-.2-1.2-.7-1.5z"/></svg>
                   </td>
                   <td><small>Please upload your passport size JPEG photograph, <br> min size(10KB), max size(300KB) <br>min dimention(350x350), max dimention(1000x1000) </small></td>
                 </tr>

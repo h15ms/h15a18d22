@@ -18,15 +18,15 @@
                     <li><a href="<?php echo URL;?>">Home</a></li>
                     <li><a href="<?php echo URL;?>service/">Service</a>
                         <ul>
-                            <li><a href="">Visa Services</a></li>
-                            <li><a href="">Business Services</a></li>
-                            <li><a href="">Passport Services</a></li>
-                            <li><a href="">Traveling Services</a></li>
-                            <li><a href="">Ticketing Services</a></li>
-                            <li><a href="">Medical Services</a></li>
-                            <li><a href="">Tourism Services</a></li>
-                            <li><a href="">Accommodation Services</a></li>
-                            <li><a href="">Entertainment Services</a></li>
+                            <li><a href="<?php echo URL;?>service">Visa Services</a></li>
+                            <li><a href="<?php echo URL;?>service">Business Services</a></li>
+                            <li><a href="<?php echo URL;?>service">Passport Services</a></li>
+                            <li><a href="<?php echo URL;?>service">Traveling Services</a></li>
+                            <li><a href="<?php echo URL;?>service">Ticketing Services</a></li>
+                            <li><a href="<?php echo URL;?>service">Medical Services</a></li>
+                            <li><a href="<?php echo URL;?>service">Tourism Services</a></li>
+                            <li><a href="<?php echo URL;?>service">Accommodation Services</a></li>
+                            <li><a href="<?php echo URL;?>service">Entertainment Services</a></li>
                         </ul>
                     </li>
                     <li><a href="<?php echo URL;?>about/">About us</a></li>

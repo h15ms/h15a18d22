@@ -7,24 +7,16 @@ class review extends CI_Controller {
     
   public function __construct() 
   {
-    require 'library/View.php';
-    $this->_view = new View();
-  }
+      parent:: __construct();
 
-  
-  public function __call($name, $args) 
-  {
-    header('Location: '.URL.'404/');
   }
-
     
-  public function indexAction() 
+  public function index() 
   {      
-    $this->_view->title = "Review | MiConsulting.in";
-    $this->_view->description = "";
-    $this->_view->headline = "Review";
-    $this->_view->canonical = URL."review/";
-    $this->_view->display('reviews/index.php');
+    $this->load->view('template/header');
+    $this->load->view('reviews/index');
+    $this->load->view('template/footer');
+
   }  
   
 }

@@ -7,24 +7,17 @@ class sitemap extends CI_Controller {
     
   public function __construct() 
   {
-    require 'library/View.php';
-    $this->_view = new View();
-  }
+    parent:: __construct();
 
-  
-  public function __call($name, $args) 
-  {
-    header('Location: '.URL.'404/');
   }
-
     
   public function index() 
   {      
-    $this->_view->title = "Sitemap | MiConsulting.in";
-    $this->_view->description = "";
-    $this->_view->headline = "Sitemap";
-    $this->_view->canonical = URL."sitemap/";
-    $this->_view->display('sitemap/index.php');
+   
+   $this->load->view('template/header');
+   $this->load->view('sitemap/index');
+   $this->load->view('template/footer');
+
   }  
   
 }

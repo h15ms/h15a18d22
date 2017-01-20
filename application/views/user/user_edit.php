@@ -35,75 +35,129 @@
           </div>
           <?php } ?>
 
+
+
+
+
+<div class="clearfix"></div>
+
+
+<div class="panel panel-default">
+  <div class="panel-body">
+    
+
+
             <section class="avia_codeblock_section avia_code_block_0"  itemscope="itemscope" itemtype="https://schema.org/CreativeWork" >
-              <div class='avia_codeblock '  itemprop="text"> <h3>Edit your Details</h3></div>
+              <div class='avia_codeblock col-md-12'  itemprop="text"> <h3>Edit your Details</h3><br></div>
               
               <form action="user/edit_user" method="POST" class="form-horizontal" style="margin-top: 20px" role="form">              
-                <div class="form-group">
-                  <p class="col-md-1">First Name</p>
-                  <div class="col-md-11">
-                    <input type="text" class="form-control col-md-8" name="firstname" value="<?php echo $firstname; ?>" id="" placeholder="First Name">
+                <div class="col-md-6">  
+                  <div class="form-group">
+                    <div class="col-md-12">
+                    <label>First Name</label>
+                      <input type="text" class="form-control col-md-8" name="firstname" value="<?php echo $firstname; ?>" id="" placeholder="First Name">
+                    </div>
                   </div>
                 </div>
-                <div class="form-group">
-                  <p class="col-md-1">Last Name</p>
-                  <div class="col-md-11">
-                    <input type="text" class="form-control col-md-8" name="lastname" value="<?php echo $lastname; ?>" id="" placeholder="Last Name">
+                <div class="col-md-6">  
+                  <div class="form-group">
+                    <div class="col-md-12">
+                    <label>Last Name</label>
+                      <input type="text" class="form-control col-md-8" name="lastname" value="<?php echo $lastname; ?>" id="" placeholder="Last Name">
+                    </div>
                   </div>
                 </div>
-                <div class="form-group">
-                  <p class="col-md-1">Street</p>
-                  <div class="col-md-11">
-                    <input type="text" class="form-control col-md-8" name="street" value="<?php echo $street; ?>" id="" placeholder="Street">
+                <div class="col-md-6">  
+                  <div class="form-group">
+                    <div class="col-md-12">
+                    <label>Street</label>
+                      <input type="text" class="form-control col-md-8" name="street" value="<?php echo $street; ?>" id="" placeholder="Street">
+                    </div>
                   </div>
                 </div>
-                <div class="form-group">
-                  <p class="col-md-1">Zip</p>
-                  <div class="col-md-11">
-                    <input type="text" class="form-control col-md-8" name="zip" value="<?php echo $zip; ?>" id="" placeholder="Zip">
+                <div class="col-md-6">  
+                  <div class="form-group">
+                    <div class="col-md-12">
+                    <label>Zip</label>
+                      <input type="text" class="form-control col-md-8" name="zip" value="<?php echo $zip; ?>" id="" placeholder="Zip">
+                    </div>
                   </div>
                 </div>
-                <div class="form-group">
-                  <p class="col-md-1">City</p>
-                  <div class="col-md-11">
-                    <input type="text" class="form-control col-md-8" name="city" value="<?php echo $city; ?>" id="" placeholder="City">
+                <div class="col-md-6">  
+                  <div class="form-group">
+                    <div class="col-md-12">
+                    <label>City</label>
+                      <input type="text" class="form-control col-md-8" name="city" value="<?php echo $city; ?>" id="" placeholder="City">
+                    </div>
                   </div>
                 </div>
-                <div class="form-group">
-                  <p class="col-md-1">State</p>
-                  <div class="col-md-11">
-                    <input type="text" class="form-control col-md-8" name="state" value="<?php echo $state; ?>" id="" placeholder="State">
+                <div class="col-md-6">  
+                  <div class="form-group">
+                    <div class="col-md-12">
+                    <label>State</label>
+                      <input type="text" class="form-control col-md-8" name="state" value="<?php echo $state; ?>" id="" placeholder="State">
+                    </div>
                   </div>
                 </div>
-                 <div class="form-group">
-                  <p class="col-md-1">Country</p>
-                  <div class="col-md-11">
-                    <input type="text" class="form-control col-md-8" name="country" value="<?php echo $country; ?>" id="" placeholder="Country">
+                 <div class="col-md-6">  
+                   <div class="form-group">
+                    <div class="col-md-12">
+                    <label>Country</label>
+                      <input type="text" class="form-control col-md-8" name="country" value="<?php echo $country; ?>" id="" placeholder="Country">
+                    </div>
                   </div>
-                </div>
-                 <div class="form-group">
-                  <p class="col-md-1">Email</p>
-                  <div class="col-md-11">
-                    <input type="text" class="form-control col-md-8" name="email" value="<?php echo $email; ?>" id="" placeholder="Email">
+                 </div>
+                 <div class="col-md-6">  
+                   <div class="form-group">
+                    <div class="col-md-12">
+                    <label>Email</label>
+                      <input type="text" class="form-control col-md-8" name="email" value="<?php echo $email; ?>" id="" placeholder="Email">
+                    </div>
                   </div>
-                </div>
-                 <div class="form-group">
-                  <p class="col-md-1">Phone</p>
-                  <div class="col-md-11">
-                    <input type="text" class="form-control col-md-8" name="phone" value="<?php echo $phone; ?>" id="" placeholder="Phone">
+                 </div>
+                 <div class="col-md-6">  
+                   <div class="form-group">
+                    <div class="col-md-12">
+                    <label>Phone</label>
+                      <input type="text" class="form-control col-md-8" name="phone" value="<?php echo $phone; ?>" id="" placeholder="Phone">
+                    </div>
                   </div>
-                </div>
-                 <div class="form-group">
-                  <p class="col-md-1">Avatar</p>
-                  <div class="col-md-11">
-                    <input type="file" class="form-control col-md-8" name="avatar">
+                 </div>
+                 <div class="col-md-6">  
+                   <div class="form-group">
+                    <div class="col-md-12">
+                    <label>Avatar</label>
+                      <input type="file" class="form-control col-md-8" name="avatar">
+                    </div>
                   </div>
-                </div>
+                 </div>
                               
               
-                <button type="submit" class="btn btn-primary pull-right">Submit</button>
+                <div class="col-md-12">
+                  <button type="submit" class="btn pull-right">Submit</button>
+                </div>
               </form>
             </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  </div>
+</div>
+
+
+
+
+
           </div>
         </div>
       </div>
