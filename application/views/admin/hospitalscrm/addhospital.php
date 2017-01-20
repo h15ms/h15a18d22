@@ -115,13 +115,26 @@
                </div>
             </div>
             
+                <div class="col-xs-12 col-sm-12 col-md-12"> 
+               <div class="col-xs-6 col-sm-6 col-md-6 form-group">   
+                <label>Hospital Image</label>
+               <input type="file" class="form-control" name="hospital_image" id="hospital_image" value="" placeholder="Hospital image" required>
+               </div>
+                 <div class="col-xs-6 col-sm-6 col-md-6 form-group">   
+               </div>
+            </div>
             
             
             
             
           
               
-            <div class="col-xs-12 col-sm-12 col-md-12 mt20">                
+            <div class="col-xs-12 col-sm-12 col-md-12 mt20">    
+                
+                
+                
+                
+                
                 <input style="width: 20%" type="submit" class="btn btn-lg btn-success pull-right" value="Save"> 
             </div>
             

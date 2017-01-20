@@ -37,7 +37,7 @@ class hospitalsModelCrm extends CI_Model
         }   
   }
  public function getallhospitallist(){
-    $this->db->select('*')->from('mi_hospital_detail  d');
+    $this->db->select('*, d.id appID')->from('mi_hospital_detail  d');
     $this->db->join('mi_hospital  h' , 'h.id=d.	hospital_id ', 'left');
     $this->db->where('h.status',1);
     $this->db->order_by('d.id','asc');         

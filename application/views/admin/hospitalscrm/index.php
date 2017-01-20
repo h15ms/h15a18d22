@@ -31,7 +31,7 @@
     <div class="col-sm-12">
         <div class="panel panel-inverse">
             <div class="panel-heading">
-                <h4><i class="fa fa-group"></i> <?php echo $headlines;?></h4>
+                <h4><i class="fa fa-hospital-o"></i> <?php echo $headlines;?></h4>
                 
             </div>
           <div class="panel-body collapse in">                                  
@@ -82,7 +82,7 @@
                             </td>
                             <td><?php echo $hospital->distance_from_airport; ?></td>
                            
-                            <td align="center"><a href="#"><i class="fa fa-user"></i></a></td>
+                            <td align="center"><a href="<?php echo base_url(); ?>admin/hospitalscrm/viewHospital/<?php echo $hospital->appID; ?>"><i class="fa fa-user"></i></a></td>
                         </tr>
                         <?php $i++; endforeach; ?>
 					</tbody>
