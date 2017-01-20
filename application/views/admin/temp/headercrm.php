@@ -99,9 +99,10 @@ function linktag($address) {echo "<link rel='stylesheet' type='text/css' href='$
                 </li>
                 <li class="divider"></li>
                 <li><a href="<?php echo base_url();?>admin/homecrm"><i class="fa fa-tachometer"></i> <span>Dashboard</span></a></li>                
-                <li><a href="<?php echo base_url();?>admin/applycrm"><i class="fa fa-file-text-o"></i> <span>ALL Applications</span></a></li>                
+                <li><a href="<?php echo base_url();?>admin/applycrm"><i class="fa fa-file-text-o"></i> <span>All Applications</span></a></li>                
                 
                 <li><a href="<?php echo base_url();?>admin/usercrm"><i class="fa fa-group"></i> <span>Employees</span></a></li>    
+                <li><a href="<?php echo base_url();?>admin/hospitalscrm"><i class="fa fa-hospital-o" aria-hidden="true"></i> <span>Hospitals</span></a></li>  
                 
                                         
                 <!--li class="divider"></li>
