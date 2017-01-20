@@ -99,8 +99,6 @@ Phone: +91 88268 66295
 
 
 
-
-
 <a href='#top' title='Scroll to top' id='scroll-top-link' aria-hidden='true' data-av_icon='' data-av_iconfont='entypo-fontello'><span class="avia_hidden_link_text">Scroll to top</span></a>
 
 <div id="fb-root"></div>

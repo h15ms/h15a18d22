@@ -13,15 +13,18 @@ class apply extends CI_Controller
 
   public function index()
   {      
-    
-    if(isset($_SESSION['logged_in']['user_id']))
+    $sess = $this->session->userdata();
+    if(isset($sess['logged_in']['user_id']))
     {
       $this->load->helper('data_helper');
       $data = getdata();
       
       if(isset($_POST['applyform']) && ($_POST['applyform']=='send'))
       {  
-        $image_upload = $this->imageInsert($_FILES);
+        
+       echo $image_upload = $this->imageInsert($_FILES);
+        
+
         if($image_upload == 'done'){
           
           $result = $this->model->saveApply($this->input->post());
@@ -34,6 +37,7 @@ class apply extends CI_Controller
           }
         
         }else{
+
           $data1 = array('image_upload_error' => $image_upload);
         }
 
@@ -58,6 +62,7 @@ class apply extends CI_Controller
     public function imageInsert($arr)
      {
    
+      $out = '';
       define ("MAX_SIZE","300"); 
       function getExtension($str)
       {
@@ -68,9 +73,10 @@ class apply extends CI_Controller
            return $ext;
       }
         $uploaddir = getcwd()."/assets/img/photos/";
-
           foreach ($_FILES['photos']['name'] as $name => $value)
           {
+              
+            $out = "ank";
               $filename = stripslashes($_FILES['photos']['name'][$name]);
                 $extension = getExtension($filename);
                $extension = strtolower($extension);
@@ -85,8 +91,8 @@ class apply extends CI_Controller
                 $filedimnsn = $_FILES['photos']['tmp_name'][$name];
                 list($width, $height) = getimagesize($filedimnsn);
 
-                // if( $width<=1000 && $width>=350 && $height <= 1000 && $height >= 350 )
-                // {
+                if( $width<=1000 && $width>=350 && $height <= 1000 && $height >= 350 )
+                {
                   $size=filesize($_FILES['photos']['tmp_name'][$name]);
                   if ($size > MAX_SIZE*1024)
                   {
@@ -106,7 +112,7 @@ class apply extends CI_Controller
                          $out = "done";                     
                      }
                   }
-                // }
+                }
               }
           }
 

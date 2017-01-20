@@ -11,8 +11,15 @@
   
     public function index() { 
 
+// echo "<pre>";
+//       print_r($this->session->userdata());
+// echo "</pre>";
+//       exit;
+      $ank = $this->session->userdata();
+
+
        $this->load->view('template/header' , $this->active);
-       $this->load->view('contact/index.php');
+       $this->load->view('contact/index.php' , $ank);
        $this->load->view('template/footer');
        $this->load->helper('form'); 
     } 

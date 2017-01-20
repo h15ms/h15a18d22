@@ -32,14 +32,13 @@
           <div class='entry-content-wrapper clearfix'>
 
           <?php if(isset($error)){ ?>
-
               <div class="alert alert-warning alert-dismissible" role="alert">
                 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                   <span aria-hidden="true">&times;
                   </span>
                 </button>
                 <i class="fa fa-exclamation-triangle"></i> 
-                <b><?php echo $error; ?></b>
+                <b><?php echo $error['image_upload_error']; ?></b>
               </div>
  
           <?php } ?>
@@ -1067,7 +1066,7 @@
           </div>
           <div class="row">
             <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4 input-bmargin">
-              <input type="file" name="photos[]" id="picture" class="inputfile inputfile-1" data-multiple-caption="{count} files selected" multiple="true"  />
+              <input type="file" name="photos[]" id="picture" class="inputfile inputfile-1" data-multiple-caption="{count} files selected" multiple="true" />
               
                  
               <table border="0">
