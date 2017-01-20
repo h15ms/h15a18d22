@@ -30,17 +30,22 @@
   <script type='text/javascript' src='<?php echo URLI;?>plugins/dropzone/dropzone.min.js'></script>
   <script type='text/javascript' src='<?php echo URLI;?>js/placeholdr.js'></script>
   <script type='text/javascript' src='<?php echo URLI;?>js/application.js'></script>
+  <?php if($this->uri->segment(3)=='addhospital'): ?>
+
+    <script type='text/javascript' src='<?php echo URLI;?>js/hospital.js'></script>
+
+<?php endif;?>
   <script type='text/javascript' src='<?php echo URLI;?>demo/demo.js'></script>
   <script type='text/javascript' src='<?php echo URLI;?>plugins/datatables/jquery.dataTables.min.js'></script>
   <script type='text/javascript' src='<?php echo URLI;?>plugins/datatables/dataTables.bootstrap.js'></script>
   <script type='text/javascript' src='<?php echo URLI;?>demo/demo-datatables.php?c=<?php echo $this->uri->segment('2'); ?>'></script>
   
   
-  <script type='text/javascript' src='<?php echo URLI;?>plugins/fullcalendar/fullcalendar.min.js'></script>
-  <script type='text/javascript' src='<?php echo URLI;?>plugins/form-daterangepicker/daterangepicker.min.js'></script>
-  <script type='text/javascript' src='<?php echo URLI;?>plugins/charts-flot/jquery.flot.min.js'></script>
-  <script type='text/javascript' src='<?php echo URLI;?>plugins/charts-flot/jquery.flot.resize.min.js'></script>
-  <script type='text/javascript' src='<?php echo URLI;?>plugins/charts-flot/jquery.flot.orderBars.min.js'></script>
+<script type='text/javascript' src='<?php echo URLI;?>plugins/fullcalendar/fullcalendar.min.js'></script>
+<script type='text/javascript' src='<?php echo URLI;?>plugins/form-daterangepicker/daterangepicker.min.js'></script>
+<script type='text/javascript' src='<?php echo URLI;?>plugins/charts-flot/jquery.flot.min.js'></script>
+<script type='text/javascript' src='<?php echo URLI;?>plugins/charts-flot/jquery.flot.resize.min.js'></script>
+<script type='text/javascript' src='<?php echo URLI;?>plugins/charts-flot/jquery.flot.orderBars.min.js'></script>
 <script type='text/javascript' src='<?php echo URLI;?>plugins/pulsate/jQuery.pulsate.min.js'></script>
 <script type='text/javascript' src='<?php echo URLI;?>demo/demo-index.js'></script>
 <script type='text/javascript' src='<?php echo URLI;?>plugins/form-multiselect/js/jquery.multi-select.min.js'></script>
@@ -56,10 +61,6 @@
 <script type='text/javascript' src='<?php echo URLI;?>plugins/form-jasnyupload/fileinput.min.js'></script>
 <script type='text/javascript' src='<?php echo URLI;?>plugins/form-tokenfield/bootstrap-tokenfield.min.js'></script>
 <script type='text/javascript' src='<?php echo URLI;?>demo/demo-formcomponents.js'></script>
-
-
-  
-
 
 </body>
 </html>
