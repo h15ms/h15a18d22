@@ -3,7 +3,7 @@ class homeModelCrm extends CI_Model
 {
     
   public function countNewApplys() 
-  {    
+  { 
      $result = $this->db->select('id')->get_where('mi_apply', array('status' => "0"));
 
         if ($result->num_rows() >= 0) {

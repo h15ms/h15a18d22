@@ -34,19 +34,41 @@
         <div id="layerslider_3_1" class="ls-wp-container" style="width:100%;height:580px;margin:0 auto;margin-bottom: 0px;">
           <div class="ls-slide" data-ls="slidedelay:7000;transition2d:11,13,23;transition3d:all;">
             <img src="assets/img/bg-home2.jpg" class="ls-bg" alt="bg-home2" />
-            <div class="ls-l" style="top:60%;left:50%;white-space: nowrap;" data-ls="delayin:800;">
+            <div class="ls-l" style="top:50%;left:50%;white-space: nowrap;" data-ls="delayin:500;">
               <?php if($_SESSION['logged_in']['user_id']){ ?>
-              <a href="<?php echo URL;?>apply/" class="avia-button avia-icon_select-no avia-size-x-large avia-position-center ">
-                <span class="avia_iconbox_title" style="font-size:28px;">Apply now
+              <a href="<?php echo URL;?>apply/" class="avia-button avia-icon_select-no avia-size-large avia-position-center ">
+                <span class="avia_iconbox_title" style="font-size:20px;">Apply Visa Now
                 </span>
               </a> 
               <?php }else{ ?>
-              <a href="<?php echo URL;?>login/" class="avia-button avia-icon_select-no avia-size-x-large avia-position-center ">
-                <span class="avia_iconbox_title" style="font-size:28px;">Apply now
+              <a href="<?php echo URL;?>login/" class="avia-button avia-icon_select-no avia-size-large avia-position-center ">
+                <span class="avia_iconbox_title" style="font-size:20px;">Apply Visa Now
                 </span>
               </a> 
               <?php } ?>
             </div>
+            
+            <div class="ls-l" style="top:65%;left:336px;white-space: nowrap;" data-ls="delayin:800;">
+              <a href="#" class="avia-button avia-icon_select-no  avia-position-center ">
+                <span class="avia_iconbox_title" style="font-size:14px;"> <i class="fa fa-hotel"></i> Search Hotel</span>
+              </a> 
+            </div>
+            <div class="ls-l" style="top:65%;left:460px;white-space: nowrap;" data-ls="delayin:1200;">
+              <a href="#" class="avia-button avia-icon_select-no  avia-position-center ">
+                <span class="avia_iconbox_title" style="font-size:14px;"> <i class="fa fa-plane"></i> Search Flight</span>
+              </a> 
+            </div>
+            <div class="ls-l" style="top:65%;left:580px;white-space: nowrap;" data-ls="delayin:1600;">
+              <a href="#" class="avia-button avia-icon_select-no  avia-position-center ">
+                <span class="avia_iconbox_title" style="font-size:14px;"> <i class="fa fa-bus"></i> Search Bus</span>
+              </a> 
+            </div>
+            <div class="ls-l" style="top:65%;left:689px;white-space: nowrap;" data-ls="delayin:2000;">
+              <a href="#" class="avia-button avia-icon_select-no  avia-position-center ">
+                <span class="avia_iconbox_title" style="font-size:14px;"> <i class="fa fa-car"></i> Search Car</span>
+              </a> 
+            </div>
+            
             <h1 class="ls-l" style="top:30%;left:50%;@media (max-width: 767px) { font-size: 18px; };color:#ffffff; white-space: nowrap;">We Support Your Journey to India
             </h1>
             <div class="ls-l" style="top:36%;left:50%;font-size:18px;color:#ffffff;white-space: nowrap;">
@@ -65,9 +87,9 @@
             <div class="flex_column av_one_full  flex_column_div av-zero-column-padding first  avia-builder-el-1  el_after_av_layerslider  el_before_av_hr  avia-builder-el-first  " style='border-radius:0px; '>
               <section class="av_textblock_section"  itemscope="itemscope" itemtype="https://schema.org/CreativeWork" >
                 <div class='avia_textblock '   itemprop="text" >
-                  <h1 style="text-align: center;">Welcome to MI Consultancy
+                  <h1 style="text-align: center;">Welcome to MI Consulting
                   </h1>
-                  <p style="text-align: center;">At MI Consultancy, we provide a comprehensive range of support to help our clients with their travel needs.  Our extensive knowledge, accuracy, and attention to detail lead to optimized results.
+                  <p style="text-align: center;">At MI Consulting, we provide a comprehensive range of support to help our clients with their travel needs.  Our extensive knowledge, accuracy, and attention to detail lead to optimized results.
                   <br>
                   We are there for every step of the way.  Our clients are evaluated for eligibility and provided with alternate options if necessary.  We provide guidance on gathering the necessary documents, and prepare the applications for submission.  After submission, we work with the proper authorities to easily facilitate the visa process.
                   <br>
@@ -141,7 +163,7 @@
               </div>
               <section class="av_textblock_section"  itemscope="itemscope" itemtype="https://schema.org/CreativeWork" >
                 <div class='avia_textblock '  style='font-size:14px; '  itemprop="text" >
-                  <p style="text-align: center;">Let MI Consultancy’s experts handle your business visa application process.  Simply provide us with the documents on the checklist we have put together, and we will take care of the rest.  Once the visa has been issued, we will take care of your flight details, transport and hotel accommodations upon arrival per your preferences.
+                  <p style="text-align: center;">Let MI Consulting's experts handle your business visa application process.  Simply provide us with the documents on the checklist we have put together, and we will take care of the rest.  Once the visa has been issued, we will take care of your flight details, transport and hotel accommodations upon arrival per your preferences.
                   </p>
                 </div>
               </section>
@@ -177,7 +199,7 @@
               </div>
               <section class="av_textblock_section"  itemscope="itemscope" itemtype="https://schema.org/CreativeWork" >
                 <div class='avia_textblock '  style='font-size:14px; '  itemprop="text" >
-                  <p style="text-align: center;">MI Consultancy can help you plan your vacation without the stress.  Our services begin with the visa application process, and continue throughout your trip.  We help you book your flight, make stay and transportation accommodations, plan your itinerary for tourist attractions, guide you to dining and shopping, as well as anything else that may be needed for your trip.
+                  <p style="text-align: center;">MI Consulting can help you plan your vacation without the stress.  Our services begin with the visa application process, and continue throughout your trip.  We help you book your flight, make stay and transportation accommodations, plan your itinerary for tourist attractions, guide you to dining and shopping, as well as anything else that may be needed for your trip.
                   </p>
                 </div>
               </section>
@@ -289,7 +311,7 @@
         <div class="flex_column av_one_full  flex_column_div av-zero-column-padding first  avia-builder-el-34  el_after_av_section  avia-builder-el-no-sibling  " style='border-radius:0px; '>
           <div class='avia-button-wrap avia-button-center  avia-builder-el-35  avia-builder-el-no-sibling '>
             <a href='<?php echo URL;?>review/' class='avia-button  avia-icon_select-no avia-color-dark avia-size-x-large avia-position-center '   >
-              <span class='avia_iconbox_title' >read reviews
+              <span class='avia_iconbox_title' >Read reviews
               </span>
             </a>
           </div>

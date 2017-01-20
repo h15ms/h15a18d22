@@ -36,7 +36,9 @@ public function saveApply($arr)
 
    if($arr['email_main'] == $arr['ReEnterEmail']){ $email = $arr['email_main']; }else{ return 'Email Not Mached!'; }
    if($arr['changed_name'] == NULL){$arr['changed_name'] = '0';}
+   if($arr['same_address_permanent'] == NULL){$arr['same_address_permanent'] = 'No';}
    $app_id = $this->newApplyId();
+   $photoName = $this->imgInsertdb();
   
    $saarc_country_name_1 = $arr['saarc_country_name']['0'];
    $saarc_country_year_1 = $arr['saarc_country_year']['0'];
@@ -62,7 +64,7 @@ public function saveApply($arr)
    $saarc_country_name_8 = $arr['saarc_country_name']['7'];
    $saarc_country_year_8 = $arr['saarc_country_year']['7'];
    $saarc_country_no_visits_8 = $arr['saarc_country_no_visits']['7'];
-   
+
    if($saarc_country_name_1 == NULL){$saarc_country_name_1 = '0';}
    if($saarc_country_year_1 == NULL){$saarc_country_year_1 = '0';}
    if($saarc_country_no_visits_1 == NULL){$saarc_country_no_visits_1 = '0';}
@@ -237,7 +239,7 @@ public function saveApply($arr)
          'reference_address_country_1' => $arr['reference_address_country_1'],
          'reference_address_country_2' => $arr['reference_address_country_2'],
          'reference_phone_country' => $arr['reference_phone_country'],
-         // 'picture' => $arr['picture'],
+         'picture' => $photoName,
          'status' => '0',
          'user_id' => $_SESSION['logged_in']['user_id'],
          //'notice' => $arr['notice'],
@@ -259,10 +261,10 @@ public function saveApply($arr)
        $pool = "0123456789";
        $pool .= "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
        srand ((double)microtime()*1000000);
-       for($index = 0; $index < 16; $index++){
+       for($index = 0; $index < 11; $index++){
            $npw .= substr($pool,(rand()%(strlen ($pool))), 1);
        }
-       return $npw;
+       return "AFG".$npw;
  }
 
 

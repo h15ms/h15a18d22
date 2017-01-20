@@ -17,9 +17,9 @@
   <div class="wrapper">
     <div class="container">
       <div class="col-xs-12 col-sm-12 col-md-12">
-        <h3 style="font-weight:50;">Welcome back, <?php echo $_SESSION['user_name']; ?></h3>
+        <h3 style="font-weight:50;">Welcome back, <?php echo $_SESSION['logged_in']['user_name']; ?></h3>
       </div>
-      
+
      <?php if (count($displayAll) == 0) { ?>
 
       <div class="col-xs-12 col-sm-12 col-md-12" style="margin:50px 0;">
@@ -27,7 +27,7 @@
           <table>
               <h3>No Applications!!</h3>
           </table>
-          <a href="<?php echo URL;?>apply" class="btn btn-success"><i class="fa fa-hand-o-up"></i> Apply    </a>
+          <a href="<?php echo URL;?>apply" class="btn btn-default"><i class="fa fa-hand-o-up"></i> Apply</a>
         </div>
       </div>
              
@@ -46,27 +46,28 @@
         
       </tr>
           <tbody>
-            <?php for($i=0; $i<count($displayAll) ; $i++) 
-            { ?>
+
+
+            <?php foreach($displayAll as $value)     { ?>
             <tr>
               <td>
               <?php
-               if($displayAll[$i][status]=="0"){
+               if($value->status=="0"){
                 echo "New Applicant";
-               }elseif ($displayAll[$i][status]=="1") {
+               }elseif ($value->status=="1") {
                  echo "In Progress";
-               }elseif ($displayAll[$i][status]=="2") {
+               }elseif ($value->status=="2") {
                  echo "Confirmed";
                }else {
                  echo "Rejected";
                }
                ?></td>
-              <td><?php echo $displayAll[$i][app_id]; ?></td>
-              <td><?php if($displayAll[$i][embassy_id]==""){echo "No Embassy ID";}else{echo $displayAll[$i][embassy_id];} ?></td>
-              <td><?php if($displayAll[$i][visa_id]==""){echo "No Visa ID";}else{echo $displayAll[$i][visa_id];} ?></td>
-              <td><?php echo $displayAll[$i][given_name]; ?></td>
-              <td><?php echo $displayAll[$i][visa_type]; ?></td>
-              <td><?php echo $displayAll[$i][apply_date]; ?></td>
+              <td><?php echo $value->app_id; ?></td>
+              <td><?php if($value->embassy_id==""){echo "No Embassy ID";}else{echo $value->embassy_id;} ?></td>
+              <td><?php if($value->visa_id==""){echo "No Visa ID";}else{echo $value->visa_id;} ?></td>
+              <td><?php echo $value->given_name; ?></td>
+              <td><?php echo $value->visa_type; ?></td>
+              <td><?php echo $value->apply_date; ?></td>
             </tr>
              <?php   
             } 

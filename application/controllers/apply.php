@@ -24,6 +24,7 @@ class apply extends CI_Controller
       {  
         
        $image_upload = $this->imageInsert($_FILES);
+       $this->model->imgInsertdb($_FILES);
         
 
         if($image_upload == 'done'){
@@ -36,11 +37,19 @@ class apply extends CI_Controller
           }else{            
             $data1 = array('image_upload_error' => $result);
           }
+
+          $this->load->view('template/header' , $this->active);
+          $this->load->view('apply/index.php', array('data' => $data, 'error' => $data1));
+          $this->load->view('template/footer');
         
         }else{
 
           $data1 = array('image_upload_error' => $image_upload);
         }
+
+        $this->load->view('template/header' , $this->active);
+        $this->load->view('apply/index.php', array('data' => $data, 'error' => $data1));
+        $this->load->view('template/footer');
 
       }else{
 
@@ -161,5 +170,7 @@ class apply extends CI_Controller
           return "ERROR in Mail";
       }
   }
+
+
 
 }

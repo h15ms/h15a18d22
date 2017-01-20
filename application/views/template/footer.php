@@ -26,16 +26,13 @@
 <li id="menu-item-368" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-368"><a href="<?php echo URL;?>service/touristvisa/">Tourism Services</a></li>
 </ul></div><span class="seperator extralight-border"></span></section></div><div class='flex_column av_one_third  el_after_av_one_third  el_before_av_one_third '><section id="text-2" class="widget clearfix widget_text"><h3 class="widgettitle">Contact</h3>			<div class="textwidget"><small>Office Address:</small><br>
 <b>MiConsulting</b><br>
-Paras Trade Centre<br>
+301 - Paras Trade Centre<br>
 Gurgaon - Faridabad Rd, Sector 2<br>
 Gurgaon, India<br>
 <br>
 Phone: +91 88268 66295
 <br><br>
-<span class="av_font_icon avia_animate_when_visible av-icon-style-  av-no-color avia-icon-pos-left  avia_start_animation avia_start_delayed_animation" style=""><span class="av-icon-char" style="font-size:40px;line-height:40px;" aria-hidden="true" data-av_icon="" data-av_iconfont="entypo-fontello"></span></span>
-<span class="av_font_icon avia_animate_when_visible av-icon-style-  av-no-color avia-icon-pos-left  avia_start_animation avia_start_delayed_animation" style=""><span class="av-icon-char" style="font-size:40px;line-height:40px;" aria-hidden="true" data-av_icon="" data-av_iconfont="entypo-fontello"></span></span>
-<span class="av_font_icon avia_animate_when_visible av-icon-style-  av-no-color avia-icon-pos-left  avia_start_animation avia_start_delayed_animation" style=""><span class="av-icon-char" style="font-size:40px;line-height:40px;" aria-hidden="true" data-av_icon="" data-av_iconfont="entypo-fontello"></span></span>
-<span class="av_font_icon avia_animate_when_visible av-icon-style-  av-no-color avia-icon-pos-left  avia_start_animation avia_start_delayed_animation" style=""><span class="av-icon-char" style="font-size:40px;line-height:40px;" aria-hidden="true" data-av_icon="" data-av_iconfont="entypo-fontello"></span></span></div>
+</div>
 		<span class="seperator extralight-border"></span></section></div>
 
 					</div>

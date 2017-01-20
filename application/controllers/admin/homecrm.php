@@ -15,9 +15,7 @@ class homeCrm extends CI_Controller {
       $countApplys = $this->hmc->countApplys();
       $allNewApplys = $this->hmc->allNewApplys();
       $allUpdatedApplys = $this->hmc->allUpdatedApplys();
-      
-      
-   
+
       $data = array(
           'headline' => "Dashboard",
           'countnewapplys' => $countnewapplys,
@@ -30,6 +28,7 @@ class homeCrm extends CI_Controller {
         $this->load->view('admin/homecrm/index', $data);
         $this->load->view('admin/temp/footercrm');
     }
+    
  public function applyprofil() {
       
       $apply = $this->hmc->applyById($this->uri->segment('4')); 
