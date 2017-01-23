@@ -10,7 +10,7 @@
     } 
   
     public function index() { 
-       $data=array('headline' => 'Contact','title'=>"Contact | MiConsulting.in");
+       $data=array('headline' => 'Contactaaa','title'=>"Contact | MiConsulting.in");
        $this->load->view('template/header' , $data);
        $this->load->view('contact/index.php');
        $this->load->view('template/footer');
