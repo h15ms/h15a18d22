@@ -10,8 +10,8 @@ class dashboard extends CI_Controller
 
   public function index() 
   { 
-
-        if($_SESSION['logged_in']['user_id'] == ""){
+    $sess = $this->session->userdata();
+        if($sess['logged_in']['user_id'] == ""){
 
             $this->load->view('template/header' , $this->active);   
             $this->load->view('login/index');   

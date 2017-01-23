@@ -114,13 +114,6 @@ class dashboardModel extends CI_Model {
     $result = $this->db->get_where('mi_apply', array('user_id' => $sess['logged_in']['user_id']));
     return $result;
 
-    // $con = $this->_con->con();
-    // $sql = "SELECT * from ".PREFIX."apply WHERE user_id = '$_SESSION[user_id]'";
-    // foreach($con->query($sql) as $row) { $all[] = $row; }        
-    // return $all;
-
-    // echo $_SESSION[user_id];
-
   }  
 
 
