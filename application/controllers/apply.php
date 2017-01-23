@@ -25,20 +25,20 @@ class apply extends CI_Controller
         
        $image_upload = $this->imageInsert($_FILES);
        $this->model->imgInsertdb($_FILES);
-        
+        $dataT=array('headline' => 'Suche','title'=>"Apply | MiConsulting.in");
 
         if($image_upload == 'done'){
           
           $result = $this->model->saveApply($this->input->post());
           if($result == '1'){
-            $this->load->view('template/header' , $this->active);
+            $this->load->view('template/header' , $dataT);
             $this->load->view('apply/thankyou.php');
             $this->load->view('template/footer');
           }else{            
             $data1 = array('image_upload_error' => $result);
           }
 
-          $this->load->view('template/header' , $this->active);
+          $this->load->view('template/header' , $dataT);
           $this->load->view('apply/index.php', array('data' => $data, 'error' => $data1));
           $this->load->view('template/footer');
         
@@ -47,13 +47,13 @@ class apply extends CI_Controller
           $data1 = array('image_upload_error' => $image_upload);
         }
 
-        $this->load->view('template/header' , $this->active);
+        $this->load->view('template/header' , $dataT);
         $this->load->view('apply/index.php', array('data' => $data, 'error' => $data1));
         $this->load->view('template/footer');
 
       }else{
 
-      $this->load->view('template/header' , $this->active);
+      $this->load->view('template/header' , $dataT);
       $this->load->view('apply/index.php', array('data' => $data, 'error' => $data1));
       $this->load->view('template/footer');
       }
@@ -62,7 +62,7 @@ class apply extends CI_Controller
 
       $data = array('login_first' => '1');
 
-      $this->load->view('template/header' , $this->active);
+      $this->load->view('template/header' , $dataT);
       $this->load->view('login/index', $data);
       $this->load->view('template/footer');
     }

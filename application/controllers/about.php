@@ -11,12 +11,9 @@ class about extends CI_Controller {
   
   public function index() 
   {      
-//    $this->_view->title = "About | MiConsulting.in";
-//    $this->_view->description = "";
-//    $this->_view->headline = "About";
-//    $this->_view->canonical = URL."about/";
-//    $this->_view->display('about/index.php');
-     $this->load->view('template/header' , $this->active);
+
+ $data=array('headline' => 'About','title'=>"About | MiConsulting.in");
+     $this->load->view('template/header' , $data);
      $this->load->view('about/index.php');
      $this->load->view('template/footer');
   }  

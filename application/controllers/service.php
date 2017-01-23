@@ -12,72 +12,80 @@ class service  extends CI_Controller {
   }
     
   public function index() 
-  {      
-    $this->load->view('template/header' , $this->active);
+  {   
+      $data=array('headline' => 'Service','title'=>"Service for Indian Visa | MiConsulting.in");
+    $this->load->view('template/header' , $data);
 		$this->load->view('services/index');
 		$this->load->view('template/footer');
   } 
     
   public function visaservices() 
   {     
-      
-    $this->load->view('template/header' , $this->active);
+      $data=array('headline' => 'Visa Services','title'=>"Visa Services Service for India | MiConsulting.in");
+    $this->load->view('template/header' , $data);
 		$this->load->view('services/visaservices');
 		$this->load->view('template/footer');
   }  
     
   public function businessservices() 
-  {      
-    $this->load->view('template/header' , $this->active);
+  {  
+     $data=array('headline' => 'Business Service','title'=>"Business Service for India | MiConsulting.in");
+    $this->load->view('template/header' , $data);
 		$this->load->view('services/businessservices');
 		$this->load->view('template/footer');
   }    
     
   public function passportservices() 
   {      
-    $this->load->view('template/header' , $this->active);
+       $data=array('headline' => 'Passport Service','title'=>"Passport Service for India | MiConsulting.in");
+    $this->load->view('template/header' , $data);
 		$this->load->view('services/passportservices');
 		$this->load->view('template/footer');
   }     
     
   public function travelingservices() 
-  {      
-    $this->load->view('template/header' , $this->active);
+  {  
+       $data=array('headline' => 'Traveling Service','title'=>"Traveling Service for India | MiConsulting.in");
+    $this->load->view('template/header' , $data);
 		$this->load->view('services/travelingservices');
     $this->load->view('template/footer');
   }      
     
   public function ticketingservices() 
   {   
-    $this->load->view('template/header' , $this->active);
+       $data=array('headline' => 'Ticketing Service','title'=>"Ticketing Service for India | MiConsulting.in");
+    $this->load->view('template/header' , $data);
 		$this->load->view('services/ticketingservices');
 		$this->load->view('template/footer');
   }       
     
   public function medicalservices() 
   {      
-    $this->load->view('template/header' , $this->active);
+       $data=array('headline' => 'Medical Service','title'=>"Medical Service for India | MiConsulting.in");
+    $this->load->view('template/header' , $data);
 		$this->load->view('services/medicalservices');
 		$this->load->view('template/footer');
   }       
     
   public function touristvisa()       
   {      
-    $this->load->view('template/header' , $this->active);
+       $data=array('headline' => 'Tourism Visa Service','title'=>"Tourism Visa Service for India | MiConsulting.in");
+    $this->load->view('template/header' , $data);
 		$this->load->view('services/tourismservices');
 		$this->load->view('template/footer');
   }        
     
   public function accommodationservices() 
   {      
-    $this->load->view('template/header' , $this->active);
+       $data=array('headline' => 'Accommodation Service','title'=>"Accommodation Service for India | MiConsulting.in");
+    $this->load->view('template/header' , $data);
 		$this->load->view('services/accommodationservices');
 		$this->load->view('template/footer');
   }         
     
   public function entertainmentservices() 
-  {     
-    $this->load->view('template/header' , $this->active);
+  {      $data=array('headline' => 'Entertainment Service','title'=>"Entertainment Service for India | MiConsulting.in");
+    $this->load->view('template/header' , $data);
     $this->load->view('services/entertainmentservices');
     $this->load->view('template/footer');
     
