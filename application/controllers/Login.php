@@ -6,6 +6,7 @@ class Login extends CI_Controller
 	
 	function __construct()
 	{
+            error_reporting(0);
 		parent::__construct();
 
 		// Load form helper library
@@ -29,14 +30,14 @@ class Login extends CI_Controller
 		$sess = $this->session->userdata();
 
 		if(isset($sess['logged_in']['user_id'])){
-
-		$this->load->view('template/header' , $this->active);
+                  $data=array('active'=>$this->active,'title'=>'Customer Sign In - Sign Up | MiConsulting','headline'=>"Sign In - Sign Up" );
+		$this->load->view('template/header' , $data);
 		$this->load->view('dashboard/index');
 		$this->load->view('template/footer');
 			
 		}else{
-
-		$this->load->view('template/header' , $this->active);
+                $data=array('active'=>$this->active,'title'=>'Customer Sign In - Sign Up | MiConsulting','headline'=>"Sign In - Sign Up" );
+		$this->load->view('template/header' , $data);
 		$this->load->view('login/index');
 		$this->load->view('template/footer');
 		}

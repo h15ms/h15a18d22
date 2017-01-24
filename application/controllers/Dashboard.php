@@ -11,10 +11,10 @@ class Dashboard extends CI_Controller
   public function index() 
   { 
     $res = $this->model->getCustomerData();
-    // echo "<pre>";
-    // print_r($res);
-    // echo "</pre>";
-    // exit;
+     echo "<pre>";
+     print_r($res);
+     echo "</pre>";
+     exit;
     $sess = $this->session->userdata();
         if($sess['logged_in']['user_id'] == ""){
 
