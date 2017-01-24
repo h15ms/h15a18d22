@@ -1,6 +1,6 @@
 <?php
 
-class pwLostController {
+class PwLostController {
 
   private $_view;
   private $username;

@@ -1,5 +1,5 @@
 <?php
-class apply extends CI_Controller
+class Apply extends CI_Controller
 {
 
 

@@ -1,5 +1,5 @@
 <?php
-class pwchangeController 
+class PwchangeController 
 {
 
   private $_view;

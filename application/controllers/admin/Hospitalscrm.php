@@ -1,5 +1,5 @@
 <?php
-class hospitalscrm extends CI_Controller {
+class Hospitalscrm extends CI_Controller {
 
   function __construct()
 	{
@@ -15,9 +15,27 @@ class hospitalscrm extends CI_Controller {
 		$this->load->library('session');
 
 		// Load database
-		$this->load->model('admin/hospitalsModelCrm','app');
+		$this->load->model('admin/HospitalsModelCrm','app');
 	}
-  
+  function do_upload()
+{
+    $config['upload_path'] = './uploads/';
+    $config['allowed_types'] = 'gif|jpg|png';
+    $config['max_size'] = '100';
+    $config['max_width']  = '1024';
+    $config['max_height']  = '768';
+    $config['overwrite'] = TRUE;
+    $config['encrypt_name'] = FALSE;
+    $config['remove_spaces'] = TRUE;
+    if ( ! is_dir($config['upload_path']) ) die("THE UPLOAD DIRECTORY DOES NOT EXIST");
+    $this->load->library('upload', $config);
+    if ( ! $this->upload->do_upload('userfile')) {
+        echo 'error';
+    } else {
+
+        return array('upload_data' => $this->upload->data());
+    }
+}
   public function index() 
   {
    
@@ -36,7 +54,13 @@ class hospitalscrm extends CI_Controller {
     if(isset($_POST['send']) && ($_POST['send']=="1"))
     {
     
-        $hospList=$this->app->addhospitalDetail($_POST);
+
+        $pic =$_FILES['hospital_image']['name'];
+        $pic_loc = $_FILES['hospital_image']['tmp_name'];
+        $folder="assets/img/hospitals/";
+        $move=$folder.$pic;
+        move_uploaded_file($_FILES['hospital_image']['tmp_name'],$move);
+        $hospList=$this->app->addhospitalDetail($_POST,$pic);
     
     }
     
@@ -75,15 +99,14 @@ public function updateGetNewHospital(){
    $html.='<option value="oth">Other</option>' ;  
    echo $html;
 }
-  public function profil(){
-   
-       $applys = $this->app->applyById($this->uri->segment('4')); 
-       $data=array('headline' => 'Applicant Profile','apply'=>$applys);
-     $data1=array('page_title'=>"Profile | MiConsulting");
-     
-      $this->load->view('admin/temp/headercrm',$data1);
-     $this->load->view('admin/hospitalscrm/profil',$data);
-     $this->load->view('admin/temp/footercrm');
+  public function viewhospital(){
+    $hospital = $this->app->hospitalById($this->uri->segment('4')); 
+    $data=array('headline' => 'Hospital Profile','hospital'=>$hospital);
+    $data1=array('page_title'=>"Profile | MiConsulting");
+
+    $this->load->view('admin/temp/headercrm',$data1);
+    $this->load->view('admin/hospitalscrm/viewhospital',$data);
+    $this->load->view('admin/temp/footercrm');
       
   }
 }

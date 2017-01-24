@@ -1,5 +1,5 @@
 <?php
-class applyprofilController 
+class ApplyprofilController 
 {
 
   private $_view;

@@ -1,5 +1,5 @@
 <?php
-class sitemap extends CI_Controller {
+class Sitemap extends CI_Controller {
 
 
   private $_view;

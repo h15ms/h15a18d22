@@ -1,6 +1,6 @@
 <?php 
 
-class notFound  extends CI_Controller
+class NotFound  extends CI_Controller
 {
 	public function __construct()
 	{
