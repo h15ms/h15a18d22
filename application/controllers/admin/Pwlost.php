@@ -1,6 +1,6 @@
 <?php
 
-class PwLostController {
+class PwLost extends CI_Controller{
 
   private $_view;
   private $username;

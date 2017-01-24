@@ -1,5 +1,5 @@
 <?php
-class LoginModel {
+class LoginModel extends CI_Model{
 
   private $_storage;
 
@@ -11,7 +11,7 @@ class LoginModel {
 		foreach($con->query('SELECT * from lr_user') as $row) {
 			$users[] = $row;
 		}
-		} catch(){
+		} catch('Message'){
 		
 		}
 

@@ -1,5 +1,5 @@
 <?php
-class HomeModelCrm extends CI_Model 
+class HomeModelcrm extends CI_Model 
 {
     
   public function countNewApplys() 

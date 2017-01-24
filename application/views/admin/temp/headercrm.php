@@ -54,7 +54,7 @@ function linktag($address) {echo "<link rel='stylesheet' type='text/css' href='$
         <!--a id="rightmenu-trigger" class="tooltips" data-toggle="tooltip" data-placement="left" title=""></a-->
 
         <div class="navbar-header pull-left">
-            <a class="navbar-brand" href="index.php"></a>
+            <a class="navbar-brand" href="<?php echo base_url();?>admin/homecrm"></a>
         </div>
 
         <ul class="nav navbar-nav pull-right toolbar">                            
@@ -69,9 +69,9 @@ function linktag($address) {echo "<link rel='stylesheet' type='text/css' href='$
                                                 <li class="userlinks">
                                                                 <ul class="dropdown-menu">                                                                                   
                                             <li><a href="<?php echo base_url();?>admin/usercrm/user&id=<?php //echo $user['id'];?>">Edit Profile <i class="pull-right fa fa-cog"></i></a></li>
-                                                                                <li><a href="<?php echo base_url();?>admin/pwchange">Change Password <i class="pull-right fa fa-pencil"></i></a></li>                                                                                        
-                                                                                <li class="divider"></li>
-                                                                                <li><a href="<?php echo base_url();?>admin/login/logout" class="">Sign out <i class="pull-right fa fa-sign-out"></i></a></li>
+                                            <li><a href="<?php echo base_url();?>admin/pwchange">Change Password <i class="pull-right fa fa-pencil"></i></a></li>                                                                                        
+                                            <li class="divider"></li>
+                                            <li><a href="<?php echo base_url();?>admin/login/logout" class="">Sign out <i class="pull-right fa fa-sign-out"></i></a></li>
                                                                 </ul>
                                                 </li>
                                 </ul>

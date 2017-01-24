@@ -1,5 +1,5 @@
 <?php
-class carsModel {
+class CarsModel {
 
   private $_storage;
   private $_con;
