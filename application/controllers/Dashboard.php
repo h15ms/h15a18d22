@@ -11,10 +11,10 @@ class Dashboard extends CI_Controller
   public function index() 
   { 
     $res = $this->model->getCustomerData();
-    // echo "<pre>";
-    // print_r($res);
-    // echo "</pre>";
-    // exit;
+    echo "<pre>";
+    print_r($res);
+    echo "</pre>";
+    exit;
     $sess = $this->session->userdata();
         if($sess['logged_in']['user_id'] == ""){
 
@@ -338,35 +338,34 @@ $acquire_nationality='';
                     <td colspan="4"  valign="middle" height="20px"  style="font-size:10px;font-family:Arial, Helvetica, sans-serif; color:#000000; background-color:#eeeeee; border:1px solid #CCCCCC;  border-top:0px; font-weight:600; border-top:0px; padding:5px; 5px 5px 5px;">&nbsp;<b>F. Previous Visit Details</b></span></td>
                   </tr>
                   <tr>
-                    <td colspan="4"  valign="middle" height="20px"  style="font-size:10px;font-family:Arial, Helvetica, sans-serif; color:#000000;  border:1px solid #CCCCCC;  border-top:0px; font-weight:600; border-top:0px; padding:5px; 5px 5px 5px;">&nbsp; Have You Ever Visit India ? YES </td>
+                    <td colspan="4"  valign="middle" height="20px"  style="font-size:10px;font-family:Arial, Helvetica, sans-serif; color:#000000;  border:1px solid #CCCCCC;  border-top:0px; font-weight:600; border-top:0px; padding:5px; 5px 5px 5px;">&nbsp; Have You Ever Visit India ? '.$out->visited_india_before.' </td>
                   </tr>
                   <tr>
-                    <td valign="middle" height="20px"  style="font-size:10px;font-family:Arial, Helvetica, sans-serif; color:#000000; border:1px solid #CCCCCC;  border-top:0px; font-weight:600; border-top:0px; padding:5px; 5px 5px 5px;">&nbsp; Address wher eyou stay in india </td>
-                    <td valign="middle" height="20px" colspan="3"  style="font-size:10px;font-family:Arial, Helvetica, sans-serif; color:#000000; border:1px solid #CCCCCC;  border-top:0px; font-weight:600; border-top:0px; padding:5px; 5px 5px 5px;">&nbsp; '.$out->surname.' </td>
+                    <td valign="middle" height="20px"  style="font-size:10px;font-family:Arial, Helvetica, sans-serif; color:#000000; border:1px solid #CCCCCC;  border-top:0px; font-weight:600; border-top:0px; padding:5px; 5px 5px 5px;">&nbsp; Address where you stay in india </td>
+                    <td valign="middle" height="20px" colspan="3"  style="font-size:10px;font-family:Arial, Helvetica, sans-serif; color:#000000; border:1px solid #CCCCCC;  border-top:0px; font-weight:600; border-top:0px; padding:5px; 5px 5px 5px;">&nbsp; &nbsp; '.$out->visited_address_1.'<br> &nbsp; '.$out->visited_address_2.'<br> &nbsp; '.$out->visited_address_3.'</td>
                   </tr>
                   <tr>
                     <td valign="middle" height="20px"  style="font-size:10px;font-family:Arial, Helvetica, sans-serif; color:#000000; border:1px solid #CCCCCC;  border-top:0px; font-weight:600; border-top:0px; padding:5px; 5px 5px 5px;">&nbsp; Cities In India Visited </td>
-                    <td valign="middle" height="20px" colspan="3"  style="font-size:10px;font-family:Arial, Helvetica, sans-serif; color:#000000; border:1px solid #CCCCCC;  border-top:0px; font-weight:600; border-top:0px; padding:5px; 5px 5px 5px;">&nbsp; '.$out->surname.' </td>
+                    <td valign="middle" height="20px" colspan="3"  style="font-size:10px;font-family:Arial, Helvetica, sans-serif; color:#000000; border:1px solid #CCCCCC;  border-top:0px; font-weight:600; border-top:0px; padding:5px; 5px 5px 5px;">&nbsp; '.$out->cities_previously_visited_india.' </td>
                   </tr>
                   <tr>
                     <td valign="middle" height="20px"  style="font-size:10px;font-family:Arial, Helvetica, sans-serif; color:#000000; border:1px solid #CCCCCC;  border-top:0px; font-weight:600; border-top:0px; padding:5px; 5px 5px 5px;">&nbsp; Type Of Visa </td>
-                    <td width="23%" height="20px" valign="middle"  style="font-size:10px;font-family:Arial, Helvetica, sans-serif; color:#000000; border:1px solid #CCCCCC;  border-top:0px; font-weight:600; border-top:0px; padding:5px; 5px 5px 5px;">&nbsp; '.$out->surname.' </td>
+                    <td width="23%" height="20px" valign="middle"  style="font-size:10px;font-family:Arial, Helvetica, sans-serif; color:#000000; border:1px solid #CCCCCC;  border-top:0px; font-weight:600; border-top:0px; padding:5px; 5px 5px 5px;">&nbsp; '.$out->last_type_visa.' </td>
                     <td width="26%" height="20px" valign="middle"  style="font-size:10px;font-family:Arial, Helvetica, sans-serif; color:#000000; border:1px solid #CCCCCC;  border-top:0px; font-weight:600; border-top:0px; padding:5px; 5px 5px 5px;">&nbsp; Visa Number </td>
-                    <td width="26%" height="20px" valign="middle"  style="font-size:10px;font-family:Arial, Helvetica, sans-serif; color:#000000; border:1px solid #CCCCCC;  border-top:0px; font-weight:600; border-top:0px; padding:5px; 5px 5px 5px;">&nbsp; '.$out->surname.' </td>
+                    <td width="26%" height="20px" valign="middle"  style="font-size:10px;font-family:Arial, Helvetica, sans-serif; color:#000000; border:1px solid #CCCCCC;  border-top:0px; font-weight:600; border-top:0px; padding:5px; 5px 5px 5px;">&nbsp; '.$out->last_indian_visa_no.' </td>
                   </tr>
                   <tr>
                     <td valign="middle" height="20px"  style="font-size:10px;font-family:Arial, Helvetica, sans-serif; color:#000000; border:1px solid #CCCCCC;  border-top:0px; font-weight:600; border-top:0px; padding:5px; 5px 5px 5px;">&nbsp; Visa Issued place </td>
-                    <td width="23%" height="20px" valign="middle"  style="font-size:10px;font-family:Arial, Helvetica, sans-serif; color:#000000; border:1px solid #CCCCCC;  border-top:0px; font-weight:600; border-top:0px; padding:5px; 5px 5px 5px;">&nbsp; '.$out->surname.' </td>
+                    <td width="23%" height="20px" valign="middle"  style="font-size:10px;font-family:Arial, Helvetica, sans-serif; color:#000000; border:1px solid #CCCCCC;  border-top:0px; font-weight:600; border-top:0px; padding:5px; 5px 5px 5px;">&nbsp; '.$out->last_place_of_issue.' </td>
                     <td width="26%" height="20px" valign="middle"  style="font-size:10px;font-family:Arial, Helvetica, sans-serif; color:#000000; border:1px solid #CCCCCC;  border-top:0px; font-weight:600; border-top:0px; padding:5px; 5px 5px 5px;">&nbsp; Date Of Issue </td>
-                    <td width="26%" height="20px" valign="middle"  style="font-size:10px;font-family:Arial, Helvetica, sans-serif; color:#000000; border:1px solid #CCCCCC;  border-top:0px; font-weight:600; border-top:0px; padding:5px; 5px 5px 5px;">&nbsp; '.$out->surname.' </td>
+                    <td width="26%" height="20px" valign="middle"  style="font-size:10px;font-family:Arial, Helvetica, sans-serif; color:#000000; border:1px solid #CCCCCC;  border-top:0px; font-weight:600; border-top:0px; padding:5px; 5px 5px 5px;">&nbsp; '.$out->last_date_of_issue.' </td>
                   </tr>
                   <tr>
-                    <td colspan="4"  valign="middle" height="20px"  style="font-size:10px;font-family:Arial, Helvetica, sans-serif; color:#000000; border:1px solid #CCCCCC;  border-top:0px; font-weight:600; border-top:0px; padding:5px; 5px 5px 5px;">&nbsp;  Countries visited in last 10years<br/>
-                      '.$out->surname.' , '.$out->surname.' </td>
+                    <td colspan="4"  valign="middle" height="20px"  style="font-size:10px;font-family:Arial, Helvetica, sans-serif; color:#000000; border:1px solid #CCCCCC;  border-top:0px; font-weight:600; border-top:0px; padding:5px; 5px 5px 5px;">&nbsp;  Countries visited in last 10years<br/>&nbsp;  
+                      '.$out->countries_visited_last_10_years.' </td>
                   </tr>
                   <tr>
-                    <td colspan="4"  valign="middle" height="20px"  style="font-size:10px;font-family:Arial, Helvetica, sans-serif; color:#000000; border:1px solid #CCCCCC;  border-top:0px; font-weight:600; border-top:0px; padding:5px; 5px 5px 5px;">&nbsp; Have you been resused an Afghanistan visa or extension of hte same previously or deported fron India ?
-                      '.$out->surname.' , '.$out->surname.' </td>
+                    <td colspan="4"  valign="middle" height="20px"  style="font-size:10px;font-family:Arial, Helvetica, sans-serif; color:#000000; border:1px solid #CCCCCC;  border-top:0px; font-weight:600; border-top:0px; padding:5px; 5px 5px 5px;">&nbsp; Have you been resused an Indian Visa or extension of the same previously or deported from India ? '.$out->last_visit_previously_refused.' </td>
                   </tr>
                   <tr>
                     <td colspan="2"  valign="middle" height="20px"  style="font-size:10px;font-family:Arial, Helvetica, sans-serif; color:#000000; border:1px solid #CCCCCC;  border-top:0px; font-weight:600; border-top:0px; padding:5px; 5px 5px 5px;">&nbsp; If Yes above Mention when and by whome width control<br/>

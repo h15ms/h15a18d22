@@ -17,6 +17,26 @@
   <div class="wrapper">
     <div class="container">
 
+    <?php if($result == "1"){ ?>
+      <div class="alert alert-success alert-dismissible" role="alert" style="padding-left:40px;padding-right:40px;">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;
+          </span>
+        </button>
+        <i class="fa fa-check-square"></i> 
+        <b>Your profile has been saved successfully</b>
+      </div>
+    <?php }elseif($result == "0"){ ?>
+      <div class="alert alert-danger alert-dismissible" role="alert" style="padding-left:40px;padding-right:40px;">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;
+          </span>
+        </button>
+        <i class="fa fa-exclamation-triangle"></i> 
+        <b>Some problems occured, Try again! </b>
+      </div>
+    <?php } ?>
+
 
     
     <div class="panel-header">
