@@ -1,7 +1,7 @@
 <?php 
 
 
-class login extends CI_Controller
+class Login extends CI_Controller
 {
 	
 	function __construct()
@@ -26,8 +26,9 @@ class login extends CI_Controller
 
 	public function index()
 	{
+		$sess = $this->session->userdata();
 
-		if(isset($_SESSION['logged_in']['user_id'])){
+		if(isset($sess['logged_in']['user_id'])){
 
 		$this->load->view('template/header' , $this->active);
 		$this->load->view('dashboard/index');
@@ -175,20 +176,4 @@ class login extends CI_Controller
 }
 
 
-
-
-
- 	
-
-  
-
- 
-
-
-
-
-
-
- ?>
-
- 
+ ?> 

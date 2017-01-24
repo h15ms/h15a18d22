@@ -11,12 +11,12 @@ class dashboardModel extends CI_Model {
   }
     
   
-  // public function getCustomerData($customer_id)
-  // {
-  //       $con = $this->_con->con();
-  //       $pro = $con->query("SELECT * FROM ".PREFIX."customer WHERE id = '".$customer_id."' LIMIT 1 ")->fetch(PDO::FETCH_ASSOC);  
-  //       return $pro;
-  // }
+  public function getCustomerData($customer_id = '0')
+  {
+    $result = $this->db->get_where('mi_apply', array('id' => '10000'));
+    $res = $result->result();
+    return $res['0'];
+  }
     
     
   // public function getCustomerDataByUsername($user)

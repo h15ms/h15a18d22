@@ -288,14 +288,14 @@
                       <br>
                       <select class="form-control" name="acquire_nationality" id="acquire_nationality" onclick="nationality_pre(this);"> 
                         <option value="">Select</option>
-                        <option value="By_Birth">By Birth</option>
+                        <option value="By Birth">By Birth</option>
                         <option value="Naturalization">Naturalization</option>
                       </select>
                       <script type="text/javascript">
                         function nationality_pre(att)
                         {
                           var val = att.options[att.selectedIndex].value;
-                          document.getElementById("prev_nation").style.display = val == 'By_Birth' ? "block" : 'none';
+                          document.getElementById("prev_nation").style.display = val == 'Naturalization' ? "block" : 'none';
                         }
                       </script>
                     </div>
@@ -846,11 +846,11 @@
                     <h4>For Every Visa</h4>
                   </div>
                   <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
-                    <input class="form-control" value="<?php echo $_POST['v_duration_of_visa']; ?>" name="v_duration_of_visa" type="text" placeholder="Duration of Visa (in Months)" id="v_duration_of_visa" /> 
+                    <input class="form-control" value="<?php echo $_POST['v_duration_of_visa']; ?>" name="v_duration_of_visa" type="text" placeholder="Duration of Visa* (in Months)" id="v_duration_of_visa" required=""/> 
                   </div>
                   <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3 formspace">
-                    <select class="form-control" name="v_no_of_entries" id="v_no_of_entries">
-                      <option value="">Duration of Visa (in Months)</option>
+                    <select class="form-control" name="v_no_of_entries" id="v_no_of_entries" required="">
+                      <option value="">No of Entries*</option>
                       <option value="Single">Single</option>
                       <option value="Triple">Triple</option>
                       <option value="Double">Double</option>  
@@ -858,23 +858,23 @@
                     </select>
                   </div>
                   <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3 formspace">
-                    <select class="form-control" name="PurposeofVisit" id="v_purpose_of_visit">
-                      <option value="">Purpose of Visit</option>
+                    <select class="form-control" name="PurposeofVisit" id="v_purpose_of_visit" required="">
+                      <option value="">Purpose of Visit*</option>
                       <?php foreach ($data['purpose'] as $purpose) { ?>
                         <option <?php if($_POST['PurposeofVisit'] == $purpose){echo 'selected';} ?> value="<?php echo $purpose; ?>"><?php echo $purpose; ?></option>
                       <?php } ?>   
                     </select>
                   </div>
                   <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3 formspace">
-                    <input class="form-control" name="v_expected_date_journey" value="<?php echo $_POST['v_expected_date_journey']; ?>" type="text" placeholder="Expected Date journey" id="v_expected_date_journey" />
+                    <input class="form-control" name="v_expected_date_journey" value="<?php echo $_POST['v_expected_date_journey']; ?>" type="text" placeholder="Expected Date journey*" id="v_expected_date_journey" required=""/>
                   </div>
                 </div>
                 <div class="row rowspace">
                   <div  class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
-                    <input class="form-control" name="v_port_arrival" value="<?php echo $_POST['v_port_arrival']; ?>" type="text" placeholder="Port of Arrival in India" id="v_port_arrival" /> 
+                    <input class="form-control" name="v_port_arrival" value="<?php echo $_POST['v_port_arrival']; ?>" type="text" placeholder="Port of Arrival in India*" id="v_port_arrival" required="" /> 
                   </div>
                   <div  class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
-                    <input class="form-control" name="v_port_exit" value="<?php echo $_POST['v_port_exit']; ?>" type="text" placeholder="Expected Port of Exit from India" id="v_port_exit" /> 
+                    <input class="form-control" name="v_port_exit" value="<?php echo $_POST['v_port_exit']; ?>" type="text" placeholder="Expected Port of Exit from India*" id="v_port_exit" required="" /> 
                   </div>
                 </div>
                 <div class="row rowspace">
