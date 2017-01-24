@@ -17,7 +17,6 @@ class Doctor extends CI_Controller {
     public function index() {
         //$this->load->library('template');
         $this->load->library('template');
-        
         $cars=array("Volvo","BMW","Toyota");
         $this->template->set('cars',$cars);
         $this->template->set(array('message' => 'Hi there!','message1' => 'Hi there!erewew b','message2' => 'Hi there!rewfrewrew '));
@@ -32,10 +31,11 @@ class Doctor extends CI_Controller {
 	->set_layout('layout')
 	// views/welcome_message
 	->build('doctor/index');
+        
         //$this->template->set_layout('layout')->build('doctor/index');
         
-//        
-//        
+        
+        
 //        $this->template
 //
 //	// application/views/some_folder/header
