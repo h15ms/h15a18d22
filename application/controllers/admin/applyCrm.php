@@ -1,5 +1,5 @@
 <?php
-class applyCrm extends CI_Controller {
+class ApplyCrm extends CI_Controller {
 
   function __construct()
 	{

@@ -1,5 +1,5 @@
 <?php
-class homeModel 
+class HomeModel 
 {
 
   private $_con;

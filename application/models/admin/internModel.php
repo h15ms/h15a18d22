@@ -1,5 +1,5 @@
 <?php
-class interModel 
+class InterModel 
 {
 
     

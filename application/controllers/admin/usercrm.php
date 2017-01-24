@@ -1,5 +1,5 @@
 <?php
-class usercrm extends CI_Controller
+class Usercrm extends CI_Controller
 {
 
  function __construct() 

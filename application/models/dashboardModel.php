@@ -1,7 +1,7 @@
 <?php
 if (!defined('BASEPATH')) exit('No direct script access allowed');
 
-class dashboardModel extends CI_Model {
+class DashboardModel extends CI_Model {
   
     
   public function __construct() 

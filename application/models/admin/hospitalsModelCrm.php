@@ -1,5 +1,5 @@
 <?php
-class hospitalsModelCrm extends CI_Model
+class HospitalsModelCrm extends CI_Model
 {
 
   

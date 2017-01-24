@@ -1,5 +1,5 @@
 <?php
-class hospitalscrm extends CI_Controller {
+class Hospitalscrm extends CI_Controller {
 
   function __construct()
 	{

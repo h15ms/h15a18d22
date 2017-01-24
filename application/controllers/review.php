@@ -1,5 +1,5 @@
 <?php
-class review extends CI_Controller {
+class Review extends CI_Controller {
 
 
   private $_view;

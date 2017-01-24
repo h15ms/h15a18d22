@@ -1,5 +1,5 @@
 <?php
-class internModel 
+class InternModel 
 {
 
   private $_con;
