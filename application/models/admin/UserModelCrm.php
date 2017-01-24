@@ -1,5 +1,5 @@
 <?php
-class UserModelCrm  extends CI_Model
+class UserModelcrm  extends CI_Model
 {
 
   
