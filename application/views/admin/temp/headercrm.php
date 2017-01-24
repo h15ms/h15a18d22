@@ -1,41 +1,42 @@
-<?php define('URLI', base_url().'/assets/admin/'); 
+<?php  $burl=base_url().'/assets/admin/';
+define('URL_ADMIN', $burl); 
 ?>
 
 <!DOCTYPE html>
 <html lang="de">
 <head>
-	<meta charset="utf-8">
+                <meta charset="utf-8">
       
-	<title><?php echo $page_title ? $page_title : 'CRM'; ?></title>
+                <title><?php echo $page_title ? $page_title : 'CRM'; ?></title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<meta name="description" content="Cargusto.com">
-	<meta name="author" content="Cargusto.com">
-	<link rel="shortcut icon" href="assets/icon/favicon.png" />    
-    <link rel="stylesheet" href="<?php echo URLI;?>css/styles.css">
-    <link rel="stylesheet" href="<?php echo URLI;?>fonts/font-awesome/css/font-awesome.css">
-    <link href='<?php echo URLI;?>demo/variations/default.css' rel='stylesheet' type='text/css' media='all' id='styleswitcher'>     
-    <link href='<?php echo URLI;?>demo/variations/header-white.css' rel='stylesheet' type='text/css' media='all' id='headerswitcher'> 
+                <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                <meta name="description" content="Cargusto.com">
+                <meta name="author" content="Cargusto.com">
+                <link rel="shortcut icon" href="assets/icon/favicon.png" />    
+    <link rel="stylesheet" href="<?php echo URL_ADMIN;?>css/styles.css">
+    <link rel="stylesheet" href="<?php echo URL_ADMIN;?>fonts/font-awesome/css/font-awesome.css">
+    <link href='<?php echo URL_ADMIN;?>demo/variations/default.css' rel='stylesheet' type='text/css' media='all' id='styleswitcher'>     
+    <link href='<?php echo URL_ADMIN;?>demo/variations/header-white.css' rel='stylesheet' type='text/css' media='all' id='headerswitcher'> 
    
 <?php
 function linktag($address) {echo "<link rel='stylesheet' type='text/css' href='$address' /> \n";}?>
  
-<link rel='stylesheet' type='text/css' href='<?php echo URLI;?>plugins/form-daterangepicker/daterangepicker-bs3.css' />
-<link rel='stylesheet' type='text/css' href='<?php echo URLI;?>plugins/fullcalendar/fullcalendar.css' />
-<link rel='stylesheet' type='text/css' href='<?php echo URLI;?>plugins/form-markdown/css/bootstrap-markdown.min.css' />
-<link rel='stylesheet' type='text/css' href='<?php echo URLI;?>plugins/codeprettifier/prettify.css' />
-<link rel='stylesheet' type='text/css' href='<?php echo URLI;?>plugins/form-toggle/toggles.css' />
-<link rel='stylesheet' type='text/css' href='<?php echo URLI;?>plugins/datatables/dataTables.css' />
-<link rel='stylesheet' type='text/css' href='<?php echo URLI;?>plugins/form-select2/select2.css' />
-<link rel='stylesheet' type='text/css' href='<?php echo URLI;?>plugins/form-multiselect/css/multi-select.css' />
-<link rel='stylesheet' type='text/css' href='<?php echo URLI;?>plugins/form-daterangepicker/daterangepicker-bs3.css' />
-<link rel='stylesheet' type='text/css' href='<?php echo URLI;?>plugins/form-fseditor/fseditor.css' />
-<link rel='stylesheet' type='text/css' href='<?php echo URLI;?>plugins/form-tokenfield/bootstrap-tokenfield.css' />
-<link rel='stylesheet' type='text/css' href='<?php echo URLI;?>js/jqueryui.css' />
-<link rel='stylesheet' type='text/css' href='<?php echo URLI;?>css/print.css' />
-<link rel='stylesheet' type='text/css' href='<?php echo URLI;?>plugins/jquery-fileupload/css/jquery.fileupload-ui.css' />
-<link rel='stylesheet' type='text/css' href='<?php echo URLI;?>plugins/dropzone/css/dropzone.css' />
-<script type='text/javascript' src='<?php echo URLI ; ?>js/less.js'></script>
+<link rel='stylesheet' type='text/css' href='<?php echo URL_ADMIN;?>plugins/form-daterangepicker/daterangepicker-bs3.css' />
+<link rel='stylesheet' type='text/css' href='<?php echo URL_ADMIN;?>plugins/fullcalendar/fullcalendar.css' />
+<link rel='stylesheet' type='text/css' href='<?php echo URL_ADMIN;?>plugins/form-markdown/css/bootstrap-markdown.min.css' />
+<link rel='stylesheet' type='text/css' href='<?php echo URL_ADMIN;?>plugins/codeprettifier/prettify.css' />
+<link rel='stylesheet' type='text/css' href='<?php echo URL_ADMIN;?>plugins/form-toggle/toggles.css' />
+<link rel='stylesheet' type='text/css' href='<?php echo URL_ADMIN;?>plugins/datatables/dataTables.css' />
+<link rel='stylesheet' type='text/css' href='<?php echo URL_ADMIN;?>plugins/form-select2/select2.css' />
+<link rel='stylesheet' type='text/css' href='<?php echo URL_ADMIN;?>plugins/form-multiselect/css/multi-select.css' />
+<link rel='stylesheet' type='text/css' href='<?php echo URL_ADMIN;?>plugins/form-daterangepicker/daterangepicker-bs3.css' />
+<link rel='stylesheet' type='text/css' href='<?php echo URL_ADMIN;?>plugins/form-fseditor/fseditor.css' />
+<link rel='stylesheet' type='text/css' href='<?php echo URL_ADMIN;?>plugins/form-tokenfield/bootstrap-tokenfield.css' />
+<link rel='stylesheet' type='text/css' href='<?php echo URL_ADMIN;?>js/jqueryui.css' />
+<link rel='stylesheet' type='text/css' href='<?php echo URL_ADMIN;?>css/print.css' />
+<link rel='stylesheet' type='text/css' href='<?php echo URL_ADMIN;?>plugins/jquery-fileupload/css/jquery.fileupload-ui.css' />
+<link rel='stylesheet' type='text/css' href='<?php echo URL_ADMIN;?>plugins/dropzone/css/dropzone.css' />
+<script type='text/javascript' src='<?php echo URL_ADMIN ; ?>js/less.js'></script>
       
   
 
@@ -56,29 +57,29 @@ function linktag($address) {echo "<link rel='stylesheet' type='text/css' href='$
             <a class="navbar-brand" href="index.php"></a>
         </div>
 
-        <ul class="nav navbar-nav pull-right toolbar">        	        	
-        	<li class="dropdown">
-        		<a href="#" class="dropdown-toggle username" data-toggle="dropdown"><span class="hidden-xs"><?php //echo $user['vorname']." ".$user['nachname'];?> <i class="fa fa-caret-down"></i></span></a>
-        		<ul class="dropdown-menu userinfo arrow">
-        			<li class="username">                       
-                        <a href="#">        				    
-        				    <div class="pull-right"><h5><?php //echo $user['vorname']." ".$user['nachname'];?></h5><small>Signed In with <span><?php //echo $user['email'];?></span></small></div>
+        <ul class="nav navbar-nav pull-right toolbar">                            
+                <li class="dropdown">
+                                <a href="#" class="dropdown-toggle username" data-toggle="dropdown"><span class="hidden-xs"><?php //echo $user['vorname']." ".$user['nachname'];?> <i class="fa fa-caret-down"></i></span></a>
+                                <ul class="dropdown-menu userinfo arrow">
+                                                <li class="username">                       
+                        <a href="#">                                                                 
+                                                                    <div class="pull-right"><h5><?php //echo $user['vorname']." ".$user['nachname'];?></h5><small>Signed In with <span><?php //echo $user['email'];?></span></small></div>
                         </a>
-        			</li>
-        			<li class="userlinks">
-        				<ul class="dropdown-menu">        					
+                                                </li>
+                                                <li class="userlinks">
+                                                                <ul class="dropdown-menu">                                                                                   
                                             <li><a href="<?php echo base_url();?>admin/usercrm/user&id=<?php //echo $user['id'];?>">Edit Profile <i class="pull-right fa fa-cog"></i></a></li>
-        					<li><a href="<?php echo base_url();?>admin/pwchange">Change Password <i class="pull-right fa fa-pencil"></i></a></li>        					
-        					<li class="divider"></li>
-        					<li><a href="<?php echo base_url();?>admin/login/logout" class="">Sign out <i class="pull-right fa fa-sign-out"></i></a></li>
-        				</ul>
-        			</li>
-        		</ul>
-        	</li> 
-        	<li>
+                                                                                <li><a href="<?php echo base_url();?>admin/pwchange">Change Password <i class="pull-right fa fa-pencil"></i></a></li>                                                                                        
+                                                                                <li class="divider"></li>
+                                                                                <li><a href="<?php echo base_url();?>admin/login/logout" class="">Sign out <i class="pull-right fa fa-sign-out"></i></a></li>
+                                                                </ul>
+                                                </li>
+                                </ul>
+                </li> 
+                <li>
                 <a href="#" id="headerbardropdown"><span><i class="fa fa-calendar-o"></i>  <?php // echo date("F j, Y"); ?></span></a>
-            </li>       	            
-		</ul>
+            </li>                       
+                                </ul>
     </header>
 
     
@@ -92,7 +93,7 @@ function linktag($address) {echo "<link rel='stylesheet' type='text/css' href='$
                 <li id="search">                    
                     <a href="javascript:;"><i class="fa fa-search opacity-control"></i></a>
                      <form action="index.php" method="get">                     
-                     	<input type="hidden" value="applyprofil" name="c">
+                                <input type="hidden" value="applyprofil" name="c">
                         <input type="text" class="search-query" name="id" placeholder="Application #ID.">
                         <button type="submit"><i class="fa fa-search"></i></button>
                     </form>
