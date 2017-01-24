@@ -36,7 +36,6 @@ class Doctor extends CI_Controller {
         
         $this->template->set('metadata','Layouts in this library are very similar to layouts in Ruby on Rails and other frameworks. The basic idea is that most of your pages will share the sam');
         
-<<<<<<< HEAD:application/controllers/doctor.php
         $this->template
 	// application/views/some_folder/header
 	//  ->inject_partial('header', '<h1> 666 Hello World!</h1>')
@@ -46,7 +45,6 @@ class Doctor extends CI_Controller {
 	->build('doctor/index');
         
         //$this->template->set_layout('layout')->build('doctor/index');
-=======
 //        $this->template
 //	// application/views/some_folder/header
 //	//  ->inject_partial('header', '<h1> 666 Hello World!</h1>')
@@ -58,9 +56,6 @@ class Doctor extends CI_Controller {
         
         
         $this->template->set_layout('layout')->build('doctor/index');
->>>>>>> origin/master:application/controllers/Doctor.php
-        
-        
         
 //        $this->template
 //
