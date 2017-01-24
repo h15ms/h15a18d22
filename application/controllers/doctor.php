@@ -27,12 +27,12 @@ class Doctor extends CI_Controller {
         
         $this->template
 	// application/views/some_folder/header
-	->inject_partial('header', '<h1> 666 Hello World!</h1>')
+	//  ->inject_partial('header', '<h1> 666 Hello World!</h1>')
 	// application/views/layouts/two_col.php
 	->set_layout('layout')
 	// views/welcome_message
 	->build('doctor/index');
-        
+        //$this->template->set_layout('layout')->build('doctor/index');
         
 //        
 //        
