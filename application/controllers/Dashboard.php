@@ -11,17 +11,9 @@ class Dashboard extends CI_Controller
   public function index() 
   { 
     $res = $this->model->getCustomerData();
-<<<<<<< HEAD
-    echo "<pre>";
-    print_r($res);
-    echo "</pre>";
-    exit;
-=======
-     echo "<pre>";
-     print_r($res);
-     echo "</pre>";
-     exit;
->>>>>>> origin/master
+echo '<pre>';
+print_r($res);
+echo '</pre>';
     $sess = $this->session->userdata();
         if($sess['logged_in']['user_id'] == ""){
 
@@ -47,8 +39,11 @@ class Dashboard extends CI_Controller
     $out = $this->model->getCustomerData();  
 
 $acquire_nationality='';
+$visa_type_display='';
+$d = explode(' ',$out->apply_date);
 
-
+$d1= explode(".", $d[0]);
+$date=$d1[0].'-'.$d1[1].'-'.$d1[2];
   if($out->acquire_nationality == 'Naturalization'):
   $acquire_nationality='<tr>
       <td width="30%" valign="middle" height="20px"  style="font-size:10px;font-family:Arial, Helvetica, sans-serif; color:#000000; border:1px solid #CCCCCC; border-top:0px; font-weight:600; border-top:0px; border-right:0px; padding:5px;">&nbsp;  Any Other Previous/Past Nationality </td>
@@ -378,28 +373,28 @@ $acquire_nationality='';
                     <td colspan="2"  valign="middle" height="20px"  style="font-size:10px;font-family:Arial, Helvetica, sans-serif; color:#000000; border:1px solid #CCCCCC;  border-top:0px; font-weight:600; border-top:0px; padding:5px; 5px 5px 5px;">&nbsp; If Yes above Mention when and by whome width control<br/>
                       No / Date </td>
                     <td colspan="2"  valign="middle" height="20px"  style="font-size:10px;font-family:Arial, Helvetica, sans-serif; color:#000000; border:1px solid #CCCCCC;  border-top:0px; font-weight:600; border-top:0px; padding:5px; 5px 5px 5px;"></td>
-                  </tr>
+                  '.$out->mention_control_no.'</tr>
                   <tr>
                     <td colspan="4"  valign="middle" height="20px"  style="font-size:10px;font-family:Arial, Helvetica, sans-serif; color:#000000; background-color:#eeeeee; border:1px solid #CCCCCC;  border-top:0px; font-weight:600; border-top:0px; padding:5px; 5px 5px 5px;">&nbsp;  G. Profession / Occupation Details </td>
                   </tr>
                   <tr>
                     <td   valign="middle" height="20px"  style="font-size:10px;font-family:Arial, Helvetica, sans-serif; color:#000000;  border:1px solid #CCCCCC;  border-top:0px; font-weight:600; border-top:0px; padding:5px; 5px 5px 5px;">&nbsp;  Present Occupation </td>
-                    <td   valign="middle" height="20px"  style="font-size:10px;font-family:Arial, Helvetica, sans-serif; color:#000000; border:1px solid #CCCCCC;  border-top:0px; font-weight:600; border-top:0px; padding:5px; 5px 5px 5px;">&nbsp;    '.$out->surname.' </td>
-                    <td   valign="middle" height="20px"  style="font-size:10px;font-family:Arial, Helvetica, sans-serif; color:#000000; border:1px solid #CCCCCC;  border-top:0px; font-weight:600; border-top:0px; padding:5px; 5px 5px 5px;">&nbsp;  Designationa / Rank </td>
-                    <td   valign="middle" height="20px"  style="font-size:10px;font-family:Arial, Helvetica, sans-serif; color:#000000;  border:1px solid #CCCCCC;  border-top:0px; font-weight:600; border-top:0px; padding:5px; 5px 5px 5px;">&nbsp;  '.$out->surname.' </td>
+                    <td   valign="middle" height="20px"  style="font-size:10px;font-family:Arial, Helvetica, sans-serif; color:#000000; border:1px solid #CCCCCC;  border-top:0px; font-weight:600; border-top:0px; padding:5px; 5px 5px 5px;">&nbsp;    '.$out->present_occupation.' </td>
+                    <td   valign="middle" height="20px"  style="font-size:10px;font-family:Arial, Helvetica, sans-serif; color:#000000; border:1px solid #CCCCCC;  border-top:0px; font-weight:600; border-top:0px; padding:5px; 5px 5px 5px;">&nbsp;  Designation / Rank </td>
+                    <td   valign="middle" height="20px"  style="font-size:10px;font-family:Arial, Helvetica, sans-serif; color:#000000;  border:1px solid #CCCCCC;  border-top:0px; font-weight:600; border-top:0px; padding:5px; 5px 5px 5px;">&nbsp;  '.$out->designation.' </td>
                   </tr>
                   <tr>
                     <td   valign="middle" height="20px"  style="font-size:10px;font-family:Arial, Helvetica, sans-serif; color:#000000;  border:1px solid #CCCCCC;  border-top:0px; font-weight:600; border-top:0px; padding:5px; 5px 5px 5px;">&nbsp;  Employer name / Businesss </td>
-                    <td   valign="middle" height="20px" colspan="3"  style="font-size:10px;font-family:Arial, Helvetica, sans-serif; color:#000000; border:1px solid #CCCCCC;  border-top:0px; font-weight:600; border-top:0px; padding:5px; 5px 5px 5px;">&nbsp;    '.$out->surname.' </td>
+                    <td   valign="middle" height="20px" colspan="3"  style="font-size:10px;font-family:Arial, Helvetica, sans-serif; color:#000000; border:1px solid #CCCCCC;  border-top:0px; font-weight:600; border-top:0px; padding:5px; 5px 5px 5px;">&nbsp;    '.$out->business_name.' </td>
                   </tr>
                   <tr>
                     <td   valign="middle" height="20px"  style="font-size:10px;font-family:Arial, Helvetica, sans-serif; color:#000000;  border:1px solid #CCCCCC;  border-top:0px; font-weight:600; border-top:0px; padding:5px; 5px 5px 5px;">&nbsp;  Employer Address <br/>
                       Phone Number </td>
-                    <td   valign="middle" height="20px" colspan="3"  style="font-size:10px;font-family:Arial, Helvetica, sans-serif; color:#000000; border:1px solid #CCCCCC;  border-top:0px; font-weight:600; border-top:0px; padding:5px; 5px 5px 5px;">&nbsp;    '.$out->surname.' </td>
+                    <td   valign="middle" height="20px" colspan="3"  style="font-size:10px;font-family:Arial, Helvetica, sans-serif; color:#000000; border:1px solid #CCCCCC;  border-top:0px; font-weight:600; border-top:0px; padding:5px; 5px 5px 5px;">&nbsp;    '.$out->address.' </td>
                   </tr>
                   <tr>
                     <td   valign="middle" height="20px"  style="font-size:10px;font-family:Arial, Helvetica, sans-serif; color:#000000;  border:1px solid #CCCCCC;  border-top:0px; font-weight:600; border-top:0px; padding:5px; 5px 5px 5px;">&nbsp;  Past Occupation if Any </td>
-                    <td   valign="middle" height="20px" colspan="3"  style="font-size:10px;font-family:Arial, Helvetica, sans-serif; color:#000000; border:1px solid #CCCCCC;  border-top:0px; font-weight:600; border-top:0px; padding:5px; 5px 5px 5px;">&nbsp;    '.$out->surname.' </td>
+                    <td   valign="middle" height="20px" colspan="3"  style="font-size:10px;font-family:Arial, Helvetica, sans-serif; color:#000000; border:1px solid #CCCCCC;  border-top:0px; font-weight:600; border-top:0px; padding:5px; 5px 5px 5px;">&nbsp;    '.$out->past_occupation.' </td>
                   </tr>
                   <tr>
                     <td   valign="middle" height="20px"  colspan="4" style="font-size:10px;font-family:Arial, Helvetica, sans-serif; color:#000000;  border:1px solid #CCCCCC;  border-top:0px; font-weight:600; border-top:0px; padding:5px; 5px 5px 5px;">&nbsp;  Are/Have you worked with Armed Forces/Police /Para Military forces ? No </td>
@@ -416,10 +411,10 @@ $acquire_nationality='';
                     <td width="20%" height="20px"   valign="middle"  style="font-size:10px;font-family:Arial, Helvetica, sans-serif; color:#000000;  border:1px solid #CCCCCC;  border-top:0px; font-weight:600; border-top:0px; padding:5px; 5px 5px 5px;">&nbsp;  Phone No. </td>
                   </tr>
                   <tr>
-                    <td width="20%" height="20px"   valign="middle"  style="font-size:10px;font-family:Arial, Helvetica, sans-serif; color:#000000;  border:1px solid #CCCCCC;  border-top:0px; font-weight:600; border-top:0px; padding:5px; 5px 5px 5px;">&nbsp;  '.$out->surname.' </td>
-                    <td width="47%" height="20px"   valign="middle"  style="font-size:10px;font-family:Arial, Helvetica, sans-serif; color:#000000; border:1px solid #CCCCCC;  border-top:0px; font-weight:600; border-top:0px; padding:5px; 5px 5px 5px;">&nbsp;  '.$out->surname.' </td>
-                    <td width="13%" height="20px"   valign="middle"  style="font-size:10px;font-family:Arial, Helvetica, sans-serif; color:#000000; border:1px solid #CCCCCC;  border-top:0px; font-weight:600; border-top:0px; padding:5px; 5px 5px 5px;">&nbsp;  '.$out->surname.' </td>
-                    <td width="20%" height="20px"   valign="middle"  style="font-size:10px;font-family:Arial, Helvetica, sans-serif; color:#000000;  border:1px solid #CCCCCC;  border-top:0px; font-weight:600; border-top:0px; padding:5px; 5px 5px 5px;">&nbsp;  '.$out->surname.' </td>
+                    <td width="20%" height="20px"   valign="middle"  style="font-size:10px;font-family:Arial, Helvetica, sans-serif; color:#000000;  border:1px solid #CCCCCC;  border-top:0px; font-weight:600; border-top:0px; padding:5px; 5px 5px 5px;">&nbsp;   </td>
+                    <td width="47%" height="20px"   valign="middle"  style="font-size:10px;font-family:Arial, Helvetica, sans-serif; color:#000000; border:1px solid #CCCCCC;  border-top:0px; font-weight:600; border-top:0px; padding:5px; 5px 5px 5px;">&nbsp;   </td>
+                    <td width="13%" height="20px"   valign="middle"  style="font-size:10px;font-family:Arial, Helvetica, sans-serif; color:#000000; border:1px solid #CCCCCC;  border-top:0px; font-weight:600; border-top:0px; padding:5px; 5px 5px 5px;">&nbsp;    </td>
+                    <td width="20%" height="20px"   valign="middle"  style="font-size:10px;font-family:Arial, Helvetica, sans-serif; color:#000000;  border:1px solid #CCCCCC;  border-top:0px; font-weight:600; border-top:0px; padding:5px; 5px 5px 5px;">&nbsp;    </td>
                   </tr>
                 </table>
                 <div class="page-break"></div>
@@ -437,18 +432,18 @@ $acquire_nationality='';
                               </tr>
                               <tr>
                                 <td width="12%" height="20px"   valign="middle"  style="font-size:10px;font-family:Arial, Helvetica, sans-serif; color:#000000; border:1px solid #CCCCCC;  border-top:0px; font-weight:600; border-top:0px; padding:5px; 5px 5px 5px;">&nbsp;  Name </td>
-                                <td width="39%" height="20px"   valign="middle"  style="font-size:10px;font-family:Arial, Helvetica, sans-serif; color:#000000; border:1px solid #CCCCCC;  border-top:0px; font-weight:600; border-top:0px; padding:5px; 5px 5px 5px;">&nbsp;  '.$out->surname.' </td>
-                                <td width="49%" height="20px" colspan="2"  valign="middle"  style="font-size:10px;font-family:Arial, Helvetica, sans-serif; color:#000000; border:1px solid #CCCCCC;  border-top:0px; font-weight:600; border-top:0px; padding:5px; 5px 5px 5px;">&nbsp;  '.$out->surname.' </td>
+                                <td width="39%" height="20px"   valign="middle"  style="font-size:10px;font-family:Arial, Helvetica, sans-serif; color:#000000; border:1px solid #CCCCCC;  border-top:0px; font-weight:600; border-top:0px; padding:5px; 5px 5px 5px;">&nbsp;  '.$out->reference_name_india.' </td>
+                                <td width="49%" height="20px" colspan="2"  valign="middle"  style="font-size:10px;font-family:Arial, Helvetica, sans-serif; color:#000000; border:1px solid #CCCCCC;  border-top:0px; font-weight:600; border-top:0px; padding:5px; 5px 5px 5px;">&nbsp;  '.$out->reference_name_country.' </td>
                               </tr>
                               <tr>
                                 <td width="12%" height="20px"   valign="middle"  style="font-size:10px;font-family:Arial, Helvetica, sans-serif; color:#000000; border:1px solid #CCCCCC;  border-top:0px; font-weight:600; border-top:0px; padding:5px; 5px 5px 5px;">&nbsp;  Address </td>
-                                <td width="39%" height="20px"   valign="middle"  style="font-size:10px;font-family:Arial, Helvetica, sans-serif; color:#000000; border:1px solid #CCCCCC;  border-top:0px; font-weight:600; border-top:0px; padding:5px; 5px 5px 5px;">&nbsp;  '.$out->surname.' </td>
-                                <td width="49%" height="20px" colspan="2"  valign="middle"  style="font-size:10px;font-family:Arial, Helvetica, sans-serif; color:#000000; border:1px solid #CCCCCC;  border-top:0px; font-weight:600; border-top:0px; padding:5px; 5px 5px 5px;">&nbsp;  '.$out->surname.' </td>
+                                <td width="39%" height="20px"   valign="middle"  style="font-size:10px;font-family:Arial, Helvetica, sans-serif; color:#000000; border:1px solid #CCCCCC;  border-top:0px; font-weight:600; border-top:0px; padding:5px; 5px 5px 5px;">&nbsp;  '.$out->reference_address_india_1.' </td>
+                                <td width="49%" height="20px" colspan="2"  valign="middle"  style="font-size:10px;font-family:Arial, Helvetica, sans-serif; color:#000000; border:1px solid #CCCCCC;  border-top:0px; font-weight:600; border-top:0px; padding:5px; 5px 5px 5px;">&nbsp;  '.$out->reference_address_country_1.' </td>
                               </tr>
                               <tr>
                                 <td width="12%" height="20px"   valign="middle"  style="font-size:10px;font-family:Arial, Helvetica, sans-serif; color:#000000; border:1px solid #CCCCCC;  border-top:0px; font-weight:600; border-top:0px; padding:5px; 5px 5px 5px;">&nbsp;  Phone </td>
-                                <td width="39%" height="20px"   valign="middle"  style="font-size:10px;font-family:Arial, Helvetica, sans-serif; color:#000000; border:1px solid #CCCCCC;  border-top:0px; font-weight:600; border-top:0px; padding:5px; 5px 5px 5px;">&nbsp;  '.$out->surname.' </td>
-                                <td width="49%" height="20px" colspan="2"  valign="middle"  style="font-size:10px;font-family:Arial, Helvetica, sans-serif; color:#000000; border:1px solid #CCCCCC;  border-top:0px; font-weight:600; border-top:0px; padding:5px; 5px 5px 5px;">&nbsp;  '.$out->surname.' </td>
+                                <td width="39%" height="20px"   valign="middle"  style="font-size:10px;font-family:Arial, Helvetica, sans-serif; color:#000000; border:1px solid #CCCCCC;  border-top:0px; font-weight:600; border-top:0px; padding:5px; 5px 5px 5px;">&nbsp;  '.$out->reference_phone_india.' </td>
+                                <td width="49%" height="20px" colspan="2"  valign="middle"  style="font-size:10px;font-family:Arial, Helvetica, sans-serif; color:#000000; border:1px solid #CCCCCC;  border-top:0px; font-weight:600; border-top:0px; padding:5px; 5px 5px 5px;">&nbsp;  '.$out->reference_phone_country.' </td>
                               </tr>
                             </table></td>
                         </tr>
@@ -480,7 +475,7 @@ $acquire_nationality='';
                     <td height="80px" style="font-size:10px;font-family:Arial, Helvetica, sans-serif; color:#000000; font-weight:600; border-top:0px; padding:5px; 5px 5px 5px;"></td>
                   </tr>
                   <tr>
-                    <td height="20px"  style="font-size:10px;font-family:Arial, Helvetica, sans-serif; color:#000000;  font-weight:600; border-top:0px; padding:5px; 5px 5px 5px;">Date : 15-SEP-2016</td>
+                    <td height="20px"  style="font-size:10px;font-family:Arial, Helvetica, sans-serif; color:#000000;  font-weight:600; border-top:0px; padding:5px; 5px 5px 5px;">Date : '.$date.'</td>
                     <td height="20px"  align="right" style="font-size:10px;font-family:Arial, Helvetica, sans-serif; color:#000000;  font-weight:600; border-top:0px;  padding:5px; 5px 5px 5px;">Applicant Signature (as in Passport)</td>
                   </tr>
                 </table></td>
@@ -490,21 +485,22 @@ $acquire_nationality='';
 
        </body></html>';
       $name = date("Ymd").rand().'.pdf';
-      $reportPDF= $this->createPDF(12, $pdf_content, 'activity_Report', $name );
+      $reportPDF= $this->createPDF($pdf_content);
 
   } 
 
-  function createPDF($pdf_userid, $pdf_content, $pdf_For, $filename){
+    function createPDF($pdf_content){
     
     date_default_timezone_set('Asia/Kolkata');
     require_once (BASEPATH.'pdf/dompdf_config.inc.php');
 
     $dompdf=new DOMPDF();
-    $dompdf->load_html($pdf_content);
-    $dompdf->render();
-    $output = $dompdf->output();
-    return $dompdf->stream($output); 
-  } 
+  //  print_r($dompdf);
+  $dompdf->load_html($pdf_content);
+   $dompdf->set_paper('a4', 'portrait');
+        $dompdf->render();
+ return     $dompdf->stream("newfile.pdf");
   
+  }
   
 }
