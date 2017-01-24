@@ -23,13 +23,7 @@ class Doctor extends CI_Controller {
         $this->template->set(array('message' => 'Hi there!','message1' => 'Hi there!erewew b','message2' => 'Hi there!rewfrewrew '));
         $title = 'EVERYTHING WITH NGINE';
         $this->template->title('Blog', $title);
-        
-        
-        
         $this->template->set('metadata','Layouts in this library are very similar to layouts in Ruby on Rails and other frameworks. The basic idea is that most of your pages will share the sam');
-        
-        
-        
         
         $this->template
 	// application/views/some_folder/header

@@ -1,4 +1,4 @@
-<?php define('URLI', 'http://localhost/miconsulting/assets/admin/'); 
+<?php define('URLI', base_url().'/assets/admin/'); 
 ?>
 
 <!DOCTYPE html>
