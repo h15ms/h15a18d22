@@ -1,6 +1,6 @@
 <?php
 
-class HomeCrm extends CI_Controller {
+class Homecrm extends CI_Controller {
 
 
   public function __construct() {
