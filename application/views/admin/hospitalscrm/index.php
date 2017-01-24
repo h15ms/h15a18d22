@@ -36,7 +36,7 @@
             </div>
           <div class="panel-body collapse in">                                  
           <?php //print_r($hospitals);?>
-            <div class="table-flipscroll">
+            <div class="table-flipscroll table-responsive">
                <table cellpadding="0" cellspacing="0" border="0" class="table table-striped table-bordered table-hover datatable" id="customer_table">
 					<thead>
 					<tr>
@@ -82,7 +82,15 @@
                             </td>
                             <td><?php echo $hospital->distance_from_airport; ?></td>
                            
-                            <td align="center"><a href="<?php echo base_url(); ?>admin/hospitalscrm/viewHospital/<?php echo $hospital->appID; ?>"><i class="fa fa-user"></i></a></td>
+                            <td align="center"><a href="<?php echo base_url(); ?>admin/hospitalscrm/viewhospital/<?php echo $hospital->appID; ?>"><i class="fa fa-user"></i></a>
+                            <a href="<?php echo base_url(); ?>admin/hospitalscrm/viewhospital/<?php echo $hospital->appID; ?>"><i class="fa fa-pencil-square-o"></i></a>
+                            <a href="<?php echo base_url(); ?>admin/hospitalscrm/viewhospital/<?php echo $hospital->appID; ?>"><i class="fa fa-user"></i></a>
+                            
+                            
+                            
+                            
+                            
+                            </td>
                         </tr>
                         <?php $i++; endforeach; ?>
 					</tbody>

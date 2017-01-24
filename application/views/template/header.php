@@ -1,4 +1,4 @@
-<?php define('URL', 'http://localhost/miconsulting/'); ?>
+<?php define('URL', base_url()); ?>
 
 <?php error_reporting(0); ?>
 <!DOCTYPE html>

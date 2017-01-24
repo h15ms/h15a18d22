@@ -37,7 +37,7 @@
           <div class="panel-body collapse in">                                  
            
               
-            <form method="post" >
+            <form method="post" enctype="multipart/form-data" >
             <input type="hidden" name="send" value="1">                        
               
             <div class="col-xs-12 col-sm-12 col-md-12"> 

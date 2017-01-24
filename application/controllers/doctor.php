@@ -29,9 +29,9 @@ class Doctor extends CI_Controller {
 	// application/views/some_folder/header
 	->inject_partial('header', '<h1> 666 Hello World!</h1>')
 	// application/views/layouts/two_col.php
-	->set_layout('two_col')
+	->set_layout('layout')
 	// views/welcome_message
-	->build('welcome_message');
+	->build('doctor/index');
         
         
 //        

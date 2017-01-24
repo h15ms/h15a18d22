@@ -5,12 +5,14 @@
         <title><?php echo $template['title']; ?></title>
         <?php echo $template['metadata']; ?>
     </head>
- <?php include_once 'header.php';?>
+    <?php include_once 'header.php'; ?>
     <body id="top" class="home page page-id-2 page-template-default logged-in stretched open_sans " itemscope="itemscope" itemtype="https://schema.org/WebPage" >
-    <div id='wrap_all'>
-        <h1><?php echo $template['title']; ?></h1>
-      <?php include_once 'nab.php';?>
-        <?php echo $template['body']; ?>
-      </div>
-      <?php include_once 'footer.php';?>
+        <div id='wrap_all'>
+            <h1><?php echo $template['title']; ?></h1>
+            <?php include_once 'nab.php'; ?>
+            <?php echo $template['body']; ?>
+        </div>
+        <?php include_once 'footer.php'; ?>
+
+    </body>
 </html>
