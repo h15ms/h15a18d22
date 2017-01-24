@@ -1,5 +1,5 @@
 <?php  $burl=base_url().'/assets/admin/';
-define('URLI', $burl); 
+define('URL_ADMIN', $burl); 
 ?>
 
 <!DOCTYPE html>
@@ -13,30 +13,30 @@ define('URLI', $burl);
 	<meta name="description" content="Cargusto.com">
 	<meta name="author" content="Cargusto.com">
 	<link rel="shortcut icon" href="assets/icon/favicon.png" />    
-    <link rel="stylesheet" href="<?php echo URLI;?>css/styles.css">
-    <link rel="stylesheet" href="<?php echo URLI;?>fonts/font-awesome/css/font-awesome.css">
-    <link href='<?php echo URLI;?>demo/variations/default.css' rel='stylesheet' type='text/css' media='all' id='styleswitcher'>     
-    <link href='<?php echo URLI;?>demo/variations/header-white.css' rel='stylesheet' type='text/css' media='all' id='headerswitcher'> 
+    <link rel="stylesheet" href="<?php echo URL_ADMIN;?>css/styles.css">
+    <link rel="stylesheet" href="<?php echo URL_ADMIN;?>fonts/font-awesome/css/font-awesome.css">
+    <link href='<?php echo URL_ADMIN;?>demo/variations/default.css' rel='stylesheet' type='text/css' media='all' id='styleswitcher'>     
+    <link href='<?php echo URL_ADMIN;?>demo/variations/header-white.css' rel='stylesheet' type='text/css' media='all' id='headerswitcher'> 
    
 <?php
 function linktag($address) {echo "<link rel='stylesheet' type='text/css' href='$address' /> \n";}?>
  
-<link rel='stylesheet' type='text/css' href='<?php echo URLI;?>plugins/form-daterangepicker/daterangepicker-bs3.css' />
-<link rel='stylesheet' type='text/css' href='<?php echo URLI;?>plugins/fullcalendar/fullcalendar.css' />
-<link rel='stylesheet' type='text/css' href='<?php echo URLI;?>plugins/form-markdown/css/bootstrap-markdown.min.css' />
-<link rel='stylesheet' type='text/css' href='<?php echo URLI;?>plugins/codeprettifier/prettify.css' />
-<link rel='stylesheet' type='text/css' href='<?php echo URLI;?>plugins/form-toggle/toggles.css' />
-<link rel='stylesheet' type='text/css' href='<?php echo URLI;?>plugins/datatables/dataTables.css' />
-<link rel='stylesheet' type='text/css' href='<?php echo URLI;?>plugins/form-select2/select2.css' />
-<link rel='stylesheet' type='text/css' href='<?php echo URLI;?>plugins/form-multiselect/css/multi-select.css' />
-<link rel='stylesheet' type='text/css' href='<?php echo URLI;?>plugins/form-daterangepicker/daterangepicker-bs3.css' />
-<link rel='stylesheet' type='text/css' href='<?php echo URLI;?>plugins/form-fseditor/fseditor.css' />
-<link rel='stylesheet' type='text/css' href='<?php echo URLI;?>plugins/form-tokenfield/bootstrap-tokenfield.css' />
-<link rel='stylesheet' type='text/css' href='<?php echo URLI;?>js/jqueryui.css' />
-<link rel='stylesheet' type='text/css' href='<?php echo URLI;?>css/print.css' />
-<link rel='stylesheet' type='text/css' href='<?php echo URLI;?>plugins/jquery-fileupload/css/jquery.fileupload-ui.css' />
-<link rel='stylesheet' type='text/css' href='<?php echo URLI;?>plugins/dropzone/css/dropzone.css' />
-<script type='text/javascript' src='<?php echo URLI ; ?>js/less.js'></script>
+<link rel='stylesheet' type='text/css' href='<?php echo URL_ADMIN;?>plugins/form-daterangepicker/daterangepicker-bs3.css' />
+<link rel='stylesheet' type='text/css' href='<?php echo URL_ADMIN;?>plugins/fullcalendar/fullcalendar.css' />
+<link rel='stylesheet' type='text/css' href='<?php echo URL_ADMIN;?>plugins/form-markdown/css/bootstrap-markdown.min.css' />
+<link rel='stylesheet' type='text/css' href='<?php echo URL_ADMIN;?>plugins/codeprettifier/prettify.css' />
+<link rel='stylesheet' type='text/css' href='<?php echo URL_ADMIN;?>plugins/form-toggle/toggles.css' />
+<link rel='stylesheet' type='text/css' href='<?php echo URL_ADMIN;?>plugins/datatables/dataTables.css' />
+<link rel='stylesheet' type='text/css' href='<?php echo URL_ADMIN;?>plugins/form-select2/select2.css' />
+<link rel='stylesheet' type='text/css' href='<?php echo URL_ADMIN;?>plugins/form-multiselect/css/multi-select.css' />
+<link rel='stylesheet' type='text/css' href='<?php echo URL_ADMIN;?>plugins/form-daterangepicker/daterangepicker-bs3.css' />
+<link rel='stylesheet' type='text/css' href='<?php echo URL_ADMIN;?>plugins/form-fseditor/fseditor.css' />
+<link rel='stylesheet' type='text/css' href='<?php echo URL_ADMIN;?>plugins/form-tokenfield/bootstrap-tokenfield.css' />
+<link rel='stylesheet' type='text/css' href='<?php echo URL_ADMIN;?>js/jqueryui.css' />
+<link rel='stylesheet' type='text/css' href='<?php echo URL_ADMIN;?>css/print.css' />
+<link rel='stylesheet' type='text/css' href='<?php echo URL_ADMIN;?>plugins/jquery-fileupload/css/jquery.fileupload-ui.css' />
+<link rel='stylesheet' type='text/css' href='<?php echo URL_ADMIN;?>plugins/dropzone/css/dropzone.css' />
+<script type='text/javascript' src='<?php echo URL_ADMIN ; ?>js/less.js'></script>
       
   
 
