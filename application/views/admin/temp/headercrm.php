@@ -1,6 +1,7 @@
 <?php 
 define('URL_ADMIN', base_url() . '/assets/admin/'); 
 define('ASSETS', base_url() . '/assets/');
+
 ?>
 
 <!DOCTYPE html>
