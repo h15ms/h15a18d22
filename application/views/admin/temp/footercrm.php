@@ -13,8 +13,7 @@
 
 
   <script type='text/javascript' src='<?php echo URL_ADMIN;?>js/jquery.min.js'></script>
-
-
+  <script type='text/javascript' src='<?php echo ASSETS;?>angularjs/angular.min.1.6.1.js'></script>
 
   <script type='text/javascript' src='<?php echo URL_ADMIN;?>js/bootstrap.min.js'></script>
   <script type='text/javascript' src='<?php echo URL_ADMIN;?>js/enquire.js'></script>

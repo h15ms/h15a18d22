@@ -337,8 +337,7 @@ $countryList = array(
     );
 
 
-defined('COUNTRIES')                  OR define('COUNTRIES', serialize($countryList)); // COUNTRY
-
+defined('COUNTRIES')  OR define('COUNTRIES', serialize($countryList)); // COUNTRY
 
 function getCutStrip($cs,$ml,$end)
 {

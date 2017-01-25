@@ -16,6 +16,22 @@
         </div>
 
         <div class="container">
+            
+            
+<!--            <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>-->
+
+<!--https://ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular.min.js-->
+
+<div ng-app="">
+<p>Input something in the input box:</p>
+<p>Name : <input type="text" ng-model="name" placeholder="Enter name here"></p>
+<h1>Hello {{name}}</h1>
+
+</div>
+            
+            
+            
+            
             <div class="row">
                 <div class="col-sm-12">
                     <div class="panel panel-inverse">
