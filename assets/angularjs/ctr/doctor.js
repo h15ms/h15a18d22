@@ -30,6 +30,7 @@ angular
                 };
                 $scope.GetSelectedState = function () {
                     $scope.strState = $scope.stateSrc;
+                    
                 };
             }
         ])
