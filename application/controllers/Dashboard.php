@@ -35,7 +35,7 @@ exit;
   public function visapdf()
   {
 
-  $img='<img src="../assets/img/Ashoka-Stambh.jpg" style="width:60px; height:80px;" />';
+  $img='<img src="'.base_url().'assets/img/ashoka_stambh.jpg" style="width:60px; height:80px;" />';
 
 
         $id = $this->uri->segment(3);
@@ -558,8 +558,8 @@ exit;
 
 
           </body></html>';
-         // echo $pdf_content;
-        $reportPDF = $this->createPDF($pdf_content);
+       // echo $img;
+       $reportPDF = $this->createPDF($pdf_content);
     }
 
     function createPDF($pdf_content) {
