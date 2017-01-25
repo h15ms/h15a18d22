@@ -95,7 +95,7 @@
                 <td><?php echo $value->given_name; ?></td>
                 <td><?php echo $value->visa_type; ?></td>
                 <td><?php echo date('d-m-Y',$value->apply_date); ?></td>
-                <td><a href="#"><i class="fa fa-file" style="color:#000;"></i></a></td>
+                <td><a href="dashboard/visapdf/<?php echo $value->id; ?>"><i class="fa fa-file" style="color:#000;"></i></a></td>
               </tr>
                <?php   
               } 

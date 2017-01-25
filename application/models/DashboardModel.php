@@ -13,7 +13,7 @@ class DashboardModel extends CI_Model {
   
   public function getCustomerData($customer_id = '0')
   {
-    $result = $this->db->get_where('mi_apply', array('id' => '10000'));
+    $result = $this->db->get_where('mi_apply', array('id' => $customer_id));
     $res = $result->result();
     return $res['0'];
   }
