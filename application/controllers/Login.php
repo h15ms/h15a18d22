@@ -79,6 +79,7 @@ class Login extends CI_Controller
 					'user_name' => $result[0]->firstname." ".$result[0]->lastname,
 					'user_key' => md5($inserted_id.session_id()),
 					'avatar' => $result[0]->avatar,
+					'user_level' => $result[0]->user_type
 				);
 				$this->session->set_userdata('logged_in', $session_data);
 
@@ -124,12 +125,17 @@ class Login extends CI_Controller
 			if ($result != false)
 				
 				{
+
+
+					// print_r($result[0]);
+					// exit;
 				$session_data = array(
 					'user_id' => $result[0]->id,
 					'user_email' => $result[0]->email,
 					'user_name' => $result[0]->firstname." ".$result[0]->lastname,
 					'user_key' => md5($result[0]->id.session_id()),
 					'avatar' => $result[0]->avatar,
+					'user_level' => $result[0]->user_type
 				);
 
 

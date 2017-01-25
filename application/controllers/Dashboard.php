@@ -12,6 +12,7 @@ class Dashboard extends CI_Controller
   { 
 
     $sess = $this->session->userdata();
+
         if($sess['logged_in']['user_id'] == ""){
             $this->load->view('template/header' , $this->active);   
             $this->load->view('login/index');   

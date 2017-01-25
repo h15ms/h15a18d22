@@ -48,24 +48,29 @@
               <?php } ?>
             </div>
             
-            <div class="ls-l" style="top:65%;left:336px;white-space: nowrap;" data-ls="delayin:800;">
-              <a href="#" class="avia-button avia-icon_select-no  avia-position-center ">
-                <span class="avia_iconbox_title" style="font-size:14px;"> <i class="fa fa-hotel"></i> Search Hotel</span>
+            <div class="ls-l" style="top:63%;left:460px;white-space: nowrap;" data-ls="delayin:800;">
+              <a href="#" class="avia-button avia-icon_select-no  avia-position-center " title="Search Hotel">
+                <span class="avia_iconbox_title" style="font-size:20px;"> <i class="fa fa-hospital-o"></i></span>
               </a> 
             </div>
-            <div class="ls-l" style="top:65%;left:460px;white-space: nowrap;" data-ls="delayin:1200;">
-              <a href="#" class="avia-button avia-icon_select-no  avia-position-center ">
-                <span class="avia_iconbox_title" style="font-size:14px;"> <i class="fa fa-plane"></i> Search Flight</span>
+            <div class="ls-l" style="top:63%;left:500px;white-space: nowrap;" data-ls="delayin:1200;">
+              <a href="#" class="avia-button avia-icon_select-no  avia-position-center " title="Search Flight">
+                <span class="avia_iconbox_title" style="font-size:20px;"> <i class="fa fa-plane"></i></span>
               </a> 
             </div>
-            <div class="ls-l" style="top:65%;left:580px;white-space: nowrap;" data-ls="delayin:1600;">
-              <a href="#" class="avia-button avia-icon_select-no  avia-position-center ">
-                <span class="avia_iconbox_title" style="font-size:14px;"> <i class="fa fa-bus"></i> Search Bus</span>
+            <div class="ls-l" style="top:63%;left:540px;white-space: nowrap;" data-ls="delayin:1600;">
+              <a href="#" class="avia-button avia-icon_select-no  avia-position-center " title="Search Bus">
+                <span class="avia_iconbox_title" style="font-size:20px;"> <i class="fa fa-bus"></i></span>
               </a> 
             </div>
-            <div class="ls-l" style="top:65%;left:689px;white-space: nowrap;" data-ls="delayin:2000;">
-              <a href="#" class="avia-button avia-icon_select-no  avia-position-center ">
-                <span class="avia_iconbox_title" style="font-size:14px;"> <i class="fa fa-car"></i> Search Car</span>
+            <div class="ls-l" style="top:63%;left:582px;white-space: nowrap;" data-ls="delayin:2000;">
+              <a href="#" class="avia-button avia-icon_select-no  avia-position-center " title="Search Hospital">
+                <span class="avia_iconbox_title" style="font-size:20px;"> <i class="fa fa-medkit"></i></span>
+              </a> 
+            </div>
+            <div class="ls-l" style="top:63%;left:627px;white-space: nowrap;" data-ls="delayin:2400;">
+              <a href="#" class="avia-button avia-icon_select-no  avia-position-center " title="Search Car">
+                <span class="avia_iconbox_title" style="font-size:20px;"> <i class="fa fa-car"></i></span>
               </a> 
             </div>
             
@@ -108,7 +113,7 @@
                 </span>
               </span>
             </div>
-            <div class="flex_column av_one_third  flex_column_div av-zero-column-padding first  avia-builder-el-4  el_after_av_hr  el_before_av_one_third  " style='border-radius:0px; '>
+            <div class="flex_column av_one_fourth  flex_column_div av-zero-column-padding first  avia-builder-el-4  el_after_av_hr  el_before_av_one_fourth  " style='border-radius:0px; '>
               <div style='padding-bottom:10px;' class='av-special-heading av-special-heading-h2  blockquote modern-quote modern-centered  avia-builder-el-5  el_before_av_hr  avia-builder-el-first  '>
                 <h2 class='av-special-heading-tag'  itemprop="headline"  >
                   <i class="fa fa-medkit">
@@ -144,11 +149,11 @@
                 </a>
               </div>
             </div>
-            <div class="flex_column av_one_third  flex_column_div av-zero-column-padding   avia-builder-el-10  el_after_av_one_third  el_before_av_one_third  " style='border-radius:0px; '>
+            <div class="flex_column av_one_fourth  flex_column_div av-zero-column-padding   avia-builder-el-10  el_after_av_one_third  el_before_av_one_fourth  " style='border-radius:0px; '>
               <div style='padding-bottom:10px;' class='av-special-heading av-special-heading-h2  blockquote modern-quote modern-centered  avia-builder-el-11  el_before_av_hr  avia-builder-el-first  '>
                 <h2 class='av-special-heading-tag'  itemprop="headline">
-                  <i class="fa fa-suitcase">
-                  </i> Business 
+                  <img src="assets/img/visa.png" style="height: 25px;">
+                  </i> Visa 
                 </h2>
                 <div class='special-heading-border'>
                   <div class='special-heading-inner-border' >
@@ -180,11 +185,47 @@
                 </a>
               </div>
             </div>
-            <div class="flex_column av_one_third  flex_column_div av-zero-column-padding   avia-builder-el-16  el_after_av_one_third  el_before_av_hr  " style='border-radius:0px; '>
+            <div class="flex_column av_one_fourth  flex_column_div av-zero-column-padding   avia-builder-el-16  el_after_av_one_third  el_before_av_hr  " style='border-radius:0px; '>
               <div style='padding-bottom:10px;' class='av-special-heading av-special-heading-h2  blockquote modern-quote modern-centered  avia-builder-el-17  el_before_av_hr  avia-builder-el-first  '>
                 <h2 class='av-special-heading-tag'  itemprop="headline">
                   <i class="fa fa-plane">
-                  </i> Tourism
+                  </i> Flight
+                </h2>
+                <div class='special-heading-border'>
+                  <div class='special-heading-inner-border' >
+                  </div>
+                </div>
+              </div>
+              <div  class='hr hr-default  avia-builder-el-18  el_after_av_heading  el_before_av_textblock '>
+                <span class='hr-inner ' >
+                  <span class='hr-inner-style'>
+                  </span>
+                </span>
+              </div>
+              <section class="av_textblock_section"  itemscope="itemscope" itemtype="https://schema.org/CreativeWork" >
+                <div class='avia_textblock '  style='font-size:14px; '  itemprop="text" >
+                  <p style="text-align: center;">MI Consulting can help you plan your vacation without the stress.  Our services begin with the visa application process, and continue throughout your trip.  We help you book your flight, make stay and transportation accommodations, plan your itinerary for tourist attractions, guide you to dining and shopping, as well as anything else that may be needed for your trip.
+                  </p>
+                </div>
+              </section>
+              <div style='height:10px' class='hr hr-invisible  avia-builder-el-20  el_after_av_textblock  el_before_av_button '>
+                <span class='hr-inner ' >
+                  <span class='hr-inner-style'>
+                  </span>
+                </span>
+              </div>
+              <div class='avia-button-wrap avia-button-center  avia-builder-el-21  el_after_av_hr  avia-builder-el-last '>
+                <a href='<?php echo URL;?>/service/touristvisa/' class='avia-button  avia-icon_select-no avia-color-dark avia-size-small avia-position-center '   >
+                  <span class='avia_iconbox_title' >read more
+                  </span>
+                </a>
+              </div>
+            </div>
+            <div class="flex_column av_one_fourth  flex_column_div av-zero-column-padding   avia-builder-el-16  el_after_av_one_third  el_before_av_hr  " style='border-radius:0px; '>
+              <div style='padding-bottom:10px;' class='av-special-heading av-special-heading-h2  blockquote modern-quote modern-centered  avia-builder-el-17  el_before_av_hr  avia-builder-el-first  '>
+                <h2 class='av-special-heading-tag'  itemprop="headline">
+                  <i class="fa fa-hospital-o">
+                  </i> Hotel
                 </h2>
                 <div class='special-heading-border'>
                   <div class='special-heading-inner-border' >

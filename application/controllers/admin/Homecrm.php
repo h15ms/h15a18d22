@@ -10,7 +10,11 @@ class Homecrm extends CI_Controller {
       
   }
   public function index() {
-      
+
+    $sess = $this->session->userdata();
+      print_r($sess);
+      exit;
+
       $countnewapplys = $this->hmc->countNewApplys();
       $countApplys = $this->hmc->countApplys();
       $allNewApplys = $this->hmc->allNewApplys();
