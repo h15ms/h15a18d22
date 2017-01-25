@@ -1,9 +1,18 @@
 // ------------------------------
 // Sidebar Accordion Menu
 // ------------------------------
-function delhospital(id){
-    $.ajax({url:"delhospitalwithid",
-       data:{ appid:id },
+
+function delpopup(id , name ){
+
+     $('#appid').val(id);
+     $('#hospitalname').html(name);
+     $('#new_bankpop').modal('show');
+   }
+
+
+function delhospital(id, name){
+    $.ajax({url:"hospitalscrm/delhospitalwithid",
+       data:{ appid:id,hname:name },
         success:function(res1)
         { 
           
