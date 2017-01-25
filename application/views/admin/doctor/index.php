@@ -6,14 +6,14 @@
      <div id="page-heading">
             <ol class="breadcrumb">
                 <li><a href="<?php base_url()?>/admin">Dashboard</a></li>
-                <li>Hospitals</li>
+                <li>Doctors</li>
                 <li class='active'><?php echo $headline; ?></li>
             </ol>
 
             <h1><?php echo $headline; ?></h1>
             <div class="options">
                 <div class="btn-toolbar">
-                	<a href='<?php base_url()?>hospitalscrm/addhospital' class="btn btn-success hidden-xs"><i class="fa fa-plus-circle"></i> Add Hospitals</a>					           
+                	<a href='<?php base_url()?>doctor/add' class="btn btn-success hidden-xs"><i class="fa fa-plus-circle"></i> Add Doctors</a>					           
                 </div>
             </div>
         </div>
@@ -41,7 +41,7 @@
 					<thead>
 					<tr>
 						<th style="width:auto;">#</th>
-						<th style="width:auto;">Hospital Name</th>
+						<th style="width:auto;"> Name</th>
 						<th style="width:auto;">Address</th>
 						<th style="width:auto;">City</th>						
 						<th style="width:auto;">State</th>		
