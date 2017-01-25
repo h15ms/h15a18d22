@@ -93,6 +93,7 @@ class Doctor extends CI_Controller {
 
          
         $title = array('page_title' => "Add Doctor | MiConsulting");
+        $js = array('js' => "doctor.js");  //  Angular Js file name
         
         $doctors = array();
         
@@ -101,7 +102,8 @@ class Doctor extends CI_Controller {
         
         $this->load->view('admin/temp/headercrm', $title);
         $this->load->view('admin/doctor/add', $dataCollection);
-        $this->load->view('admin/temp/footercrm');
+        
+        $this->load->view('admin/temp/footercrm',$js );
 
 
 //        $this->load->view('admin/temp/headercrm', $title);

@@ -1,11 +1,12 @@
 <?php 
-define('URL_ADMIN', base_url() . '/assets/admin/'); 
-define('ASSETS', base_url() . '/assets/');
+define('URL_ADMIN', base_url() . 'assets/admin/'); 
+define('ASSETS', base_url() . 'assets/');
 
 ?>
 
 <!DOCTYPE html>
-<html lang="de">
+<html  data-ng-app="admin">
+   
 <head>
                 <meta charset="utf-8">
       

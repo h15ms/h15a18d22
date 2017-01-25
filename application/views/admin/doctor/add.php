@@ -16,20 +16,46 @@
         </div>
 
         <div class="container">
+    
+   
             
             
-<!--            <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>-->
+            
+            
+            <div data-ng-controller="testController">
 
-<!--https://ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular.min.js-->
 
-<div ng-app="">
-<p>Input something in the input box:</p>
-<p>Name : <input type="text" ng-model="name" placeholder="Enter name here"></p>
-<h1>Hello {{name}}</h1>
+                <label for="country">Country *</label>
+                <select id="country" ng-model="countrySrc" ng-options="country for (country, states) in countries" ng-change="GetSelectedCountry()">
+                    <option value=''>Select</option>
+                </select>
+                <label for="state">State *</label>
+                <select id="state" ng-disabled="!countrySrc" ng-model="stateSrc" ng-options="state for (state,city) in countrySrc" ng-change="GetSelectedState()">
+                    <option value=''>Select</option>
+                </select>
+                <label for="city">City *</label>
+                <select id="city" ng-disabled="!countrySrc || !stateSrc" ng-model="city" ng-options="city for city in stateSrc">
+                    <option value=''>Select</option>
 
-</div>
+                </select>
+            </div>
             
             
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+    
             
             
             <div class="row">
