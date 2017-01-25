@@ -139,7 +139,7 @@ public function updateGetNewHospital(){
   
   public function delhospitalwithid(){
    $id=$_GET['appid'];
-    
+    $this->app->udpatehospitalstatus($id);
     
     
   }

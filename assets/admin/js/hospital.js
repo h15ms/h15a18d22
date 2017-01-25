@@ -12,13 +12,13 @@ function delpopup(id , name ){
 
 function delhospital(){
     var id=$('#appid').val();
-    alert(id);
+
     $.ajax({url:"hospitalscrm/delhospitalwithid",
        data:{ appid:id, },
         success:function(res1)
         { 
-          
-         alert(res1);
+        location.reload();   
+       
         }
    });
 }

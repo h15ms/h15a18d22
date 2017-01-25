@@ -98,6 +98,9 @@
            
               
               <div class="col-xs-12 col-sm-6 col-md-6  mt20">
+                  
+                   <p><b>Email:</b> <?php echo $hospital[0]->email;?></p>
+                   <p><b>Website:</b> <?php echo $hospital[0]->website;?></p>
                   <p><b>Specialization </b>                   
                 <?php $va= explode(',',$hospital[0]->specialization);?>
                                 <ul style="list-style: none;">
@@ -108,9 +111,9 @@
                            <?php  endforeach;?>
                             </ul>
                   </p>
-               
+                 
           
-                  
+                   <p><b>Distance from Airport:</b> <?php echo $hospital[0]->distance_from_airport;?></p>
                   
                   </p>
               </div>

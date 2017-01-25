@@ -47,7 +47,7 @@ class HospitalsModelcrm extends CI_Model
  public function getallhospitallist(){
     $this->db->select('*, d.id appID')->from('mi_hospital_detail  d');
     $this->db->join('mi_hospital  h' , 'h.id=d.	hospital_id ', 'left');
-    $this->db->where('h.status',1);
+    $this->db->where(array('h.status'=>1, 'd.status'=>1));
     $this->db->order_by('d.id','asc');         
     $getdata = $this->db->get(); 
     //$result = $getdata->get();
@@ -129,4 +129,27 @@ public function edithospitalDetail($arr,$id){
 
       return;
 } 
+public function udpatehospitalstatus($id){
+   //$hosId=explode('_',$arr['hospitalssel']); 
+    
+  
+        
+
+
+
+      $data=array(
+         
+          'status'=>0,
+           ); 
+            
+            $this->db->where('id',$id);
+            $this->db->update('mi_hospital_detail',$data);
+
+      return;
+} 
+
+
+
+
+
 }

@@ -106,7 +106,7 @@
              
                  <div class="col-xs-6 col-sm-6 col-md-6 form-group">   
                 <label>Emergency Services</label>
-               <input type="text" class="form-control" name="emergency_services"  id="emergency_services" value="<?php echo isset($editdata[0]->distance_from_airport)?$editdata[0]->distance_from_airport:''; ?>" placeholder="Emergency Services" required>
+               <input type="text" class="form-control" name="emergency_services"  id="emergency_services" value="<?php echo isset($editdata[0]->emergency_services)?$editdata[0]->emergency_services:''; ?>" placeholder="Emergency Services" required>
                </div>
                     <div class="col-xs-6 col-sm-6 col-md-6 form-group">   
                 <label>Hospital Type</label>
