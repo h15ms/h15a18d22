@@ -12,55 +12,55 @@
 </div> <!-- page-container -->
 
 
-  <script type='text/javascript' src='<?php echo URLI;?>js/jquery.min.js'></script>
+  <script type='text/javascript' src='<?php echo URL_ADMIN;?>js/jquery.min.js'></script>
 
 
 
-  <script type='text/javascript' src='<?php echo URLI;?>js/bootstrap.min.js'></script>
-  <script type='text/javascript' src='<?php echo URLI;?>js/enquire.js'></script>
-  <script type='text/javascript' src='<?php echo URLI;?>js/jquery.cookie.js'></script>
+  <script type='text/javascript' src='<?php echo URL_ADMIN;?>js/bootstrap.min.js'></script>
+  <script type='text/javascript' src='<?php echo URL_ADMIN;?>js/enquire.js'></script>
+  <script type='text/javascript' src='<?php echo URL_ADMIN;?>js/jquery.cookie.js'></script>
   
-  <script type='text/javascript' src='<?php echo URLI;?>js/jquery.nicescroll.min.js'></script>
+  <script type='text/javascript' src='<?php echo URL_ADMIN;?>js/jquery.nicescroll.min.js'></script>
   
-  <script type='text/javascript' src='<?php echo URLI;?>js/request.js'></script>
-  <script type='text/javascript' src='<?php echo URLI;?>plugins/codeprettifier/prettify.js'></script>
-  <script type='text/javascript' src='<?php echo URLI;?>plugins/easypiechart/jquery.easypiechart.min.js'></script>
-  <script type='text/javascript' src='<?php echo URLI;?>plugins/sparklines/jquery.sparklines.min.js'></script>
-  <script type='text/javascript' src='<?php echo URLI;?>plugins/form-toggle/toggle.min.js'></script>
-  <script type='text/javascript' src='<?php echo URLI;?>plugins/dropzone/dropzone.min.js'></script>
-  <script type='text/javascript' src='<?php echo URLI;?>js/placeholdr.js'></script>
-  <script type='text/javascript' src='<?php echo URLI;?>js/application.js'></script>
+  <script type='text/javascript' src='<?php echo URL_ADMIN;?>js/request.js'></script>
+  <script type='text/javascript' src='<?php echo URL_ADMIN;?>plugins/codeprettifier/prettify.js'></script>
+  <script type='text/javascript' src='<?php echo URL_ADMIN;?>plugins/easypiechart/jquery.easypiechart.min.js'></script>
+  <script type='text/javascript' src='<?php echo URL_ADMIN;?>plugins/sparklines/jquery.sparklines.min.js'></script>
+  <script type='text/javascript' src='<?php echo URL_ADMIN;?>plugins/form-toggle/toggle.min.js'></script>
+  <script type='text/javascript' src='<?php echo URL_ADMIN;?>plugins/dropzone/dropzone.min.js'></script>
+  <script type='text/javascript' src='<?php echo URL_ADMIN;?>js/placeholdr.js'></script>
+  <script type='text/javascript' src='<?php echo URL_ADMIN;?>js/application.js'></script>
   <?php if($this->uri->segment(3)=='addhospital'): ?>
 
-    <script type='text/javascript' src='<?php echo URLI;?>js/hospital.js'></script>
+    <script type='text/javascript' src='<?php echo URL_ADMIN;?>js/hospital.js'></script>
 
 <?php endif;?>
-  <script type='text/javascript' src='<?php echo URLI;?>demo/demo.js'></script>
-  <script type='text/javascript' src='<?php echo URLI;?>plugins/datatables/jquery.dataTables.min.js'></script>
-  <script type='text/javascript' src='<?php echo URLI;?>plugins/datatables/dataTables.bootstrap.js'></script>
-  <script type='text/javascript' src='<?php echo URLI;?>demo/demo-datatables.php?c=<?php echo $this->uri->segment('2'); ?>'></script>
+  <script type='text/javascript' src='<?php echo URL_ADMIN;?>demo/demo.js'></script>
+  <script type='text/javascript' src='<?php echo URL_ADMIN;?>plugins/datatables/jquery.dataTables.min.js'></script>
+  <script type='text/javascript' src='<?php echo URL_ADMIN;?>plugins/datatables/dataTables.bootstrap.js'></script>
+  <script type='text/javascript' src='<?php echo URL_ADMIN;?>demo/demo-datatables.php?c=<?php echo $this->uri->segment('2'); ?>'></script>
   
   
-<script type='text/javascript' src='<?php echo URLI;?>plugins/fullcalendar/fullcalendar.min.js'></script>
-<script type='text/javascript' src='<?php echo URLI;?>plugins/form-daterangepicker/daterangepicker.min.js'></script>
-<script type='text/javascript' src='<?php echo URLI;?>plugins/charts-flot/jquery.flot.min.js'></script>
-<script type='text/javascript' src='<?php echo URLI;?>plugins/charts-flot/jquery.flot.resize.min.js'></script>
-<script type='text/javascript' src='<?php echo URLI;?>plugins/charts-flot/jquery.flot.orderBars.min.js'></script>
-<script type='text/javascript' src='<?php echo URLI;?>plugins/pulsate/jQuery.pulsate.min.js'></script>
-<script type='text/javascript' src='<?php echo URLI;?>demo/demo-index.js'></script>
-<script type='text/javascript' src='<?php echo URLI;?>plugins/form-multiselect/js/jquery.multi-select.min.js'></script>
-<script type='text/javascript' src='<?php echo URLI;?>assets/plugins/quicksearch/jquery.quicksearch.min.js'></script>
-<script type='text/javascript' src='<?php echo URLI;?>assets/plugins/form-typeahead/typeahead.min.js'></script>
-<script type='text/javascript' src='<?php echo URLI;?>plugins/form-autosize/jquery.autosize-min.js'></script>
-<script type='text/javascript' src='<?php echo URLI;?>plugins/form-colorpicker/js/bootstrap-colorpicker.min.js'></script>
-<script type='text/javascript' src='<?php echo URLI;?>plugins/jqueryui-timepicker/jquery.ui.timepicker.min.js'></script>
-<script type='text/javascript' src='<?php echo URLI;?>plugins/form-daterangepicker/daterangepicker.min.js'></script>
-<script type='text/javascript' src='<?php echo URLI;?>plugins/form-datepicker/js/bootstrap-datepicker.js'></script>
-<script type='text/javascript' src='<?php echo URLI;?>plugins/form-daterangepicker/moment.min.js'></script>
-<script type='text/javascript' src='<?php echo URLI;?>plugins/form-ckeditor/ckeditor.js'></script>
-<script type='text/javascript' src='<?php echo URLI;?>plugins/form-jasnyupload/fileinput.min.js'></script>
-<script type='text/javascript' src='<?php echo URLI;?>plugins/form-tokenfield/bootstrap-tokenfield.min.js'></script>
-<script type='text/javascript' src='<?php echo URLI;?>demo/demo-formcomponents.js'></script>
+<script type='text/javascript' src='<?php echo URL_ADMIN;?>plugins/fullcalendar/fullcalendar.min.js'></script>
+<script type='text/javascript' src='<?php echo URL_ADMIN;?>plugins/form-daterangepicker/daterangepicker.min.js'></script>
+<script type='text/javascript' src='<?php echo URL_ADMIN;?>plugins/charts-flot/jquery.flot.min.js'></script>
+<script type='text/javascript' src='<?php echo URL_ADMIN;?>plugins/charts-flot/jquery.flot.resize.min.js'></script>
+<script type='text/javascript' src='<?php echo URL_ADMIN;?>plugins/charts-flot/jquery.flot.orderBars.min.js'></script>
+<script type='text/javascript' src='<?php echo URL_ADMIN;?>plugins/pulsate/jQuery.pulsate.min.js'></script>
+<script type='text/javascript' src='<?php echo URL_ADMIN;?>demo/demo-index.js'></script>
+<script type='text/javascript' src='<?php echo URL_ADMIN;?>plugins/form-multiselect/js/jquery.multi-select.min.js'></script>
+<script type='text/javascript' src='<?php echo URL_ADMIN;?>assets/plugins/quicksearch/jquery.quicksearch.min.js'></script>
+<script type='text/javascript' src='<?php echo URL_ADMIN;?>assets/plugins/form-typeahead/typeahead.min.js'></script>
+<script type='text/javascript' src='<?php echo URL_ADMIN;?>plugins/form-autosize/jquery.autosize-min.js'></script>
+<script type='text/javascript' src='<?php echo URL_ADMIN;?>plugins/form-colorpicker/js/bootstrap-colorpicker.min.js'></script>
+<script type='text/javascript' src='<?php echo URL_ADMIN;?>plugins/jqueryui-timepicker/jquery.ui.timepicker.min.js'></script>
+<script type='text/javascript' src='<?php echo URL_ADMIN;?>plugins/form-daterangepicker/daterangepicker.min.js'></script>
+<script type='text/javascript' src='<?php echo URL_ADMIN;?>plugins/form-datepicker/js/bootstrap-datepicker.js'></script>
+<script type='text/javascript' src='<?php echo URL_ADMIN;?>plugins/form-daterangepicker/moment.min.js'></script>
+<script type='text/javascript' src='<?php echo URL_ADMIN;?>plugins/form-ckeditor/ckeditor.js'></script>
+<script type='text/javascript' src='<?php echo URL_ADMIN;?>plugins/form-jasnyupload/fileinput.min.js'></script>
+<script type='text/javascript' src='<?php echo URL_ADMIN;?>plugins/form-tokenfield/bootstrap-tokenfield.min.js'></script>
+<script type='text/javascript' src='<?php echo URL_ADMIN;?>demo/demo-formcomponents.js'></script>
 
 </body>
 </html>

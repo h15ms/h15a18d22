@@ -100,4 +100,28 @@ public function addhospitalDetail($arr,$pic){
       $insertID = $this->db->insert('mi_hospital_detail', $data);
       return $insertID;  
 } 
+public function edithospitalDetail($arr,$pic){
+   $hosId=explode('_',$arr['hospitalssel']); 
+    
+  
+        $sess = $this->session->userdata();
+      
+      $data=array('hospital_id'=>$hosId[0],
+          'address'=> $arr['address'],
+          'city'=> $arr['city'],
+          'state'=> $arr['state'],
+          'phone_no'=> $arr['phone_no'],
+          'email'=> $arr['email'],
+          'website'=> $arr['website'],
+          'rating'=> $arr['rating'],
+          'distance_from_airport'=>$arr['distance_from_airport'],
+          'emergency_services'=> $arr['emergency_services'],
+          'hospital_type'=> $arr['hospital_type'],
+          'image'=>$pic,
+          'specialization'=> $arr['specialization'],
+          'createdtime'=>time(),
+          'createdby'=> $sess['logged_in']['user_id'] ); 
+      $insertID = $this->db->insert('mi_hospital_detail', $data);
+      return $insertID;  
+} 
 }

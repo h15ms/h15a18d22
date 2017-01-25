@@ -43,15 +43,15 @@
 						<th style="width:auto;">#</th>
 						<th style="width:auto;">Hospital Name</th>
 						<th style="width:auto;">Address</th>
-						<th style="width:auto;">City</th>						
+<!--						<th style="width:auto;">City</th>						-->
 						<th style="width:auto;">State</th>		
 						<th style="width:auto;">Phone</th>
 						<th style="width:auto;">Email</th>
-                                                <th style="width:auto;">Website</th>
+<!--                                                <th style="width:auto;">Website</th>-->
 						<th style="width:auto;">Emergency Services </th>
-                                                <th style="width:auto;">Hospital Type</th>
+<!--                                                <th style="width:auto;">Hospital Type</th>
                                                 <th style="width:auto;">Specialization </th>
-                                                <th style="width:auto;">Distance From Airport</th>
+                                                <th style="width:auto;">Distance From Airport</th>-->
                         			<th style="width:auto;" align="center">Status</th>						
 					</tr>
 					</thead>
@@ -62,29 +62,29 @@
                         <tr>
                             <td><?php echo $i; ?></td>
                             <td><?php echo $hospital->name; ?></td>
-                            <td><?php echo $hospital->address; ?></td>
+                            <td><?php echo getCutStrip( $hospital->address,"26","..."); ?></td>
                             <td><?php echo $hospital->city; ?></td>
-                            <td><?php echo $hospital->state; ?></td>                            
+<!--                            <td><?php //echo $hospital->state; ?></td>                            -->
                             <td><?php echo $hospital->phone_no; ?></td>                            
                             <td><?php echo $hospital->email; ?></td>
-                            <td><?php echo $hospital->website; ?></td>
+<!--                            <td><?php //echo $hospital->website; ?></td>-->
                             <td><?php echo $hospital->emergency_services; ?></td>
-                            <td><?php echo $hospital->hospital_type; ?></td>
+<!--                            <td><?php //echo $hospital->hospital_type; ?></td>
                             <td><?php $va= explode(',',$hospital->specialization);?>
                                 <ul style="list-style: none;">
-                           <?php  foreach($va as $a):?>
-                                <li> <?php echo $a; ?> </li>
+                           <?php  //foreach($va as $a):?>
+                                <li> <?php //echo $a; ?> </li>
                                 
                                 
-                           <?php  endforeach;?>
+                           <?php // endforeach;?>
                             </ul>
                             
                             </td>
-                            <td><?php echo $hospital->distance_from_airport; ?></td>
+                            <td><?php //echo $hospital->distance_from_airport; ?></td>-->
                            
                             <td align="center"><a href="<?php echo base_url(); ?>admin/hospitalscrm/viewhospital/<?php echo $hospital->appID; ?>"><i class="fa fa-user"></i></a>
-                            <a href="<?php echo base_url(); ?>admin/hospitalscrm/viewhospital/<?php echo $hospital->appID; ?>"><i class="fa fa-pencil-square-o"></i></a>
-                            <a href="<?php echo base_url(); ?>admin/hospitalscrm/viewhospital/<?php echo $hospital->appID; ?>"><i class="fa fa-user"></i></a>
+                            <a href="<?php echo base_url(); ?>admin/hospitalscrm/edithospital/<?php echo $hospital->appID; ?>"><i class="fa fa-pencil-square-o"></i></a>
+                            <a href="<?php echo base_url(); ?>admin/hospitalscrm/viewhospital/<?php echo $hospital->appID; ?>"><i class="fa fa-trash-o"></i></a>
                             
                             
                             
