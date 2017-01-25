@@ -338,3 +338,12 @@ $countryList = array(
 
 
 defined('COUNTRIES')                  OR define('COUNTRIES', serialize($countryList)); // COUNTRY
+
+
+function getCutStrip($cs,$ml,$end)
+{
+    $cutstrip = $cs;
+    $maxlaenge = $ml;
+    $cutstrip = (strlen($cutstrip) > $maxlaenge) ? substr($cutstrip,0,$maxlaenge).$end : $cutstrip;
+    return $cutstrip;
+}

@@ -6,13 +6,13 @@ class User extends CI_Controller
 	function __construct()
 	{
 		parent::__construct();
-		$this->load->model('user_model', 'um');
+		$this->load->model('user_model', 'model');
 		$this->active['current_page'] = $this->uri->segment(1);
 	}
 
 	function index()
 	{
-		$result = $this->um->retrieve_sess_data($_SESSION['logged_in']['user_id'])->result();
+		$result = $this->model->retrieve_sess_data($_SESSION['logged_in']['user_id'])->result();
 
 		$data = array(
 			'firstname' => $result['0']->firstname,
@@ -26,6 +26,9 @@ class User extends CI_Controller
 			'phone' => $result['0']->phone,
 			'avatar' => $result['0']->avatar
 			);
+
+		// print_r($result);
+		// exit;
 
 		$this->load->view('template/header' , $this->active);
 		$this->load->view('user/user_edit' , $data);
@@ -60,10 +63,10 @@ class User extends CI_Controller
 
 		$sess_user_id = $_SESSION['logged_in']['user_id'];
 
-		$result = $this->um->user_info_edit($data , $sess_user_id);
+		$result = $this->model->user_info_edit($data , $sess_user_id);
 
 		$this->load->view('template/header' , $this->active);
-		$this->load->view('user/user_edit', $result);
+		$this->load->view('dashboard/index', array('result' => $result));
 		$this->load->view('template/footer');
 	}
 

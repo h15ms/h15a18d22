@@ -1,5 +1,5 @@
 <?php
-class PwchangeController 
+class Pwchange extends CI_Controller
 {
 
   private $_view;

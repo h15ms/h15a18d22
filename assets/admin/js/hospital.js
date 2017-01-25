@@ -1,7 +1,16 @@
 // ------------------------------
 // Sidebar Accordion Menu
 // ------------------------------
-
+function delhospital(id){
+    $.ajax({url:"delhospitalwithid",
+       data:{ appid:id },
+        success:function(res1)
+        { 
+          
+         alert(res1);
+        }
+   });
+}
 $(function () {
     //if($.cookie('admin_leftbar_collapse') === 'collapse-leftbar') {
     //    $('body').addClass('collapse-leftbar');
@@ -321,6 +330,7 @@ function opennewpopup(){
    }
 
 }
+
 $('#ad_n_b').click(function(){
    var hospitl=$('#n_b_name').val(); 
          $.ajax({url:"addhospitalname",

@@ -1,5 +1,5 @@
 <?php
-class HospitalsModelCrm extends CI_Model
+class HospitalsModelcrm extends CI_Model
 {
 
   
@@ -99,5 +99,34 @@ public function addhospitalDetail($arr,$pic){
           'createdby'=> $sess['logged_in']['user_id'] ); 
       $insertID = $this->db->insert('mi_hospital_detail', $data);
       return $insertID;  
+} 
+public function edithospitalDetail($arr,$id){
+   //$hosId=explode('_',$arr['hospitalssel']); 
+    
+  
+        $sess = $this->session->userdata();
+
+
+
+      $data=array(
+          'address'=> $arr['address'],
+          'city'=> $arr['city'],
+          'state'=> $arr['state'],
+          'phone_no'=> $arr['phone_no'],
+          'email'=> $arr['email'],
+          'website'=> $arr['website'],
+          'rating'=> $arr['rating'],
+          'distance_from_airport'=>$arr['distance_from_airport'],
+          'emergency_services'=> $arr['emergency_services'],
+          'hospital_type'=> $arr['hospital_type'],
+        
+          'specialization'=> $arr['specialization'],
+          'createdtime'=>time(),
+           ); 
+            
+            $this->db->where('id',$id);
+            $this->db->update('mi_hospital_detail',$data);
+
+      return;
 } 
 }

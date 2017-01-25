@@ -1,6 +1,6 @@
 <?php
 
-class LoginController {
+class Login extends CI_Controller{
 
   private $_view;
   private $_con;
