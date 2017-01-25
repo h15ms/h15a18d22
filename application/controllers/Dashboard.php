@@ -10,19 +10,22 @@ class Dashboard extends CI_Controller
 
   public function index() 
   { 
+    $res = $this->model->getCustomer();
+echo '<pre>';
+print_r($res);
+echo '</pre>';
+exit;
+
     $sess = $this->session->userdata();
         if($sess['logged_in']['user_id'] == ""){
-
             $this->load->view('template/header' , $this->active);   
             $this->load->view('login/index');   
             $this->load->view('template/footer');    
         }
         else
         {        
-            
             $result = $this->model->displayAll();
             $displayAll = array('displayAll' => $result->result() );
-
             $this->load->view('template/header' , $this->active);   
             $this->load->view('dashboard/index', $displayAll);   
             $this->load->view('template/footer');   
@@ -31,11 +34,15 @@ class Dashboard extends CI_Controller
 
   public function visapdf()
   {
+
+  $img='<img src="../assets/img/Ashoka-Stambh.jpg" style="width:60px; height:80px;" />';
+
+
         $id = $this->uri->segment(3);
         $acquire_nationality='';
         $visa_type_display='';
            
-        $out = $this->model->getCustomerData($id);
+        $out = $this->model->getCustomer($id);
       
         if ($out->acquire_nationality == 'Naturalization'):
             $acquire_nationality = '<tr>
@@ -60,6 +67,57 @@ class Dashboard extends CI_Controller
             <tr>
             <td valign="middle" height="20px"  style="font-size:10px;font-family:Arial, Helvetica, sans-serif; color:#000000;  border-left:1px solid #CCCCCC; font-weight:600;   border-bototm:1px solid #CCCCCC;">&nbsp; Email </td>
             <td height="20px" colspan="3"  valign="middle"  style="font-size:10px;font-family:Arial, Helvetica, sans-serif; color:#000000;  border-right:1px solid #CCCCCC; font-weight:600;   border-bototm:1px solid #CCCCCC;">&nbsp; ' . $out->bv_email . ' </td>
+            </tr>';
+        endif;
+
+        if ($out->visa_type == 'MEDICAL VISA'):
+            $visa_type_display = '<tr>
+            <td colspan="4" height="20px" valign="middle"  style="font-size:10px;font-family:Arial, Helvetica, sans-serif; color:#000000;   border:1px solid #CCCCCC; font-weight:600; border-top:0px;">&nbsp;<b>Hospital Details in ' . $out->applying_country . '</b> </td></tr>
+
+            <tr>
+            <td width="25%" height="20px" valign="middle"  style="font-size:10px;font-family:Arial, Helvetica, sans-serif; color:#000000;   border-left:1px solid #CCCCCC; font-weight:600; border-top:0px;">&nbsp; Hospital Name </td>
+            <td height="20px" valign="middle" colspan="3"   style="font-size:10px;font-family:Arial, Helvetica, sans-serif; color:#000000;   border-right:1px solid #CCCCCC; font-weight:600; border-top:0px;">&nbsp; ' . $out->mv_hr_name . ' </td>
+            </tr>
+            <tr>
+            <td valign="middle" height="20px"  style="font-size:10px;font-family:Arial, Helvetica, sans-serif; color:#000000;   border-left:1px solid #CCCCCC; font-weight:600; border-top:0px;">&nbsp; Address </td>
+            <td height="20px" colspan="3"  valign="middle"  style="font-size:10px;font-family:Arial, Helvetica, sans-serif; color:#000000;   border-right:1px solid #CCCCCC; font-weight:600; border-top:0px;">&nbsp; ' . $out->mv_hr_address . ' </td>
+            </tr>
+            <tr>
+            <td valign="middle" height="20px"  style="font-size:10px;font-family:Arial, Helvetica, sans-serif; color:#000000;  border-left:1px solid #CCCCCC; font-weight:600;   border-bototm:1px solid #CCCCCC;">&nbsp; Doctor Name /Phone </td>
+            <td height="20px" colspan="3"  valign="middle"  style="font-size:10px;font-family:Arial, Helvetica, sans-serif; color:#000000;  border-right:1px solid #CCCCCC; font-weight:600;   border-bototm:1px solid #CCCCCC;">&nbsp; ' . $out->mv_hr_doctor_name . ' &nbsp; ' . $out->mv_hr_phone . ' </td>
+            </tr>
+            <tr>
+            <td valign="middle" height="20px"  style="font-size:10px;font-family:Arial, Helvetica, sans-serif; color:#000000;  border-left:1px solid #CCCCCC; font-weight:600;   border-bototm:1px solid #CCCCCC;">&nbsp; Email </td>
+            <td height="20px" colspan="3"  valign="middle"  style="font-size:10px;font-family:Arial, Helvetica, sans-serif; color:#000000;  border-right:1px solid #CCCCCC; font-weight:600;   border-bototm:1px solid #CCCCCC;">&nbsp; ' . $out->mv_hr_email . ' </td>
+            </tr>
+            <tr>
+            <td colspan="4" height="20px" valign="middle"  style="font-size:10px;font-family:Arial, Helvetica, sans-serif; color:#000000;   border:1px solid #CCCCCC; font-weight:600; border-top:1px;">&nbsp;<b>Hospital Details in INDIA</b> </td></tr>
+
+            <tr>
+            <td width="25%" height="20px" valign="middle"  style="font-size:10px;font-family:Arial, Helvetica, sans-serif; color:#000000;   border-left:1px solid #CCCCCC; font-weight:600; border-top:0px;">&nbsp; Hospital Name </td>
+            <td height="20px" valign="middle" colspan="3"   style="font-size:10px;font-family:Arial, Helvetica, sans-serif; color:#000000;   border-right:1px solid #CCCCCC; font-weight:600; border-top:0px;">&nbsp; ' . $out->mv_hi_name . ' </td>
+            </tr>
+            <tr>
+            <td valign="middle" height="20px"  style="font-size:10px;font-family:Arial, Helvetica, sans-serif; color:#000000;   border-left:1px solid #CCCCCC; font-weight:600; border-top:0px;">&nbsp; Address </td>
+            <td height="20px" colspan="3"  valign="middle"  style="font-size:10px;font-family:Arial, Helvetica, sans-serif; color:#000000;   border-right:1px solid #CCCCCC; font-weight:600; border-top:0px;">&nbsp; ' . $out->mv_hi_address . ' </td>
+            </tr>
+            <tr>
+            <td valign="middle" height="20px"  style="font-size:10px;font-family:Arial, Helvetica, sans-serif; color:#000000;  border-left:1px solid #CCCCCC; font-weight:600;   border-bototm:1px solid #CCCCCC;">&nbsp; Doctor Name /Phone </td>
+            <td height="20px" colspan="3"  valign="middle"  style="font-size:10px;font-family:Arial, Helvetica, sans-serif; color:#000000;  border-right:1px solid #CCCCCC; font-weight:600;   border-bototm:1px solid #CCCCCC;">&nbsp; ' . $out->mv_hi_doctor_name . ' &nbsp; ' . $out->mv_hi_phone . ' </td>
+            </tr>
+            <tr>
+            <td valign="middle" height="20px"  style="font-size:10px;font-family:Arial, Helvetica, sans-serif; color:#000000;  border-left:1px solid #CCCCCC; font-weight:600;   border-bototm:1px solid #CCCCCC;">&nbsp; Email </td>
+            <td height="20px" colspan="3"  valign="middle"  style="font-size:10px;font-family:Arial, Helvetica, sans-serif; color:#000000;  border-right:1px solid #CCCCCC; font-weight:600;   border-bototm:1px solid #CCCCCC;">&nbsp; ' . $out->mv_hi_email . ' </td>
+            </tr>
+            <tr>
+            <td valign="middle" height="20px"  style="font-size:10px;font-family:Arial, Helvetica, sans-serif; color:#000000;  border-left:1px solid #CCCCCC; font-weight:600;   border-bototm:1px solid #CCCCCC;">&nbsp; Illness </td>
+            <td height="20px" colspan="3"  valign="middle"  style="font-size:10px;font-family:Arial, Helvetica, sans-serif; color:#000000;  border-right:1px solid #CCCCCC; font-weight:600;   border-bototm:1px solid #CCCCCC;">&nbsp; ' . $out->mv_hi_illness . ' </td>
+            </tr>';
+        endif;
+        if ($out->visa_type == 'TOURIST VISA'):
+            $visa_type_display = '<tr>
+            <td width="25%" height="20px" valign="middle"  style="font-size:10px;font-family:Arial, Helvetica, sans-serif; color:#000000;   border-left:1px solid #CCCCCC; font-weight:600; border-top:0px;">&nbsp; Places Visited </td>
+            <td height="20px" valign="middle" colspan="3"   style="font-size:10px;font-family:Arial, Helvetica, sans-serif; color:#000000;   border-right:1px solid #CCCCCC; font-weight:600; border-top:0px;">&nbsp; ' . $out->tv_places_visited . ' </td>
             </tr>';
         endif;
 
@@ -96,10 +154,10 @@ class Dashboard extends CI_Controller
           <tr>
           <td><table width="100%"  cellpadding="0" cellspacing="0">
           <tr>
-          <td width="26%"><img src="images/Ashoka-Stambh.jpg" style="width:60px; height:80px;" /></td>
-          <td width="74%" align="center" valign="middle" style="font-size:15px; font-family:Arial, Helvetica, sans-serif; color:#000000; font-weight:600;"> Embassy Of India Washington Dc <br/>
-          <span style="font-size:12px;">Washington</span><br/>
-          <span style="font-size:12px;">http://www.Afghanistanembassy.org/</span></td>
+          <td width="26%">'.$img.'</td>
+          <td width="74%" align="center" valign="middle" style="font-size:15px; font-family:Arial, Helvetica, sans-serif; color:#000000; font-weight:600;"> Embassy Of India AFGHANISTAN <br/>
+          <span style="font-size:12px;">Washington</span><br/><br/><br/>
+          <span style="font-size:10px;"><small>http://www.Afghanistanembassy.org</small></span></td>
           </tr>
           </table></td>
           </tr>
@@ -116,7 +174,7 @@ class Dashboard extends CI_Controller
           </tr>
           <tr>
           <td width="3%" align="left" style="font-size:10px; font-family:Arial, Helvetica, sans-serif; color:#000000;">&nbsp;</td>
-          <td width="26%" align="center" style="font-size:10px; font-family:Arial, Helvetica, sans-serif;"><span style="font-size:10px; font-family:Arial, Helvetica, sans-serif; color:#000000;">AFGA11001</span></td>
+          <td width="26%" align="center" style="font-size:10px; font-family:Arial, Helvetica, sans-serif;"><span style="font-size:10px; font-family:Arial, Helvetica, sans-serif; color:#000000;"> ' . $out->app_id . ' </span></td>
           <td width="55%" align="left" style="font-size:12px; font-family:Arial, Helvetica, sans-serif; color:#000000; font-weight:500;">&nbsp;</td>
           <td style="font-size:12px; font-family:Arial, Helvetica, sans-serif; color:#000000; font-weight:500;">Signature</td>
           </tr>
@@ -363,12 +421,12 @@ class Dashboard extends CI_Controller
           <td colspan="4"  valign="middle" height="20px"  style="font-size:10px;font-family:Arial, Helvetica, sans-serif; color:#000000; border:1px solid #CCCCCC;  border-top:0px; font-weight:600; border-top:0px; padding:5px; 5px 5px 5px;">&nbsp; Have you been resused an Indian Visa or extension of the same previously or deported from India ? ' . $out->last_visit_previously_refused . ' </td>
           </tr>
           <tr>
-          <td colspan="2"  valign="middle" height="20px"  style="font-size:10px;font-family:Arial, Helvetica, sans-serif; color:#000000; border:1px solid #CCCCCC;  border-top:0px; font-weight:600; border-top:0px; padding:5px; 5px 5px 5px;">&nbsp; If Yes above Mention when and by whome width control<br/>
-          No / Date </td>
-          <td colspan="2"  valign="middle" height="20px"  style="font-size:10px;font-family:Arial, Helvetica, sans-serif; color:#000000; border:1px solid #CCCCCC;  border-top:0px; font-weight:600; border-top:0px; padding:5px; 5px 5px 5px;"></td>
-          ' . $out->mention_control_no . '</tr>
+          <td colspan="2"  valign="middle" height="20px"  style="font-size:10px;font-family:Arial, Helvetica, sans-serif; color:#000000; border:1px solid #CCCCCC;  border-top:0px; font-weight:600; border-top:0px; padding:5px; 5px 5px 5px;">&nbsp; &nbsp; If <b>Yes</b> above Mention when and by whome width control<br/>
+              &nbsp; &nbsp; No / Date </td>
+          <td colspan="2"  valign="middle" height="20px"  style="font-size:10px;font-family:Arial, Helvetica, sans-serif; color:#000000; border:1px solid #CCCCCC;  border-top:0px; font-weight:600; border-top:0px; padding:5px; 5px 5px 5px;">' . $out->mention_control_no . ' , ' . $out->refused_date . '</td>
+          </tr>
           <tr>
-          <td colspan="4"  valign="middle" height="20px"  style="font-size:10px;font-family:Arial, Helvetica, sans-serif; color:#000000; background-color:#eeeeee; border:1px solid #CCCCCC;  border-top:0px; font-weight:600; border-top:0px; padding:5px; 5px 5px 5px;">&nbsp;  G. Profession / Occupation Details </td>
+          <td colspan="4"  valign="middle" height="20px"  style="font-size:10px;font-family:Arial, Helvetica, sans-serif; color:#000000; background-color:#eeeeee; border:1px solid #CCCCCC;  border-top:0px; font-weight:600; border-top:0px; padding:5px; 5px 5px 5px;">&nbsp;<b>G. Profession / Occupation Details </b></td>
           </tr>
           <tr>
           <td   valign="middle" height="20px"  style="font-size:10px;font-family:Arial, Helvetica, sans-serif; color:#000000;  border:1px solid #CCCCCC;  border-top:0px; font-weight:600; border-top:0px; padding:5px; 5px 5px 5px;">&nbsp;  Present Occupation </td>
@@ -381,8 +439,7 @@ class Dashboard extends CI_Controller
           <td   valign="middle" height="20px" colspan="3"  style="font-size:10px;font-family:Arial, Helvetica, sans-serif; color:#000000; border:1px solid #CCCCCC;  border-top:0px; font-weight:600; border-top:0px; padding:5px; 5px 5px 5px;">&nbsp;    ' . $out->business_name . ' </td>
           </tr>
           <tr>
-          <td   valign="middle" height="20px"  style="font-size:10px;font-family:Arial, Helvetica, sans-serif; color:#000000;  border:1px solid #CCCCCC;  border-top:0px; font-weight:600; border-top:0px; padding:5px; 5px 5px 5px;">&nbsp;  Employer Address <br/>
-          Phone Number </td>
+          <td   valign="middle" height="20px"  style="font-size:10px;font-family:Arial, Helvetica, sans-serif; color:#000000;  border:1px solid #CCCCCC;  border-top:0px; font-weight:600; border-top:0px; padding:5px; 5px 5px 5px;">&nbsp;  Employer Address <br/> &nbsp;  Phone Number </td>
           <td   valign="middle" height="20px" colspan="3"  style="font-size:10px;font-family:Arial, Helvetica, sans-serif; color:#000000; border:1px solid #CCCCCC;  border-top:0px; font-weight:600; border-top:0px; padding:5px; 5px 5px 5px;">&nbsp;    ' . $out->address . ' </td>
           </tr>
           <tr>
@@ -390,12 +447,36 @@ class Dashboard extends CI_Controller
           <td   valign="middle" height="20px" colspan="3"  style="font-size:10px;font-family:Arial, Helvetica, sans-serif; color:#000000; border:1px solid #CCCCCC;  border-top:0px; font-weight:600; border-top:0px; padding:5px; 5px 5px 5px;">&nbsp;    ' . $out->past_occupation . ' </td>
           </tr>
           <tr>
-          <td   valign="middle" height="20px"  colspan="4" style="font-size:10px;font-family:Arial, Helvetica, sans-serif; color:#000000;  border:1px solid #CCCCCC;  border-top:0px; font-weight:600; border-top:0px; padding:5px; 5px 5px 5px;">&nbsp;  Are/Have you worked with Armed Forces/Police /Para Military forces ? No </td>
+          <td   valign="middle" height="20px"  colspan="4" style="font-size:10px;font-family:Arial, Helvetica, sans-serif; color:#000000;  border:1px solid #CCCCCC;  border-top:0px; font-weight:600; border-top:0px; padding:5px; 5px 5px 5px;">&nbsp;  Are/Have you worked with Armed Forces/Police /Para Military forces ? ' . $out->military . ' </td>
           </tr>
-          </table>
+          <tr>
+          <td valign="middle" height="20px"  colspan="4">
           <table width="100%" cellpadding="0" cellspacing="0">
           <tr>
-          <td colspan="4"  valign="middle" height="20px"  style="font-size:10px;font-family:Arial, Helvetica, sans-serif; color:#000000; background-color:#eeeeee; border:1px solid #CCCCCC;  border-top:0px; font-weight:600; border-top:0px; padding:5px; 5px 5px 5px;">&nbsp;  H. Address of Place of Stay / Hotel </td>
+          <td width="25%"  valign="middle" height="20px"  style="font-size:10px;font-family:Arial, Helvetica, sans-serif; color:#000000;  border:1px solid #CCCCCC;  border-top:0px; font-weight:600; border-top:0px; padding:5px; 5px 5px 5px;">&nbsp;  Organisation </td>
+          <td width="25%"  valign="middle" height="20px"  style="font-size:10px;font-family:Arial, Helvetica, sans-serif; color:#000000; border:1px solid #CCCCCC;  border-top:0px; font-weight:600; border-top:0px; padding:5px; 5px 5px 5px;">&nbsp; ' . $out->military_organisation . ' </td>
+          <td width="25%"  valign="middle" height="20px"  style="font-size:10px;font-family:Arial, Helvetica, sans-serif; color:#000000; border:1px solid #CCCCCC;  border-top:0px; font-weight:600; border-top:0px; padding:5px; 5px 5px 5px;">&nbsp;  Designation </td>
+          <td width="25%"  valign="middle" height="20px"  style="font-size:10px;font-family:Arial, Helvetica, sans-serif; color:#000000;  border:1px solid #CCCCCC;  border-top:0px; font-weight:600; border-top:0px; padding:5px; 5px 5px 5px;">&nbsp; ' . $out->military_designation . ' </td>
+          </tr>
+          <tr>
+          <td width="25%"  valign="middle" height="20px"  style="font-size:10px;font-family:Arial, Helvetica, sans-serif; color:#000000;  border:1px solid #CCCCCC;  border-top:0px; font-weight:600; border-top:0px; padding:5px; 5px 5px 5px;">&nbsp;  Military Rank </td>
+          <td width="25%"  valign="middle" height="20px"  style="font-size:10px;font-family:Arial, Helvetica, sans-serif; color:#000000; border:1px solid #CCCCCC;  border-top:0px; font-weight:600; border-top:0px; padding:5px; 5px 5px 5px;">&nbsp;    ' . $out->military_rank . ' </td>
+          <td width="25%"  valign="middle" height="20px"  style="font-size:10px;font-family:Arial, Helvetica, sans-serif; color:#000000; border:1px solid #CCCCCC;  border-top:0px; font-weight:600; border-top:0px; padding:5px; 5px 5px 5px;">&nbsp;  Place of Posting </td>
+          <td width="25%"  valign="middle" height="20px"  style="font-size:10px;font-family:Arial, Helvetica, sans-serif; color:#000000;  border:1px solid #CCCCCC;  border-top:0px; font-weight:600; border-top:0px; padding:5px; 5px 5px 5px;">&nbsp;  ' . $out->military_place_of_posting . ' </td>
+          </tr>
+          </table>
+          </td>
+          </tr >
+          </table>
+          <div class="page-break"></div>
+          <table width="100%" cellpadding="0" cellspacing="0">
+
+          <tr>
+          <td colspan="4" valign="middle" height="20px" style="font-size:10px;font-family:Arial, Helvetica, sans-serif; font-weight:600; border-top:1px; padding:5px; 5px 5px 5px;">&nbsp; </td>
+          </tr>
+
+          <tr>
+          <td colspan="4"  valign="middle" height="20px"  style="font-size:10px;font-family:Arial, Helvetica, sans-serif; color:#000000; background-color:#eeeeee; border:1px solid #CCCCCC;  border-top:0px; font-weight:600; border-top:1px; padding:5px; 5px 5px 5px;">&nbsp;<b>H. Address of Place of Stay / Hotel</b> </td>
           </tr>
           <tr>
           <td width="20%" height="20px"   valign="middle"  style="font-size:10px;font-family:Arial, Helvetica, sans-serif; color:#000000;  border:1px solid #CCCCCC;  border-top:0px; font-weight:600; border-top:0px; padding:5px; 5px 5px 5px;">&nbsp;  Place/Hotel Name </td>
@@ -410,10 +491,10 @@ class Dashboard extends CI_Controller
           <td width="20%" height="20px"   valign="middle"  style="font-size:10px;font-family:Arial, Helvetica, sans-serif; color:#000000;  border:1px solid #CCCCCC;  border-top:0px; font-weight:600; border-top:0px; padding:5px; 5px 5px 5px;">&nbsp;    </td>
           </tr>
           </table>
-          <div class="page-break"></div>
+
           <table width="100%"  cellpadding="0" cellspacing="0" >
           <tr>
-          <td colspan="4"  valign="middle" height="20px"  style="font-size:10px;font-family:Arial, Helvetica, sans-serif; color:#000000; background-color:#eeeeee; border:1px solid #CCCCCC;  border-top:0px; font-weight:600; border-top:0px; padding:5px; 5px 5px 5px;">&nbsp;  I. Details of two refrence </td>
+          <td colspan="4"  valign="middle" height="20px"  style="font-size:10px;font-family:Arial, Helvetica, sans-serif; color:#000000; background-color:#eeeeee; border:1px solid #CCCCCC;  border-top:0px; font-weight:600; border-top:1px; padding:5px; 5px 5px 5px;">&nbsp;<b>I. Details of two refrence</b> </td>
           </tr>
           <tr>
           <td  colspan="4"  valign="middle" height="20px"  style="font-size:10px;font-family:Arial, Helvetica, sans-serif; color:#000000;   font-weight:600; border-top:0px;"><table width="100%" cellpadding="0" cellspacing="0">
@@ -421,7 +502,7 @@ class Dashboard extends CI_Controller
           <td><table width="100%" cellpadding="0" cellspacing="0">
           <tr>
           <td colspan="2"  valign="middle" align="center" height="20px"  style="font-size:10px;font-family:Arial, Helvetica, sans-serif; color:#000000; border:1px solid #CCCCCC;  border-top:0px; font-weight:600; border-top:0px; padding:5px; 5px 5px 5px;">&nbsp;  In India </td>
-          <td width="49%" height="20px" colspan="2" align="center"  valign="middle"  style="font-size:10px;font-family:Arial, Helvetica, sans-serif; color:#000000; border:1px solid #CCCCCC;  border-top:0px; font-weight:600; border-top:0px; padding:5px; 5px 5px 5px;">&nbsp;  In UNITED STATES OF AMERICA </td>
+          <td width="49%" height="20px" colspan="2" align="center"  valign="middle"  style="font-size:10px;font-family:Arial, Helvetica, sans-serif; color:#000000; border:1px solid #CCCCCC;  border-top:0px; font-weight:600; border-top:0px; padding:5px; 5px 5px 5px;">&nbsp;  In ' . $out->applying_country . ' </td>
           </tr>
           <tr>
           <td width="12%" height="20px"   valign="middle"  style="font-size:10px;font-family:Arial, Helvetica, sans-serif; color:#000000; border:1px solid #CCCCCC;  border-top:0px; font-weight:600; border-top:0px; padding:5px; 5px 5px 5px;">&nbsp;  Name </td>
@@ -430,8 +511,8 @@ class Dashboard extends CI_Controller
           </tr>
           <tr>
           <td width="12%" height="20px"   valign="middle"  style="font-size:10px;font-family:Arial, Helvetica, sans-serif; color:#000000; border:1px solid #CCCCCC;  border-top:0px; font-weight:600; border-top:0px; padding:5px; 5px 5px 5px;">&nbsp;  Address </td>
-          <td width="39%" height="20px"   valign="middle"  style="font-size:10px;font-family:Arial, Helvetica, sans-serif; color:#000000; border:1px solid #CCCCCC;  border-top:0px; font-weight:600; border-top:0px; padding:5px; 5px 5px 5px;">&nbsp;  ' . $out->reference_address_india_1 . ' </td>
-          <td width="49%" height="20px" colspan="2"  valign="middle"  style="font-size:10px;font-family:Arial, Helvetica, sans-serif; color:#000000; border:1px solid #CCCCCC;  border-top:0px; font-weight:600; border-top:0px; padding:5px; 5px 5px 5px;">&nbsp;  ' . $out->reference_address_country_1 . ' </td>
+          <td width="39%" height="20px"   valign="middle"  style="font-size:10px;font-family:Arial, Helvetica, sans-serif; color:#000000; border:1px solid #CCCCCC;  border-top:0px; font-weight:600; border-top:0px; padding:5px; 5px 5px 5px;">&nbsp;  ' . $out->reference_address_india_1 . '<br>' . $out->reference_address_india_2 . ' </td>
+          <td width="49%" height="20px" colspan="2"  valign="middle"  style="font-size:10px;font-family:Arial, Helvetica, sans-serif; color:#000000; border:1px solid #CCCCCC;  border-top:0px; font-weight:600; border-top:0px; padding:5px; 5px 5px 5px;">&nbsp;  ' . $out->reference_address_country_1 . '<br>' . $out->reference_address_country_2 . ' </td>
           </tr>
           <tr>
           <td width="12%" height="20px"   valign="middle"  style="font-size:10px;font-family:Arial, Helvetica, sans-serif; color:#000000; border:1px solid #CCCCCC;  border-top:0px; font-weight:600; border-top:0px; padding:5px; 5px 5px 5px;">&nbsp;  Phone </td>
@@ -443,7 +524,7 @@ class Dashboard extends CI_Controller
           </table></td>
           </tr>
           <tr>
-          <td height="20px"  colspan="4" style="font-size:10px;font-family:Arial, Helvetica, sans-serif; color:#000000; background-color:#eeeeee; border:1px solid #CCCCCC;  border-top:0px; font-weight:600; border-top:0px; padding:5px; 5px 5px 5px;">&nbsp;J. DECLARATION :</td>
+          <td height="20px"  colspan="4" style="font-size:10px;font-family:Arial, Helvetica, sans-serif; color:#000000; background-color:#eeeeee; border:1px solid #CCCCCC;  border-top:0px; font-weight:600; border-top:0px; padding:5px; 5px 5px 5px;">&nbsp;<b>J. DECLARATION :</b></td>
           </tr>
           <tr>
           <td height="20px"  width="8%"  style="font-size:10px;font-family:Arial, Helvetica, sans-serif; color:#000000; border:1px solid #CCCCCC;  border-top:0px; font-weight:600; border-top:0px; padding:5px; 5px 5px 5px;">&nbsp;a.</td>
@@ -459,7 +540,7 @@ class Dashboard extends CI_Controller
           </tr>
           <tr>
           <td height="20px"  width="8%"  style="font-size:10px;font-family:Arial, Helvetica, sans-serif; color:#000000; border:1px solid #CCCCCC;  border-top:0px; font-weight:600; border-top:0px; padding:5px; 5px 5px 5px;">&nbsp;d.</td>
-          <td height="20px"  width="92%"  colspan="3" style="font-size:10px;font-family:Arial, Helvetica, sans-serif; color:#000000; border:1px solid #CCCCCC;  border-top:0px; font-weight:600; border-top:0px; padding:5px; 5px 5px 5px;">&nbsp;I understant that in case the information provided in the form is found to be incorrect, I will be liable for denial of visit/entry or deportation and / or other penalties during the visit as provided by  Afghanistan law</td>
+          <td height="20px"  width="92%"  colspan="3" style="font-size:10px;font-family:Arial, Helvetica, sans-serif; color:#000000; border:1px solid #CCCCCC;  border-top:0px; font-weight:600; border-top:0px; padding:5px; 5px 5px 5px;">&nbsp;I understant that in case the information provided in the form is found to be incorrect, I will be liable for denial of visit/entry or deportation and / or other penalties during the visit as provided by  ' . $out->applying_country . ' law</td>
           </tr>
           </table>
           <table width="100%"  cellpadding="0" cellspacing="0" >
@@ -477,7 +558,7 @@ class Dashboard extends CI_Controller
 
 
           </body></html>';
-        $name = date("Ymd") . rand() . '.pdf';
+         // echo $pdf_content;
         $reportPDF = $this->createPDF($pdf_content);
     }
 
@@ -489,7 +570,7 @@ class Dashboard extends CI_Controller
         $dompdf->load_html($pdf_content);
         $dompdf->set_paper('a4', 'portrait');
         $dompdf->render();
-        return $dompdf->stream("visapdf.pdf");
+       return $dompdf->stream("visapdf.pdf");
     }
 
 }
