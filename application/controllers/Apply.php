@@ -31,33 +31,42 @@ class Apply extends CI_Controller
           
           $result = $this->model->saveApply($this->input->post());
           if($result == '1'){
-            $this->load->view('template/header' , $dataT);
-            $this->load->view('apply/thankyou.php');
-            $this->load->view('template/footer');
-          }else{            
+           
+            $resdata="OK";
+          }else{    
+            $resdata="NotOK";
             $data1 = array('image_upload_error' => $result);
-          }
 
-          $this->load->view('template/header' , $dataT);
-          $this->load->view('apply/index.php', array('data' => $data, 'error' => $data1));
-          $this->load->view('template/footer');
-        
+          }         
+
         }else{
-
+        $resdata="NotOK";
           $data1 = array('image_upload_error' => $image_upload);
         }
 
-        $this->load->view('template/header' , $dataT);
-        $this->load->view('apply/index.php', array('data' => $data, 'error' => $data1));
-        $this->load->view('template/footer');
+         
 
-      }else{
+            if($resdata=='OK'){
+      
+            $this->load->view('template/header' , $dataT);
+            $this->load->view('apply/thankyou.php');
+            $this->load->view('template/footer');
+          }else{
+            $this->load->view('template/header' , $dataT);
+            $this->load->view('apply/index.php', array('data' => $data, 'error' => $data1));
+            $this->load->view('template/footer');
+          }
+
+
+
+   }else{
 
       $this->load->view('template/header' , $dataT);
       $this->load->view('apply/index.php', array('data' => $data, 'error' => $data1));
       $this->load->view('template/footer');
       }
     
+
     }else{
 
       $data = array('login_first' => '1');

@@ -181,12 +181,12 @@
                     <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3 formspace">
                       Surname (as shown in your Passport)*
                       <br>
-                      <input type="text" value="" class="form-control" value="<?php echo $_POST['surname']; ?>" name="surname" placeholder="Surname" id="surname" required="" />
+                      <input type="text" class="form-control" value="<?php echo $_POST['surname']; ?>" name="surname" placeholder="Surname" id="surname" required="" />
                     </div>
                     <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3 formspace">
                       Given Name (Complete as in Passport)*
                       <br>
-                      <input type="text" value="" name="given_name" value="<?php echo $_POST['given_name']; ?>" class="form-control" placeholder="Given Name" id="given_name" required="" />
+                      <input type="text" name="given_name" value="<?php echo $_POST['given_name']; ?>" class="form-control" placeholder="Given Name" id="given_name" required="" />
                     </div>
                     <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 formspace" style="padding-top:25px;">
                       <b>
@@ -634,8 +634,9 @@
                 <div class="row rowspace">
                   <div  class="col-xs-12 col-sm-3 col-md-3 col-lg-3 formspace">
                     <select class="form-control" name="grandparents_pakistan" id="grandparents_pakistan" onclick="grand_pa(this);">
-                      <option value="Yes">Yes</option>
-                      <option value="No" selected="">No</option>
+                      <?php foreach($data['yes_no'] as $cname){?>
+                          <option <?php if($_POST['grandparents_pakistan'] == $cname){echo 'selected';} ?> value="<?php echo $cname; ?>"><?php echo $cname; ?></option>
+                        <?php } ?>
                     </select>
                   </div>
                   <script type="text/javascript">
@@ -702,8 +703,9 @@
                   <div  class="col-xs-12 col-sm-3 col-md-3 col-lg-3 formspace">
                     <select class="form-control" name="military" id="military" onclick="military_sho(this);">
                       <option value="">Select</option>
-                      <option value="Yes">Yes</option>
-                      <option value="No" selected="">No</option>
+                      <?php foreach($data['yes_no'] as $cname){?>
+                          <option <?php if($_POST['military'] == $cname){echo 'selected';} ?> value="<?php echo $cname; ?>"><?php echo $cname; ?></option>
+                        <?php } ?>
                     </select>
                   </div>
                 </div>
@@ -846,10 +848,9 @@
                   <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3 formspace">
                     <select class="form-control" name="v_no_of_entries" id="v_no_of_entries" required="">
                       <option value="">No of Entries*</option>
-                      <option value="Single">Single</option>
-                      <option value="Triple">Triple</option>
-                      <option value="Double">Double</option>  
-                      <option value="Multiple">Multiple</option>   
+                      <?php foreach ($data['no_of_entries'] as $visit) { ?>
+                        <option <?php if($_POST['v_no_of_entries'] == $visit){echo 'selected';} ?> value="<?php echo $visit; ?>"><?php echo $visit; ?></option>
+                      <?php } ?>    
                     </select>
                   </div>
                   <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3 formspace">
@@ -879,8 +880,9 @@
                   <div  class="col-xs-12 col-sm-3 col-md-3 col-lg-3 formspace">
                     <select class="form-control" name="visited_india_before" id="visited_india_before" onclick="visited_india1(this);">
                       <option value="">Select</option>
-                      <option value="yes">Yes</option>
-                      <option value="no">No</option>
+                      <?php foreach($data['yes_no'] as $cname){?>
+                          <option <?php if($_POST['visited_india_before'] == $cname){echo 'selected';} ?> value="<?php echo $cname; ?>"><?php echo $cname; ?></option>
+                        <?php } ?>
                     </select>
                   </div>
                 </div>
@@ -889,7 +891,7 @@
                       function visited_india1(att)
                       {
                         var val = att.options[att.selectedIndex].value;
-                        document.getElementById("visited_india").style.display = val == 'yes' ? "block" : 'none';
+                        document.getElementById("visited_india").style.display = val == 'Yes' ? "block" : 'none';
                       }
                     </script>
                 <div id="visited_india" <?php if($_POST['visited_india_before']=="yes"){echo "style='display: block'";}else{ echo "style='display: none'";} ?>>
@@ -918,9 +920,9 @@
                   <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3 formspace">
                     <select class="form-control" name="last_type_visa" id="last_type_visa" />
                     <option value="Visa Type">Visa Type</option>
-                    <option value="BUSINESS VISA">BUSINESS VISA</option>
-                    <option value="MEDICAL VISA">MEDICAL VISA</option>
-                    <option value="TOURIST VISA">TOURIST VISA</option>    
+                    <?php foreach ($data['visa_type'] as $visa) { ?>
+                      <option <?php if($_POST['last_type_visa'] == $visa){echo 'selected';} ?> value="<?php echo $visa; ?>"><?php echo $visa; ?></option>
+                    <?php } ?>    
                     </select>
                 </div>
                 <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
@@ -938,8 +940,9 @@
                 <div  class="col-xs-12 col-sm-6 col-md-6 col-lg-6 formspace">
                   <select class="form-control" name="last_visit_previously_refused" id="last_visit_previously_refused" onclick="permsn_india(this);">
                     <option value="0">Select</option>
-                    <option value="Yes">Yes</option>
-                    <option value="No">No</option>
+                    <?php foreach ($data['yes_no'] as $visit) { ?>
+                      <option <?php if($_POST['last_visit_previously_refused'] == $visit){echo 'selected';} ?> value="<?php echo $visit; ?>"><?php echo $visit; ?></option>
+                    <?php } ?> 
                   </select>
                 </div>
               </div>
@@ -975,8 +978,9 @@
                 <div  class="col-xs-12 col-sm-3 col-md-3 col-lg-3 formspace">
                   <select onclick="saarc_visit(this);" class="form-control" name="visited_saarc_countries" id="visited_saarc_countries">
                     <option value="">select</option>
-                    <option value="Yes">Yes</option>
-                    <option value="No">No</option>
+                    <?php foreach ($data['yes_no'] as $visit) { ?>
+                      <option <?php if($_POST['visited_saarc_countries'] == $visit){echo 'selected';} ?> value="<?php echo $visit; ?>"><?php echo $visit; ?></option>
+                    <?php } ?>
                   </select>
                 </div>
                 <script type="text/javascript">                 
@@ -1081,7 +1085,7 @@
                 <tr>
                   <td><svg xmlns="http://www.w3.org/2000/svg" width="40" height="17" viewBox="0 0 20 17"><path d="M10 0l-5.2 4.9h3.3v5.1h3.8v-5.1h3.3l-5.2-4.9zm9.3 11.5l-3.2-2.1h-2l3.4 2.6h-3.5c-.1 0-.2.1-.2.1l-.8 2.3h-6l-.8-2.2c-.1-.1-.1-.2-.2-.2h-3.6l3.4-2.6h-2l-3.2 2.1c-.4.3-.7 1-.6 1.5l.6 3.1c.1.5.7.9 1.2.9h16.3c.6 0 1.1-.4 1.3-.9l.6-3.1c.1-.5-.2-1.2-.7-1.5z"/></svg>
                   </td>
-                  <td><small>Please upload your passport size JPEG photograph, <br> min size(10KB), max size(300KB) <br>min dimention(350x350), max dimention(1000x1000) </small></td>
+                  <td><small>Please upload your passport size JPEG photograph*, <br> min size(10KB), max size(300KB) <br>min dimention(350x350), max dimention(1000x1000) </small></td>
                 </tr>
               </table>
               

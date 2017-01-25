@@ -36,6 +36,7 @@ public function saveApply($arr)
 
    if($arr['email_main'] == $arr['ReEnterEmail']){ $email = $arr['email_main']; }else{ return 'Email Not Mached!'; }
    if($arr['changed_name'] == NULL){$arr['changed_name'] = '0';}
+   if($arr['zip_code_present'] == NULL){$arr['zip_code_present'] = '0';}
    if($arr['same_address_permanent'] == NULL){$arr['same_address_permanent'] = 'No';}
    $app_id = $this->newApplyId();
    $photoName = $this->imgInsertdb();

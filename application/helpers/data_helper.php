@@ -363,6 +363,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		$data['indian_mission']['4'] = "AFGM - AFGANISTAN-MAZAR-E-SHARIEF";
 
 		
+
 		//visa type
 
 		$data['visa_type']['0'] = "BUSINESS VISA";
@@ -370,11 +371,28 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		$data['visa_type']['2'] = "TOURIST VISA";
 
 
+
 		//select sex
 
 		$data['sex']['0'] = "Male";
 		$data['sex']['1'] = "Female";
 		$data['sex']['2'] = "Transgender";
+
+
+
+		//number of entries
+
+		$data['no_of_entries']['0'] = "Single";
+		$data['no_of_entries']['1'] = "Triple";
+		$data['no_of_entries']['2'] = "Double";
+		$data['no_of_entries']['3'] = "Multiple";
+
+
+
+		//YES - NO
+
+		$data['yes_no']['0'] = "Yes";
+		$data['yes_no']['1'] = "No";
 
 
 return $data;
