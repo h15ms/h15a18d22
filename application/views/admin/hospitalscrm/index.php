@@ -84,7 +84,7 @@
                            
                             <td align="center"><a href="<?php echo base_url(); ?>admin/hospitalscrm/viewhospital/<?php echo $hospital->appID; ?>"><i class="fa fa-user"></i></a>
                             <a href="<?php echo base_url(); ?>admin/hospitalscrm/edithospital/<?php echo $hospital->appID; ?>"><i class="fa fa-pencil-square-o"></i></a>
-                            <a href="<?php echo base_url(); ?>admin/hospitalscrm/viewhospital/<?php echo $hospital->appID; ?>"><i class="fa fa-trash-o"></i></a>
+                            <a href="javascript:void(0)" onclick="delhospital(<?php echo $hospital->appID;  ?>)"><i class="fa fa-trash-o"></i></a>
                             
                             
                             

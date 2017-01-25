@@ -117,12 +117,12 @@ public function updateGetNewHospital(){
     {
     
 
-        $pic =$_FILES['hospital_image']['name'];
-        $pic_loc = $_FILES['hospital_image']['tmp_name'];
-        $folder="assets/img/hospitals/";
-        $move=$folder.$pic;
-        move_uploaded_file($_FILES['hospital_image']['tmp_name'],$move);
-        $hospList=$this->app->edithospitalDetail($_POST,$pic);
+//        $pic =$_FILES['hospital_image']['name'];
+//        $pic_loc = $_FILES['hospital_image']['tmp_name'];
+//        $folder="assets/img/hospitals/";
+//        $move=$folder.$pic;
+//        move_uploaded_file($_FILES['hospital_image']['tmp_name'],$move);
+        $hospList=$this->app->edithospitalDetail($_POST,$this->uri->segment('4'));
     
     }
     
@@ -138,5 +138,9 @@ public function updateGetNewHospital(){
     $this->load->view('admin/hospitalscrm/edithospital',$data);
     $this->load->view('admin/temp/footercrm');
 
+  }
+  
+  public function delhospitalwithid(){
+    echo   $id=$_GET['appid'];
   }
 }

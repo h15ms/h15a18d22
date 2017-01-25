@@ -30,7 +30,7 @@
   <script type='text/javascript' src='<?php echo URL_ADMIN;?>plugins/dropzone/dropzone.min.js'></script>
   <script type='text/javascript' src='<?php echo URL_ADMIN;?>js/placeholdr.js'></script>
   <script type='text/javascript' src='<?php echo URL_ADMIN;?>js/application.js'></script>
-  <?php if($this->uri->segment(3)=='addhospital'): ?>
+  <?php if($this->uri->segment(2)=='hospitalscrm'): ?>
 
     <script type='text/javascript' src='<?php echo URL_ADMIN;?>js/hospital.js'></script>
 
