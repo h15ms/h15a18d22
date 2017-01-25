@@ -10,11 +10,6 @@ class Dashboard extends CI_Controller
 
   public function index() 
   { 
-    $res = $this->model->getCustomer();
-echo '<pre>';
-print_r($res);
-echo '</pre>';
-exit;
 
     $sess = $this->session->userdata();
         if($sess['logged_in']['user_id'] == ""){
@@ -34,16 +29,15 @@ exit;
 
   public function visapdf()
   {
-
-  $img='<img src="'.base_url().'assets/img/ashoka_stambh.jpg" style="width:60px; height:80px;" />';
-
-
         $id = $this->uri->segment(3);
         $acquire_nationality='';
         $visa_type_display='';
            
-        $out = $this->model->getCustomer($id);
+        $out = $this->model->getCustomerData($id);
       
+         $img='<img src="'.base_url().'assets/img/ashoka_stambh.jpg" style="width:60px; height:80px;" />';
+         $imgprofile='<img src="'.base_url().'assets/img/photos/'.$out->picture.'" style="width:80px; height:100px;" />';
+
         if ($out->acquire_nationality == 'Naturalization'):
             $acquire_nationality = '<tr>
             <td width="30%" valign="middle" height="20px"  style="font-size:10px;font-family:Arial, Helvetica, sans-serif; color:#000000; border:1px solid #CCCCCC; border-top:0px; font-weight:600; border-top:0px; border-right:0px; padding:5px;">&nbsp;  Any Other Previous/Past Nationality </td>
@@ -155,8 +149,8 @@ exit;
           <td><table width="100%"  cellpadding="0" cellspacing="0">
           <tr>
           <td width="26%">'.$img.'</td>
-          <td width="74%" align="center" valign="middle" style="font-size:15px; font-family:Arial, Helvetica, sans-serif; color:#000000; font-weight:600;"> Embassy Of India AFGHANISTAN <br/>
-          <span style="font-size:12px;">Washington</span><br/><br/><br/>
+          <td width="74%" align="center" valign="middle" style="font-size:15px; font-family:Arial, Helvetica, sans-serif; color:#000000; font-weight:600;"> Embassy Of India ' . $out->applying_country . ' <br/>
+          <span style="font-size:12px;">' . $out->applying_country . '</span><br/><br/><br/>
           <span style="font-size:10px;"><small>http://www.Afghanistanembassy.org</small></span></td>
           </tr>
           </table></td>
@@ -168,7 +162,7 @@ exit;
           <td style="font-size:10px; font-family:Arial, Helvetica, sans-serif; color:#000000; font-weight:500;" ><table width="100%"  cellpadding="0" cellspacing="0">
           <tr>
           <td width="3%" align="left"></td>
-          <td width="26%" align="center"><img src="images/profileimage.jpg" style="width:80px; height:100px;" /></td>
+          <td width="26%" align="center">'.$imgprofile.'</td>
           <td width="55%" align="center" valign="middle" style="font-size:16px; font-family:Arial, Helvetica, sans-serif; font-weight:900;">Visa Application Form</td>
           <td width="16%"></td>
           </tr>
@@ -558,7 +552,7 @@ exit;
 
 
           </body></html>';
-       // echo $img;
+
        $reportPDF = $this->createPDF($pdf_content);
     }
 

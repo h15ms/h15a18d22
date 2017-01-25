@@ -115,7 +115,9 @@
                       <br>
                       <select class="form-control" name="applying_country" id="applying_country" required="">
                         <option value="">Select Country</option>
-                        <option value="AFGHANISTAN">AFGHANISTAN</option>
+                        <?php foreach($data['country'] as $cname){?>
+                            <option <?php if($_POST['applying_country'] == $cname){echo 'selected';} ?> value="<?php echo $cname; ?>"><?php echo $cname; ?></option>
+                        <?php } ?>
                       </select>
                     </div>
                     <div  class="col-xs-12 col-sm-3 col-md-3 col-lg-3 formspace">
@@ -123,11 +125,9 @@
                       <br>
                       <select class="form-control" name="indian_mission" id="indian_mission" required="">
                         <option value="">Select Mission</option>
-                        <option value="AFGH - AFGANISTAN-HERAT">AFGH - AFGANISTAN-HERAT</option>
-                        <option value="AFGJ - AFGANISTAN-JALALABAD">AFGJ - AFGANISTAN-JALALABAD</option>
-                        <option value="AFGK - AFGANISTAN-KABUL">AFGK - AFGANISTAN-KABUL</option>
-                        <option value="AFGR - AFGANISTAN-KANDHAR">AFGR - AFGANISTAN-KANDHAR</option>
-                        <option value="AFGM - AFGANISTAN-MAZAR-E-SHARIEF">AFGM - AFGANISTAN-MAZAR-E-SHARIEF</option>
+                        <?php foreach($data['indian_mission'] as $cname){?>
+                            <option <?php if($_POST['indian_mission'] == $cname){echo 'selected';} ?> value="<?php echo $cname; ?>"><?php echo $cname; ?></option>
+                        <?php } ?>
                       </select>
                     </div>
                     <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3 formspace">
@@ -167,9 +167,9 @@
                       <br>
                       <select class="form-control" name="visa_type" required>
                         <option value="">Select Visatype</option>
-                        <option value="BUSINESS VISA">BUSINESS VISA</option>
-                        <option value="MEDICAL VISA">MEDICAL VISA</option>
-                        <option value="TOURIST VISA">TOURIST VISA</option>    
+                        <?php foreach($data['visa_type'] as $cname){?>
+                            <option <?php if($_POST['visa_type'] == $cname){echo 'selected';} ?> value="<?php echo $cname; ?>"><?php echo $cname; ?></option>
+                        <?php } ?>    
                       </select>
                     </div>
                   </div>
@@ -216,9 +216,9 @@
                       <br>
                       <select class="form-control" name="sex" id="sex" required="">
                         <option value="">Select Sex</option>
-                        <option value="Male">Male</option>
-                        <option value="Female">Female</option>
-                        <option value="Transgender">Transgender</option>
+                        <?php foreach($data['sex'] as $cname){?>
+                            <option <?php if($_POST['sex'] == $cname){echo 'selected';} ?> value="<?php echo $cname; ?>"><?php echo $cname; ?></option>
+                        <?php } ?>
                       </select>
                     </div>
                     <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3 formspace">
@@ -423,11 +423,6 @@
                     </div>
                   </div>
                   <div class="row rowspace">
-                    <div  class="col-xs-12 col-sm-3 col-md-3 col-lg-3 formspace">
-                      Postal Code
-                      <br>
-                      <input class="form-control" type="text" value="<?php echo $_POST['zip_code_present']; ?>" name="zip_code_present" placeholder="Postal Code" id="zip_code_present">
-                    </div>
                     <div  class="col-xs-12 col-sm-3 col-md-3 col-lg-3 formspace">
                       Phone No.
                       <br>
@@ -639,15 +634,15 @@
                 <div class="row rowspace">
                   <div  class="col-xs-12 col-sm-3 col-md-3 col-lg-3 formspace">
                     <select class="form-control" name="grandparents_pakistan" id="grandparents_pakistan" onclick="grand_pa(this);">
-                      <option value="yes">Yes</option>
-                      <option value="no" selected="">No</option>
+                      <option value="Yes">Yes</option>
+                      <option value="No" selected="">No</option>
                     </select>
                   </div>
                   <script type="text/javascript">
                       function grand_pa(att)
                       {
                         var val = att.options[att.selectedIndex].value;
-                        document.getElementById("grand_pa").style.display = val == 'yes' ? "block" : 'none';
+                        document.getElementById("grand_pa").style.display = val == 'Yes' ? "block" : 'none';
                       }
                     </script>
                   <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3" id="grand_pa" <?php if($_POST['grandparents_pakistan'] == "yes"){echo "style='display: block'";}else{ echo "style='display: none'";} ?>>

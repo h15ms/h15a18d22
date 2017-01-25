@@ -353,6 +353,30 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		$data['qualification']['7'] = "PROFESSIONAL";
 
 
+
+		// indian_mission
+
+		$data['indian_mission']['0'] = "AFGH - AFGANISTAN-HERAT";
+		$data['indian_mission']['1'] = "AFGJ - AFGANISTAN-JALALABAD";
+		$data['indian_mission']['2'] = "AFGK - AFGANISTAN-KABUL";
+		$data['indian_mission']['3'] = "AFGR - AFGANISTAN-KANDHAR";
+		$data['indian_mission']['4'] = "AFGM - AFGANISTAN-MAZAR-E-SHARIEF";
+
+		
+		//visa type
+
+		$data['visa_type']['0'] = "BUSINESS VISA";
+		$data['visa_type']['1'] = "MEDICAL VISA";
+		$data['visa_type']['2'] = "TOURIST VISA";
+
+
+		//select sex
+
+		$data['sex']['0'] = "Male";
+		$data['sex']['1'] = "Female";
+		$data['sex']['2'] = "Transgender";
+
+
 return $data;
 
 
