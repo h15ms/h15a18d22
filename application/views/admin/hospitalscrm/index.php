@@ -82,9 +82,9 @@
                             </td>
                             <td><?php //echo $hospital->distance_from_airport; ?></td>-->
                            
-                            <td align="center"><a href="<?php echo base_url(); ?>admin/hospitalscrm/viewhospital/<?php echo $hospital->appID; ?>"><i class="fa fa-user"></i></a>
+                            <td align="center"><a href="<?php echo base_url(); ?>admin/hospitalscrm/viewhospital/<?php echo $hospital->appID; ?>"><i class="fa fa-eye 2x"></i></a>
                             <a href="<?php echo base_url(); ?>admin/hospitalscrm/edithospital/<?php echo $hospital->appID; ?>"><i class="fa fa-pencil-square-o"></i></a>
-                            <a href="javascript:void(0)" onclick="delhospital(<?php echo $hospital->appID;  ?>)"><i class="fa fa-trash-o"></i></a>
+                            <a href="javascript:void(0)" onclick="delpopup(<?php echo $hospital->appID;  ?>, '<?php echo $hospital->name; ?>')"><i class="fa fa-trash-o"></i></a>
                             
                             
                             
@@ -114,3 +114,51 @@
         
     </div> <!--wrap -->
 </div> <!-- page-content -->
+
+
+
+
+
+<!---popup---->
+ <div id="new_bankpop" tabindex="-1" class="modal fade"   role="dialog" style="z-index: 1400;">
+       <div class="modal-dialog modal-lg" style="width:30%;">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header" style="border-bottom:0;">
+            
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 style="text-align:center;border-bottom: 2px;">
+              
+              ADD NEW HOSPITAL
+              
+          </h4>
+          <hr>
+        </div>
+    <div class="modal-body">
+  
+       
+          
+        <div class="row">
+        <div class="form-group">
+          
+            <form name="ne_b" id="ne_b">
+                <div class="col-md-12 errorpopup" id="response" style="font-size:20px;">   </div>
+        <div class="col-md-12">
+        <input class="form-control" type="hidden" name="appid" id="appid" required  />
+        
+        <span id="hospitalname"></span>
+        </div>
+       
+           <div class="col-md-12 mt20">
+               <button type="button" onclick="delhospital();" class="form-control btn btn-success" id="ad_n_b"> SAVE </button>
+        </div> 
+            
+            </form>
+            </div></div>
+       
+    
+    </div>  
+    </div>  
+    </div>  
+    </div>

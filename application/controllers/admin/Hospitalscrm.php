@@ -129,11 +129,8 @@ public function updateGetNewHospital(){
     $editdata=$this->app->hospitalById($this->uri->segment('4')); 
     
     $hospList=$this->app->gethospitallist();
-    $data1 = array(
-        'page_title' => 'Add Hospital | MiConsulting'
-    );
-    $data=array("headline"=>"Add Hospital",'hospList'=>$hospList,'editdata'=>$editdata);
-    
+    $data1 = array( 'page_title' => 'Add Hospital | MiConsulting');
+    $data=array("headline"=>"Add Hospital",'hospList'=>$hospList,'editdata'=>$editdata);    
     $this->load->view('admin/temp/headercrm',$data1);
     $this->load->view('admin/hospitalscrm/edithospital',$data);
     $this->load->view('admin/temp/footercrm');
@@ -141,6 +138,9 @@ public function updateGetNewHospital(){
   }
   
   public function delhospitalwithid(){
-    echo   $id=$_GET['appid'];
+    $id=$_GET['appid'];
+    
+    
+    
   }
 }
