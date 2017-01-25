@@ -10,9 +10,11 @@ function delpopup(id , name ){
    }
 
 
-function delhospital(id, name){
+function delhospital(){
+    var id=$('#appid').val();
+    alert(id);
     $.ajax({url:"hospitalscrm/delhospitalwithid",
-       data:{ appid:id,hname:name },
+       data:{ appid:id, },
         success:function(res1)
         { 
           

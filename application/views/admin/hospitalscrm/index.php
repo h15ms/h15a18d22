@@ -125,33 +125,34 @@
     
       <!-- Modal content-->
       <div class="modal-content">
-        <div class="modal-header" style="border-bottom:0;">
+          <div class="modal-header" style="border-bottom:0px;" >
             
           <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 style="text-align:center;border-bottom: 2px;">
-              
-              ADD NEW HOSPITAL
-              
-          </h4>
-          <hr>
-        </div>
-    <div class="modal-body">
-  
-       
+      
           
+        </div>
+    <div class="modal-body" style="padding-top:0px; "> 
+   <h4 style="text-align:center; border-bottom: 2px;">
+       Do You Want to Delete   <span id="hospitalname" style="color:#85c744;"></span> ?
+   </h4>
         <div class="row">
         <div class="form-group">
           
             <form name="ne_b" id="ne_b">
                 <div class="col-md-12 errorpopup" id="response" style="font-size:20px;">   </div>
-        <div class="col-md-12">
+       
         <input class="form-control" type="hidden" name="appid" id="appid" required  />
-        
-        <span id="hospitalname"></span>
-        </div>
+      
        
            <div class="col-md-12 mt20">
-               <button type="button" onclick="delhospital();" class="form-control btn btn-success" id="ad_n_b"> SAVE </button>
+              <div class="col-md-6">
+               
+               <button type="button" onclick="delhospital();" class="form-control btn btn-danger-alt" id="ad_n_b"> YES </button>
+              </div>
+               <div class="col-md-6">
+               
+               <button type="button"  class="form-control btn btn-info-alt text-info " id="ad_n_b"> NO </button>
+              </div>
         </div> 
             
             </form>

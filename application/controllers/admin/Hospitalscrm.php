@@ -138,7 +138,7 @@ public function updateGetNewHospital(){
   }
   
   public function delhospitalwithid(){
-    $id=$_GET['appid'];
+   $id=$_GET['appid'];
     
     
     
