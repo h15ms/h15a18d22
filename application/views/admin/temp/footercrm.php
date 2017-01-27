@@ -15,7 +15,6 @@
   <script type='text/javascript' src='<?php echo URL_ADMIN;?>js/jquery.min.js'></script>
   <script type='text/javascript' src='<?php echo ASSETS;?>angularjs/angular.min.1.6.1.js'></script>  <!----- For Lib File-------->
   <script type='text/javascript' src="<?php echo ASSETS;?>angularjs/ctr/<?php echo $js;?>"></script> <!----- For Angular ctr file-------->
-  <?php echo $page_title ? $page_title : 'CRM'; ?>
 
   <script type='text/javascript' src='<?php echo URL_ADMIN;?>js/bootstrap.min.js'></script>
   <script type='text/javascript' src='<?php echo URL_ADMIN;?>js/enquire.js'></script>

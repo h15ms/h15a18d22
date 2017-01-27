@@ -30,16 +30,18 @@ class Login extends CI_Controller
 		$sess = $this->session->userdata();
 
 		if(isset($sess['logged_in']['user_id'])){
-                  $data=array('active'=>$this->active,'title'=>'Customer Sign In - Sign Up | MiConsulting','headline'=>"Sign In - Sign Up" );
-		$this->load->view('template/header' , $data);
-		$this->load->view('dashboard/index');
-		$this->load->view('template/footer');
+	        
+	        $data=array('active'=>$this->active,'title'=>'Customer Sign In - Sign Up | MiConsulting','headline'=>"Sign In - Sign Up" );
+			$this->load->view('template/header' , $data);
+			$this->load->view('dashboard/index');
+			$this->load->view('template/footer');
 			
 		}else{
-                $data=array('active'=>$this->active,'title'=>'Customer Sign In - Sign Up | MiConsulting','headline'=>"Sign In - Sign Up" );
-		$this->load->view('template/header' , $data);
-		$this->load->view('login/index');
-		$this->load->view('template/footer');
+        
+	        $data=array('active'=>$this->active,'title'=>'Customer Sign In - Sign Up | MiConsulting','headline'=>"Sign In - Sign Up" );
+			$this->load->view('template/header' , $data);
+			$this->load->view('login/index');
+			$this->load->view('template/footer');
 		}
 
 	}
@@ -79,7 +81,8 @@ class Login extends CI_Controller
 					'user_name' => $result[0]->firstname." ".$result[0]->lastname,
 					'user_key' => md5($inserted_id.session_id()),
 					'avatar' => $result[0]->avatar,
-					'user_level' => $result[0]->user_type
+					'user_level' => $result[0]->user_type,
+					'user_level_status' => $result[0]->registration_status
 				);
 				$this->session->set_userdata('logged_in', $session_data);
 
@@ -135,7 +138,8 @@ class Login extends CI_Controller
 					'user_name' => $result[0]->firstname." ".$result[0]->lastname,
 					'user_key' => md5($result[0]->id.session_id()),
 					'avatar' => $result[0]->avatar,
-					'user_level' => $result[0]->user_type
+					'user_level' => $result[0]->user_type,
+					'user_level_status' => $result[0]->registration_status
 				);
 
 
@@ -143,17 +147,18 @@ class Login extends CI_Controller
 
 				$this->session->set_userdata('logged_in', $session_data);
 				
+
 				if($result[0]->user_type == '3'){
 
 					$this->load->view('template/header' , $this->active);
 					$this->load->view('home/index');
 					$this->load->view('template/footer');
 				
-				}elseif( $result[0]->user_type == '2' &&  $result[0]->registration_status == '1'){
+				}elseif( $result[0]->user_type == '2' || $result[0]->user_type == '1' &&  $result[0]->registration_status == '1'){
 
-					$this->load->view('template/header' , $this->active);
-					$this->load->view('admin/index');
-					$this->load->view('template/footer');
+					$this->load->view('admin/temp/headercrm');
+					$this->load->view('admin/homecrm/index');
+					$this->load->view('admin/temp/footercrm');
 
 				}
 

@@ -39,6 +39,12 @@ class User_model extends CI_model
 		return $this->db->select('*')->get_where('mi_customer', array('id' => $user_id));
 	}
 
+	public function sess()
+	{
+		// return $this->db->select('*')->get_where('mi_customer')->result();
+		// return $this->db->query('UPDATE mi_customer SET  registration_status =  1 WHERE  mi_customer.id =2 LIMIT 1');
+	}
+
 }
 
 

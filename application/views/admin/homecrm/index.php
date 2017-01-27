@@ -4,7 +4,7 @@
     <div id='wrap'>
         <div id="page-heading">
             <ol class="breadcrumb">
-                <li class='active'><a href="index.php">Dashboard</a></li>
+                <li class='active'><a href="admin">Dashboard</a></li>
             </ol>
 
             <h1>Dashboard</h1>

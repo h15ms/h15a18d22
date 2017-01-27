@@ -1,5 +1,5 @@
 <?php
-class Applycrm extends CI_Controller {
+class ApplyCrm extends CI_Controller {
 
   function __construct()
 	{
@@ -16,6 +16,13 @@ class Applycrm extends CI_Controller {
 
 		// Load database
 		$this->load->model('admin/applyModelCrm','app');
+
+    $sess = $this->session->userdata();
+      if($sess['logged_in']['user_level'] != '2' || $sess['logged_in']['user_level'] != '1' && $sess['logged_in']['user_level_status'] != '1' )
+      { 
+          header ('Location: '.base_url().'home ');
+      }
+    
 	}
   
   public function index() 
