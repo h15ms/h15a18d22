@@ -143,9 +143,21 @@ class Login extends CI_Controller
 
 				$this->session->set_userdata('logged_in', $session_data);
 				
-				$this->load->view('template/header' , $this->active);
-				$this->load->view('home/index');
-				$this->load->view('template/footer');
+				if($result[0]->user_type == '3'){
+
+					$this->load->view('template/header' , $this->active);
+					$this->load->view('home/index');
+					$this->load->view('template/footer');
+				
+				}elseif( $result[0]->user_type == '2' &&  $result[0]->registration_status == '1'){
+
+					$this->load->view('template/header' , $this->active);
+					$this->load->view('admin/index');
+					$this->load->view('template/footer');
+
+				}
+
+
 				}
 			}
 		  else

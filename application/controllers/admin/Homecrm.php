@@ -6,14 +6,20 @@ class Homecrm extends CI_Controller {
   public function __construct() {
       
       parent:: __construct();
-      $this->load->model('admin/homeModelCrm' , 'hmc');
-      
+     
+      $sess = $this->session->userdata();
+      if($sess['logged_in']['user_level'] != '2' && $sess['logged_in']['user_level'] != '1' )
+      { 
+          header ('Location: '.base_url().'home ');
+      }
+      $this->load->model('admin/homeModelCrm' , 'hmc'); 
   }
+
+
   public function index() {
 
     $sess = $this->session->userdata();
-      print_r($sess);
-      exit;
+  
 
       $countnewapplys = $this->hmc->countNewApplys();
       $countApplys = $this->hmc->countApplys();

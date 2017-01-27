@@ -12,8 +12,8 @@ class Home  extends CI_Controller {
 
 	public function index()
 	{
-            
-            $data=array('headline' => 'Home','title'=>"Travel to India with MiConsulting | MiConsulting.in");
+
+        $data=array('headline' => 'Home','title'=>"Travel to India with MiConsulting | MiConsulting.in");
 		$this->load->view('template/header' ,$data);
 		$this->load->view('home/index');
 		$this->load->view('template/footer');
