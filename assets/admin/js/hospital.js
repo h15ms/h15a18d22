@@ -41,21 +41,11 @@ var appl=angular.module('specializationAPP',[]).controller('specializationCtrl',
      $http.get(BASEURL+'admin/specialization/getsonSpecialization?id='+id)
     .then(function(response) {
                 $scope.speciliz=response.data;
-        
-     ///   alert("fail:" + JSON.stringify(response.data.links));
-        
-    
-    //console.log('==================================');
-    //console.log(response.data);
-    
-   // console.log('==================================');
-    
+     
     $scope.pagination = $sce.trustAsHtml(response.data.links);
-    
-    //console.log(response.data["result"]);
-    
-    
-    
+    $scope.updateSpecif = function(id){
+        
+    }
     
     });
 });

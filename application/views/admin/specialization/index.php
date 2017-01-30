@@ -1,3 +1,10 @@
+<style>
+    .cls-page a{
+      padding: 2%;
+    }
+    
+</style>
+
 <?php error_reporting(0);?>
 <div id="page-content">
     <div id="wrap">
@@ -52,14 +59,14 @@
                                             <tr ng-repeat=" x in speciliz['results']"> 
                                          
                                             
-                                            <td> {{$index+1}}</td>
+                                            <td> {{x.id}}</td>
                                             <td>{{x.sepcialization }}</td>
                                          <td >
                                              <span ng-if="x.status==='1'">
-                                                 ACTIVE
+                                                 ACTIVE / <a href="javascript:void(0)" ng-click="updateSpecif({{x.id}})">DACTIVE</a>
                                              </span> 
                                          
-                                         
+                                          
                                          
                                          </td> 
     <!--                                           <td>{{x.city }}</td>
@@ -103,7 +110,7 @@
 					</tbody>
 				</table>
 
-<p ng-bind-html="pagination">{{speciliz['links']}}</p>
+<p class="cls-page" ng-bind-html="pagination">{{speciliz['links']}}</p>
     <input type="hidden" name="pageno" id="pageno" value="<?php echo $this->uri->segment('4')? $this->uri->segment('4'):0?>"/>            
             </div>
           </div>
