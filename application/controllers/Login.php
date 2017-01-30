@@ -117,6 +117,7 @@ class Login extends CI_Controller
 			'password' => $this->input->post('pass')
 		);
 
+		ob_start();
 		 $result = $this->login_model->login($data); 
 
 		if ($result == 'TRUE')
@@ -129,10 +130,7 @@ class Login extends CI_Controller
 				
 				{
 
-
-					// print_r($result[0]);
-					// exit;
-				$session_data = array(
+					$session_data = array(
 					'user_id' => $result[0]->id,
 					'user_email' => $result[0]->email,
 					'user_name' => $result[0]->firstname." ".$result[0]->lastname,
@@ -146,20 +144,23 @@ class Login extends CI_Controller
 				// Add user data in session
 
 				$this->session->set_userdata('logged_in', $session_data);
-				
 
-				if($result[0]->user_type == '3'){
+				$sess = $this->session->userdata();
 
-					$this->load->view('template/header' , $this->active);
-					$this->load->view('home/index');
-					$this->load->view('template/footer');
-				
-				}elseif( $result[0]->user_type == '2' || $result[0]->user_type == '1' &&  $result[0]->registration_status == '1'){
+				if($sess['logged_in']['user_level'] == '3'){
 
-					$this->load->view('admin/temp/headercrm');
-					$this->load->view('admin/homecrm/index');
-					$this->load->view('admin/temp/footercrm');
+					header('Location:'.base_url().'Home');
+				// echo '<script> window.location.href = "http://www.miConsulting.in/home"; </script>';
 
+				}elseif( ($sess['logged_in']['user_level'] == '2' && $sess['logged_in']['user_level_status'] == '1') || ($sess['logged_in']['user_level'] == '1' && $sess['logged_in']['user_level_status'] == '1')){
+
+					header('Location:'.base_url().'admin/homecrm');
+				// echo '<script> window.location.href = "http://www.miConsulting.in/admin/homecrm"; </script>';
+
+				}else{
+					
+					header('Location:'.base_url().'home');
+				// echo '<script> window.location.href = "http://www.miConsulting.in/homecrm"; </script>';
 				}
 
 

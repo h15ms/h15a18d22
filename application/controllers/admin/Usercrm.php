@@ -7,11 +7,18 @@ class Usercrm extends CI_Controller
        parent:: __construct();
       
       $sess = $this->session->userdata();
-      if($sess['logged_in']['user_level'] != '2' && $sess['logged_in']['user_level'] != '1' )
-      { 
-          header ('Location: '.base_url().'home ');
-      }
+      if($sess['logged_in']['user_level'] != '1' && $sess['logged_in']['user_level_status'] != '1' ){
 
+        header ('Location: '.base_url().'home ');
+      }
+      elseif($sess['logged_in']['user_level'] != '2' && $sess['logged_in']['user_level_status'] != '1'){
+        
+        header ('Location: '.base_url().'home ');
+      }
+       
+      
+      error_reporting(0);
+      
       $this->load->model('admin/userModelCrm' , 'umc');
   }
 
@@ -27,7 +34,7 @@ class Usercrm extends CI_Controller
         'page_title' => 'Manage employees | MiConsulting'
     );
     $users=$this->umc->allUsers();
-    $data=array('headline'=>$headline,'users'=>$users);
+    $data = array('headline'=>$headline,'users'=>$users);
     $this->load->view('admin/temp/headercrm',$data1 );
     $this->load->view('admin/usercrm/index',$data);
     $this->load->view('admin/temp/footercrm',$data);
@@ -40,13 +47,22 @@ class Usercrm extends CI_Controller
         'page_title' => 'Edit employees | MiConsulting'
     );
   
-    if(isset($_POST['send']) && ($_POST['send']=="1")){ $this->umc->userupdate($_POST); } 
+    if(isset($_POST['send']) && ($_POST['send']=="1"))
+      { 
+        $a = $this->umc->userupdate($_POST);
+      if(isset($a)){
+        header( 'Location : '.base_url().'admin/usercrm');
+      }
+
+      } 
     if(isset($_POST['send']) && ($_POST['send']=="del")){ $go = $this->_model->userdel($_POST); header("Location: admin/usercrm"); }          
 
-      $page          = $this->umc->user($this->uri->segment('4'));
-      $users         = $this->umc->allUsers();
+      $page = $this->umc->user($this->uri->segment('4'));
+      $users = $this->umc->allUsers();
 
-    $data=array('headline'=>"Edit employees","page"=>$page,"user"=>$users,);
+
+    $data=array('headline'=>"Edit employees","page"=>$page,"user"=>$users);
+
     $this->load->view('admin/temp/headercrm',$data1);
     $this->load->view('admin/usercrm/user',$data);
     $this->load->view('admin/temp/footercrm');

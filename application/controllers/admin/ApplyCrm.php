@@ -3,39 +3,28 @@ class ApplyCrm extends CI_Controller {
 
   function __construct()
 	{
-		parent::__construct();
-                
-		// Load form helper library
+		parent::__construct();                
+
+   $sess = $this->session->userdata();
+   if($sess['logged_in']['user_level'] != '1' && $sess['logged_in']['user_level_status'] != '1' ){
+
+     header ('Location:'.base_url().'home ');
+   }
+   elseif($sess['logged_in']['user_level'] != '2' && $sess['logged_in']['user_level_status'] != '1'){
+     
+     header ('Location:'.base_url().'home ');
+   }
+
 		$this->load->helper('form');
-
-		// Load form validation library
 		$this->load->library('form_validation');
-
-		// Load session library
 		$this->load->library('session');
-
-		// Load database
 		$this->load->model('admin/applyModelCrm','app');
-
-    $sess = $this->session->userdata();
-      if($sess['logged_in']['user_level'] != '2' || $sess['logged_in']['user_level'] != '1' && $sess['logged_in']['user_level_status'] != '1' )
-      { 
-          header ('Location: '.base_url().'home ');
-      }
     
 	}
   
   public function index() 
   {
-   
-
-//require 'models/applyModel.php';
-   // $model = new applyModel();
     $applys = $this->app->allApplys(); 
-//    $this->_view->title = "All Applies | MiConsulting";
-//    $this->_view->headline = "All Applies";
-//    $this->_view->applys = $applys;
-//    $this->_view->display('apply/index.tpl.php');
 
      $data=array('headlines' => 'All Applies','applys'=>$applys);
      $data1=array('page_title'=>"All Applies | MiConsulting");
@@ -56,4 +45,20 @@ class ApplyCrm extends CI_Controller {
      $this->load->view('admin/temp/footercrm');
       
   }
+  public function updateNotice(){
+   
+      $appid = $this->input->post('appid');
+      $notice = $this->input->post('notice');
+      $send = $this->input->post('send');
+
+       if($send == "update_notice"){
+          $update = $this->app->updateNotice($appid, $notice); 
+
+          header('Location:'.base_url().'admin/applycrm/profil/'.$appid);
+
+       }
+     
+      
+  }
+
 }

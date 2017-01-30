@@ -62,13 +62,8 @@ define('ASSETS', base_url() . 'assets/');
             <li class="username">                       
               <a href="#">                                                                 
                 <div class="pull-right">
-                  <h5>
-                    <?php
+                  <h5><?php echo $_SESSION['logged_in']['user_name'];?></h5>
 
-                    // print_r($_SESSION['logged_in']);
-
-                     echo $_SESSION['logged_in']['user_name'];?>
-                  </h5>
                   <small>Signed In with <br><span><?php echo $_SESSION['logged_in']['user_email'];?></span>
                   </small>
                 </div>
@@ -81,17 +76,11 @@ define('ASSETS', base_url() . 'assets/');
                     <i class="pull-right fa fa-cog">
                     </i>
                   </a>
-                </li>
-                <li>
-                  <a href="<?php echo base_url();?>admin/pwchange">Change Password 
-                    <i class="pull-right fa fa-pencil">
-                    </i>
-                  </a>
-                </li>                                                                                        
+                </li>                                                                                       
                 <li class="divider">
                 </li>
                 <li>
-                  <a href="<?php echo base_url();?>admin/login/logout" class="">Sign out 
+                  <a href="<?php echo base_url();?>Login/logout" class="">Sign out 
                     <i class="pull-right fa fa-sign-out">
                     </i>
                   </a>
@@ -105,7 +94,7 @@ define('ASSETS', base_url() . 'assets/');
             <span>
               <i class="fa fa-calendar-o">
               </i>  
-              <?php // echo date("F j, Y"); ?>
+              <?php  echo date("F j, Y"); ?>
             </span>
           </a>
         </li>                       

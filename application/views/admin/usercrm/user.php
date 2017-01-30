@@ -47,8 +47,8 @@
                     <div class="btn-group">
                         <select id="goto" onchange="goto()" class="form-control">
                             <option value="0">Choose Employee</option>
-                            <?php foreach($users as $plink){ ?>                            
-                            <option value="index.php?c=user&a=user&id=<?php echo $plink->id; ?>"><?php echo $plink->vorname; ?> <?php echo $plink->nachname; ?></option>
+                            <?php foreach($users as $plink){ ?>  
+                            <option value="index.php?c=user&a=user&id=<?php echo $plink->id; ?>"><?php echo $plink->firstname; ?> <?php echo $plink->lastname; ?></option>
                             <?php } ?>
                         </select>
                     </div>
@@ -70,58 +70,58 @@
         <div class="panel panel-inverse">
             <div class="panel-heading">
                 <h4><i class="fa fa-file-code-o"></i> <span>Edit Employee</span></h4>
-                <div class="pull-right">Datum: <?php echo $page[0]->datum; ?></div>              
+                <div class="pull-right">Date: <?php echo $page['0']->date; ?></div>              
             </div>
-          <div class="panel-body collapse in">                                  
+          <div class="panel-body collapse in">                                
             
-            <form method="post" >
+            <form action="userupdate" method="post" >
             <input type="hidden" name="send" value="1"> 
-            <input type="hidden" name="id" value="<?php echo $page[0]->id; ?>"> 
+            <input type="hidden" name="id" value="<?php echo $page['0']->id; ?>"> 
            
                 
             <div class="col-xs-12 col-sm-12 col-md-12"> 
                 <p><strong>Position:</strong><br>
-                <p><input type="text" class="form-control" name="position" value="<?php echo $page[0]->position; ?>" placeholder="Position im Unternehmen"></p>
+                <p><input type="text" class="form-control" name="position" value="<?php echo $page['0']->position; ?>" placeholder="Position im Unternehmen"></p>
             </div>    
                 
             <div class="col-xs-12 col-sm-12 col-md-12"> 
                 <p><strong>First name:</strong><br>
-                <p><input type="text" class="form-control" name="vorname" value="<?php echo $page[0]->vorname; ?>" placeholder="First name"></p>
+                <p><input type="text" class="form-control" name="firstname" value="<?php echo $page['0']->firstname; ?>" placeholder="First name"></p>
             </div>
                 
             <div class="col-xs-12 col-sm-12 col-md-12"> 
                 <p><strong>Last name:</strong><br>
-                <p><input type="text" class="form-control" name="nachname" value="<?php echo $page[0]->nachname; ?>" placeholder="Last name"></p>
+                <p><input type="text" class="form-control" name="lastname" value="<?php echo $page['0']->lastname; ?>" placeholder="Last name"></p>
             </div>
               
             <div class="col-xs-12 col-sm-12 col-md-12"> 
                 <p><strong>Street:</strong><br>
-                <p><input type="text" class="form-control" value="<?php echo $page[0]->strasse; ?>" name="strasse" placeholder="Street"></p>
+                <p><input type="text" class="form-control" value="<?php echo $page['0']->street; ?>" name="street" placeholder="Street"></p>
             </div>                    
             
             <div class="col-xs-12 col-sm-12 col-md-12">                
                 <p><strong>ZIP:</strong><br>
-                <p><input type="text" class="form-control" name="plz" value="<?php echo $page[0]->plz; ?>" placeholder="ZIP"></p>
+                <p><input type="text" class="form-control" name="zip" value="<?php echo $page['0']->zip; ?>" placeholder="ZIP"></p>
             </div>
               
             <div class="col-xs-12 col-sm-12 col-md-12"> 
                 <p><strong>City:</strong><br>
-                <p><input type="text" class="form-control" name="stadt" value="<?php echo $page[0]->stadt; ?>" placeholder="City"></p>
+                <p><input type="text" class="form-control" name="city" value="<?php echo $page['0']->city; ?>" placeholder="City"></p>
             </div>
                 
             <div class="col-xs-12 col-sm-12 col-md-12"> 
                 <p><strong>Email:</strong><br>
-                <p><input type="text" class="form-control" name="email" value="<?php echo $page[0]->email; ?>" placeholder="Email"></p>
+                <p><input type="text" class="form-control" name="email" value="<?php echo $page['0']->email; ?>" placeholder="Email"></p>
             </div>
                 
             <div class="col-xs-12 col-sm-12 col-md-12"> 
                 <p><strong>Phone:</strong><br>
-                <p><input type="text" class="form-control" name="telefon" value="<?php echo $page[0]->telefon; ?>" placeholder="Phone"></p>
+                <p><input type="text" class="form-control" name="telephone" value="<?php echo $page['0']->telephone; ?>" placeholder="Phone"></p>
             </div>
                 
             <div class="col-xs-12 col-sm-12 col-md-12"> 
                 <p><strong>Mobil:</strong><br>
-                <p><input type="text" class="form-control" name="mobil" value="<?php echo $page[0]->mobil; ?>" placeholder="Mobil"></p>
+                <p><input type="text" class="form-control" name="mobile" value="<?php echo $page['0']->mobile; ?>" placeholder="Mobil"></p>
             </div>
                 
                 

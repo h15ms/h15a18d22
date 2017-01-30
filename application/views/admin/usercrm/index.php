@@ -45,7 +45,7 @@
 						<th style="width:auto;">Name</th>
 						<th style="width:auto;">Email</th>
 						<th style="width:auto;">Phone</th>
-						<th style="width:auto;">Mobil</th>						
+						<th style="width:auto;">Mobile</th>						
 						<th style="width:auto;">Date</th>						
 						<th style="width:auto;" align="center">Edit</th>			
 					</tr>
@@ -53,14 +53,15 @@
 					<tbody>
                                        
                         <?php foreach($users as $user){   ?>
+
                         <tr>
                             <td><?php echo $user->id;?></td>
                             <td><?php echo $user->position;?></td>
-                            <td><?php echo $user->vorname." ".$user->nachname;?></td>
+                            <td><?php echo $user->firstname." ".$user->lastname;?></td>
                             <td><?php echo $user->email;?></td>
-                            <td><?php echo $user->telefon;?></td>
-                            <td><?php echo $user->mobil;?></td>
-                            <td><?php echo $user->datum;?></td>
+                            <td><?php echo $user->telephone;?></td>
+                            <td><?php echo $user->mobile;?></td>
+                            <td><?php echo date('d-m-Y', $user->date);?></td>
                             <td align="center"><a href="usercrm/user/<?php echo $user->id;?>"><i class="fa fa-pencil"></i></a></td>
                         </tr>
                         <?php } ?>

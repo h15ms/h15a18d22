@@ -12,10 +12,15 @@ class Applyprofil
     $this->_view = new View();    
 
     $sess = $this->session->userdata();
-      if($sess['logged_in']['user_level'] != '2' || $sess['logged_in']['user_level'] != '1' && $sess['logged_in']['user_level_status'] != '1' )
-      { 
-          header ('Location: '.base_url().'home ');
-      }
+    if($sess['logged_in']['user_level'] != '1' && $sess['logged_in']['user_level_status'] != '1' ){
+
+      header ('Location: '.base_url().'home ');
+    }
+    elseif($sess['logged_in']['user_level'] != '2' && $sess['logged_in']['user_level_status'] != '1'){
+      
+      header ('Location: '.base_url().'home ');
+    }
+     
     
   }
 

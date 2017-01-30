@@ -12,6 +12,20 @@ class HomeModelCrm extends CI_Model
             return false;
         }
         
+  }  
+
+  public function editProfile($id) 
+  { 
+     $result = $this->db->select('*')->get_where('mi_customer', array('id' => $id ));
+      return $result->result();
+  }
+    
+  public function editProfileAction($data) 
+  { 
+    print_r($data);
+    exit;
+     $result = $this->db->select('*')->get_where('mi_customer', array('id' => $id ));
+      return $result->result();
   }
     
     
