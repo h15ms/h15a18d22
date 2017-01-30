@@ -13,8 +13,13 @@
 
 
   <script type='text/javascript' src='<?php echo URL_ADMIN;?>js/jquery.min.js'></script>
+<<<<<<< HEAD
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+   <script type='text/javascript' src='<?php echo URL_ADMIN;?>js/hospital.js'></script>
+=======
   <script type='text/javascript' src='<?php echo ASSETS;?>angularjs/angular.min.1.6.1.js'></script>  <!----- For Lib File-------->
   <script type='text/javascript' src="<?php echo ASSETS;?>angularjs/ctr/<?php echo $js;?>"></script> <!----- For Angular ctr file-------->
+>>>>>>> origin/master
 
   <script type='text/javascript' src='<?php echo URL_ADMIN;?>js/bootstrap.min.js'></script>
   <script type='text/javascript' src='<?php echo URL_ADMIN;?>js/enquire.js'></script>
@@ -32,7 +37,7 @@
   <script type='text/javascript' src='<?php echo URL_ADMIN;?>js/application.js'></script>
   <?php if($this->uri->segment(2)=='hospitalscrm'): ?>
 
-    <script type='text/javascript' src='<?php echo URL_ADMIN;?>js/hospital.js'></script>
+   
 
 <?php endif;?>
   <script type='text/javascript' src='<?php echo URL_ADMIN;?>demo/demo.js'></script>

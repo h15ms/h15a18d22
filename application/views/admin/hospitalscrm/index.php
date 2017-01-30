@@ -25,7 +25,7 @@
 
         <div class="container">
            
-           
+          
            
 <div class="row">
     <div class="col-sm-12">
@@ -35,42 +35,49 @@
                 
             </div>
           <div class="panel-body collapse in">                                  
-          <?php //print_r($hospitals);?>
-            <div class="table-flipscroll table-responsive">
-               <table cellpadding="0" cellspacing="0" border="0" class="table table-striped table-bordered table-hover datatable" id="customer_table">
+
+            <div class="table-flipscroll table-responsive"   ng-app="hospitalApp" ng-controller="hospitalCtrl">
+          
+               <table cellpadding="0"  cellspacing="0" border="0" class="table table-striped table-bordered table-hover datatable" id="customer_table">
 					<thead>
 					<tr>
 						<th style="width:auto;">#</th>
 						<th style="width:auto;">Hospital Name</th>
 						<th style="width:auto;">Address</th>
-<!--						<th style="width:auto;">City</th>						-->
-						<th style="width:auto;">State</th>		
+						<th style="width:auto;">City</th>						
+<!--						<th style="width:auto;">State</th>	--	-->
 						<th style="width:auto;">Phone</th>
 						<th style="width:auto;">Email</th>
-<!--                                                <th style="width:auto;">Website</th>-->
+                <!--	                                <th style="width:auto;">Website</th>
 						<th style="width:auto;">Emergency Services </th>
-<!--                                                <th style="width:auto;">Hospital Type</th>
+                                                <th style="width:auto;">Hospital Type</th>
                                                 <th style="width:auto;">Specialization </th>
                                                 <th style="width:auto;">Distance From Airport</th>-->
                         			<th style="width:auto;" align="center">Status</th>						
 					</tr>
 					</thead>
 					<tbody>
+                                            <tr ng-repeat="x in hosPital"> 
                                             
-                                            
-                        <?php $i=1; foreach($hospitals as $hospital): ?>
-                        <tr>
-                            <td><?php echo $i; ?></td>
-                            <td><?php echo $hospital->name; ?></td>
-                            <td><?php echo getCutStrip( $hospital->address,"26","..."); ?></td>
-                            <td><?php echo $hospital->city; ?></td>
-<!--                            <td><?php //echo $hospital->state; ?></td>                            -->
-                            <td><?php echo $hospital->phone_no; ?></td>                            
-                            <td><?php echo $hospital->email; ?></td>
+                                            <td> {{$index+1}}</td>
+                                            <td>{{x.name }}</td>
+                                            <td >{{x.address }}</td> 
+                                            <td>{{x.city }}</td>
+                                            <td>{{x.phone_no }}</td>
+                                            <td>{{x.email }}</td>
+                        <?php //$i=1; foreach($hospitals as $hospital): ?>
+                    <!--     <tr>
+                            <td><?php ///echo $i; ?></td>
+                            <td><?php //echo $hospital->name; ?></td>
+                            <td><?php //echo getCutStrip( $hospital->address,"26","..."); ?></td>
+                            <td><?php //echo $hospital->city; ?></td>
+                           <td><?php //echo $hospital->state; ?></td>                            -->
+                          <!--  <td><?php //echo $hospital->phone_no; ?></td>                            
+                            <td><?php //echo $hospital->email; ?></td>
 <!--                            <td><?php //echo $hospital->website; ?></td>-->
-                            <td><?php echo $hospital->emergency_services; ?></td>
+                         <!--   <td><?php // echo $hospital->emergency_services; ?></td>
 <!--                            <td><?php //echo $hospital->hospital_type; ?></td>
-                            <td><?php $va= explode(',',$hospital->specialization);?>
+                            <td><?php //$va= explode(',',$hospital->specialization);?>
                                 <ul style="list-style: none;">
                            <?php  //foreach($va as $a):?>
                                 <li> <?php //echo $a; ?> </li>
@@ -82,9 +89,9 @@
                             </td>
                             <td><?php //echo $hospital->distance_from_airport; ?></td>-->
                            
-                            <td align="center"><a href="<?php echo base_url(); ?>admin/hospitalscrm/viewhospital/<?php echo $hospital->appID; ?>"><i class="fa fa-eye 2x"></i></a>
-                            <a href="<?php echo base_url(); ?>admin/hospitalscrm/edithospital/<?php echo $hospital->appID; ?>"><i class="fa fa-pencil-square-o"></i></a>
-                            <a href="javascript:void(0)" onclick="delpopup(<?php echo $hospital->appID;  ?>, '<?php echo $hospital->name; ?>')"><i class="fa fa-trash-o"></i></a>
+                            <td align="center"><a href="<?php echo base_url(); ?>admin/hospitalscrm/viewhospital/{{x.appID }}"><i class="fa fa-eye 2x"></i></a>
+                            <a href="<?php echo base_url(); ?>admin/hospitalscrm/edithospital/{{x.appID }}"><i class="fa fa-pencil-square-o"></i></a>
+                            <a href="javascript:void(0)" onclick="delpopup({{x.appID }}, '{{x.name }}')"><i class="fa fa-trash-o"></i></a>
                             
                             
                             
@@ -92,7 +99,7 @@
                             
                             </td>
                         </tr>
-                        <?php $i++; endforeach;Â ?>
+                        <?php //$i++; endforeach; ?>
 					</tbody>
 				</table>
 
