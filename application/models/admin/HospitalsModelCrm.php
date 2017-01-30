@@ -25,18 +25,14 @@ class HospitalsModelcrm extends CI_Model
     
     
   public function hospitalById($appid) 
-  {     
-       
+  {  
      //$getdata = $this->db->select('*')->get_where('mi_hospital_detail',array('d.id'=>$appid,'h.status'=>1 ));
     //  $result = $getdata->get();
-          $this->db->select('*, d.id appID')->from('mi_hospital_detail  d');
-    $this->db->join('mi_hospital  h' , 'h.id=d.	hospital_id ', 'left');
+    $this->db->select('*')->from('mi_hospital_detail  d');
+    $this->db->join('mi_hospital  h' , 'h.id=d.hospital_id', 'left');
     $this->db->where(array('d.id'=>$appid,'h.status'=>1 ));
     $this->db->order_by('d.id','asc');         
     $getdata = $this->db->get(); 
-    //$result = $getdata->get();
-       
-    
     
         if ($getdata->num_rows() > 0) {
             return $getdata->result();

@@ -2,6 +2,54 @@
 // Sidebar Accordion Menu
 // ------------------------------
 
+//**********Start Angular Js for Hospital Module [Harpreet:27JAN17]***********/
+
+
+var app = angular.module('hospitalApp', []).run(function ($rootScope) {
+            $rootScope.title = 'Doctor ';
+        })
+.controller('hospitalCtrl', function($scope, $http) {
+    $http.get("http://localhost/h15a18d22/admin/hospitalscrm/getindexjson")
+    .then(function (response) {$scope.hosPital = response.data;});
+   
+});
+
+//var ap = angular.module('hospitaleditApp', []);
+var ap = angular.module('hospitaleditApp', []).controller('hospitaleditCtrl', function($scope, $http,$sce) {
+            var id=$('#hospitalID').val();
+//            alert(id);
+     $http.get("http://localhost/h15a18d22/admin/hospitalscrm/viewhospitaldata?id="+id)
+    .then(function (response) {
+        $scope.hosPitaledit = response.data;
+            var special= $scope.hosPitaledit[0].specialization.split(",");
+            var html=""
+            angular.forEach(special, function(value, key){
+            html+='<li>'+value+'</li>';
+            
+         });
+        $scope.htmlAdText = $sce.trustAsHtml(html);
+      
+        });
+ 
+   
+});
+
+// var app = angular.module('hospitalApp',[]);
+//    app.controller('bookController',function($scope,$http){	
+//    $scope.insertData=function(){		
+//    $http.post("insert.php", {
+//		'bname':$scope.bname,
+//		'bauthor':$scope.bauthor,
+//		'bprice':$scope.bprice,
+//		'blanguage':$scope.blanguage})
+//    
+//    .success(function(data,status,headers,config){
+//    console.log("Data Inserted Successfully");
+//    });
+//        }
+//         });  
+
+//************************End AngularJS******************/
 function delpopup(id , name ){
 
      $('#appid').val(id);

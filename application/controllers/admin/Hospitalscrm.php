@@ -50,8 +50,10 @@ class Hospitalscrm extends CI_Controller {
   public function index() 
   {
    
-
-     $hospitals = $this->app->getallhospitallist(); 
+     
+     $hospitals = json_encode($this->app->getallhospitallist()); 
+     
+     
      $data=array('headlines' => 'All Hospitals','hospitals'=>$hospitals);
      $data1=array('page_title'=>"All Hospitals | MiConsulting");
      
@@ -60,12 +62,14 @@ class Hospitalscrm extends CI_Controller {
      $this->load->view('admin/hospitalscrm/index',$data);
      $this->load->view('admin/temp/footercrm');
   }  
+  public function getindexjson(){
+       $hospitals = json_encode($this->app->getallhospitallist()); 
+      echo  $hospitals;
+  }
   public function addhospital()
   {
     if(isset($_POST['send']) && ($_POST['send']=="1"))
     {
-    
-
         $pic =$_FILES['hospital_image']['name'];
         $pic_loc = $_FILES['hospital_image']['tmp_name'];
         $folder="assets/img/hospitals/";
@@ -114,26 +118,25 @@ public function updateGetNewHospital(){
     $hospital = $this->app->hospitalById($this->uri->segment('4')); 
     $data=array('headline' => 'Hospital Profile','hospital'=>$hospital);
     $data1=array('page_title'=>"Profile | MiConsulting");
-
+    
     $this->load->view('admin/temp/headercrm',$data1);
     $this->load->view('admin/hospitalscrm/viewhospital',$data);
     $this->load->view('admin/temp/footercrm');
       
   }
+   public function viewhospitaldata(){
   
+       $hospital = $this->app->hospitalById($_GET['id']); 
+       echo json_encode($hospital); 
+      
+  }
     public function edithospital()
   {
        
     if(isset($_POST['send']) && ($_POST['send']=="1"))
     {
     
-
-//        $pic =$_FILES['hospital_image']['name'];
-//        $pic_loc = $_FILES['hospital_image']['tmp_name'];
-//        $folder="assets/img/hospitals/";
-//        $move=$folder.$pic;
-//        move_uploaded_file($_FILES['hospital_image']['tmp_name'],$move);
-        $hospList=$this->app->edithospitalDetail($_POST,$this->uri->segment('4'));
+      $hospList=$this->app->edithospitalDetail($_POST,$this->uri->segment('4'));
     
     }
     
@@ -149,7 +152,7 @@ public function updateGetNewHospital(){
   }
   
   public function delhospitalwithid(){
-   $id=$_GET['appid'];
+    $id=$_GET['appid'];
     $this->app->udpatehospitalstatus($id);
     
     
