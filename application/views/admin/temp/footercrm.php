@@ -33,7 +33,7 @@
   <script type='text/javascript' src='<?php echo URL_ADMIN;?>plugins/dropzone/dropzone.min.js'></script>
   <script type='text/javascript' src='<?php echo URL_ADMIN;?>js/placeholdr.js'></script>
   <script type='text/javascript' src='<?php echo URL_ADMIN;?>js/application.js'></script>
-  <?php  $this->uri->segment(2); if($this->uri->segment(2)=='hospitalscrm' || $this->uri->segment(2)=='Hospitalscrm'):  ?>
+  <?php  $this->uri->segment(2); if($this->uri->segment(2)=='hospitalscrm' || $this->uri->segment(2)=='specialization'):  ?>
 
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
    <script type='text/javascript' src='<?php echo URL_ADMIN;?>js/hospital.js'></script>

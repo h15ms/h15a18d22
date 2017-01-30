@@ -139,12 +139,12 @@ define('ASSETS', base_url() . 'assets/');
             <a href="<?php echo base_url();?>admin/hospitalscrm"><i class="fa fa-hospital-o" aria-hidden="true"></i> 
               <span>Hospitals</span>
             </a>
-                <a href="<?php echo base_url();?>admin/sepecialization"><i class="fa fa-hospital-o" aria-hidden="true"></i> 
-              <span>Sepecialization</span>
-            </a>
+              
           </li>
-
-
+<li>
+  <a href="<?php echo base_url();?>admin/specialization"><i class="fa fa-list" aria-hidden="true"></i> 
+              <span>Sepecialization</span>
+  </a></li>
           <!--li class="divider"></li>
 <li><a href="javascript:;"><i class="fa fa-ticket"></i> <span>Support Tickets</span> </a>
 <ul class="acc-menu">
