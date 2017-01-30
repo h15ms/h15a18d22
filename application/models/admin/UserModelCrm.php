@@ -29,19 +29,20 @@ class UserModelcrm  extends CI_Model
   }
     
     
-  public function userupdate($arr)
-  {        
+  public function userUpdate($arr)
+  {  
 
         $data=array(
-         'position'=>$arr['position'],
+         'user_type'=>$arr['user_level'],
          'firstname'=>$arr['firstname'],
          'lastname'=>$arr['lastname'],
          'city'=>$arr['city'],
          'zip'=>$arr['zip'],
          'street'=>$arr['street'],
+         'state'=>$arr['state'],
+         'country'=>$arr['country'],
          'email'=>$arr['email'],
-         'telephone'=>$arr['telephone'],
-         'mobile'=>$arr['mobile']
+         'phone'=>$arr['phone']
          ); 
          
          $this->db->where('id', $arr['id']);
@@ -56,21 +57,21 @@ class UserModelcrm  extends CI_Model
   {      
       
      $data=array(
-         'pass'=>$pass,
-         'position'=>$arr['position'],
+         'password'=>$pass,
+         'user_type'=>$arr['position'],
          'firstname'=>$arr['firstname'],
          'lastname'=>$arr['lastname'],
          'city'=>$arr['city'],
          'zip'=>$arr['zip'],
          'street'=>$arr['street'],
+         'state'=>$arr['state'],
+         'country'=>$arr['country'],
          'email'=>$arr['email'],
-         'telephone'=>$arr['telephone'],
-         'mobile'=>$arr['mobile'],
-         'date'=> date("d-m-Y")); 
+         'phone'=>$arr['phone'],
+         'regtime'=> time()); 
       
-      
-      $this->db->insert('mi_customer', $data);
-      
+      $newid = $this->db->insert('mi_customer', $data);
+      return $newid;
   }
     
     

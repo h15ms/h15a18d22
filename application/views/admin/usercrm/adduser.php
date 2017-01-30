@@ -38,55 +38,65 @@
             
             <p class="well">A password for the new employee is automatically generated and will be send to employee email.</p>  
               
-            <form method="post">
-            <input type="hidden" name="send" value="1">                        
+            <form action="addNewUser" method="post">
+            <input type="hidden" name="send" value="insertUser">                        
               
-            <div class="col-xs-12 col-sm-12 col-md-12"> 
-                <p><strong>Position:</strong><br>
-                <p><input type="text" class="form-control" name="position" value="" placeholder="Position" required></p>
+            <div class="col-xs-12 col-sm-12 col-md-6"> 
+                <p><strong>User Level:</strong><br>
+                <p><select class="form-control" name="user_level" required="">
+                    <option value="">Select User Level</option>
+                    <option value="1">Admin</option>
+                    <option value="2">Agent/Dealer</option>
+                    <option value="3">Customer/Patient</option>
+                </select></p>
             </div>    
                 
-            <div class="col-xs-12 col-sm-12 col-md-12"> 
-                <p><strong>First name:</strong><br>
-                <p><input type="text" class="form-control" name="vorname" value="" placeholder="First name" required></p>
+            <div class="col-xs-12 col-sm-12 col-md-6"> 
+                <p><strong>First name*:</strong><br>
+                <p><input type="text" class="form-control" name="firstname" value="" placeholder="First name" required></p>
             </div>
                 
-            <div class="col-xs-12 col-sm-12 col-md-12"> 
-                <p><strong>Last name:</strong><br>
-                <p><input type="text" class="form-control" name="nachname" value="" placeholder="Last name" required></p>
+            <div class="col-xs-12 col-sm-12 col-md-6"> 
+                <p><strong>Last name*:</strong><br>
+                <p><input type="text" class="form-control" name="lastname" value="" placeholder="Last name" required></p>
             </div>
               
-            <div class="col-xs-12 col-sm-12 col-md-12"> 
+            <div class="col-xs-12 col-sm-12 col-md-6"> 
                 <p><strong>Street:</strong><br>
-                <p><input type="text" class="form-control" value="" name="strasse" placeholder="Street" required></p>
+                <p><input type="text" class="form-control" value="" name="street" placeholder="Street"></p>
             </div>                    
             
-            <div class="col-xs-12 col-sm-12 col-md-12">                
+            <div class="col-xs-12 col-sm-12 col-md-6">                
                 <p><strong>ZIP:</strong><br>
-                <p><input type="text" class="form-control" name="plz" value="" placeholder="ZIP" required></p>
+                <p><input type="text" class="form-control" name="zip" value="" placeholder="ZIP"></p>
             </div>
               
-            <div class="col-xs-12 col-sm-12 col-md-12"> 
+            <div class="col-xs-12 col-sm-12 col-md-6"> 
                 <p><strong>City:</strong><br>
-                <p><input type="text" class="form-control" name="stadt" value="" placeholder="City" required></p>
+                <p><input type="text" class="form-control" name="city" value="" placeholder="City"></p>
+            </div>
+
+            <div class="col-xs-12 col-sm-12 col-md-6"> 
+                <p><strong>State:</strong><br>
+                <p><input type="text" class="form-control" name="state" value="" placeholder="State"></p>
             </div>
                 
-            <div class="col-xs-12 col-sm-12 col-md-12"> 
-                <p><strong>Email:</strong><br>
+            <div class="col-xs-12 col-sm-12 col-md-6"> 
+                <p><strong>Country:</strong><br>
+                <p><input type="text" class="form-control" name="country" value="" placeholder="Country"></p>
+            </div>
+
+            <div class="col-xs-12 col-sm-12 col-md-6"> 
+                <p><strong>Email*:</strong><br>
                 <p><input type="text" class="form-control" name="email" value="" placeholder="Email" required></p>
-            </div>
+            </div>    
                 
-            <div class="col-xs-12 col-sm-12 col-md-12"> 
-                <p><strong>Phone:</strong><br>
-                <p><input type="text" class="form-control" name="telefon" value="+49" placeholder="Phone" required></p>
-            </div>
-                
-            <div class="col-xs-12 col-sm-12 col-md-12"> 
-                <p><strong>Mobil:</strong><br>
-                <p><input type="text" class="form-control" name="mobil" value="+49" placeholder="Mobil" required></p>
+            <div class="col-xs-12 col-sm-12 col-md-6"> 
+                <p><strong>Phone*:</strong><br>
+                <p><input type="text" class="form-control" name="phone" value="+93 " placeholder="Mobile" required></p>
             </div>
               
-            <div class="col-xs-12 col-sm-12 col-md-12">                
+            <div class="col-xs-12 col-sm-12 col-md-6">                
                 <p><input type="submit" class="btn btn-lg btn-success" value="Save"></p>
             </div>
             

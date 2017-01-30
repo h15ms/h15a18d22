@@ -72,15 +72,15 @@
             </div>
           <div class="panel-body collapse in">                                
             
-            <form action="userupdate" method="post" >
-            <input type="hidden" name="send" value="1"> 
+            <form action="userUpdate" method="post" >
+            <input type="hidden" name="send" value="userupdate"> 
             <input type="hidden" name="id" value="<?php echo $page['0']->id; ?>"> 
            
                 
-            <div class="col-xs-12 col-sm-12 col-md-12"> 
+            <div class="col-xs-12 col-sm-12 col-md-6"> 
                 <p><strong>User Level:</strong><br>
                 
-                <p><select class="form-control" name="position" required="">
+                <p><select class="form-control" name="user_level" required="">
                     <option value="">Select User Level</option>
                     <option <?php if($page['0']->user_type == '1')echo "selected"; ?> value="1">Admin</option>
                     <option <?php if($page['0']->user_type == '2')echo "selected"; ?> value="2">Agent/Dealer</option>
@@ -88,42 +88,47 @@
                 </select></p>
             </div>    
                 
-            <div class="col-xs-12 col-sm-12 col-md-12"> 
+            <div class="col-xs-12 col-sm-12 col-md-6"> 
                 <p><strong>First name:</strong><br>
                 <p><input type="text" class="form-control" name="firstname" value="<?php echo $page['0']->firstname; ?>" placeholder="First name"></p>
             </div>
                 
-            <div class="col-xs-12 col-sm-12 col-md-12"> 
+            <div class="col-xs-12 col-sm-12 col-md-6"> 
                 <p><strong>Last name:</strong><br>
                 <p><input type="text" class="form-control" name="lastname" value="<?php echo $page['0']->lastname; ?>" placeholder="Last name"></p>
             </div>
               
-            <div class="col-xs-12 col-sm-12 col-md-12"> 
+            <div class="col-xs-12 col-sm-12 col-md-6"> 
                 <p><strong>Street:</strong><br>
                 <p><input type="text" class="form-control" name="street" value="<?php echo $page['0']->street; ?>" placeholder="Street"></p>
             </div>                    
             
-            <div class="col-xs-12 col-sm-12 col-md-12">                
+            <div class="col-xs-12 col-sm-12 col-md-6">                
                 <p><strong>ZIP:</strong><br>
                 <p><input type="text" class="form-control" name="zip" value="<?php echo $page['0']->zip; ?>" placeholder="ZIP"></p>
             </div>
               
-            <div class="col-xs-12 col-sm-12 col-md-12"> 
+            <div class="col-xs-12 col-sm-12 col-md-6"> 
                 <p><strong>City:</strong><br>
                 <p><input type="text" class="form-control" name="city" value="<?php echo $page['0']->city; ?>" placeholder="City"></p>
             </div>
-                
-            <div class="col-xs-12 col-sm-12 col-md-12"> 
-                <p><strong>Country:</strong><br>
-                <p><input type="text" class="form-control" name="country" value="<?php echo $page['0']->country; ?>" placeholder="Mobil"></p>
+
+            <div class="col-xs-12 col-sm-12 col-md-6"> 
+                <p><strong>State:</strong><br>
+                <p><input type="text" class="form-control" name="State" value="<?php echo $page['0']->state; ?>" placeholder="State"></p>
             </div>
                 
-            <div class="col-xs-12 col-sm-12 col-md-12"> 
+            <div class="col-xs-12 col-sm-12 col-md-6"> 
+                <p><strong>Country:</strong><br>
+                <p><input type="text" class="form-control" name="country" value="<?php echo $page['0']->country; ?>" placeholder="Mobile"></p>
+            </div>
+                
+            <div class="col-xs-12 col-sm-12 col-md-6"> 
                 <p><strong>Email:</strong><br>
                 <p><input type="text" class="form-control" name="email" value="<?php echo $page['0']->email; ?>" placeholder="Email"></p>
             </div>
                 
-            <div class="col-xs-12 col-sm-12 col-md-12"> 
+            <div class="col-xs-12 col-sm-12 col-md-6"> 
                 <p><strong>Phone:</strong><br>
                 <p><input type="text" class="form-control" name="phone" value="<?php echo $page['0']->phone; ?>" placeholder="Phone"></p>
             </div>
