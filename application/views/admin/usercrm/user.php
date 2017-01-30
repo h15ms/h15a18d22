@@ -11,7 +11,7 @@
         <h4>Do you really want to delete this employee?</h4>
       </div>
       <div class="modal-footer">
-          <form method="post">
+          <form action="../delUser" method="post">
           <input type="hidden" name="send" value="del">
           <input type="hidden" name="id" value="<?php echo $this->uri->segment('4');?>">
           <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>        
@@ -25,14 +25,12 @@
 
 <div id="page-content">
     <div id="wrap">
-    
 
-    
         <div id="page-heading">
             <ol class="breadcrumb">
                 <li><a href="<?php echo base_url()?>/admin">Dashboard</a></li>
                 
-                <?php if($user[0]->position=="CEO"){ ?> 
+                <?php if($user[0]->user_type=="1"){ ?> 
                 <li><a href="<?php echo base_url()?>/admin/usercrm">Employees</a></li>
                 <?php }else{ ?>
                 <li><a>Employees</a></li>
@@ -41,14 +39,14 @@
             </ol>
 
             <h1>Edit Employee</h1>
-             <?php if($user[0]->position=="CEO"){ ?> 
+             <?php if($user[0]->user_type=="1"){ ?> 
             <div class="options">
                 <div class="btn-toolbar">                	
                     <div class="btn-group">
                         <select id="goto" onchange="goto()" class="form-control">
                             <option value="0">Choose Employee</option>
-                            <?php foreach($users as $plink){ ?>  
-                            <option value="index.php?c=user&a=user&id=<?php echo $plink->id; ?>"><?php echo $plink->firstname; ?> <?php echo $plink->lastname; ?></option>
+                            <?php foreach($user as $plink){ ?>  
+                            <option value="<?php echo base_url()."admin/usercrm/user/".$plink->id; ?>"><?php echo $plink->firstname; ?> <?php echo $plink->lastname; ?></option>
                             <?php } ?>
                         </select>
                     </div>
@@ -70,7 +68,7 @@
         <div class="panel panel-inverse">
             <div class="panel-heading">
                 <h4><i class="fa fa-file-code-o"></i> <span>Edit Employee</span></h4>
-                <div class="pull-right">Date: <?php echo $page['0']->date; ?></div>              
+                <div class="pull-right">Date: <?php echo date('d-m-Y',$page['0']->regtime); ?></div>              
             </div>
           <div class="panel-body collapse in">                                
             
@@ -80,8 +78,14 @@
            
                 
             <div class="col-xs-12 col-sm-12 col-md-12"> 
-                <p><strong>Position:</strong><br>
-                <p><input type="text" class="form-control" name="position" value="<?php echo $page['0']->position; ?>" placeholder="Position im Unternehmen"></p>
+                <p><strong>User Level:</strong><br>
+                
+                <p><select class="form-control" name="position" required="">
+                    <option value="">Select User Level</option>
+                    <option <?php if($page['0']->user_type == '1')echo "selected"; ?> value="1">Admin</option>
+                    <option <?php if($page['0']->user_type == '2')echo "selected"; ?> value="2">Agent/Dealer</option>
+                    <option <?php if($page['0']->user_type == '3')echo "selected"; ?> value="3">Customer/Patient</option>
+                </select></p>
             </div>    
                 
             <div class="col-xs-12 col-sm-12 col-md-12"> 
@@ -96,7 +100,7 @@
               
             <div class="col-xs-12 col-sm-12 col-md-12"> 
                 <p><strong>Street:</strong><br>
-                <p><input type="text" class="form-control" value="<?php echo $page['0']->street; ?>" name="street" placeholder="Street"></p>
+                <p><input type="text" class="form-control" name="street" value="<?php echo $page['0']->street; ?>" placeholder="Street"></p>
             </div>                    
             
             <div class="col-xs-12 col-sm-12 col-md-12">                
@@ -110,18 +114,18 @@
             </div>
                 
             <div class="col-xs-12 col-sm-12 col-md-12"> 
+                <p><strong>Country:</strong><br>
+                <p><input type="text" class="form-control" name="country" value="<?php echo $page['0']->country; ?>" placeholder="Mobil"></p>
+            </div>
+                
+            <div class="col-xs-12 col-sm-12 col-md-12"> 
                 <p><strong>Email:</strong><br>
                 <p><input type="text" class="form-control" name="email" value="<?php echo $page['0']->email; ?>" placeholder="Email"></p>
             </div>
                 
             <div class="col-xs-12 col-sm-12 col-md-12"> 
                 <p><strong>Phone:</strong><br>
-                <p><input type="text" class="form-control" name="telephone" value="<?php echo $page['0']->telephone; ?>" placeholder="Phone"></p>
-            </div>
-                
-            <div class="col-xs-12 col-sm-12 col-md-12"> 
-                <p><strong>Mobil:</strong><br>
-                <p><input type="text" class="form-control" name="mobile" value="<?php echo $page['0']->mobile; ?>" placeholder="Mobil"></p>
+                <p><input type="text" class="form-control" name="phone" value="<?php echo $page['0']->phone; ?>" placeholder="Phone"></p>
             </div>
                 
                 

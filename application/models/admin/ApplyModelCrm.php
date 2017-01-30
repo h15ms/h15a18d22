@@ -56,23 +56,7 @@ class ApplyModelcrm extends CI_Model
 //  }
 //
 //    
-//  public function setStatus($appid,$status,$embsid,$visaid)
-//  {
-//        $con = new Database();
-//        $con = $con->con();
-//        $sql = "UPDATE ".PREFIX."apply SET status = :cstatus, embassy_id = :embId, visa_id = :visaId  WHERE app_id = :applyID";        
-//        $stmt = $con->prepare($sql);
-//        $stmt->bindParam(':cstatus', $status, PDO::PARAM_STR); 
-//        $stmt->bindParam(':applyID', $appid, PDO::PARAM_INT);          
-//        $stmt->bindParam(':embId', $embsid, PDO::PARAM_INT);          
-//        $stmt->bindParam(':visaId', $visaid, PDO::PARAM_INT);          
-//        if($stmt->execute()){
-//            return 1;
-//        }else{
-//            return 0;
-//        }      
-//  }
-//
+
  
 
  public function updateNotice($appid,$notice)
@@ -91,21 +75,57 @@ class ApplyModelcrm extends CI_Model
 
  }
 
-//
-//  public function updateEmpname($app_id, $user_name)
-//  {
-//    $con = new Database();
-//    $con = $con->con();
-//    $sql = "UPDATE ".PREFIX."apply SET emp_working = :name WHERE app_id = :applyID";
-//    $stmt = $con->prepare($sql);
-//    $stmt->bindParam(':name', $user_name, PDO::PARAM_STR);
-//    $stmt->bindParam(':applyID', $app_id, PDO::PARAM_STR);
-//    if($stmt->execute()){
-//       return 1;
-//    }else{
-//       return 0;
-//    }
-//  }
+
+public function updateVisaId($app_id, $visaId, $status)
+ {
+    $sess = $this->session->userdata();
+    $sessName = $sess['logged_in']['user_name'];
+   
+   $this->db->where('app_id' , $app_id);
+   $update = $this->db->update('mi_apply', array('visa_id' => $visaId, 'emp_working' => $sessName, 'status' => $status));
+
+   if(isset($update))
+   {
+     return "true";
+   }else
+   {
+     return "False";
+   } 
+ }
+
+public function updateEmbassyId($app_id, $embId, $status)
+ {
+  $sess = $this->session->userdata();
+  $sessName = $sess['logged_in']['user_name'];
+
+   $this->db->where('app_id' , $app_id);
+   $update = $this->db->update('mi_apply', array('embassy_id' => $embId, 'emp_working' => $sessName, 'status' => $status));
+
+   if(isset($update))
+   {
+     return "true";
+   }else
+   {
+     return "False";
+   } 
+ }
+
+ public function updateStatus($app_id, $status)
+ {
+  $sess = $this->session->userdata();
+  $sessName = $sess['logged_in']['user_name'];
+
+   $this->db->where('app_id' , $app_id);
+   $update = $this->db->update('mi_apply', array('emp_working' => $sessName, 'status' => $status));
+
+   if(isset($update))
+   {
+     return "true";
+   }else
+   {
+     return "False";
+   } 
+ }
 
 
 

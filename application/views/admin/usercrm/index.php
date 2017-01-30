@@ -45,26 +45,32 @@
 						<th style="width:auto;">Name</th>
 						<th style="width:auto;">Email</th>
 						<th style="width:auto;">Phone</th>
-						<th style="width:auto;">Mobile</th>						
+
 						<th style="width:auto;">Date</th>						
 						<th style="width:auto;" align="center">Edit</th>			
 					</tr>
 					</thead>
 					<tbody>
                                        
-                        <?php foreach($users as $user){   ?>
+                        <?php $i = '1'; foreach($users as $user){   ?>
 
                         <tr>
-                            <td><?php echo $user->id;?></td>
-                            <td><?php echo $user->position;?></td>
+                            <td><?php echo $i;?></td>
+                            <td><?php 
+                                if($user->user_type == '1'){
+                                    echo 'Admin';
+                                }elseif($user->user_type == '2'){
+                                    echo 'Agent';
+                                }
+                                ?></td>
                             <td><?php echo $user->firstname." ".$user->lastname;?></td>
                             <td><?php echo $user->email;?></td>
-                            <td><?php echo $user->telephone;?></td>
-                            <td><?php echo $user->mobile;?></td>
+                            <td><?php echo $user->phone;?></td>
+
                             <td><?php echo date('d-m-Y', $user->date);?></td>
                             <td align="center"><a href="usercrm/user/<?php echo $user->id;?>"><i class="fa fa-pencil"></i></a></td>
                         </tr>
-                        <?php } ?>
+                        <?php $i++; } ?>
 					</tbody>
 				</table>
 

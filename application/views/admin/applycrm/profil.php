@@ -1,7 +1,7 @@
 <!-- Händler sperren -->
 <div class="modal fade" id="userBlock" tabindex="-1" role="dialog" aria-labelledby="userBlockLabel" aria-hidden="true">
   <div class="modal-dialog">
-  <form action="" method="POST">
+  <form action="../updateStatus" method="POST">
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
@@ -15,8 +15,9 @@
               <select class="form-control" name="status" onclick="application(this)">
                   <option value="0">New</option>
                   <option value="1">In Progress</option>
-                  <option value="2">Confirmed</option>
+                  <option value="2">Confirmed/Approved</option>
                   <option value="3">Rejected</option>
+                  <option value="4">Cloesd</option>
               </select>  
 
               <script type="text/javascript">
@@ -133,7 +134,7 @@
                   ?>
                   
                   </p>
-                  <p><b class="bold500">Apply Date:</b> <?php echo $apply[0]->apply_date;?></p>
+                  <p><b class="bold500">Apply Date:</b> <?php echo date('d-m-Y', $apply[0]->apply_date);?></p>
                   <p><b class="bold500">MIC Apply ID:</b> <?php echo $apply[0]->app_id;?></p>
                   <p><b class="bold500">Embassy App ID:</b> 
                   <?php if($apply[0]->embassy_id==""){

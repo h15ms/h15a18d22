@@ -19,7 +19,8 @@ class Usercrm extends CI_Controller
       
       error_reporting(0);
       
-      $this->load->model('admin/userModelCrm' , 'umc');
+      $this->load->model('admin/userModelCrm' , 'model');
+      // $this->load->library('user_agent');
   }
 
     
@@ -33,7 +34,8 @@ class Usercrm extends CI_Controller
     $data1 = array(
         'page_title' => 'Manage employees | MiConsulting'
     );
-    $users=$this->umc->allUsers();
+    $users=$this->model->allUsers();
+
     $data = array('headline'=>$headline,'users'=>$users);
     $this->load->view('admin/temp/headercrm',$data1 );
     $this->load->view('admin/usercrm/index',$data);
@@ -43,23 +45,23 @@ class Usercrm extends CI_Controller
     
   public function user() 
   {
-      $data1 = array(
+    $data1 = array(
         'page_title' => 'Edit employees | MiConsulting'
     );
   
     if(isset($_POST['send']) && ($_POST['send']=="1"))
       { 
-        $a = $this->umc->userupdate($_POST);
+        $a = $this->model->userupdate($_POST);
       if(isset($a)){
-        header( 'Location : '.base_url().'admin/usercrm');
+        header( 'Location:'.base_url().'admin/usercrm');
       }
 
       } 
+
     if(isset($_POST['send']) && ($_POST['send']=="del")){ $go = $this->_model->userdel($_POST); header("Location: admin/usercrm"); }          
 
-      $page = $this->umc->user($this->uri->segment('4'));
-      $users = $this->umc->allUsers();
-
+      $page = $this->model->user($this->uri->segment('4'));
+      $users = $this->model->allUsers();
 
     $data=array('headline'=>"Edit employees","page"=>$page,"user"=>$users);
 
@@ -74,8 +76,8 @@ class Usercrm extends CI_Controller
     if(isset($_POST['send']) && ($_POST['send']=="1"))
     {
         // generate passwort
-        $password = $this->umc->makePass();        
-        $newid = $this->umc->userinsert($_POST,$password);
+        $password = $this->model->makePass();        
+        $newid = $this->model->userinsert($_POST,$password);
         // send email
 //        $mailtext = '<html><head><title>Welcome at MiConsulting</title></head><body>
 //        <h2>Welcome at MiConsulting</h2>
@@ -109,5 +111,16 @@ class Usercrm extends CI_Controller
 //    $this->_view->display('user/adduser.tpl.php');
   }
   
+  public function delUser(){
+
+    $send = $this->input->post('send');
+    $id = $this->input->post('id');
+
+    if($send == 'del'){
+
+      $this->model->userdel($id);
+      redirect('admin/usercrm','refresh');
+    }
+  }
   
 }
