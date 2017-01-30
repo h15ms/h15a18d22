@@ -4,18 +4,18 @@ class Doctor extends CI_Controller {
 
     function __construct() {
         parent::__construct();
+        $this->load->library('user_agent');
+        $sess = $this->session->userdata();
+      
+      if ($sess['logged_in']['user_level'] != '1' && $sess['logged_in']['user_level_status'] != '1') {
+           // header('Location: ' . base_url() . 'home ');
+           redirect(base_url() . 'home ', 'location');
+        } elseif ($sess['logged_in']['user_level'] != '2' && $sess['logged_in']['user_level_status'] != '1') {
+            //header('Location: ' . base_url() . 'home ');
+             redirect(base_url() . 'home ', 'location');
+        }
 
-      $sess = $this->session->userdata();
-      if($sess['logged_in']['user_level'] != '1' && $sess['logged_in']['user_level_status'] != '1' ){
 
-        header ('Location: '.base_url().'home ');
-      }
-      elseif($sess['logged_in']['user_level'] != '2' && $sess['logged_in']['user_level_status'] != '1'){
-        
-        header ('Location: '.base_url().'home ');
-      }
-       
-        
         // Load form helper library
         $this->load->helper('form');
         // Load form validation library
@@ -83,7 +83,7 @@ class Doctor extends CI_Controller {
             if ($file_moved) {
                 $res = $this->app->add($data);
                 unset($_POST);
-                $this->load->library('user_agent');
+                ///$this->load->library('user_agent');
                  redirect('/admin/doctor/', 'location');
             }else{
               echo  'avatar not moved';
@@ -146,13 +146,13 @@ class Doctor extends CI_Controller {
                 $file_moved = move_uploaded_file($_FILES['avatar']['tmp_name'],$avatar);
                 $res = $this->app->update($data);
                 unset($_POST);
-                $this->load->library('user_agent');
+                ///$this->load->library('user_agent');
                  redirect('/admin/doctor/', 'location');
             }else{
                 $data['avatar'] = $doctor[0]->avatar;
                 $res = $this->app->update($data);
                 unset($_POST);
-                $this->load->library('user_agent');
+                ///$this->load->library('user_agent');
                  redirect('/admin/doctor/', 'location');
             }
         }
@@ -175,12 +175,12 @@ class Doctor extends CI_Controller {
     }
 public function view() {
          
-        $title = array('page_title' => "Add Doctor | MiConsulting");
+        $title = array('page_title' => "View Doctor | MiConsulting");
         $js = array('js' => "doctor.js");  //  Angular Js file name
         $id = $this->uri->segment('4');
         $doctors = $this->app->fetchById($id);
         $states =  $this->state_city_india();
-        $dataCollection = array('headline' => 'Add Doctor','states'=>$states, 'doctor' => $doctors);
+        $dataCollection = array('headline' => 'View Doctor','states'=>$states, 'doctor' => $doctors);
         $this->load->view('admin/temp/headercrm', $title);
         $this->load->view('admin/doctor/view', $dataCollection);
         $this->load->view('admin/temp/footercrm',$js );
