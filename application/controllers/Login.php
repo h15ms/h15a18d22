@@ -149,18 +149,18 @@ class Login extends CI_Controller
 
 				if($sess['logged_in']['user_level'] == '3'){
 
-					header('Location:'.base_url().'Home');
-				// echo '<script> window.location.href = "http://www.miConsulting.in/home"; </script>';
+					//header('Location:'.base_url().'Home');
+                                echo '<script> window.location.href = "'.base_url().'home"; </script>';
 
 				}elseif( ($sess['logged_in']['user_level'] == '2' && $sess['logged_in']['user_level_status'] == '1') || ($sess['logged_in']['user_level'] == '1' && $sess['logged_in']['user_level_status'] == '1')){
 
-					header('Location:'.base_url().'admin/homecrm');
-				// echo '<script> window.location.href = "http://www.miConsulting.in/admin/homecrm"; </script>';
+					//header('Location:'.base_url().'admin/homecrm');
+				echo '<script> window.location.href = "'.base_url().'admin/homecrm"; </script>';
 
 				}else{
 					
-					header('Location:'.base_url().'home');
-				// echo '<script> window.location.href = "http://www.miConsulting.in/homecrm"; </script>';
+					//header('Location:'.base_url().'home');
+				 echo '<script> window.location.href = "'.base_url().'home"; </script>';
 				}
 
 
