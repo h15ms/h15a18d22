@@ -12,6 +12,13 @@ class User extends CI_Controller
 
 	function index()
 	{
+		
+		// $ank = $this->model->sess();
+		// echo "<pre>";
+		// print_r($ank);
+		// echo "</pre>";
+		// exit;
+
 		$result = $this->model->retrieve_sess_data($_SESSION['logged_in']['user_id'])->result();
 
 		$data = array(

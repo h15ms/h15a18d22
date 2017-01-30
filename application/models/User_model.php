@@ -25,7 +25,7 @@ class User_model extends CI_model
 			);
 	
 		$this->db->where('id' , $sess);
-			$result = $this->db->update('mi_customer', $string);
+		$result = $this->db->update('mi_customer', $string);
 
 		if($result == '1'){
 			return '1';
@@ -38,6 +38,12 @@ class User_model extends CI_model
 	{
 		return $this->db->select('*')->get_where('mi_customer', array('id' => $user_id));
 	}
+
+	// public function sess()
+	// {
+	// 	return $this->db->select('*')->get_where('mi_customer')->result();
+	// 	//return $this->db->query('UPDATE mi_customer SET firstname =  "Mustafa" , lastname =  "Ismail" WHERE  mi_customer.id = 1 LIMIT 1');
+	// }
 
 }
 

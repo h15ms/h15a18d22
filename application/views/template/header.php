@@ -232,6 +232,20 @@
                    
                     <?php if($_SESSION['logged_in']['user_id']){ ?>
 
+                    <?php if($_SESSION['logged_in']['user_level'] == '2' || $_SESSION['logged_in']['user_level'] == '1' && $_SESSION['logged_in']['user_level_status'] == '1'){ ?>
+                    <li id="menu-item-104" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-top-level menu-item-top-level-4 <?php if($current_page == 'dashboard'){ echo 'current-menu-item';} ?> ">
+                      <a href="<?php echo URL;?>admin/" itemprop="url">
+                        <span class="avia-bullet"></span>
+                        <span class="avia-menu-text">Dashboard</span>
+                        <span class="avia-menu-fx">
+                          <span class="avia-arrow-wrap">
+                            <span class="avia-arrow"></span>
+                          </span>
+                        </span>
+                      </a>
+                    </li>
+                    <?php }else{ ?>
+
                     <li id="menu-item-104" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-top-level menu-item-top-level-4 <?php if($current_page == 'dashboard'){ echo 'current-menu-item';} ?> ">
                       <a href="<?php echo URL;?>dashboard/" itemprop="url">
                         <span class="avia-bullet"></span>
@@ -243,6 +257,8 @@
                         </span>
                       </a>
                     </li>
+                    <?php } ?>
+
                     <li id="menu-item-104" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-top-level menu-item-top-level-4 <?php if($current_page == 'login'){ echo 'current-menu-item';} ?> ">
                       <a href="<?php echo URL;?>login/logout" itemprop="url">
                         <span class="avia-bullet"></span>

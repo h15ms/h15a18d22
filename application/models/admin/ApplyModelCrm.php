@@ -3,9 +3,10 @@ class ApplyModelcrm extends CI_Model
 {
 
   
-  public function __construct() 
-  {
-      //  require_once 'library/Database.php';
+  function __construct() {
+     
+      parent::__construct(); // call parent constructor
+      $this->load->database();
   }
 
 
@@ -37,7 +38,6 @@ class ApplyModelcrm extends CI_Model
   {     
        
      $getdata = $this->db->select('*')->get_where('mi_apply',array('app_id'=>$appid ));
-    //  $result = $getdata->get();
           
         if ($getdata->num_rows() > 0) {
             return $getdata->result();
@@ -73,20 +73,24 @@ class ApplyModelcrm extends CI_Model
 //        }      
 //  }
 //
-//  public function updateNotice($appid,$notice)
-//  {
-//    $con = new Database();
-//    $con = $con->con();
-//    $sql = "UPDATE ".PREFIX."apply SET notice = :notice WHERE app_id = :applyID";
-//    $stmt = $con->prepare($sql);
-//    $stmt->bindParam(':notice', $notice, PDO::PARAM_STR);
-//    $stmt->bindParam(':applyID', $appid, PDO::PARAM_STR);
-//    if($stmt->execute()){
-//      return 1;
-//    }else{
-//      return 0;
-//    }
-//  }
+ 
+
+ public function updateNotice($appid,$notice)
+ {
+
+  $this->db->where('app_id' , $appid);
+  $update = $this->db->update('mi_apply', array('notice' => $notice));
+
+  if(isset($update))
+  {
+    return "true";
+  }else
+  {
+    return "False";
+  }
+
+ }
+
 //
 //  public function updateEmpname($app_id, $user_name)
 //  {

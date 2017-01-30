@@ -1,9 +1,7 @@
 <?php error_reporting(0);?>
 <div id="page-content">
     <div id="wrap">
-    
-    
-    
+        
         <div id="page-heading">
             <ol class="breadcrumb">
                 <li><a href="index.php">Dashboard</a></li>                
@@ -16,9 +14,6 @@
                 </div>
             </div>
         </div>
-
-
-
 
 
         <div class="container">
@@ -62,7 +57,7 @@
                             <td><?php echo $client->city_present; ?></td>                            
                             <td><?php echo $client->email; ?></td>
                             <td><?php echo $client->phone_no; ?></td>
-                            <td><?php echo $client->apply_date; ?></td>
+                            <td><?php echo date('d-m-Y', $client->apply_date); ?></td>
                             <td align="center">
                             <?php 
                                 if($client->status =="0"){ 

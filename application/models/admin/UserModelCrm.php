@@ -33,20 +33,24 @@ class UserModelcrm  extends CI_Model
     
   public function userupdate($arr)
   {        
+
         $data=array(
          'position'=>$arr['position'],
-         'vorname'=>$arr['vorname'],
-         'nachname'=>$arr['nachname'],
-         'strasse'=>$arr['strasse'],
-         'plz'=>$arr['plz'],
-         'stadt'=>$arr['stadt'],
+         'firstname'=>$arr['firstname'],
+         'lastname'=>$arr['lastname'],
+         'city'=>$arr['city'],
+         'zip'=>$arr['zip'],
+         'street'=>$arr['street'],
          'email'=>$arr['email'],
-         'telefon'=>$arr['telefon'],
-         'mobil'=>$arr['mobil']); 
+         'telephone'=>$arr['telephone'],
+         'mobile'=>$arr['mobile']
+         ); 
+         
          $this->db->where('id', $arr['id']);
          $this->db->update('mi_admins', $data);
-      
-     
+
+         return 'OK';
+
   }
     
     
@@ -56,58 +60,19 @@ class UserModelcrm  extends CI_Model
      $data=array(
          'pass'=>$pass,
          'position'=>$arr['position'],
-         'vorname'=>$arr['vorname'],
-         'nachname'=>$arr['nachname'],
-         'strasse'=>$arr['strasse'],
-         'plz'=>$arr['plz'],
-         'stadt'=>$arr['stadt'],
+         'firstname'=>$arr['firstname'],
+         'lastname'=>$arr['lastname'],
+         'city'=>$arr['city'],
+         'zip'=>$arr['zip'],
+         'street'=>$arr['street'],
          'email'=>$arr['email'],
-         'telefon'=>$arr['telefon'],
-         'mobil'=>$arr['mobil'],
+         'telephone'=>$arr['telephone'],
+         'mobile'=>$arr['mobile'],
          'datum'=> date("d.m.Y")); 
       
       
       $this->db->insert('mi_admins', $data);
       
-      
-//       $sql = "INSERT INTO ".PREFIX."admins (
-//            pass,
-//            position,
-//            vorname,
-//            nachname,
-//            strasse,
-//            plz,
-//            stadt,
-//            email,
-//            telefon,
-//            mobil,
-//            datum) VALUES (
-//            :cpass,
-//            :cposition,
-//            :cvorname,
-//            :cnachname, 
-//            :cstrasse,             
-//            :cplz,
-//            :cstadt,
-//            :cemail,
-//            :ctelefon,
-//            :cmobil,
-//            :cdatum)";
-//        $stmt = $this->_con->prepare($sql);
-//        $stmt->bindParam(':cpass', $pass, PDO::PARAM_STR);
-//        $stmt->bindParam(':cposition', $arr['position'], PDO::PARAM_STR);  
-//        $stmt->bindParam(':cvorname', $arr['vorname'], PDO::PARAM_STR); 
-//        $stmt->bindParam(':cnachname', $arr['nachname'], PDO::PARAM_STR);
-//        $stmt->bindParam(':cstrasse', $arr['strasse'], PDO::PARAM_STR);        
-//        $stmt->bindParam(':cplz', $arr['plz'], PDO::PARAM_STR); 
-//        $stmt->bindParam(':cstadt', $arr['stadt'], PDO::PARAM_STR);   
-//        $stmt->bindParam(':cemail', $arr['email'], PDO::PARAM_STR);   
-//        $stmt->bindParam(':ctelefon', $arr['telefon'], PDO::PARAM_STR);   
-//        $stmt->bindParam(':cmobil', $arr['mobil'], PDO::PARAM_STR);   
-//        $stmt->bindParam(':cdatum', date("d.m.Y"), PDO::PARAM_STR);      
-//        $stmt->execute();  
-      //  $newId = $this->_con->lastInsertId();
-        //return $newId;
   }
     
     

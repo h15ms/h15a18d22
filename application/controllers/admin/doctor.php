@@ -5,6 +5,17 @@ class Doctor extends CI_Controller {
     function __construct() {
         parent::__construct();
 
+      $sess = $this->session->userdata();
+      if($sess['logged_in']['user_level'] != '1' && $sess['logged_in']['user_level_status'] != '1' ){
+
+        header ('Location: '.base_url().'home ');
+      }
+      elseif($sess['logged_in']['user_level'] != '2' && $sess['logged_in']['user_level_status'] != '1'){
+        
+        header ('Location: '.base_url().'home ');
+      }
+       
+        
         // Load form helper library
         $this->load->helper('form');
         // Load form validation library
@@ -15,6 +26,7 @@ class Doctor extends CI_Controller {
         $this->load->model('admin/Doctor_model', 'app');
         $this->load->helper("url");
         $this->load->library("pagination");
+
     }
 
     public function index() {

@@ -30,16 +30,18 @@ class Login extends CI_Controller
 		$sess = $this->session->userdata();
 
 		if(isset($sess['logged_in']['user_id'])){
-                  $data=array('active'=>$this->active,'title'=>'Customer Sign In - Sign Up | MiConsulting','headline'=>"Sign In - Sign Up" );
-		$this->load->view('template/header' , $data);
-		$this->load->view('dashboard/index');
-		$this->load->view('template/footer');
+	        
+	        $data=array('active'=>$this->active,'title'=>'Customer Sign In - Sign Up | MiConsulting','headline'=>"Sign In - Sign Up" );
+			$this->load->view('template/header' , $data);
+			$this->load->view('dashboard/index');
+			$this->load->view('template/footer');
 			
 		}else{
-                $data=array('active'=>$this->active,'title'=>'Customer Sign In - Sign Up | MiConsulting','headline'=>"Sign In - Sign Up" );
-		$this->load->view('template/header' , $data);
-		$this->load->view('login/index');
-		$this->load->view('template/footer');
+        
+	        $data=array('active'=>$this->active,'title'=>'Customer Sign In - Sign Up | MiConsulting','headline'=>"Sign In - Sign Up" );
+			$this->load->view('template/header' , $data);
+			$this->load->view('login/index');
+			$this->load->view('template/footer');
 		}
 
 	}
@@ -79,6 +81,8 @@ class Login extends CI_Controller
 					'user_name' => $result[0]->firstname." ".$result[0]->lastname,
 					'user_key' => md5($inserted_id.session_id()),
 					'avatar' => $result[0]->avatar,
+					'user_level' => $result[0]->user_type,
+					'user_level_status' => $result[0]->registration_status
 				);
 				$this->session->set_userdata('logged_in', $session_data);
 
@@ -113,6 +117,7 @@ class Login extends CI_Controller
 			'password' => $this->input->post('pass')
 		);
 
+		ob_start();
 		 $result = $this->login_model->login($data); 
 
 		if ($result == 'TRUE')
@@ -124,22 +129,41 @@ class Login extends CI_Controller
 			if ($result != false)
 				
 				{
-				$session_data = array(
+
+					$session_data = array(
 					'user_id' => $result[0]->id,
 					'user_email' => $result[0]->email,
 					'user_name' => $result[0]->firstname." ".$result[0]->lastname,
 					'user_key' => md5($result[0]->id.session_id()),
 					'avatar' => $result[0]->avatar,
+					'user_level' => $result[0]->user_type,
+					'user_level_status' => $result[0]->registration_status
 				);
 
 
 				// Add user data in session
 
 				$this->session->set_userdata('logged_in', $session_data);
-				
-				$this->load->view('template/header' , $this->active);
-				$this->load->view('home/index');
-				$this->load->view('template/footer');
+
+				$sess = $this->session->userdata();
+
+				if($sess['logged_in']['user_level'] == '3'){
+
+					header('Location:'.base_url().'Home');
+				// echo '<script> window.location.href = "http://www.miConsulting.in/home"; </script>';
+
+				}elseif( ($sess['logged_in']['user_level'] == '2' && $sess['logged_in']['user_level_status'] == '1') || ($sess['logged_in']['user_level'] == '1' && $sess['logged_in']['user_level_status'] == '1')){
+
+					header('Location:'.base_url().'admin/homecrm');
+				// echo '<script> window.location.href = "http://www.miConsulting.in/admin/homecrm"; </script>';
+
+				}else{
+					
+					header('Location:'.base_url().'home');
+				// echo '<script> window.location.href = "http://www.miConsulting.in/homecrm"; </script>';
+				}
+
+
 				}
 			}
 		  else
