@@ -6,11 +6,14 @@ class Doctor_model extends CI_Model {
         parent:: __construct();
     }
 
-    public function fetchAll() {
-
-        $getdata = $this->db->select('*')->from(PR.'doctors');
-        $result = $getdata->get();
-
+    public function fetchAll($limit = '', $start = '') {
+        if ($limit != '') {
+            $getdata = $this->db->select('*')->from(PR . 'doctors')->limit($limit, $start);
+            $result = $getdata->get();
+        } else {
+            $getdata = $this->db->select('*')->from(PR . 'doctors');
+            $result = $getdata->get();
+        }
         if ($result->num_rows() > 0) {
             return $result->result();
         } else {
@@ -57,10 +60,12 @@ class Doctor_model extends CI_Model {
     public function add($data) {
         $insertID = $this->db->insert(PR.'doctors', $data);
         return $insertID;
-        
-        
-        
-        
+    }
+    
+    public function update($data) {
+         $this->db->where('id', $data['id']);
+        $insertID = $this->db->update(PR.'doctors', $data);
+        return $insertID;
     }
 
 }
