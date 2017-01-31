@@ -8,18 +8,17 @@ class Applyprofil
     
   public function __construct() 
   {
-    require_once 'library/View.php';
-    $this->_view = new View();    
+     parent:: __construct();
+    
+    error_reporting(0);
 
-    $sess = $this->session->userdata();
-    if($sess['logged_in']['user_level'] != '1' && $sess['logged_in']['user_level_status'] != '1' ){
+    if(isset($_SESSION['logged_in'])){
+      $sess = $this->session->userdata();
+      if(( $sess['logged_in']['user_level'] != '1' && $sess['logged_in']['user_level_status'] != '1' ) || ( $sess['logged_in']['user_level'] != '2' && $sess['logged_in']['user_level_status'] != '1' ) ){  redirect('home','refresh');}//header ('Location: '.base_url().'home '); }
+    }else{
+      redirect('login','refresh');
+    }      
 
-      header ('Location: '.base_url().'home ');
-    }
-    elseif($sess['logged_in']['user_level'] != '2' && $sess['logged_in']['user_level_status'] != '1'){
-      
-      header ('Location: '.base_url().'home ');
-    }
      
     
   }

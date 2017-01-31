@@ -3,33 +3,28 @@ class Specialization extends CI_Controller {
 
   function __construct()
 	{
-		parent::__construct();
-                
-		$sess = $this->session->userdata();
-    if($sess['logged_in']['user_level'] != '1' && $sess['logged_in']['user_level_status'] != '1' ){
-
-      header ('Location: '.base_url().'home ');
-    }
-    elseif($sess['logged_in']['user_level'] != '2' && $sess['logged_in']['user_level_status'] != '1'){
-      
-      header ('Location: '.base_url().'home ');
-    }
-     
+     parent:: __construct();
     
-    // Load form helper library
+    error_reporting(0);
+
+    if(isset($_SESSION['logged_in'])){
+      $sess = $this->session->userdata();
+      if(( $sess['logged_in']['user_level'] != '1' && $sess['logged_in']['user_level_status'] != '1' ) || ( $sess['logged_in']['user_level'] != '2' && $sess['logged_in']['user_level_status'] != '1' ) ){  redirect('home','refresh');}//header ('Location: '.base_url().'home '); }
+    }else{
+      redirect('login','refresh');
+    }      
+
+     
+
 		$this->load->helper('form');
-
-		// Load form validation library
 		$this->load->library('form_validation');
-
-		// Load session library
 		$this->load->library('session');
-
-		// Load database
 		$this->load->model('admin/SpecializationModel','app');
-                $this->load->helper("url");
-                $this->load->library("pagination");
+    $this->load->helper("url");
+    $this->load->library("pagination");
 	}
+
+  
   function do_upload()
 {
     $config['upload_path'] = './uploads/';

@@ -1,4 +1,5 @@
 <?php 
+error_reporting(0);
 define('URL_ADMIN', base_url() . 'assets/admin/'); 
 define('ASSETS', base_url() . 'assets/');
 ?>
