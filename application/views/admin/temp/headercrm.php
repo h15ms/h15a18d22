@@ -121,27 +121,30 @@ define('ASSETS', base_url() . 'assets/');
           </li>
           <li class="divider"></li>
           <li>
-            <a href="<?php echo base_url();?>admin/Homecrm"><i class="fa fa-tachometer"></i> 
+            <a href="<?php echo base_url();?>admin/homecrm"><i class="fa fa-tachometer"></i> 
               <span>Dashboard</span>
             </a>
           </li>                
           <li>
-            <a href="<?php echo base_url();?>admin/ApplyCrm"><i class="fa fa-file-text-o"></i> 
+            <a href="<?php echo base_url();?>admin/applyCrm"><i class="fa fa-file-text-o"></i> 
               <span>All Applications</span>
             </a>
           </li>                
           <li>
-            <a href="<?php echo base_url();?>admin/Usercrm"><i class="fa fa-group"></i> 
+            <a href="<?php echo base_url();?>admin/usercrm"><i class="fa fa-group"></i> 
               <span>Employees</span>
             </a>
           </li>    
           <li>
-            <a href="<?php echo base_url();?>admin/Hospitalscrm"><i class="fa fa-hospital-o" aria-hidden="true"></i> 
+            <a href="<?php echo base_url();?>admin/hospitalscrm"><i class="fa fa-hospital-o" aria-hidden="true"></i> 
               <span>Hospitals</span>
             </a>
+              
           </li>
-
-
+<li>
+  <a href="<?php echo base_url();?>admin/specialization"><i class="fa fa-list" aria-hidden="true"></i> 
+              <span>Sepecialization</span>
+  </a></li>
           <!--li class="divider"></li>
 <li><a href="javascript:;"><i class="fa fa-ticket"></i> <span>Support Tickets</span> </a>
 <ul class="acc-menu">

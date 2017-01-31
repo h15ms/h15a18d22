@@ -1,7 +1,7 @@
 // ------------------------------
 // Sidebar Accordion Menu
 // ------------------------------
-
+var BASEURL='http://localhost/h15a18d22/';
 //**********Start Angular Js for Hospital Module [Harpreet:27JAN17]***********/
 
 
@@ -9,16 +9,17 @@ var app = angular.module('hospitalApp', []).run(function ($rootScope) {
             $rootScope.title = 'Doctor ';
         })
 .controller('hospitalCtrl', function($scope, $http) {
-    $http.get("http://localhost/h15a18d22/admin/hospitalscrm/getindexjson")
+    $http.get(BASEURL+"admin/hospitalscrm/getindexjson")
     .then(function (response) {$scope.hosPital = response.data;});
    
 });
+
 
 //var ap = angular.module('hospitaleditApp', []);
 var ap = angular.module('hospitaleditApp', []).controller('hospitaleditCtrl', function($scope, $http,$sce) {
             var id=$('#hospitalID').val();
 //            alert(id);
-     $http.get("http://localhost/h15a18d22/admin/hospitalscrm/viewhospitaldata?id="+id)
+     $http.get(BASEURL+"admin/hospitalscrm/viewhospitaldata?id="+id)
     .then(function (response) {
         $scope.hosPitaledit = response.data;
             var special= $scope.hosPitaledit[0].specialization.split(",");
@@ -32,6 +33,21 @@ var ap = angular.module('hospitaleditApp', []).controller('hospitaleditCtrl', fu
         });
  
    
+});
+
+
+var appl=angular.module('specializationAPP',[]).controller('specializationCtrl', function($scope, $http,$sce){
+    var id=$('#pageno').val();
+     $http.get(BASEURL+'admin/specialization/getsonSpecialization?id='+id)
+    .then(function(response) {
+                $scope.speciliz=response.data;
+     
+    $scope.pagination = $sce.trustAsHtml(response.data.links);
+    $scope.updateSpecif = function(id){
+        
+    }
+    
+    });
 });
 
 // var app = angular.module('hospitalApp',[]);

@@ -12,42 +12,41 @@ class UserModelcrm  extends CI_Model
 
   public function allUsers() 
   {     
-      
-     
-      $result= $this->db->select('*')->get_where('mi_admins', array('userlevel != ' => "2"));
-      $nRows1 = $result->result();
-      return $nRows1; 
+    $query = "user_type = '2' OR user_type = '1'";
+    $res= $this->db->select('*')->get_where('mi_customer', $query);   // select Employee or agents And Admins
+    $out = $res->result();
+    return $out; 
            
   }
     
     
   public function user($uid)
   {        
-
-        $result= $this->db->select('*')->get_where('mi_admins', array('id ' => $uid));
-        $nRows1 = $result->result();
-        return $nRows1; 
+        $res= $this->db->select('*')->get_where('mi_customer', array('id ' => $uid));
+        $out = $res->result();
+        return $out; 
               
   }
     
     
-  public function userupdate($arr)
-  {        
+  public function userUpdate($arr)
+  {  
 
         $data=array(
-         'position'=>$arr['position'],
+         'user_type'=>$arr['user_level'],
          'firstname'=>$arr['firstname'],
          'lastname'=>$arr['lastname'],
          'city'=>$arr['city'],
          'zip'=>$arr['zip'],
          'street'=>$arr['street'],
+         'state'=>$arr['state'],
+         'country'=>$arr['country'],
          'email'=>$arr['email'],
-         'telephone'=>$arr['telephone'],
-         'mobile'=>$arr['mobile']
+         'phone'=>$arr['phone']
          ); 
          
          $this->db->where('id', $arr['id']);
-         $this->db->update('mi_admins', $data);
+         $this->db->update('mi_customer', $data);
 
          return 'OK';
 
@@ -58,21 +57,21 @@ class UserModelcrm  extends CI_Model
   {      
       
      $data=array(
-         'pass'=>$pass,
-         'position'=>$arr['position'],
+         'password'=>$pass,
+         'user_type'=>$arr['position'],
          'firstname'=>$arr['firstname'],
          'lastname'=>$arr['lastname'],
          'city'=>$arr['city'],
          'zip'=>$arr['zip'],
          'street'=>$arr['street'],
+         'state'=>$arr['state'],
+         'country'=>$arr['country'],
          'email'=>$arr['email'],
-         'telephone'=>$arr['telephone'],
-         'mobile'=>$arr['mobile'],
-         'datum'=> date("d.m.Y")); 
+         'phone'=>$arr['phone'],
+         'regtime'=> time()); 
       
-      
-      $this->db->insert('mi_admins', $data);
-      
+      $newid = $this->db->insert('mi_customer', $data);
+      return $newid;
   }
     
     
@@ -81,35 +80,18 @@ class UserModelcrm  extends CI_Model
     
       $data=array('cpass'=>$newpw);
       $this->db->where('clientID', $clientid);
-      $this->db->update('mi_admins', $data);
+      $this->db->update('mi_customer', $data);
       
-//        $sql = "UPDATE ".PREFIX."admins SET pass = :cpass WHERE id = :clientID";        
-//        $stmt = $con->prepare($sql);
-//        $stmt->bindParam(':cpass', $newpw, PDO::PARAM_STR); 
-//        $stmt->bindParam(':clientID', $clientid, PDO::PARAM_INT);          
-//        if($stmt->execute()){
-//            return 1;
-//        }else{
-//            return 0;
-//        }   
   }
     
     
-  public function userdel($arr)
+  public function userdel($id)
   {   
-      $result= $this->db->delete('mi_admins', array('id ' => $arr['userID']));
-     // $nRows1 = $result->result();
-        //return $nRows1; 
-              
-      
-      
-//      $sql = "DELETE FROM ".PREFIX."admins WHERE id = :userID";
-//      $stmt = $this->_con->prepare($sql);
-//      $stmt->bindParam(':userID', $arr['id'], PDO::PARAM_INT);   
-//      $stmt->execute();
+      $result= $this->db->delete('mi_customer', array('id ' => $id));
+      return "deleted";
   }
     
-//    
+    
   public function makePass()
   {
         $pass='';
