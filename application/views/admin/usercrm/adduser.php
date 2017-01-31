@@ -36,8 +36,22 @@
             </div>
           <div class="panel-body collapse in">                                  
             
+            
+<?php if($userexist == '1'){ ?>
+                <div class="alert alert-danger alert-dismissible" role="alert">
+                  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;
+                    </span>
+                  </button>
+                  <i class="fa fa-exclamation-triangle"></i> 
+                  <b>This Email-id is already exist</b>
+                </div>
+<?php }else{ ?>
+
             <p class="well">A password for the new employee is automatically generated and will be send to employee email.</p>  
-              
+
+<?php } ?>
+
             <form action="addNewUser" method="post">
             <input type="hidden" name="send" value="insertUser">                        
               

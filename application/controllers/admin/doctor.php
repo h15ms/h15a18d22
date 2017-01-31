@@ -14,9 +14,7 @@ class Doctor extends CI_Controller {
       }else{
         redirect('login','refresh');
       }      
-
-
-
+      
         $this->load->helper('form');
         $this->load->library('form_validation');
         $this->load->library('session');

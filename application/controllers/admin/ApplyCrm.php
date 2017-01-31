@@ -53,7 +53,7 @@ class ApplyCrm extends CI_Controller {
 
        if($send == "update_notice"){
           $update = $this->model->updateNotice($appid, $notice); 
-          header('Location:'.base_url().'admin/applycrm/profil/'.$appid);
+          header('Location:'.base_url().'admin/applyCrm/profil/'.$appid);
        }
   }
 
@@ -74,7 +74,7 @@ class ApplyCrm extends CI_Controller {
         $this->model->updateStatus($appid, $status);
       }
 
-      header('Location:'.base_url().'admin/applycrm/profil/'.$appid);
+      header('Location:'.base_url().'admin/applyCrm/profil/'.$appid);
     }
 
 

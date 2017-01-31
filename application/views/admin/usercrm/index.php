@@ -45,13 +45,13 @@
 						<th style="width:auto;">Name</th>
 						<th style="width:auto;">Email</th>
 						<th style="width:auto;">Phone</th>
-
-						<th style="width:auto;">Date</th>						
+                        <th style="width:auto;">Date</th>                       
+						<th style="width:auto;">Status</th>						
 						<th style="width:auto;" align="center">Edit</th>			
 					</tr>
 					</thead>
 					<tbody>
-                                       
+
                         <?php $i = '1'; foreach($users as $user){   ?>
 
                         <tr>
@@ -68,6 +68,13 @@
                             <td><?php echo $user->phone;?></td>
 
                             <td><?php echo date('d-m-Y', $user->date);?></td>
+                            <td><?php if($user->registration_status == '0'){
+                                        echo "<p style='color:red;'>Not Approved</p>";
+                                    }elseif($user->registration_status == '1'){
+                                        echo "<p style='color:green;'>Approved</p>";
+                                    }
+
+                                ?></td>
                             <td align="center"><a href="usercrm/user/<?php echo $user->id;?>"><i class="fa fa-pencil"></i></a></td>
                         </tr>
                         <?php $i++; } ?>

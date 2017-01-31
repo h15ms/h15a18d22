@@ -72,11 +72,25 @@
             </div>
           <div class="panel-body collapse in">                                
             
-            <form action="userUpdate" method="post" >
+            <form action="../userUpdate" method="post" >
             <input type="hidden" name="send" value="userupdate"> 
             <input type="hidden" name="id" value="<?php echo $page['0']->id; ?>"> 
-           
-                
+
+            <?php if($page['0']->registration_status == '0'){ ?>
+            <div class="col-xs-12 col-sm-12 col-md-12">
+                <?php $type = ''; if($page['0']->user_type == '1'){$type = 'Admin';} elseif($page['0']->user_type == '2'){$type = 'Agent/Dealer';} else{$type = 'Customer/Patient';} ?>
+                <div class="alert alert-danger alert-dismissible" role="alert">
+                  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;
+                    </span>
+                  </button>
+                  <i class="fa fa-exclamation-triangle"></i> 
+                  <b><?php echo $page['0']->firstname." ".$page['0']->lastname." is not Approved as ".$type; ?></b>
+                  <a href="<?php echo base_url(); ?>admin/usercrm/userapprovelevel/<?php echo $page['0']->id; ?>" style="position: relative; bottom: 7px; margin-right: 25px;" class="btn btn-success pull-right">Approve</a>
+                </div>
+            </div> 
+            <?php } ?>
+
             <div class="col-xs-12 col-sm-12 col-md-6"> 
                 <p><strong>User Level:</strong><br>
                 

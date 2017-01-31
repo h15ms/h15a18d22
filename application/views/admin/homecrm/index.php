@@ -4,7 +4,7 @@
     <div id='wrap'>
         <div id="page-heading">
             <ol class="breadcrumb">
-                <li class='active'><a href="admin">Dashboard</a></li>
+                <li class='active'><a href="">Dashboard</a></li>
             </ol>
 
             <h1>Dashboard</h1>
@@ -67,7 +67,7 @@
                             <tr>
                               <td>
 
-                                <a href="<?php echo base_url(); ?>admin/applycrm/profil/<?php echo $allnewapplys[$i]->app_id; ?>"><?php echo $allnewapplys[$i]->given_name; ?> <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span></a>
+                                <a href="<?php echo base_url(); ?>admin/applyCrm/profil/<?php echo $allnewapplys[$i]->app_id; ?>"><?php echo $allnewapplys[$i]->given_name; ?> <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span></a>
                               </td>                            
                             </tr>  
                             <?php } ?>                          
@@ -94,7 +94,7 @@
                            <?php for($i=0;$i<count($allupdatedapplys);$i++){ ?>                            
                             <tr>
                               <td>
-                                <a href="<?php echo base_url(); ?>admin/applycrm/profil/<?php echo $allupdatedapplys[$i]->app_id; ?>"><?php echo $allupdatedapplys[$i]->given_name; ?><span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span></a>
+                                <a href="<?php echo base_url(); ?>admin/applyCrm/profil/<?php echo $allupdatedapplys[$i]->app_id; ?>"><?php echo $allupdatedapplys[$i]->given_name; ?><span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span></a>
                               </td>                            
                             </tr>  
                             <?php } ?>

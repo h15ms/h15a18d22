@@ -85,8 +85,7 @@ class Homecrm extends CI_Controller {
         );
 
       $data1 = $this->hmc->editProfileAction($data);
-
-echo $data1;
+      echo $data1;
       
     }
  

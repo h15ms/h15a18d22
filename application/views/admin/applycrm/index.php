@@ -4,7 +4,7 @@
         
         <div id="page-heading">
             <ol class="breadcrumb">
-                <li><a href="index.php">Dashboard</a></li>                
+                <li><a href="">Dashboard</a></li>                
                 <li class='active'><?php echo $headlines;?></li>
             </ol>
 
@@ -71,7 +71,7 @@
                                 }
                               ?>
                             </td>
-                            <td align="center"><a href="<?php echo base_url(); ?>admin/applycrm/profil/<?php echo $client->app_id; ?>"><i class="fa fa-user"></i></a></td>
+                            <td align="center"><a href="<?php echo base_url(); ?>admin/applyCrm/profil/<?php echo $client->app_id; ?>"><i class="fa fa-user"></i></a></td>
                         </tr>
                         <?php endforeach; ?>
 					</tbody>

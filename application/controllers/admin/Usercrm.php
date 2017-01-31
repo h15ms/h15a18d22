@@ -16,7 +16,7 @@ class Usercrm extends CI_Controller
       }      
        
       $this->load->model('admin/userModelCrm' , 'model');
-      // $this->load->library('user_agent');
+
   }
 
     
@@ -93,6 +93,14 @@ class Usercrm extends CI_Controller
       $this->model->userdel($id);
       redirect('admin/usercrm','refresh');
     }
+  }  
+
+  public function userapprovelevel(){
+
+    $id = $this->uri->segment(4);
+    $this->model->userapprovelevel($id);
+    redirect('admin/usercrm','refresh');
+  
   }
 
 public function addNewUser(){
@@ -101,30 +109,55 @@ public function addNewUser(){
     $pass = $this->model->makePass();
 
     if($arr['send'] == 'insertUser'){
-      $newid = $this->model->userinsert($arr, $pass);
+                  
+      $userexistcheck = $this->model->userexistcheck($arr['email']);
+      
 
-              // send email
-             $mailtext = '<html><head><title>Welcome at MiConsulting</title></head><body>
-             <h2>Welcome at MiConsulting</h2>
-             <p>Your access account for MiConsulting CRM is:</p>        
-             <p>Username: '.$arr["email"].'</p>
-             <p>Password: '.$pass.'</p>
-             <p>Url: http://miconsulting.in/login</p>
-             <p>We wish you all the best at MiConsulting</p>
-             </body></html>';
-             $to = $arr["email"];
-             $from   = "info@miconsulting.in";
-             $sub    = "Your Account for MiConsulting CRM";            
-             $header  = "MIME-Version: 1.0\r\n";
-             $header .= "Content-type: text/html; charset=iso-8859-1\r\n";
-             $header .= "From: $from\r\n";                        
-             $header .= "X-Mailer: PHP ". phpversion();
-             mail($to, $sub, $mailtext, $header);        
-             unset($arr);     
+      if($userexistcheck == '0'){
 
-             redirect('usercrm','refresh');
-             
-              // header("Location: index.php?c=user&a=user&id=".$newid);     
+        $res = $this->model->userinsert($arr, $pass);
+
+        if(isset($res)){
+          
+          $to = $arr["email"];
+          $subject = "Your Account for MiConsulting CRM";
+          
+          $mailtext = '<html><head><title>Welcome at MiConsulting</title></head><body>
+                 <h2>Welcome at MiConsulting</h2>
+                 <p>Your access account for MiConsulting CRM is:</p>        
+                 <p>Username: '.$arr["email"].'</p>
+                 <p>Password: '.$pass.'</p>
+                 <p>Url: http://miconsulting.in/login</p>
+                 <p>We wish you all the best at MiConsulting</p>
+                 </body></html>';
+          
+          $header = "From:info@miconsulting.in \r\n";
+          $header .= "MIME-Version: 1.0\r\n";
+          $header .= "Content-type: text/html\r\n";
+          
+          $retval = mail($to,$subject,$mailtext,$header);
+          
+          if( $retval == true ) {
+            redirect('admin/usercrm','refresh');
+          }else {
+             redirect('admin/usercrm/adduser','refresh');
+          }
+
+        }else{
+          
+             redirect('admin/usercrm/adduser','refresh');
+        }
+
+      }else{
+        
+        $data = array('userexist' => '1');
+        $this->load->view('admin/temp/headercrm',$data1);
+        $this->load->view('admin/usercrm/adduser',$data);
+        $this->load->view('admin/temp/footercrm');
+      
+      }
+
+
 
     }   
  }

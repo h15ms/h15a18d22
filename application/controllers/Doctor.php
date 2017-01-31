@@ -21,10 +21,7 @@ class Doctor extends CI_Controller {
         $this->template->set('cars',$cars);
         $this->template->set(array('message' => 'Hi there!','message1' => 'Hi there!erewew b','message2' => 'Hi there!rewfrewrew '));
         
-        
-        
-        
-        
+
         
         $title = 'EVERYTHING WITH NGINE';
         $this->template->title('Blog', $title);

@@ -73,7 +73,7 @@ define('ASSETS', base_url() . 'assets/');
             <li class="userlinks">
               <ul class="dropdown-menu">                                                                                   
                 <li>
-                  <a href="<?php echo base_url();?>admin/usercrm/user&id=<?php //echo $user['id'];?>">Edit Profile 
+                  <a href="<?php echo base_url();?>admin/usercrm/user/<?php echo $_SESSION['logged_in']['user_id']; ?>">Edit Profile 
                     <i class="pull-right fa fa-cog">
                     </i>
                   </a>

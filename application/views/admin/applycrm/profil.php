@@ -12,7 +12,7 @@
         
               <input type="hidden" name="send" value="setstatus">              
               <input type="hidden" name="appid" id="cid" value="<?php echo $apply[0]->app_id;?>">
-              <select class="form-control" name="status" onclick="application(this)">
+              <select class="form-control " name="status" onclick="application(this)">
                   <option value="0">New</option>
                   <option value="1">In Progress</option>
                   <option value="2">Confirmed/Approved</option>
@@ -24,20 +24,39 @@
               function application(att)
               {
                 var val = att.options[att.selectedIndex].value;
+
                 document.getElementById("embId").style.display = val == '1' ? "block" : 'none';
                 document.getElementById("visaId").style.display = val == '2' ? "block" : 'none';
+                
+                if(val == '1')
+                {
+                  console.log(val);
+                  $('.visaid').removeAttr("required");
+                  $('.embid').attr("required", "required");
+                  
+                }else{
+                  if(val == '2'){
+                    console.log(val);
+                    $('.embid').removeAttr("required");
+                    $('.visaid').attr("required", "required");
+                  }else{
+                    console.log(val);
+                  }
+                }
+
+
               }
                 
               </script>
               <div id="embId" style="display: none;">
                 
                 <br>
-                <input class="form-control" name="embassy_id" type="text" placeholder="Enter Embassy Application Id" >
+                <input class="form-control embid" name="embassy_id" type="text" placeholder="Enter Embassy Application Id" >
               </div>
               <div id="visaId" style="display: none;">
                 
                 <br>
-                <input class="form-control" name="visa_id" type="text" placeholder="Enter Visa Id" >
+                <input class="form-control visaid" name="visa_id" type="text" placeholder="Enter Visa Id" >
               </div>
 
       </div>
@@ -71,8 +90,8 @@
     
         <div id="page-heading">
             <ol class="breadcrumb">
-                <li><a href="index.php">Dashboard</a></li>
-                <li><a href="index.php?c=apply">All Applies</a></li>
+                <li><a href="../../">Dashboard</a></li>
+                <li><a href="../">All Applies</a></li>
                 <li class='active'><?php echo $headline;?> ID: <?php echo $apply[0]->app_id;?></li>
             </ol>
 
@@ -644,7 +663,7 @@
                   <textarea class="form-control" name="notice" value="<?php echo $apply[0]->notice; ?>" rows="8"><?php echo $apply[0]->notice; ?></textarea>
                   <input type="hidden" name="appid" value="<?php echo $apply[0]->app_id;?>">
                   <input type="hidden" name="send" value="update_notice" />
-                  <button type="submit" class="btn btn-success" id="save_notice">save notice</button>
+                  <button type="submit" class="btn btn-success" id="save_notice">Save Notice</button>
               </div>
             </form>
                

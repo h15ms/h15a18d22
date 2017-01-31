@@ -26,7 +26,7 @@ class UserModelcrm  extends CI_Model
         $out = $res->result();
         return $out; 
               
-  }
+  }  
     
     
   public function userUpdate($arr)
@@ -55,10 +55,10 @@ class UserModelcrm  extends CI_Model
     
   public function userinsert($arr,$pass)
   {      
-      
+
      $data=array(
          'password'=>$pass,
-         'user_type'=>$arr['position'],
+         'user_type'=>$arr['user_level'],
          'firstname'=>$arr['firstname'],
          'lastname'=>$arr['lastname'],
          'city'=>$arr['city'],
@@ -73,7 +73,13 @@ class UserModelcrm  extends CI_Model
       $newid = $this->db->insert('mi_customer', $data);
       return $newid;
   }
-    
+
+  public function userexistcheck($email)
+  {        
+        $res= $this->db->select('*')->get_where('mi_customer', array('email' => $email));
+        $out = $res->num_rows();
+        return $out; 
+  }
     
   public function savePassword($clientid,$newpw)
   {   
@@ -89,8 +95,15 @@ class UserModelcrm  extends CI_Model
   {   
       $result= $this->db->delete('mi_customer', array('id ' => $id));
       return "deleted";
-  }
-    
+  }   
+
+  public function userapprovelevel($id)
+  {   
+      $this->db->where('id' , $id);
+      $out = $this->db->update('mi_customer', array('registration_status' => '1'));
+      return $out;
+  }  
+
     
   public function makePass()
   {
