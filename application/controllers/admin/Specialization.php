@@ -87,7 +87,13 @@ class Specialization extends CI_Controller {
       
       
   }
-  public function addhospital()
+  public function changestatus(){
+        $status=$_GET['status'];
+        $id=$_GET['id'];
+        $this->app->udpatestatus($id,$status);
+
+  }
+  public function addspecilization()
   {
     if(isset($_POST['send']) && ($_POST['send']=="1"))
     {
@@ -107,7 +113,7 @@ class Specialization extends CI_Controller {
     $data=array("headline"=>"Add Hospital",'hospList'=>$hospList);
     
     $this->load->view('admin/temp/headercrm',$data1);
-    $this->load->view('admin/specialization/addhospital',$data);
+    $this->load->view('admin/specialization/addspecilization',$data);
     $this->load->view('admin/temp/footercrm');
 //    $this->_view->title         = "Add employee | MiConsulting";
 //    $this->_view->headline      = "Add employee";

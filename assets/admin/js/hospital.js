@@ -36,19 +36,39 @@ var ap = angular.module('hospitaleditApp', []).controller('hospitaleditCtrl', fu
 });
 
 
-var appl=angular.module('specializationAPP',[]).controller('specializationCtrl', function($scope, $http,$sce){
-    var id=$('#pageno').val();
-     $http.get(BASEURL+'admin/specialization/getsonSpecialization?id='+id)
-    .then(function(response) {
-                $scope.speciliz=response.data;
-     
-    $scope.pagination = $sce.trustAsHtml(response.data.links);
-    $scope.updateSpecif = function(id){
-        
+var appl = angular.module('specializationAPP', []).controller('specializationCtrl', function ($scope, $http, $sce) {
+    var id = $('#pageno').val();
+    $http.get(BASEURL + 'admin/specialization/getsonSpecialization?id=' + id)
+            .then(function (response) {
+                $scope.speciliz = response.data;
+                $scope.pagination = $sce.trustAsHtml(response.data.links);
+//********start function 
+                $scope.updateSpecif = function (id, st) {
+                    $http.get(BASEURL + 'admin/specialization/changestatus?id=' + id + '&status=' + st).then(function (res) {
+                        // $window.location.reload();
+                        $http.get(BASEURL + 'admin/specialization/getsonSpecialization?id=' + id)
+                                .then(function (response) {
+                                    $scope.speciliz = response.data;
+
+                                });
+                        $scope.speciliz.reload();
+                    });
+                }
+//********End function 
+            });
+}).controller('popupctrl',function($scope,$http){
+    
+    $scope.addspecial=function(){
+        alert('hi');
+
     }
     
-    });
-});
+    
+    
+    
+    
+});;
+
 
 // var app = angular.module('hospitalApp',[]);
 //    app.controller('bookController',function($scope,$http){	

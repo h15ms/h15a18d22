@@ -139,7 +139,7 @@ public function edithospitalDetail($arr,$id){
 
       return;
 } 
-public function udpatehospitalstatus($id){
+public function udpatestatus($id,$status){
    //$hosId=explode('_',$arr['hospitalssel']); 
     
   
@@ -149,11 +149,11 @@ public function udpatehospitalstatus($id){
 
       $data=array(
          
-          'status'=>0,
+          'status'=>$status,
            ); 
             
             $this->db->where('id',$id);
-            $this->db->update('mi_hospital_detail',$data);
+            $this->db->update(PR . 'specialization',$data);
 
       return;
 } 

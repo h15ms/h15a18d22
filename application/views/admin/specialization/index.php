@@ -20,19 +20,12 @@
             <h1><?php echo $headline; ?></h1>
             <div class="options">
                 <div class="btn-toolbar">
-                	<a href='<?php base_url()?>specialization/addspecialization' class="btn btn-success hidden-xs"><i class="fa fa-plus-circle"></i> Add Hospitals</a>					           
+                	<a href='#new_special'  data-toggle="modal" class="btn btn-success hidden-xs"><i class="fa fa-plus-circle"></i> Add Hospital Specializations</a>					           
                 </div>
             </div>
         </div>
 
-
-
-
-
-
         <div class="container">
-           
-          
            
 <div class="row">
     <div class="col-sm-12">
@@ -44,15 +37,16 @@
           <div class="panel-body collapse in">                                  
 
             <div class="table-flipscroll table-responsive"   ng-app="specializationAPP" ng-controller="specializationCtrl">
-<!--                    {{speciliz}}-->
+<!--                {{speciliz}}-->
                 
                <table cellpadding="0"  cellspacing="0" border="0" class="table table-striped table-bordered table-hover datatable" id="customer_table">
 					<thead>
 					<tr>
-						<th style="width:auto;">#</th>
-						<th style="width:auto;">List of Specialization</th>
+						<th style="width:auto;"><strong>#</strong></th>
+                                                <th style="width:auto;"><Strong>List of Specialization</strong></th>
 	
-                        			<th style="width:auto;" align="center">Status</th>						
+                                                <th style="width:auto;" align="center"><strong>Status</strong></th>	
+                                                <th style="width:auto;" align="center"><strong>Change Status</strong></th>	
 					</tr>
 					</thead>
 					<tbody>
@@ -63,9 +57,21 @@
                                             <td>{{x.sepcialization }}</td>
                                          <td >
                                              <span ng-if="x.status==='1'">
-                                                 ACTIVE / <a href="javascript:void(0)" ng-click="updateSpecif({{x.id}})">DACTIVE</a>
+                                                 ACTIVE 
                                              </span> 
+                                         <span ng-if="x.status==='0'">
+                                                 DACTIVE 
+                                             </span> 
+                                          
                                          
+                                         </td> 
+                                          <td >
+                                             <span ng-if="x.status==='1'">
+                                                   <a href="javascript:void(0)" ng-click="updateSpecif(x.id,0)">DACTIVE</a>
+                                             </span> 
+                                         <span ng-if="x.status==='0'">
+                                                   <a href="javascript:void(0)" ng-click="updateSpecif(x.id,1)">ACTIVE</a>
+                                             </span> 
                                           
                                          
                                          </td> 
@@ -134,40 +140,36 @@
 
 
 
-<!---popup---->
- <div id="new_bankpop" tabindex="-1" class="modal fade"   role="dialog" style="z-index: 1400;">
+<div id="new_special" ng-controller="popupctrl" tabindex="-1" class="modal fade"   role="dialog" style="z-index: 1400;">
        <div class="modal-dialog modal-lg" style="width:30%;">
     
       <!-- Modal content-->
       <div class="modal-content">
-          <div class="modal-header" style="border-bottom:0px;" >
+        <div class="modal-header" style="border-bottom:0;">
             
           <button type="button" class="close" data-dismiss="modal">&times;</button>
-      
-          
+          <h4 style="text-align:center;border-bottom: 2px;">
+              
+              ADD NEW SPECIALIZATION
+              
+          </h4>
+          <hr>
         </div>
-    <div class="modal-body" style="padding-top:0px; "> 
-   <h4 style="text-align:center; border-bottom: 2px;">
-       Do You Want to Delete   <span id="hospitalname" style="color:#85c744;"></span> ?
-   </h4>
+    <div class="modal-body">
+  
+       
+          
         <div class="row">
         <div class="form-group">
           
             <form name="ne_b" id="ne_b">
                 <div class="col-md-12 errorpopup" id="response" style="font-size:20px;">   </div>
-       
-        <input class="form-control" type="hidden" name="appid" id="appid" required  />
-      
+        <div class="col-md-12">
+        <input class="form-control" type="text" name="n_b_name" id="n_b_name" required  />
+        </div>
        
            <div class="col-md-12 mt20">
-              <div class="col-md-6">
-               
-               <button type="button" onclick="delhospital();" class="form-control btn btn-danger-alt" id="ad_n_b"> YES </button>
-              </div>
-               <div class="col-md-6">
-               
-               <button type="button"  class="form-control btn btn-info-alt text-info " id="ad_n_b"> NO </button>
-              </div>
+               <button type="button" ng-click="popupctrl()" class="form-control btn btn-success" > SAVE </button>
         </div> 
             
             </form>
