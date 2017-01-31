@@ -11,6 +11,7 @@ class Patient extends CI_Controller {
         } elseif ($userData['logged_in']['user_level'] != '2' && $userData['logged_in']['user_level_status'] != '1') {
              redirect(base_url() . 'home ', 'location');
         }
+        
         $this->load->helper('form');
         $this->load->library('form_validation');
         $this->load->library('session');
