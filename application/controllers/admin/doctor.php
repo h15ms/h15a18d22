@@ -3,26 +3,23 @@
 class Doctor extends CI_Controller {
 
     function __construct() {
-        parent::__construct();
-        $this->load->library('user_agent');
-        $sess = $this->session->userdata();
+        
+       parent:: __construct();
       
-      if ($sess['logged_in']['user_level'] != '1' && $sess['logged_in']['user_level_status'] != '1') {
-           // header('Location: ' . base_url() . 'home ');
-           redirect(base_url() . 'home ', 'location');
-        } elseif ($sess['logged_in']['user_level'] != '2' && $sess['logged_in']['user_level_status'] != '1') {
-            //header('Location: ' . base_url() . 'home ');
-             redirect(base_url() . 'home ', 'location');
-        }
+      error_reporting(0);
+
+      if(isset($_SESSION['logged_in'])){
+        $sess = $this->session->userdata();
+        if(( $sess['logged_in']['user_level'] != '1' && $sess['logged_in']['user_level_status'] != '1' ) || ( $sess['logged_in']['user_level'] != '2' && $sess['logged_in']['user_level_status'] != '1' ) ){  redirect('home','refresh');}//header ('Location: '.base_url().'home '); }
+      }else{
+        redirect('login','refresh');
+      }      
 
 
-        // Load form helper library
+
         $this->load->helper('form');
-        // Load form validation library
         $this->load->library('form_validation');
-        // Load session library
         $this->load->library('session');
-        // Load database
         $this->load->model('admin/Doctor_model', 'app');
         $this->load->helper("url");
         $this->load->library("pagination");

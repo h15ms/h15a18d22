@@ -3,18 +3,17 @@ class ApplyCrm extends CI_Controller {
 
   function __construct()
 	{
-		parent::__construct();  
-    error_reporting(0);              
+       parent:: __construct();
+      
+      error_reporting(0);
 
-   $sess = $this->session->userdata();
-   if($sess['logged_in']['user_level'] != '1' && $sess['logged_in']['user_level_status'] != '1' ){
+      if(isset($_SESSION['logged_in'])){
+        $sess = $this->session->userdata();
+        if(( $sess['logged_in']['user_level'] != '1' && $sess['logged_in']['user_level_status'] != '1' ) || ( $sess['logged_in']['user_level'] != '2' && $sess['logged_in']['user_level_status'] != '1' ) ){  redirect('home','refresh');}//header ('Location: '.base_url().'home '); }
+      }else{
+        redirect('login','refresh');
+      }      
 
-     header ('Location:'.base_url().'home ');
-   }
-   elseif($sess['logged_in']['user_level'] != '2' && $sess['logged_in']['user_level_status'] != '1'){
-     
-     header ('Location:'.base_url().'home ');
-   }
 
 		$this->load->helper('form');
 		$this->load->library('form_validation');
