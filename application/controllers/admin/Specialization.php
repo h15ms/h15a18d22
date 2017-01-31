@@ -14,8 +14,6 @@ class Specialization extends CI_Controller {
       redirect('login','refresh');
     }      
 
-     
-
 		$this->load->helper('form');
 		$this->load->library('form_validation');
 		$this->load->library('session');
@@ -58,11 +56,9 @@ class Specialization extends CI_Controller {
      $this->load->view('admin/specialization/index',$data);
      $this->load->view('admin/temp/footercrm');
   }  
+
+
   public function getsonSpecialization(){
-      
-      
-      
-      
       
       $doctors = $this->app->fetchAll();
         
@@ -78,13 +74,8 @@ class Specialization extends CI_Controller {
         $data["results"] = $this->app->fetchAll($config["per_page"], $page);
         $data["links"] = $this->pagination->create_links();
         
-        
-       
-    
        $hospitals = json_encode($data); 
       echo  $hospitals;
-      
-      
       
   }
   public function changestatus(){
@@ -93,6 +84,7 @@ class Specialization extends CI_Controller {
         $this->app->udpatestatus($id,$status);
 
   }
+
   public function addspecilization()
   {
     if(isset($_POST['send']) && ($_POST['send']=="1"))
@@ -119,6 +111,7 @@ class Specialization extends CI_Controller {
 //    $this->_view->headline      = "Add employee";
 //    $this->_view->display('user/adduser.tpl.php');
   }
+ 
   public function addhospitalname(){
   
     $hospitalName=$_GET['hospitl'];
@@ -131,6 +124,7 @@ class Specialization extends CI_Controller {
     }
   
 }
+
 public function updateGetNewHospital(){
     
     $hospList=$this->app->gethospitallist();

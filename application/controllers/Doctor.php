@@ -12,6 +12,7 @@ class Doctor extends CI_Controller {
 
     function __construct() {
         parent::__construct();
+        error_reporting(0);
     }
 
     public function index() {

@@ -7,6 +7,7 @@ class Service  extends CI_Controller {
   public function __construct()
   {
     parent:: __construct();
+    error_reporting(0);
     $this->active['current_page'] = $this->uri->segment(1); // for every controller active page
     $this->active['current_sub_page'] = $this->uri->segment(2); //for nested_nav in view/services/service_nav.php
   }

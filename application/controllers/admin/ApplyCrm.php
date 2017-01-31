@@ -36,11 +36,11 @@ class ApplyCrm extends CI_Controller {
   }  
   public function profil(){
    
-       $applys = $this->model->applyById($this->uri->segment('4')); 
-       $data=array('headline' => 'Applicant Profile','apply'=>$applys);
+     $applys = $this->model->applyById($this->uri->segment('4')); 
+     $data=array('headline' => 'Applicant Profile','apply'=>$applys);
      $data1=array('page_title'=>"Profile | MiConsulting");
      
-      $this->load->view('admin/temp/headercrm',$data1);
+     $this->load->view('admin/temp/headercrm',$data1);
      $this->load->view('admin/applycrm/profil',$data);
      $this->load->view('admin/temp/footercrm');
       
@@ -76,8 +76,6 @@ class ApplyCrm extends CI_Controller {
 
       header('Location:'.base_url().'admin/applyCrm/profil/'.$appid);
     }
-
-
   }
 
 }

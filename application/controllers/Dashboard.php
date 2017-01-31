@@ -4,6 +4,7 @@ class Dashboard extends CI_Controller
     
   public function __construct(){
     parent::__construct();
+    error_reporting(0);
     $this->active['current_page'] = $this->uri->segment(1);
     $this->load->model('dashboardModel', 'model');
   }

@@ -4,6 +4,7 @@
 
     function __construct() { 
        parent::__construct(); 
+       error_reporting(0);
        $this->load->library('session'); 
        $this->load->helper('form'); 
        $this->active['current_page'] = $this->uri->segment(1);

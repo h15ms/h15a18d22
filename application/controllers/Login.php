@@ -6,19 +6,11 @@ class Login extends CI_Controller
 	
 	function __construct()
 	{
-            error_reporting(0);
+        error_reporting(0);
 		parent::__construct();
-
-		// Load form helper library
 		$this->load->helper('form');
-
-		// Load form validation library
 		$this->load->library('form_validation');
-
-		// Load session library
 		$this->load->library('session');
-
-		// Load database
 		$this->load->model('login_model');
 		
 		$this->active['current_page'] = $this->uri->segment(1);
