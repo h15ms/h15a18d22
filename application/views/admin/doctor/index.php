@@ -18,12 +18,6 @@
                 </div>
             </div>
         </div>
-
-
-
-
-
-
         <div class="container">
 
 
@@ -47,26 +41,10 @@
                                             <th style="width:auto;">Mobile</th>
                                             <th style="width:auto;">Email</th>
                                             <th style="width:auto;">Address</th>
-                                            <th style="width:auto;" align="center">Status</th>						
+                                            <th style="width:auto;" align="center">Action</th>						
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        
-                                        
-                                        <?php
-                                        
-                                        
-                                        
-//                                        echo '<pre>';
-//                                            print_r($doctors);
-//                                        echo '</pre>';
-//                                        
-//                                        
-                                        
-                                        
-                                        
-                                        ?>
-
 
 <?php $i = 1; foreach ($doctors['results'] as $doctor): ?>
                                             <tr>
