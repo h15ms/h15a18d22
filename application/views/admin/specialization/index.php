@@ -37,7 +37,7 @@
           <div class="panel-body collapse in">                                  
 
             <div class="table-flipscroll table-responsive"   ng-app="specializationAPP" ng-controller="specializationCtrl">
-<!--                {{speciliz}}-->
+                {{speciliz}}
                 
                <table cellpadding="0"  cellspacing="0" border="0" class="table table-striped table-bordered table-hover datatable" id="customer_table">
 					<thead>
@@ -140,7 +140,7 @@
 
 
 
-<div id="new_special" ng-controller="popupctrl" tabindex="-1" class="modal fade"   role="dialog" style="z-index: 1400;">
+<div id="new_special"  tabindex="-1" class="modal fade"   role="dialog" style="z-index: 1400;">
        <div class="modal-dialog modal-lg" style="width:30%;">
     
       <!-- Modal content-->
@@ -169,7 +169,7 @@
         </div>
        
            <div class="col-md-12 mt20">
-               <button type="button" ng-click="popupctrl()" class="form-control btn btn-success" > SAVE </button>
+               <button type="button"  class="form-control btn btn-success" > SAVE </button>
         </div> 
             
             </form>
