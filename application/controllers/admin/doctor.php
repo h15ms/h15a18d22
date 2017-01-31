@@ -73,6 +73,9 @@ class Doctor extends CI_Controller {
              $data['state'] = $state;
              $data['city'] = $city;
              $data['zipcode'] = $zipcode;
+             $data['created'] = date('Y-m-d h:i:s');
+             $data['modified'] = date('Y-m-d h:i:s');
+             
              
             $name =$_FILES['avatar']['name'];
             $pic_loc = $_FILES['avatar']['tmp_name'];
@@ -136,6 +139,7 @@ class Doctor extends CI_Controller {
              $data['city'] = $city?$city:$doctor[0]->city;
              $data['zipcode'] = $zipcode?$zipcode:$doctor[0]->zipcode;
              $data['id'] = $id?$id:$doctor[0]->id;
+             $data['modified'] = date('Y-m-d h:i:s');
              
             $name =$_FILES['avatar']['name']?$_FILES['avatar']['name']:'';
             if ( $name != '') {

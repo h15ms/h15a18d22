@@ -134,17 +134,28 @@ define('ASSETS', base_url() . 'assets/');
             <a href="<?php echo base_url();?>admin/usercrm"><i class="fa fa-group"></i> 
               <span>Employees</span>
             </a>
-          </li>    
+          </li>
+          <li>
+              <a href="<?php echo base_url(); ?>admin/doctor"><i class="fa fa-group" aria-hidden="true"></i><span>Doctor</span></a>
+          </li>
+          <li>
+              <a href="<?php echo base_url(); ?>admin/patient"><i class="fa fa-group" aria-hidden="true"></i><span>Patient</span></a>
+          </li>
           <li>
             <a href="<?php echo base_url();?>admin/hospitalscrm"><i class="fa fa-hospital-o" aria-hidden="true"></i> 
               <span>Hospitals</span>
             </a>
               
           </li>
-<li>
-  <a href="<?php echo base_url();?>admin/specialization"><i class="fa fa-list" aria-hidden="true"></i> 
-              <span>Sepecialization</span>
-  </a></li>
+          <li>
+              <a href="<?php echo base_url(); ?>admin/specialization"><i class="fa fa-list" aria-hidden="true"></i><span>Specialization</span></a>
+          </li>
+          
+          
+          
+          
+          
+          
           <!--li class="divider"></li>
 <li><a href="javascript:;"><i class="fa fa-ticket"></i> <span>Support Tickets</span> </a>
 <ul class="acc-menu">

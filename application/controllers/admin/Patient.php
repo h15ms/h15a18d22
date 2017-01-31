@@ -5,7 +5,6 @@ class Patient extends CI_Controller {
     function __construct() {
         parent::__construct();
         $this->load->library('user_agent');
-
       $userData = $this->session->userdata();
       if ($userData['logged_in']['user_level'] != '1' && $userData['logged_in']['user_level_status'] != '1') {
             redirect(base_url() . 'home ', 'location');
@@ -68,25 +67,31 @@ class Patient extends CI_Controller {
              $data['mobile'] = $mobile;
              $data['alt_mobile'] = $alt_mobile;
              $data['patient_uid'] = $patient_uid;
-            $reports = $_FILES['reports']['name'];
-            $reports_loc = $_FILES['reports']['tmp_name'];
-            $folder = "assets/img/reports/";
-            $data['reports'] = $reports;
-            $reports = $folder . $reports;
-            move_uploaded_file($_FILES['reports']['tmp_name'], $reports);
-            $name =$_FILES['avatar']['name'];
-            $pic_loc = $_FILES['avatar']['tmp_name'];
-            $folder="assets/img/patient/";
-            $avatar=$folder.$name;
-            $data['avatar'] = $name;
-            $file_moved = move_uploaded_file($_FILES['avatar']['tmp_name'],$avatar);
-            if ($file_moved) {
-                $res = $this->app->add($data);
-                unset($_POST);
-                 redirect('/admin/patient/', 'location');
-            }else{
-              echo  'avatar not moved';
+             $data['created'] = date('Y-m-d h:i:s');
+             $data['modified'] = date('Y-m-d h:i:s');
+             
+             
+             
+            $reports = $_FILES['reports']['name']?$_FILES['reports']['name']:'';
+            if ($reports != '') {
+                $reports_loc = $_FILES['reports']['tmp_name'];
+                $folder = "assets/img/reports/";
+                $data['reports'] = $reports;
+                $reports = $folder . $reports;
+                move_uploaded_file($_FILES['reports']['tmp_name'], $reports);
             }
+
+            $name = $_FILES['avatar']['name'];
+            if ($name != '') {
+                $pic_loc = $_FILES['avatar']['tmp_name'];
+                $folder = "assets/img/patient/";
+                $avatar = $folder . $name;
+                $data['avatar'] = $name;
+                $file_moved = move_uploaded_file($_FILES['avatar']['tmp_name'], $avatar);
+            }
+            $res = $this->app->add($data);
+            unset($_POST);
+            redirect('/admin/patient/', 'location');
         }
         
 
@@ -104,50 +109,73 @@ class Patient extends CI_Controller {
     public function edit() {
          
         $data = array(); 
-         $id = $this->uri->segment('4');
+        $id = $this->uri->segment('4');
         $patient = $this->app->fetchById($id);
-        
-       // var_dump($patient);
-        
          if ($this->input->server('REQUEST_METHOD') === 'POST'  && $_POST['send'] == 1) {
               extract($_POST);
              $data = array();
-             $data['first_name'] = $first_name?$first_name:$patient[0]->first_name;
-             $data['last_name'] = $last_name?$last_name:$patient[0]->last_name;
-             $data['email'] = $email?$email:$patient[0]->email;
-             $data['phone_no'] = $phone_no?$phone_no:$patient[0]->phone_no;
-             $data['mobile'] = $mobile?$mobile:$patient[0]->mobile;
-             $data['address'] = $address?$address:$patient[0]->address;
-             $data['registration_no'] = $registration_no?$registration_no:$patient[0]->registration_no;
-             $data['qualification'] = $qualification?$qualification:$patient[0]->qualification;
-             $data['experience'] = $experience?$experience:$patient[0]->experience;
-             $data['consultancy_fee'] = $consultancy_fee?$consultancy_fee:$patient[0]->consultancy_fee;
-             $data['specialization'] = $specialization?$specialization:$patient[0]->specialization;
-             $data['clinic_hospital_type'] = $clinic_hospital_type?$clinic_hospital_type:$patient[0]->clinic_hospital_type;
-             $data['country'] = $country?$country:$patient[0]->country;
-             $data['state'] = $state?$state:$patient[0]->state;
-             $data['city'] = $city?$city:$patient[0]->city;
-             $data['zipcode'] = $zipcode?$zipcode:$patient[0]->zipcode;
-             $data['id'] = $id?$id:$patient[0]->id;
-             
-            $name =$_FILES['avatar']['name']?$_FILES['avatar']['name']:'';
-            if ( $name != '') {
-                $pic_loc = $_FILES['avatar']['tmp_name'];
-                $folder="assets/img/patient/";
-                $avatar=$folder.$name;
-                $data['avatar'] = $name;
-                $file_moved = move_uploaded_file($_FILES['avatar']['tmp_name'],$avatar);
-                $res = $this->app->update($data);
-                unset($_POST);
-                $this->load->library('user_agent');
-                 redirect('/admin/patient/', 'location');
-            }else{
-                $data['avatar'] = $patient[0]->avatar;
-                $res = $this->app->update($data);
-                unset($_POST);
-                $this->load->library('user_agent');
-                 redirect('/admin/patient/', 'location');
+             if ($id != '') {
+                $data['id'] = $id;
             }
+             if ($first_name != '') {
+                $data['first_name'] = $first_name;
+            }
+            if ($middle_name != '') {
+                $data['middle_name'] = $middle_name;
+            }
+            if ($last_name != '') {
+                $data['last_name'] = $last_name;
+            }
+            if ($email != '') {
+                $data['email'] = $email;
+            }
+            if ($phone_no != '') {
+                $data['phone'] = $phone_no;
+            }
+            if ($mobile != '') {
+                $data['mobile'] = $mobile;
+            }
+            if ($gender != '') {
+                $data['gender'] = $gender;
+            }
+            if ($dob != '') {
+                $data['dob'] = $dob;
+            }
+            if ($mobile != '') {
+                $data['mobile'] = $mobile;
+            }
+            if ($alt_mobile != '') {
+                $data['alt_mobile'] = $alt_mobile;
+            }
+            if ($patient_uid != '') {
+                $data['patient_uid'] = $patient_uid;
+            }
+            
+            $data['modified'] = date('Y-m-d h:i:s');
+            $reports = $_FILES['reports']['name']?$_FILES['reports']['name']:'';
+            
+            if ($reports != '') {
+                $reports_loc = $_FILES['reports']['tmp_name'];
+                $folder = "assets/img/reports/";
+                $data['reports'] = $reports;
+                $reports = $folder . $reports;
+                move_uploaded_file($_FILES['reports']['tmp_name'], $reports);
+            }
+
+            $name = $_FILES['avatar']['name'];
+            if ($name != '') {
+                $pic_loc = $_FILES['avatar']['tmp_name'];
+                $folder = "assets/img/patient/";
+                $avatar = $folder . $name;
+                $data['avatar'] = $name;
+                $file_moved = move_uploaded_file($_FILES['avatar']['tmp_name'], $avatar);
+            }
+            
+            $res = $this->app->update($data);
+            unset($_POST);
+            redirect('/admin/patient/', 'location');
+            
+            
         }
         
 //        else {

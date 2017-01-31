@@ -24,8 +24,6 @@ class Patient_model extends CI_Model {
     public function fetchById($id) {
 
         $getdata = $this->db->select('*')->get_where(PR.'patient', array('id' => $id));
-        //  $result = $getdata->get();
-
         if ($getdata->num_rows() > 0) {
             return $getdata->result();
         } else {
