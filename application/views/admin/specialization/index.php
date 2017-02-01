@@ -6,7 +6,7 @@
 </style>
 
 <?php error_reporting(0);?>
-<div id="page-content">
+<div ng-app="specializationAPP" id="page-content">
     <div id="wrap">
     
     
@@ -36,9 +36,9 @@
             </div>
           <div class="panel-body collapse in">                                  
 
-            <div class="table-flipscroll table-responsive"   ng-app="specializationAPP" ng-controller="specializationCtrl">
-                {{speciliz}}
-                
+            <div class="table-flipscroll table-responsive"    ng-controller="specializationCtrl">
+<!--                {{speciliz}}
+                -->
                <table cellpadding="0"  cellspacing="0" border="0" class="table table-striped table-bordered table-hover datatable" id="customer_table">
 					<thead>
 					<tr>
@@ -134,13 +134,13 @@
         
         
     </div> <!--wrap -->
-</div> <!-- page-content -->
 
 
 
 
 
-<div id="new_special"  tabindex="-1" class="modal fade"   role="dialog" style="z-index: 1400;">
+
+<div id="new_special" ng-controller="addspecialCtrl" tabindex="-1" class="modal fade"   role="dialog" style="z-index: 1400;">
        <div class="modal-dialog modal-lg" style="width:30%;">
     
       <!-- Modal content-->
@@ -157,7 +157,7 @@
         </div>
     <div class="modal-body">
   
-       
+        <span id="respon"></span>
           
         <div class="row">
         <div class="form-group">
@@ -165,11 +165,11 @@
             <form name="ne_b" id="ne_b">
                 <div class="col-md-12 errorpopup" id="response" style="font-size:20px;">   </div>
         <div class="col-md-12">
-        <input class="form-control" type="text" name="n_b_name" id="n_b_name" required  />
+            <input class="form-control" type="text" name="n_b_name" id="n_b_name" required  />
         </div>
        
            <div class="col-md-12 mt20">
-               <button type="button"  class="form-control btn btn-success" > SAVE </button>
+               <button type="button" ng-click="addpopup()" class="form-control btn btn-success" > SAVE </button>
         </div> 
             
             </form>
@@ -180,3 +180,5 @@
     </div>  
     </div>  
     </div>
+    
+    </div> <!-- page-content -->

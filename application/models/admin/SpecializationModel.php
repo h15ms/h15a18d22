@@ -9,14 +9,14 @@ class SpecializationModel extends CI_Model
   }
 
 
-  public function allspecialization()
+  public function allspecialization($specif)
   {
       
-      $getdata = $this->db->select('*')->get_where('mi_specialization', array('status'=>1));
-    //  $result = $getdata->get();
+      $getdata = $this->db->select('*')->from('mi_specialization')->where("sepcialization LIKE '%$specif%'");
+      $result = $getdata->get();
    
-        if ($getdata->num_rows() > 0) {
-            return $getdata->result();
+        if ($result->num_rows() > 0) {
+            return $result->result();
         } else {
             return false;
         }
@@ -27,6 +27,7 @@ class SpecializationModel extends CI_Model
        
         if ($limit != '') {
             $getdata = $this->db->select('*')->from(PR . 'specialization')->limit($limit, $start);
+            $getdata->order_by('id','DESC');
             $result = $getdata->get();
         } else {
             $getdata = $this->db->select('*')->from(PR . 'specialization');
@@ -37,7 +38,12 @@ class SpecializationModel extends CI_Model
         } else {
             return false;
         }
-    } 
+    }
+    public function insert($table, $data){
+        $insertID = $this->db->insert($table, $data);
+        return $insertID; 
+        
+    }
   public function hospitalById($appid) 
   {  
      //$getdata = $this->db->select('*')->get_where('mi_hospital_detail',array('d.id'=>$appid,'h.status'=>1 ));

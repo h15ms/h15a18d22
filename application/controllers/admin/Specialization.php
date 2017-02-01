@@ -87,29 +87,17 @@ class Specialization extends CI_Controller {
 
   public function addspecilization()
   {
-    if(isset($_POST['send']) && ($_POST['send']=="1"))
-    {
-        $pic =$_FILES['hospital_image']['name'];
-        $pic_loc = $_FILES['hospital_image']['tmp_name'];
-        $folder="assets/img/hospitals/";
-        $move=$folder.$pic;
-        move_uploaded_file($_FILES['hospital_image']['tmp_name'],$move);
-        $hospList=$this->app->addhospitalDetail($_POST,$pic);
-    
-    }
-    
-    $hospList=$this->app->gethospitallist();
-    $data1 = array(
-        'page_title' => 'Add Hospital | MiConsulting'
-    );
-    $data=array("headline"=>"Add Hospital",'hospList'=>$hospList);
-    
-    $this->load->view('admin/temp/headercrm',$data1);
-    $this->load->view('admin/specialization/addspecilization',$data);
-    $this->load->view('admin/temp/footercrm');
-//    $this->_view->title         = "Add employee | MiConsulting";
-//    $this->_view->headline      = "Add employee";
-//    $this->_view->display('user/adduser.tpl.php');
+     $specif=$_GET['specifi'];
+     $arr=array('sepcialization'=>$specif);
+     $pre=$this->app->allspecialization($specif);
+   
+     if(count($pre) <= 0){
+     $this->app->insert(PR.'specialization', $arr);
+     echo '<span style="color:green;"> '.$specif.' has been added successfully </span>';
+     }else{
+     echo '<span style="color:red;">'. $pre[0]->sepcialization.' already exist </span>' ; 
+     }
+     
   }
  
   public function addhospitalname(){
