@@ -59,6 +59,12 @@ var appl=angular.module('specializationAPP',[]).controller('specializationCtrl',
             }, 2000);
         });
     }
+}).controller('getspecialization',function($scope, $http, $window, $sce){
+//    $http.get(BASEURL+'admin/Hospitalscrm/getspecilizationlist').then(function(res){
+//        $scope.specilization=res.data;
+//    });
+
+
 });
 
 // var app = angular.module('hospitalApp',[]);
@@ -77,6 +83,16 @@ var appl=angular.module('specializationAPP',[]).controller('specializationCtrl',
 //         });  
 
 //************************End AngularJS******************/
+
+
+$(document).ready(function(){
+
+$('#specialization').multiselect({
+    columns: 1,
+    placeholder: 'Select Specialization',
+    search: true
+});
+});
 function delpopup(id , name ){
 
      $('#appid').val(id);

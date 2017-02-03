@@ -1,6 +1,10 @@
+<STYLE>
+    .ms-options ul li{
+        list-style: none;
+    }
+    </style>
 
-
-<div id="page-content">
+<div ng-app="specializationAPP" id="page-content">
     <div id="wrap">
     
     
@@ -37,7 +41,7 @@
           <div class="panel-body collapse in">                                  
            
               
-            <form method="post" enctype="multipart/form-data" >
+              <form method="post" enctype="multipart/form-data" ng-controller="getspecialization">
             <input type="hidden" name="send" value="1">                        
               
             <div class="col-xs-12 col-sm-12 col-md-12"> 
@@ -109,9 +113,18 @@
                 <label>Hospital Type</label>
                <input type="text" class="form-control" name="hospital_type" id="hospital_type" value="" placeholder="Hospital Type" required>
                </div>
+<!--                        {{specilization[0].id}}-->
                  <div class="col-xs-6 col-sm-6 col-md-6 form-group">   
-                     <label>Specialization <span style="font-size: 8px;">(Add comma ( , ) seprated value with )</span></label>
-               <input type="text" class="form-control" name="specialization"  id="specialization" value="" placeholder="Specialization" required>
+                     <label>Specialization <span style="font-size: 8px;"></span></label>
+<!--               <input type="text" class="form-control" name="specialization"  id="specialization" value="" placeholder="Specialization" required>-->
+                     
+                 <select name="specialization[]" multiple id="specialization">
+                    <?php       
+                        foreach($speciliztion as $val){ ?>
+                            <option value="<?php echo $val->id; ?>"><?php  echo $val->sepcialization; ?></option>
+                        <?php } ?>
+
+                 </select>
                </div>
             </div>
             

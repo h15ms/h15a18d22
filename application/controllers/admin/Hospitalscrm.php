@@ -54,10 +54,11 @@ class Hospitalscrm extends CI_Controller {
      $this->load->view('admin/temp/headercrm',$data1);
      $this->load->view('admin/hospitalscrm/index',$data);
      $this->load->view('admin/temp/footercrm');
-  }  
+  } 
+ 
   public function getindexjson(){
-       $hospitals = json_encode($this->app->getallhospitallist()); 
-      echo  $hospitals;
+     echo    json_encode($this->app->getallhospitallist()); 
+       
   }
   public function addhospital()
   {
@@ -73,10 +74,12 @@ class Hospitalscrm extends CI_Controller {
     }
     
     $hospList=$this->app->gethospitallist();
+    $speciliztion=$this->app->getspeciliztions();
+    
     $data1 = array(
         'page_title' => 'Add Hospital | MiConsulting'
     );
-    $data=array("headline"=>"Add Hospital",'hospList'=>$hospList);
+    $data=array("headline"=>"Add Hospital",'hospList'=>$hospList,'speciliztion'=>$speciliztion);
     
     $this->load->view('admin/temp/headercrm',$data1);
     $this->load->view('admin/hospitalscrm/addhospital',$data);

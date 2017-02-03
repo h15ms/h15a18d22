@@ -14,7 +14,7 @@
 
   <script type='text/javascript' src='<?php echo URL_ADMIN;?>js/jquery.min.js'></script>
 
- 
+  <script type='text/javascript' src='<?php echo URL_ADMIN;?>js/jquery.multiselect.js'></script>
 
 
 
