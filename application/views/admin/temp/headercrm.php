@@ -33,9 +33,12 @@ define('ASSETS', base_url() . 'assets/');
     <link rel='stylesheet' type='text/css' href='<?php echo URL_ADMIN;?>js/jqueryui.css' />
     <link rel='stylesheet' type='text/css' href='<?php echo URL_ADMIN;?>css/print.css' />
     <link rel='stylesheet' type='text/css' href='<?php echo URL_ADMIN;?>plugins/jquery-fileupload/css/jquery.fileupload-ui.css' />
+     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
     <link rel='stylesheet' type='text/css' href='<?php echo URL_ADMIN;?>plugins/dropzone/css/dropzone.css' />
-    <script type='text/javascript' src='<?php echo URL_ADMIN ; ?>js/less.js'>
-    </script>
+    <script type='text/javascript' src='<?php echo URL_ADMIN ; ?>js/less.js'></script>
+    
+
+
   </head>
   <body class="<?php //if (isset($_COOKIE["admin_leftbar_collapse"])) echo ($_COOKIE['admin_leftbar_collapse'] . " "); 
     // check collapse state with php

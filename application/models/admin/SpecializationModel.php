@@ -27,7 +27,7 @@ class SpecializationModel extends CI_Model
        
         if ($limit != '') {
             $getdata = $this->db->select('*')->from(PR . 'specialization')->limit($limit, $start);
-            $getdata->order_by('id','DESC');
+            $getdata->order_by('sepcialization','ASC');
             $result = $getdata->get();
         } else {
             $getdata = $this->db->select('*')->from(PR . 'specialization');

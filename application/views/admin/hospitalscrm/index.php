@@ -42,25 +42,25 @@
 					<thead>
 					<tr>
 						<th style="width:auto;">#</th>
-						<th style="width:auto;">Hospital Name</th>
-						<th style="width:auto;">Address</th>
-						<th style="width:auto;">City</th>						
+                                                <th style="width:150px;"><strong>Hospital Name</strong></th>
+                                                <th style="width:auto;"><strong>Address</strong></th>
+                                                <th style="width:auto;"><strong>City</strong></th>						
 <!--						<th style="width:auto;">State</th>	--	-->
-						<th style="width:auto;">Phone</th>
-						<th style="width:auto;">Email</th>
+                                                <th style="width:auto;"><strong>Phone</strong></th>
+                                                <th style="width:auto;"><strong>Email</strong></th>
                 <!--	                                <th style="width:auto;">Website</th>
 						<th style="width:auto;">Emergency Services </th>
                                                 <th style="width:auto;">Hospital Type</th>
                                                 <th style="width:auto;">Specialization </th>
                                                 <th style="width:auto;">Distance From Airport</th>-->
-                        			<th style="width:auto;" align="center">Status</th>						
+                                                <th style="width:100px;text-align: center;" ><strong>Status</strong></th>						
 					</tr>
 					</thead>
 					<tbody>
                                             <tr ng-repeat="x in hosPital"> 
                                             
                                             <td> {{$index+1}}</td>
-                                            <td>{{x.name }}</td>
+                                            <td nowrap >{{x.name }}</td>
                                             <td >{{x.address }}</td> 
                                             <td>{{x.city }}</td>
                                             <td>{{x.phone_no }}</td>
@@ -99,7 +99,7 @@
                             
                             </td>
                         </tr>
-                        <?php //$i++; endforeach; ?>
+                        <?php //$i++; endforeach;ï¿½?>
 					</tbody>
 				</table>
 
