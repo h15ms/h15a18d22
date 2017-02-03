@@ -82,6 +82,13 @@ define('ASSETS', base_url() . 'assets/');
                   </a>
                 </li>                                                                                       
                 <li class="divider">
+                <li>
+                  <a href="<?php echo base_url();?>admin/Changepasscrm">Change Password 
+                    <i class="pull-right fa fa-key">
+                    </i>
+                  </a>
+                </li>                                                                                       
+                <li class="divider">
                 </li>
                 <li>
                   <a href="<?php echo base_url();?>Login/logout" class="">Sign out 
@@ -130,9 +137,13 @@ define('ASSETS', base_url() . 'assets/');
             </a>
           </li>                
           <li>
-            <a href="<?php echo base_url();?>admin/applyCrm"><i class="fa fa-file-text-o"></i> 
-              <span>All Applications</span>
+            <a href="javascript:;"><i class="fa fa-file-text-o"></i> 
+              <span>Applications</span>
             </a>
+            <ul class="acc-menu">
+                <li><a href="<?php echo base_url();?>admin/applycrm">All Applications</a></li>
+                <li><a href="<?php echo base_url();?>admin/applycrm/agentapplication">My Applications</a></li>                        
+            </ul>
           </li>                
           <li>
             <a href="<?php echo base_url();?>admin/usercrm"><i class="fa fa-group"></i> 

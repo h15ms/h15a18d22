@@ -10,9 +10,8 @@ class ApplyModelcrm extends CI_Model
   }
 
 
-  public function allApplys()
+  public function allApplysAdmin()
   {
-      
       $getdata = $this->db->select('*')->from('mi_apply');
       $result = $getdata->get();
       
@@ -21,18 +20,28 @@ class ApplyModelcrm extends CI_Model
         } else {
             return false;
         }
-//        foreach($con->query('SELECT * from '.PREFIX.'apply ORDER BY id DESC ') as $row) { $applys[] = $row; }    	
-//        return $applys;
-//        
-//        $getdata = $this->db->select('id, username, password, firstname, lastname, zip, email, avatar, email_confirm, status')->get_where('mi_customer', array('email' => $data, 'email_confirm' => '1'));
-//
-//        if ($getdata->num_rows() == 1) {
-//            return $getdata->result();
-//        } else {
-//            return false;
-//        }
+
+  }   
+
+
+  public function allApplysAgent($id)
+  {
+      $query = "SELECT c.*, a.* FROM `mi_customer` c  inner join  mi_apply a on c.id=a.user_id WHERE c.`agent_id` =".$id." OR c.`id` = ".$id;
+      $getdata = $this->db->query($query);
+
+        if ($getdata->conn_id->affected_rows > 0) {
+            return $getdata->result();
+        } else {
+            return false;
+        }
+
   }
     
+  public function agentapplication($id)
+  {
+      $getdata = $this->db->select('*')->get_where('mi_apply', array('user_id' => $id));
+      return $getdata->result();
+  }  
     
   public function applyById($appid) 
   {     
@@ -44,20 +53,7 @@ class ApplyModelcrm extends CI_Model
         } else {
             return false;
         }   
-  }
-    
-  
-//  public function countApplys($appid) 
-//  {          
-//        $con = new Database();
-//        $con = $con->con();
-//        $nRows = $con->query('SELECT count(*) from '.PREFIX.'apply WHERE app_id = "'.$appid.'" ')->fetchColumn();
-//        return $nRows; 
-//  }
-//
-//    
-
- 
+  } 
 
  public function updateNotice($appid,$notice)
  {
