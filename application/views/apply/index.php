@@ -50,18 +50,18 @@
                 <h3>Apply for our Service</h3>
                 <form action="apply" method="post" enctype="multipart/form-data">
                   <input type="hidden" value="send" name="applyform">
-                  
                   <div class="row rowspace">
+
                     <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
                       <p>
                         <label>
-                          <input name="business_service" type="checkbox" class="visa_service" value="Yes" id="buscheck" onclick="business(this);"
+                          <input name="business_service" type="checkbox" value="Yes" id="buscheck" onclick="business(this);"
                                  <?php if($_POST['business_service']=="Yes"){ echo "checked"; } ?> /> Business Service
                         </label>
                       </p>
                       <p>
                         <label>
-                          <input name="medical_service" type="checkbox" class="visa_service" value="Yes" id="medicalchk" onclick="medical(this);"
+                          <input name="medical_service" type="checkbox" value="Yes" id="medicalchk" onclick="medical(this);"
                                  <?php if($_POST['medical_service']=="Yes"){ echo "checked"; } ?> /> Medical Service
                         </label>
                       </p>
@@ -69,13 +69,13 @@
                     <div  class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
                       <p>
                         <label>
-                          <input name="tourism_services" type="checkbox" class="visa_service" value="Yes" id="touristcheck" onclick="Touristchk(this);"
+                          <input name="tourism_services" type="checkbox" value="Yes" id="touristcheck" onclick="Touristchk(this);"
                                  <?php if($_POST['tourism_services']=="Yes"){ echo "checked"; } ?> /> Tourism Services
                         </label>
                       </p>
                       <p>
                         <label>
-                          <input name="ticketing_services" type="checkbox" class="visa_service" value="Yes" 
+                          <input name="ticketing_services" type="checkbox" value="Yes" 
                                  <?php if($_POST['ticketing_services']=="Yes"){ echo "checked"; } ?> /> Ticketing Services
                         </label>
                       </p>
@@ -83,13 +83,13 @@
                     <div  class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
                       <p>
                         <label>
-                          <input name="traveling_services" type="checkbox" class="visa_service" value="Yes" 
+                          <input name="traveling_services" type="checkbox" value="Yes" 
                                  <?php if($_POST['traveling_services']=="Yes"){ echo "checked"; } ?> /> Traveling Services
                         </label>
                       </p>
                       <p>
                         <label>
-                          <input name="passport_services" type="checkbox" class="visa_service" value="Yes" 
+                          <input name="passport_services" type="checkbox" value="Yes" 
                                  <?php if($_POST['passport_services']=="Yes"){ echo "checked"; } ?> /> Passport Services
                         </label>
                       </p>
@@ -97,23 +97,18 @@
                     <div  class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
                       <p>
                         <label>
-                          <input name="accommodation_services" type="checkbox" class="visa_service" value="Yes" 
+                          <input name="accommodation_services" type="checkbox" value="Yes" 
                                  <?php if($_POST['accommodation_services']=="Yes"){ echo "checked"; } ?> /> Accommodation Services
                         </label>
                       </p>
                       <p>
                         <label>
-                          <input name="entertainment_services" type="checkbox" class="visa_service" value="Yes" 
+                          <input name="entertainment_services" type="checkbox" value="Yes" 
                                  <?php if($_POST['entertainment_services']=="Yes"){ echo "checked"; } ?> /> Entertainment Services
                         </label>
                       </p>
                     </div>
                   </div>
-                  <!-- <script type="text/javascript">
-                    $('.visa_service').on('click', function(event){
-                      alert('dsjkfg');
-                    });
-                  </script> -->
                   <div class="row rowspace">
                     <div  class="col-xs-12 col-sm-3 col-md-3 col-lg-3 formspace">
                       Country you are applying visa from*
@@ -217,10 +212,10 @@
                   </div>
                   <div class="row rowspace">   
                     <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3 formspace"> 
-                      Gender*
+                      Sex*
                       <br>
                       <select class="form-control" name="sex" id="sex" required="">
-                        <option value="">Select Gender</option>
+                        <option value="">Select Sex</option>
                         <?php foreach($data['sex'] as $cname){?>
                             <option <?php if($_POST['sex'] == $cname){echo 'selected';} ?> value="<?php echo $cname; ?>"><?php echo $cname; ?></option>
                         <?php } ?>
@@ -335,7 +330,7 @@
                       <input class="form-control" value="<?php echo $_POST['date_of_issue']; ?>" name="date_of_issue" type="text" placeholder="Date of Issue" id="date_of_issue" required="" />
                     </div>
                     <div  class="col-xs-12 col-sm-3 col-md-3 col-lg-3 formspace">
-                      Expiration Date*<small> (Alteast 8 Months)</small>
+                      Expiration Date*
                       <br>
                       <input class="form-control" value="<?php echo $_POST['date_of_expiry']; ?>" name="date_of_expiry" type="text" placeholder="Expiration Date" id="date_of_expiry" required="" />
                     </div>
@@ -1049,43 +1044,17 @@
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
               <h4>Reference in INDIA
               </h4>
-              
-              <script type="text/javascript">
-              $(document).ready(function(){
-                var flag = '';
-                $("#reference_name_india").keyup(function(){
-                  if($('#given_name').val() == $("#reference_name_india").val()){
-                    $('#reference_name_india').css('border-color','red');
-                  }else{
-                    $('#reference_name_india').css('border-color','#e1e1e1');
-                  }
-                });
-
-                $("#reference_name_country").keyup(function(){
-                  if($('#given_name').val() == $("#reference_name_country").val()){
-                    $('#reference_name_country').css('border-color','red');
-                  }else{
-                    $('#reference_name_country').css('border-color','#e1e1e1');
-                  }
-                });
-              });
-              </script>
-            
             </div>
             <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
-              <small>Not should be equals to given name as in passport</small>
               <input class="form-control" name="reference_name_india" value="<?php echo $_POST['reference_name_india']; ?>" type="text" placeholder="Reference Name in India*" id="reference_name_india"  /> 
             </div>
             <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
-            <br>
               <input class="form-control" name="reference_address_india_1" value="<?php echo $_POST['reference_address_india_1']; ?>" type="text" placeholder="Address line 1*" id="reference_address_india_1"  /> 
             </div>
             <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
-              <br>
               <input class="form-control" name="reference_address_india_2" value="<?php echo $_POST['reference_address_india_2']; ?>" type="text" placeholder="Address line 2" id="reference_address_india_2" /> 
             </div>
             <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
-              <br>
               <input class="form-control" name="reference_phone_india" value="<?php echo $_POST['reference_phone_india']; ?>" type="text" placeholder="Phone No.*" id="reference_phone_india"  /> 
             </div>
           </div>
@@ -1095,19 +1064,15 @@
               </h4>
             </div>
             <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
-            <small>Not should be equals to given name as in passport</small>
               <input class="form-control" name="reference_name_country" value="<?php echo $_POST['reference_name_country']; ?>" type="text" placeholder="Reference Name in AFGHANISTAN*" id="reference_name_country"  /> 
             </div>
             <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
-            <br>
               <input class="form-control" name="reference_address_country_1" value="<?php echo $_POST['reference_address_country_1']; ?>" type="text" placeholder="Address line 1*" id="reference_address_country_1"  /> 
             </div>
             <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
-              <br>
               <input class="form-control" name="reference_address_country_2" value="<?php echo $_POST['reference_address_country_2']; ?>" type="text" placeholder="Address line 2" id="reference_address_country_2" /> 
             </div>
             <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
-              <br>
               <input class="form-control" name="reference_phone_country" value="<?php echo $_POST['reference_phone_country']; ?>" type="text" placeholder="Phone No.*" id="reference_phone_country"  /> 
             </div>
           </div>
@@ -1129,28 +1094,17 @@
           </div>
           <div class="row rowspace">
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 rowspace">
-              <input name="requirefile" type="checkbox" id="subrequire" <?php if($_POST['requirefile'] == '1'){echo 'checked';} ?> value="1" onclick="apply(this);" />
-              I declare that I have read all the <a href="apply/required_document">Required Documents</a> related to visa apply 
-            </div>
-            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 rowspace">
               <input name="declare" type="checkbox" id="sub" <?php if($_POST['declare'] == '1'){echo 'checked';} ?> value="1" onclick="apply(this);" /> I declare that the Information provided in the application is true and correct.
             </div>
             <script type="text/javascript">
                     function apply(app) {
                         var submit = document.getElementById("submit");
-                        
-                         if(sub.checked && subrequire.checked)
-                          {
-                            $('#submit').removeAttr('disabled');
-                          }
+                         if(sub.checked){$('#submit').removeAttr('disabled');}
                          else
-                         {
-                          $('#submit').attr('disabled', 'disabled');
-                        }
+                         {$('#submit').attr('disabled', 'disabled');}
                     }
                     </script>
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 rowspace">
-          <div style="height: 30px;"></div>
               <button class="btn btn-success btn-lg" id="submit" <?php if($_POST['declare'] != '1'){echo 'disabled'; } ?> type="submit">SEND APPLY</button>
               </form>
           </div>
@@ -1162,8 +1116,8 @@
   $(function() {
     $("#date_of_birth" ).datepicker();
     $("#date_of_arrival" ).datepicker();
-    $("#date_of_issue" ).datepicker({ maxDate: "+0"});
-    $("#date_of_expiry" ).datepicker({ minDate: "+8M"});
+    $("#date_of_issue" ).datepicker();
+    $("#date_of_expiry" ).datepicker();
     $("#v_expected_date_journey" ).datepicker();
     $("#last_date_of_issue" ).datepicker();
     $("#RefusedDate" ).datepicker();
@@ -1171,11 +1125,7 @@
   } );
   </script>
 
-  <script type="text/javascript">
-    $('#email, #ReEnterEmail').bind("cut copy paste",function(e) {
-         e.preventDefault();
-     });
-  </script>
+
   </div>
 </div>
 </div>

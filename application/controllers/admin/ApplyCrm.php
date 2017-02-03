@@ -1,19 +1,18 @@
 <?php
-class Applycrm extends CI_Controller {
-
-  
-  public $session;
+class ApplyCrm extends CI_Controller {
 
   function __construct()
-  {
-    parent:: __construct();
-    error_reporting(0);
-    if(isset($_SESSION['logged_in'])){
-      $this->session = $this->session->userdata('logged_in');
-      if(( $this->session['user_level'] != '1' && $this->session['user_level_status'] != '1' ) || ( $this->session['user_level'] != '2' && $this->session['user_level_status'] != '1' ) ){  redirect('home','refresh');}//header ('Location: '.base_url().'home '); }
-    }else{
-      redirect('login','refresh');
-    }      
+	{
+       parent:: __construct();
+      
+      error_reporting(0);
+
+      if(isset($_SESSION['logged_in'])){
+        $sess = $this->session->userdata();
+        if(( $sess['logged_in']['user_level'] != '1' && $sess['logged_in']['user_level_status'] != '1' ) || ( $sess['logged_in']['user_level'] != '2' && $sess['logged_in']['user_level_status'] != '1' ) ){  redirect('home','refresh');}//header ('Location: '.base_url().'home '); }
+      }else{
+        redirect('login','refresh');
+      }      
 
 
 		$this->load->helper('form');
@@ -25,35 +24,16 @@ class Applycrm extends CI_Controller {
   
   public function index() 
   {
+    $applys = $this->model->allApplys(); 
+
+     $data=array('headlines' => 'All Applies','applys'=>$applys);
+     $data1=array('page_title'=>"All Applies | MiConsulting");
      
-    if($this->session['user_level'] == '1'){
-      $applys = $this->model->allApplysAdmin(); 
-    }elseif($this->session['user_level'] == '2'){
-      $applys = $this->model->allApplysAgent($this->session['user_id']); 
-    }
-
-
-     $data=array('headlines' => 'All Applications','applys'=>$applys);
-     $data1=array('page_title'=>"All Applications | MiConsulting");
      
      $this->load->view('admin/temp/headercrm',$data1);
      $this->load->view('admin/applycrm/index',$data);
      $this->load->view('admin/temp/footercrm');
   }  
-
-  public function agentapplication() 
-  {
-     $id = $this->session['user_id'];
-     $applys = $this->model->agentapplication($id); 
-
-     $data=array('headlines' => 'My Applications','applys'=>$applys);
-     $data1=array('page_title'=>"My Applications | MiConsulting");
-     
-     $this->load->view('admin/temp/headercrm',$data1);
-     $this->load->view('admin/applycrm/index',$data);
-     $this->load->view('admin/temp/footercrm');
-  }
-
   public function profil(){
    
      $applys = $this->model->applyById($this->uri->segment('4')); 
@@ -73,7 +53,7 @@ class Applycrm extends CI_Controller {
 
        if($send == "update_notice"){
           $update = $this->model->updateNotice($appid, $notice); 
-          header('Location:'.base_url().'admin/applycrm/profil/'.$appid);
+          header('Location:'.base_url().'admin/applyCrm/profil/'.$appid);
        }
   }
 
@@ -94,7 +74,7 @@ class Applycrm extends CI_Controller {
         $this->model->updateStatus($appid, $status);
       }
 
-      header('Location:'.base_url().'admin/applycrm/profil/'.$appid);
+      header('Location:'.base_url().'admin/applyCrm/profil/'.$appid);
     }
   }
 

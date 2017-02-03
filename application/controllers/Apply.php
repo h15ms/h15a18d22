@@ -14,8 +14,8 @@ class Apply extends CI_Controller
 
   public function index()
   {      
-    $session = $this->session->userdata('logged_in');
-    if(isset($session['user_id']))
+    $sess = $this->session->userdata();
+    if(isset($sess['logged_in']['user_id']))
     {
       $this->load->helper('data_helper');
       $data = getdata();
@@ -145,16 +145,15 @@ class Apply extends CI_Controller
       }
   
   public function thanks($rep)
-  {        
+  {
+//        $this->_view->title = "Thank You | MiConsulting";
+//        $this->_view->description = "";
+//        $this->_view->headline = "Thank You";    
+//        //$this->_view->canonical = URL."apply/thanksAction/";       
+//        $this->_view->display('apply/thankyou.php');
+        
     $this->load->view('template/header' , $this->active);
-    $this->load->view('apply/thankyou.php');
-    $this->load->view('template/footer');
-  }  
-
-  public function required_document()
-  {     
-    $this->load->view('template/header' , $this->active);
-		$this->load->view('apply/required_document.php');
+		$this->load->view('apply/thankyou.php');
 		$this->load->view('template/footer');
   }
    

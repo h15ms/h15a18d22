@@ -2,19 +2,19 @@
 class Usercrm extends CI_Controller
 {
 
-  public $session;
-
-  function __construct()
+ function __construct() 
   {
-    parent:: __construct();
-    error_reporting(0);
-    if(isset($_SESSION['logged_in'])){
-      $this->session = $this->session->userdata('logged_in');
-      if(( $this->session['user_level'] != '1' && $this->session['user_level_status'] != '1' ) || ( $this->session['user_level'] != '2' && $this->session['user_level_status'] != '1' ) ){  redirect('home','refresh');}//header ('Location: '.base_url().'home '); }
-    }else{
-      redirect('login','refresh');
-    }      
+       parent:: __construct();
+      
+      error_reporting(0);
 
+      if(isset($_SESSION['logged_in'])){
+        $sess = $this->session->userdata();
+        if(( $sess['logged_in']['user_level'] != '1' && $sess['logged_in']['user_level_status'] != '1' ) || ( $sess['logged_in']['user_level'] != '2' && $sess['logged_in']['user_level_status'] != '1' ) ){  redirect('home','refresh');}//header ('Location: '.base_url().'home '); }
+      }else{
+        redirect('login','refresh');
+      }      
+       
       $this->load->model('admin/userModelCrm' , 'model');
 
   }
@@ -30,13 +30,7 @@ class Usercrm extends CI_Controller
     $data1 = array(
         'page_title' => 'Manage employees | MiConsulting'
     );
-    // print_r($this->session);
-
-    if($this->session['user_level'] == '1'){
-      $users=$this->model->allUsersAdmin();
-    }elseif($this->session['user_level'] == '2'){
-      $users=$this->model->allUsersAgent($this->session['user_id']);
-    }
+    $users=$this->model->allUsers();
 
     $data = array('headline'=>$headline,'users'=>$users);
     $this->load->view('admin/temp/headercrm',$data1 );
@@ -51,13 +45,8 @@ class Usercrm extends CI_Controller
         'page_title' => 'Edit employees | MiConsulting'
     );
   
-   $page = $this->model->user($this->uri->segment('4'));
-     
-    if($this->session['user_level'] == '1'){
-     $users = $this->model->allUsersAdmin();
-    }else{
-      $users=$this->model->allUsersAgent($this->session['user_id']);
-    }
+      $page = $this->model->user($this->uri->segment('4'));
+      $users = $this->model->allUsers();
 
     $data=array('headline'=>"Edit employees","page"=>$page,"user"=>$users);
 

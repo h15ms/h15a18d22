@@ -53,8 +53,8 @@
                             <td><?php echo $client->app_id; ?></td>
                             <td><?php echo $client->visa_type; ?></td>
                             <td><?php echo $client->indian_mission; ?></td>
-                            <td><?php echo $client->given_name; ?></td> 
-                            <td><?php echo $client->city_present; ?></td> 
+                            <td><?php echo $client->given_name; ?></td>                            
+                            <td><?php echo $client->city_present; ?></td>                            
                             <td><?php echo $client->email; ?></td>
                             <td><?php echo $client->phone_no; ?></td>
                             <td><?php echo date('d-m-Y', $client->apply_date); ?></td>
@@ -71,7 +71,7 @@
                                 }
                               ?>
                             </td>
-                            <td align="center"><a href="<?php echo base_url(); ?>admin/applycrm/profil/<?php echo $client->app_id; ?>"><i class="fa fa-user"></i></a></td>
+                            <td align="center"><a href="<?php echo base_url(); ?>admin/applyCrm/profil/<?php echo $client->app_id; ?>"><i class="fa fa-user"></i></a></td>
                         </tr>
                         <?php endforeach; ?>
 					</tbody>

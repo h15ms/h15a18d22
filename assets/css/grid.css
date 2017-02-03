@@ -144,10 +144,6 @@ body .unit.alpha, body .units.alpha {
   }
   
   .responsive #top #wrap_all .flex_column:empty{margin:0;}
-  
- div .flex_column {
-  width: 100% !important;
-}
 }
 /* #Mobile (Landscape)
 ================================================== */
@@ -210,7 +206,7 @@ div .flex_column {
   float: left;
   position: relative;
   min-height: 1px;
-  width: 100% ;
+  width: 100%;
 }
 div .av_one_fifth {
   margin-left: 6%;

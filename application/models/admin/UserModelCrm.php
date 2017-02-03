@@ -10,51 +10,45 @@ class UserModelcrm  extends CI_Model
   }
 
 
-  public function allUsersAdmin() 
+  public function allUsers() 
   {     
     $query = "user_type = '2' OR user_type = '1'";
     $res= $this->db->select('*')->get_where('mi_customer', $query);   // select Employee or agents And Admins
     $out = $res->result();
     return $out; 
-  }  
-
-  public function allUsersAgent($id) 
-  {     
-    $res= $this->db->select('*')->get_where('mi_customer', array('agent_id' => $id));   // select Employee of any agent OR Admin
-    $out = $res->result();
-    return $out;            
+           
   }
     
     
   public function user($uid)
   {        
-    
-    $res= $this->db->select('*')->get_where('mi_customer', array('id ' => $uid));
-    $out = $res->result();
-    return $out; 
+        $res= $this->db->select('*')->get_where('mi_customer', array('id ' => $uid));
+        $out = $res->result();
+        return $out; 
+              
   }  
     
     
   public function userUpdate($arr)
   {  
 
-    $data=array(
-     'user_type'=>$arr['user_level'],
-     'firstname'=>$arr['firstname'],
-     'lastname'=>$arr['lastname'],
-     'city'=>$arr['city'],
-     'zip'=>$arr['zip'],
-     'street'=>$arr['street'],
-     'state'=>$arr['state'],
-     'country'=>$arr['country'],
-     'email'=>$arr['email'],
-     'phone'=>$arr['phone']
-     ); 
-     
-     $this->db->where('id', $arr['id']);
-     $this->db->update('mi_customer', $data);
+        $data=array(
+         'user_type'=>$arr['user_level'],
+         'firstname'=>$arr['firstname'],
+         'lastname'=>$arr['lastname'],
+         'city'=>$arr['city'],
+         'zip'=>$arr['zip'],
+         'street'=>$arr['street'],
+         'state'=>$arr['state'],
+         'country'=>$arr['country'],
+         'email'=>$arr['email'],
+         'phone'=>$arr['phone']
+         ); 
+         
+         $this->db->where('id', $arr['id']);
+         $this->db->update('mi_customer', $data);
 
-     return 'OK';
+         return 'OK';
 
   }
     

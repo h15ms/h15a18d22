@@ -2,19 +2,15 @@
 
 class Patient extends CI_Controller {
 
-    public $session;
-
-    function __construct()
-    {
-      parent:: __construct();
-      error_reporting(0);
-      if(isset($_SESSION['logged_in'])){
-        $this->session = $this->session->userdata('logged_in');
-        if(( $this->session['user_level'] != '1' && $this->session['user_level_status'] != '1' ) || ( $this->session['user_level'] != '2' && $this->session['user_level_status'] != '1' ) ){  redirect('home','refresh');}//header ('Location: '.base_url().'home '); }
-      }else{
-        redirect('login','refresh');
-      }      
-
+    function __construct() {
+        parent::__construct();
+        $this->load->library('user_agent');
+      $userData = $this->session->userdata();
+      if ($userData['logged_in']['user_level'] != '1' && $userData['logged_in']['user_level_status'] != '1') {
+            redirect(base_url() . 'home ', 'location');
+        } elseif ($userData['logged_in']['user_level'] != '2' && $userData['logged_in']['user_level_status'] != '1') {
+             redirect(base_url() . 'home ', 'location');
+        }
         
         $this->load->helper('form');
         $this->load->library('form_validation');

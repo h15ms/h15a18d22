@@ -101,9 +101,9 @@
             <?php } ?>
             <div class="options">
                 <div class="btn-toolbar">                    
-                    <a href="" class="btn btn-primary pull-right" data-toggle="modal" data-target="#userBlock"><i class="fa fa-retweet"></i> <span class="">Update Status</span></a>
-                    <a href="mailto:<?php echo $apply[0]->email;?>" class="btn btn-success pull-right"><i class="fa fa-envelope"></i> <span class="hidden-xs">Contact Applicant</span></a>
-                    <a href="../../../dashboard/visapdf/<?php echo $apply[0]->id;?>" class="btn btn-info" style="margin-right: 5px;"><i class="fa fa-print"></i> <span class="">Print</span></a>             
+                    
+                    <a href="" class="btn btn-primary pull-right" data-toggle="modal" data-target="#userBlock"><i class="fa fa-retweet"></i> <span class="">Update Status</span></a>                    
+                    <a href="mailto:<?php echo $apply[0]->email;?>" class="btn btn-success pull-right"><i class="fa fa-envelope"></i> <span class="hidden-xs">Contact Applicant</span></a>                    
                 </div>
             </div>
         </div>
@@ -663,7 +663,7 @@
                   <textarea class="form-control" name="notice" value="<?php echo $apply[0]->notice; ?>" rows="8"><?php echo $apply[0]->notice; ?></textarea>
                   <input type="hidden" name="appid" value="<?php echo $apply[0]->app_id;?>">
                   <input type="hidden" name="send" value="update_notice" />
-                  <button type="submit" class="btn btn-success" style="margin-top: 10px;" id="save_notice">Save Notice</button>
+                  <button type="submit" class="btn btn-success" id="save_notice">Save Notice</button>
               </div>
             </form>
                

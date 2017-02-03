@@ -12,9 +12,9 @@ class Dashboard extends CI_Controller
   public function index() 
   { 
 
-    $session = $this->session->userdata('logged_in');
+    $sess = $this->session->userdata();
 
-        if($session['user_id'] == ""){
+        if($sess['logged_in']['user_id'] == ""){
             $this->load->view('template/header' , $this->active);   
             $this->load->view('login/index');   
             $this->load->view('template/footer');    
@@ -545,7 +545,7 @@ class Dashboard extends CI_Controller
           <td height="80px" style="font-size:10px;font-family:Arial, Helvetica, sans-serif; color:#000000; font-weight:600; border-top:0px; padding:5px; 5px 5px 5px;"></td>
           </tr>
           <tr>
-          <td height="20px"  style="font-size:10px;font-family:Arial, Helvetica, sans-serif; color:#000000;  font-weight:600; border-top:0px; padding:5px; 5px 5px 5px;">Date : ' .date('d-m-Y',$out->apply_date). '</td>
+          <td height="20px"  style="font-size:10px;font-family:Arial, Helvetica, sans-serif; color:#000000;  font-weight:600; border-top:0px; padding:5px; 5px 5px 5px;">Date : ' .$out->apply_date . '</td>
           <td height="20px"  align="right" style="font-size:10px;font-family:Arial, Helvetica, sans-serif; color:#000000;  font-weight:600; border-top:0px;  padding:5px; 5px 5px 5px;">Applicant Signature (as in Passport)</td>
           </tr>
           </table></td>
