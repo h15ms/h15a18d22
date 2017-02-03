@@ -4,7 +4,7 @@
     }
     </style>
 
-<div ng-app="specializationAPP" id="page-content">
+<div  id="page-content">
     <div id="wrap">
     
     
@@ -40,8 +40,7 @@
             </div>
           <div class="panel-body collapse in">                                  
            
-              
-              <form method="post" enctype="multipart/form-data" ng-controller="getspecialization">
+              <form method="post" action="hospitalscrm/addhospital'?>" role="form" enctype="multipart/form-data" >
             <input type="hidden" name="send" value="1">                        
               
             <div class="col-xs-12 col-sm-12 col-md-12"> 

@@ -61,8 +61,11 @@ class Hospitalscrm extends CI_Controller {
   }
   public function addhospital()
   {
+      
+     
     if(isset($_POST['send']) && ($_POST['send']=="1"))
     {
+         print_r($_POST);
         $pic =$_FILES['hospital_image']['name'];
         $pic_loc = $_FILES['hospital_image']['tmp_name'];
         $folder="assets/img/hospitals/";
