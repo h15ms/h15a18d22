@@ -40,8 +40,16 @@ class HospitalsModelcrm extends CI_Model
             return false;
         }   
   }
+  public function getspecialization($inids){
+     
+      $query=$this->db->query('SELECT sepcialization FROM mi_specialization where id IN ('.$inids.')');
+
+      return   $res=$query->result();
+  
+       
+  }
  public function getallhospitallist(){
-    $this->db->select('*, d.id appID')->from('mi_hospital_detail  d');
+    $this->db->select('*, d.id appID')->from(PR.'hospital_detail  d');
     $this->db->join('mi_hospital  h' , 'h.id=d.	hospital_id ', 'left');
     $this->db->where(array('h.status'=>1, 'd.status'=>1));
     $this->db->order_by('d.id','asc');         
@@ -84,13 +92,10 @@ public function addHospitalname($arr){
       return $insertID;
 }
 
-public function addhospitalDetail($arr,$pic){
-   $hosId=explode('_',$arr['hospitalssel']); 
-    
-  
-        $sess = $this->session->userdata();
-      
-      $data=array('hospital_id'=>$hosId[0],
+public function addhospitalDetail($arr,$pic,$userID){
+        $hosId=explode('_',$arr['hospitalssel']); 
+        $specStr= implode(',', $arr['specialization']);  
+        $data=array('hospital_id'=>$hosId[0],
           'address'=> $arr['address'],
           'city'=> $arr['city'],
           'state'=> $arr['state'],
@@ -102,21 +107,15 @@ public function addhospitalDetail($arr,$pic){
           'emergency_services'=> $arr['emergency_services'],
           'hospital_type'=> $arr['hospital_type'],
           'image'=>$pic,
-          'specialization'=> $arr['specialization'],
+          'specialization'=> $specStr,
           'createdtime'=>time(),
-          'createdby'=> $sess['logged_in']['user_id'] ); 
-      $insertID = $this->db->insert('mi_hospital_detail', $data);
+          'createdby'=> $userID ); 
+      
+      $insertID = $this->db->insert(PR.'hospital_detail', $data);
       return $insertID;  
 } 
-public function edithospitalDetail($arr,$id){
-   //$hosId=explode('_',$arr['hospitalssel']); 
-    
-  
-        $sess = $this->session->userdata();
-
-
-
-      $data=array(
+public function edithospitalDetail($arr,$id,$userID){
+           $data=array(
           'address'=> $arr['address'],
           'city'=> $arr['city'],
           'state'=> $arr['state'],
@@ -127,10 +126,9 @@ public function edithospitalDetail($arr,$id){
           'distance_from_airport'=>$arr['distance_from_airport'],
           'emergency_services'=> $arr['emergency_services'],
           'hospital_type'=> $arr['hospital_type'],
-        
           'specialization'=> $arr['specialization'],
           'createdtime'=>time(),
-           ); 
+          'createdby'=>$userID); 
             
             $this->db->where('id',$id);
             $this->db->update('mi_hospital_detail',$data);
@@ -141,10 +139,6 @@ public function udpatehospitalstatus($id){
    //$hosId=explode('_',$arr['hospitalssel']); 
     
   
-        
-
-
-
       $data=array(
          
           'status'=>0,
