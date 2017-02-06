@@ -4,18 +4,19 @@ class Doctor extends CI_Controller {
 
     public $session;
 
-    function __construct()
-    {
-      parent:: __construct();
-      error_reporting(0);
-      if(isset($_SESSION['logged_in'])){
-        $this->session = $this->session->userdata('logged_in');
-        if(( $this->session['user_level'] != '1' && $this->session['user_level_status'] != '1' ) || ( $this->session['user_level'] != '2' && $this->session['user_level_status'] != '1' ) ){  redirect('home','refresh');}//header ('Location: '.base_url().'home '); }
-      }else{
-        redirect('login','refresh');
-      }      
-    
-      
+    function __construct() {
+        parent:: __construct();
+        error_reporting(0);
+        if (isset($_SESSION['logged_in'])) {
+            $this->session = $this->session->userdata('logged_in');
+            if (( $this->session['user_level'] != '1' && $this->session['user_level_status'] != '1' ) || ( $this->session['user_level'] != '2' && $this->session['user_level_status'] != '1' )) {
+                redirect('home', 'refresh');
+            }//header ('Location: '.base_url().'home '); }
+        } else {
+            redirect('login', 'refresh');
+        }
+
+
         $this->load->helper('form');
         $this->load->library('form_validation');
         $this->load->library('session');
@@ -25,6 +26,12 @@ class Doctor extends CI_Controller {
     }
 
     public function index() {
+        
+        
+        
+        
+        
+        
         $doctors = $this->app->fetchAll();
 
         $config = array();
@@ -212,110 +219,54 @@ class Doctor extends CI_Controller {
 
         $id = $this->uri->segment('4');
         $doctor = $this->app->fetchById($id);
-
+        
+        $slots = $this->app-> slotById($id);
+        
+        
+        $slotData = array();
+        foreach ($slots as $key => $slot) {
+            $slotData['slot'][$slot->days][$slot->shift][]  = $slot->slot;
+        }
+     
         if ($this->input->server('REQUEST_METHOD') === 'POST' && $_POST['send'] == 1) {
             $data = array();
-
             $data['id'] = $_POST['id'] ? $_POST['id'] : $id;
-            
-            
-//             echo '<pre>';
-//                 print_r($_POST);
-//            echo '</pre>';
-            
-            
-            
-            
+            $this->app->delete_slot($data['id']);
             $postParam = $_POST;
-            
-            
+             $counter = 0;
             foreach ($postParam as $key => $value) {
-                $counter = 0;
                 $saveData = array();
-                
-                
                 if($key != 'send' && $key != 'id'){
                     list($days,$shift) = explode("_",$key);
-                    
-                    $saveData[$counter]['doctor_id'] = $_POST['id'] ? $_POST['id'] : $id;
-                    $saveData[$counter]['days'] = $days;
-                    $saveData[$counter]['shift'] = $shift;
-                    $saveData[$counter]['type'] = 1;
-                    
+                    $saveData['doctor_id'] = $_POST['id'] ? $_POST['id'] : $id;
+                    $saveData['days'] = $days;
+                    $saveData['shift'] = $shift;
+                    $saveData['type'] = 1;
                     if(is_array($value)){
                         foreach ($value  as $k => $time) {
-                           $savedata[$counter]['slot'] = $time; 
-                           
-                           if($counter == 0){
-                              $this->app->delete_slot($doctor_id); 
-                           }
-                           
-                           $this->app->slot($savedata[$counter]);
-                           unset($savedata[$counter]);
-                           $counter++;
+                            if($time != ''){
+                                 $saveData['slot'] = trim($time);
+                                 $this->app->slot($saveData);
+                            }
                         }
                     }
-                    
                 }
                 
+               unset($savedata); 
                 
-                
-                // echo $key.' ==> '.$value;
             }
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            $days = unserialize(DAYS);
-            $timeslot = array();
-            foreach ($days as $code => $day) {  //  Sa_MORNING
-                if ($_POST[$code . '_MORNING'] != '') {
-                    $timeslot['slot'][$code]['MORNING'] = $_POST[$code . '_MORNING'] ? $_POST[$code . '_MORNING'] : '';
-                }
-
-                if ($_POST[$code . '_AFTERNOON'] != '') {
-                    $timeslot['slot'][$code]['AFTERNOON'] = $_POST[$code . '_AFTERNOON'] ? $_POST[$code . '_AFTERNOON'] : '';
-                }
-
-                if ($_POST[$code . '_EVENING'] != '') {
-                    $timeslot['slot'][$code]['EVENING'] = $_POST[$code . '_EVENING'] ? $_POST[$code . '_EVENING'] : '';
-                }
-
-                if ($_POST[$code . '_NIGHT'] != '') {
-                    $timeslot['slot'][$code]['NIGHT'] = $_POST[$code . '_NIGHT'] ? $_POST[$code . '_NIGHT'] : '';
-                }
-            }
-            
-            
-           
-            
-            echo '<pre>';
-                 print_r($timeslot);
-            echo '</pre>';
-            
-            die;
-            
-
-            $data['slot'] = serialize($timeslot);
-            $data['modified'] = date('Y-m-d h:i:s');
-           // $res = $this->app->update($data);
         }
-
-//        else {
-//            $this->load->view('add_form');
-//        }
 
         $title = array('page_title' => " Doctor Slot | MiConsulting");
         $js = array('js' => "doctor.js");  //  Angular Js file name
 
         $doctors = array();
         $states = $this->state_city_india();
-        $dataCollection = array('headline' => ' Doctor Slot', 'doctor' => $doctor[0]);
+        
+        //  
+        
+        //$doctor[0]['slotData'] = $slotData;
+        $dataCollection = array('headline' => ' Doctor Slot', 'doctor' => $doctor[0],'existSlot' => $slotData);
 
         $this->load->view('admin/temp/headercrm', $title);
         $this->load->view('admin/doctor/slot', $dataCollection);
