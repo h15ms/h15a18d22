@@ -1,20 +1,19 @@
 <?php
 class Hospitalscrm extends CI_Controller {
 
-  function __construct()
-	{
-     parent:: __construct();
-    
-    error_reporting(0);
+  public $session;
 
+  function __construct()
+  {
+    parent:: __construct();
+    error_reporting(0);
     if(isset($_SESSION['logged_in'])){
-      $sess = $this->session->userdata();
-      if(( $sess['logged_in']['user_level'] != '1' && $sess['logged_in']['user_level_status'] != '1' ) || ( $sess['logged_in']['user_level'] != '2' && $sess['logged_in']['user_level_status'] != '1' ) ){  redirect('home','refresh');}//header ('Location: '.base_url().'home '); }
+      $this->session = $this->session->userdata('logged_in');
+      if(( $this->session['user_level'] != '1' && $this->session['user_level_status'] != '1' ) || ( $this->session['user_level'] != '2' && $this->session['user_level_status'] != '1' ) ){  redirect('home','refresh');}//header ('Location: '.base_url().'home '); }
     }else{
       redirect('login','refresh');
     }      
-
-     
+   
   
 		$this->load->helper('form');
 		$this->load->library('form_validation');
@@ -54,15 +53,19 @@ class Hospitalscrm extends CI_Controller {
      $this->load->view('admin/temp/headercrm',$data1);
      $this->load->view('admin/hospitalscrm/index',$data);
      $this->load->view('admin/temp/footercrm');
-  }  
+  } 
+ 
   public function getindexjson(){
-       $hospitals = json_encode($this->app->getallhospitallist()); 
-      echo  $hospitals;
+     echo    json_encode($this->app->getallhospitallist()); 
+       
   }
   public function addhospital()
   {
+      
+     
     if(isset($_POST['send']) && ($_POST['send']=="1"))
     {
+         print_r($_POST);
         $pic =$_FILES['hospital_image']['name'];
         $pic_loc = $_FILES['hospital_image']['tmp_name'];
         $folder="assets/img/hospitals/";
@@ -73,10 +76,12 @@ class Hospitalscrm extends CI_Controller {
     }
     
     $hospList=$this->app->gethospitallist();
+    $speciliztion=$this->app->getspeciliztions();
+    
     $data1 = array(
         'page_title' => 'Add Hospital | MiConsulting'
     );
-    $data=array("headline"=>"Add Hospital",'hospList'=>$hospList);
+    $data=array("headline"=>"Add Hospital",'hospList'=>$hospList,'speciliztion'=>$speciliztion);
     
     $this->load->view('admin/temp/headercrm',$data1);
     $this->load->view('admin/hospitalscrm/addhospital',$data);

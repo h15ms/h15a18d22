@@ -3,18 +3,19 @@
 class Homecrm extends CI_Controller {
 
 
-  public function __construct() {
-      
-      parent:: __construct();
-      
-      error_reporting(0);
+  public $session;
 
-      if(isset($_SESSION['logged_in'])){
-        $sess = $this->session->userdata();
-        if(( $sess['logged_in']['user_level'] != '1' && $sess['logged_in']['user_level_status'] != '1' ) || ( $sess['logged_in']['user_level'] != '2' && $sess['logged_in']['user_level_status'] != '1' ) ){  redirect('home','refresh');}//header ('Location: '.base_url().'home '); }
-      }else{
-        redirect('login','refresh');
-      }      
+  function __construct()
+  {
+    parent:: __construct();
+    error_reporting(0);
+    if(isset($_SESSION['logged_in'])){
+      $this->session = $this->session->userdata('logged_in');
+      if(( $this->session['user_level'] != '1' && $this->session['user_level_status'] != '1' ) || ( $this->session['user_level'] != '2' && $this->session['user_level_status'] != '1' ) ){  redirect('home','refresh');}//header ('Location: '.base_url().'home '); }
+    }else{
+      redirect('login','refresh');
+    }      
+     
 
       $this->load->model('admin/HomeModelCrm' , 'hmc'); 
       

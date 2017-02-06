@@ -45,7 +45,7 @@
 						<th style="width:auto;"><strong>#</strong></th>
                                                 <th style="width:auto;"><Strong>List of Specialization</strong></th>
 	
-                                                <th style="width:auto;" align="center"><strong>Status</strong></th>	
+                                                <th style="width:auto;" align="center"><strong>Current Status</strong></th>	
                                                 <th style="width:auto;" align="center"><strong>Change Status</strong></th>	
 					</tr>
 					</thead>
@@ -53,21 +53,21 @@
                                             <tr ng-repeat=" x in speciliz['results']"> 
                                          
                                             
-                                            <td> {{x.id}}</td>
+                                            <td> {{$index+1}}</td>
                                             <td>{{x.sepcialization }}</td>
                                          <td >
                                              <span ng-if="x.status==='1'">
                                                  ACTIVE 
                                              </span> 
                                          <span ng-if="x.status==='0'">
-                                                 DACTIVE 
+                                                 IN ACTIVE
                                              </span> 
                                           
                                          
                                          </td> 
                                           <td >
                                              <span ng-if="x.status==='1'">
-                                                   <a href="javascript:void(0)" ng-click="updateSpecif(x.id,0)">DACTIVE</a>
+                                                   <a href="javascript:void(0)" ng-click="updateSpecif(x.id,0)">IN ACTIVE</a>
                                              </span> 
                                          <span ng-if="x.status==='0'">
                                                    <a href="javascript:void(0)" ng-click="updateSpecif(x.id,1)">ACTIVE</a>
@@ -157,7 +157,7 @@
         </div>
     <div class="modal-body">
   
-        <span id="respon"></span>
+        <span  ng-bind-html="responseres"></span>
           
         <div class="row">
         <div class="form-group">

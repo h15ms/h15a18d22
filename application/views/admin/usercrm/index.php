@@ -46,7 +46,8 @@
 						<th style="width:auto;">Email</th>
 						<th style="width:auto;">Phone</th>
                         <th style="width:auto;">Date</th>                       
-						<th style="width:auto;">Status</th>						
+                        <th style="width:auto;">Status</th>                     
+						<th style="width:auto;">View</th>						
 						<th style="width:auto;" align="center">Edit</th>			
 					</tr>
 					</thead>
@@ -75,6 +76,7 @@
                                     }
 
                                 ?></td>
+                            <td align="center"><a href="usercrm/user/<?php echo $user->id;?>"><i class="fa fa-eye"></i></a></td>
                             <td align="center"><a href="usercrm/user/<?php echo $user->id;?>"><i class="fa fa-pencil"></i></a></td>
                         </tr>
                         <?php $i++; } ?>

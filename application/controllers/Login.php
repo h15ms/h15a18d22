@@ -19,9 +19,9 @@ class Login extends CI_Controller
 
 	public function index()
 	{
-		$sess = $this->session->userdata();
+		$session = $this->session->userdata('logged_in');
 
-		if(isset($sess['logged_in']['user_id'])){
+		if(isset($session['user_id'])){
 	        
 	        $data=array('active'=>$this->active,'title'=>'Customer Sign In - Sign Up | MiConsulting','headline'=>"Sign In - Sign Up" );
 			$this->load->view('template/header' , $data);
@@ -121,7 +121,6 @@ class Login extends CI_Controller
 			if ($result != false)
 				
 				{
-
 					$session_data = array(
 					'user_id' => $result[0]->id,
 					'user_email' => $result[0]->email,
@@ -137,14 +136,14 @@ class Login extends CI_Controller
 
 				$this->session->set_userdata('logged_in', $session_data);
 
-				$sess = $this->session->userdata();
+				$session = $this->session->userdata('logged_in');
 
-				if($sess['logged_in']['user_level'] == '3'){
+				if($session['user_level'] == '3'){
 
 					//header('Location:'.base_url().'Home');
                                 echo '<script> window.location.href = "'.base_url().'home"; </script>';
 
-				}elseif( ($sess['logged_in']['user_level'] == '2' && $sess['logged_in']['user_level_status'] == '1') || ($sess['logged_in']['user_level'] == '1' && $sess['logged_in']['user_level_status'] == '1')){
+				}elseif( ($session['user_level'] == '2' && $session['user_level_status'] == '1') || ($session['user_level'] == '1' && $session['user_level_status'] == '1')){
 
 					//header('Location:'.base_url().'admin/homecrm');
 				echo '<script> window.location.href = "'.base_url().'admin/homecrm"; </script>';

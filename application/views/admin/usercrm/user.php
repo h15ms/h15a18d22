@@ -39,7 +39,7 @@
             </ol>
 
             <h1>Edit Employee</h1>
-             <?php if($user[0]->user_type=="1"){ ?> 
+             
             <div class="options">
                 <div class="btn-toolbar">                	
                     <div class="btn-group">
@@ -55,7 +55,7 @@
                     <a href='#' class="btn btn-danger" data-toggle="modal" data-target="#myModal"><i class="fa fa-trash"></i> <span class="hidden-xs">Delete Employee</span></a>
                 </div>
             </div>
-            <?php } ?>
+            
         </div>
 
 
@@ -76,7 +76,7 @@
             <input type="hidden" name="send" value="userupdate"> 
             <input type="hidden" name="id" value="<?php echo $page['0']->id; ?>"> 
 
-            <?php if($page['0']->registration_status == '0'){ ?>
+            <?php if($_SESSION['logged_in']['user_level'] == '1' && $page['0']->registration_status == '0'){ ?>
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <?php $type = ''; if($page['0']->user_type == '1'){$type = 'Admin';} elseif($page['0']->user_type == '2'){$type = 'Agent/Dealer';} else{$type = 'Customer/Patient';} ?>
                 <div class="alert alert-danger alert-dismissible" role="alert">

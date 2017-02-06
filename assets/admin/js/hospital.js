@@ -49,19 +49,16 @@ var appl=angular.module('specializationAPP',[]).controller('specializationCtrl',
     }
     
     });
-}).controller('addspecialCtrl', function($scope,$http,$window){
-    $scope.addpopup=function(){
-      var speci=angular.element('#n_b_name').val();
-     
-      $http.get(BASEURL+'admin/specialization/addspecilization?specifi='+speci).then(function(rese){
-          
-          $('#respon').html(rese);
-        // $window.location.reload();
-      });
-      
+}).controller('addspecialCtrl', function ($scope, $http, $window, $sce) {
+    $scope.addpopup = function () {
+        var speci = angular.element('#n_b_name').val();
+        $http.get(BASEURL + 'admin/specialization/addspecilization?specifi=' + speci).then(function (rese) {
+            $scope.responseres = $sce.trustAsHtml(rese.data);
+            setTimeout(function () {
+                $window.location.reload(1);
+            }, 2000);
+        });
     }
-    
-    
 });
 
 // var app = angular.module('hospitalApp',[]);
@@ -80,6 +77,16 @@ var appl=angular.module('specializationAPP',[]).controller('specializationCtrl',
 //         });  
 
 //************************End AngularJS******************/
+
+
+$(document).ready(function(){
+alert('hi');
+$('#specialization').multiselect({
+    columns: 1,
+    placeholder: 'Select Specialization',
+    search: true
+});
+});
 function delpopup(id , name ){
 
      $('#appid').val(id);

@@ -19,6 +19,7 @@ define('ASSETS', base_url() . 'assets/');
     <link rel="stylesheet" href="<?php echo URL_ADMIN;?>fonts/font-awesome/css/font-awesome.css">
     <link href='<?php echo URL_ADMIN;?>demo/variations/default.css' rel='stylesheet' type='text/css' media='all' id='styleswitcher'>     
     <link href='<?php echo URL_ADMIN;?>demo/variations/header-white.css' rel='stylesheet' type='text/css' media='all' id='headerswitcher'> 
+    <link rel='stylesheet' type='text/css' href='<?php echo URL_ADMIN;?>css/jquery.multiselect.css' />
     <link rel='stylesheet' type='text/css' href='<?php echo URL_ADMIN;?>plugins/form-daterangepicker/daterangepicker-bs3.css' />
     <link rel='stylesheet' type='text/css' href='<?php echo URL_ADMIN;?>plugins/fullcalendar/fullcalendar.css' />
     <link rel='stylesheet' type='text/css' href='<?php echo URL_ADMIN;?>plugins/form-markdown/css/bootstrap-markdown.min.css' />
@@ -33,9 +34,12 @@ define('ASSETS', base_url() . 'assets/');
     <link rel='stylesheet' type='text/css' href='<?php echo URL_ADMIN;?>js/jqueryui.css' />
     <link rel='stylesheet' type='text/css' href='<?php echo URL_ADMIN;?>css/print.css' />
     <link rel='stylesheet' type='text/css' href='<?php echo URL_ADMIN;?>plugins/jquery-fileupload/css/jquery.fileupload-ui.css' />
+     <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"> -->
     <link rel='stylesheet' type='text/css' href='<?php echo URL_ADMIN;?>plugins/dropzone/css/dropzone.css' />
-    <script type='text/javascript' src='<?php echo URL_ADMIN ; ?>js/less.js'>
-    </script>
+    <script type='text/javascript' src='<?php echo URL_ADMIN ; ?>js/less.js'></script>
+    
+
+
   </head>
   <body class="<?php //if (isset($_COOKIE["admin_leftbar_collapse"])) echo ($_COOKIE['admin_leftbar_collapse'] . " "); 
     // check collapse state with php
@@ -75,6 +79,13 @@ define('ASSETS', base_url() . 'assets/');
                 <li>
                   <a href="<?php echo base_url();?>admin/usercrm/user/<?php echo $_SESSION['logged_in']['user_id']; ?>">Edit Profile 
                     <i class="pull-right fa fa-cog">
+                    </i>
+                  </a>
+                </li>                                                                                       
+                <li class="divider">
+                <li>
+                  <a href="<?php echo base_url();?>admin/Changepasscrm">Change Password 
+                    <i class="pull-right fa fa-key">
                     </i>
                   </a>
                 </li>                                                                                       
@@ -127,9 +138,13 @@ define('ASSETS', base_url() . 'assets/');
             </a>
           </li>                
           <li>
-            <a href="<?php echo base_url();?>admin/applyCrm"><i class="fa fa-file-text-o"></i> 
-              <span>All Applications</span>
+            <a href="javascript:;"><i class="fa fa-file-text-o"></i> 
+              <span>Applications</span>
             </a>
+            <ul class="acc-menu">
+                <li><a href="<?php echo base_url();?>admin/applycrm">All Applications</a></li>
+                <li><a href="<?php echo base_url();?>admin/applycrm/agentapplication">My Applications</a></li>                        
+            </ul>
           </li>                
           <li>
             <a href="<?php echo base_url();?>admin/usercrm"><i class="fa fa-group"></i> 

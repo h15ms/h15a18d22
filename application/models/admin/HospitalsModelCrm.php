@@ -54,7 +54,19 @@ class HospitalsModelcrm extends CI_Model
             return false;
         }   
 } 
-
+public function getspeciliztions(){
+    $this->db->select('*')->from(PR.'specialization');
+    $this->db->where(array('status'=>1));
+    $this->db->order_by('sepcialization','asc');         
+    $getdata = $this->db->get(); 
+    //$result = $getdata->get();
+       
+        if ($getdata->num_rows() > 0) {
+            return $getdata->result();
+        } else {
+            return false;
+        }   
+} 
 public function gethospitallist(){
     $getdata = $this->db->select('*')->get_where('mi_hospital', array('status'=>1));
     
