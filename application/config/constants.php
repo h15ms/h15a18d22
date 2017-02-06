@@ -355,3 +355,6 @@ $slot = array(
 );
 
 defined('SLOT')  OR define('SLOT', serialize($slot)); // SLOT
+
+$days = array('Su'=>"Sunday",'Mo'=> "Monday",'Tu'=> "Tuesday", 'We'=>"Wednesday",'Th'=> "Thursday", 'Fr'=>"Friday", 'Sa'=>"Saturday"); 
+defined('DAYS')  OR define('DAYS', serialize($days)); // SLOT

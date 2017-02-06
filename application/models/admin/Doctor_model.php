@@ -33,6 +33,24 @@ class Doctor_model extends CI_Model {
         }
     }
     
+    public function timeSlot($doctor_id) {
+
+        if (empty($doctor_id)) {
+            return FALSE;
+        }
+
+        $this->db->select('slot');
+        $this->db->where('id', $doctor_id);
+        $query = $this->db->get(PR . 'doctors');
+
+        if ($query->num_rows() == 1) {
+            $result = $query->result_array();
+            return $result[0]['slot'];
+        } else {
+            return FALSE;
+        }
+    }
+
     public function fetchByName($name) {
 
         $getdata = $this->db->select('*')->get_where(PR.'doctors', array('app_id' => $appid));
@@ -62,6 +80,26 @@ class Doctor_model extends CI_Model {
         return $insertID;
     }
     
+    public function slot($data) {
+        $insertID = $this->db->insert(PR.'slot', $data);
+        return $insertID;
+    }
+    
+    public function delete_slot($doctor_id) {
+        
+        if(empty($doctor_id)){
+            return FALSE;
+            
+        }
+        
+        $getdata = $this->db->select('*')->get_where(PR.'slot', array('doctor_id' => $doctor_id));
+        if ($getdata->num_rows() > 0) {
+            $this->db->where('doctor_id', $doctor_id);
+            $this->db->delete(PR.'slot');
+        }
+        
+    }
+
     public function update($data) {
          $this->db->where('id', $data['id']);
         $insertID = $this->db->update(PR.'doctors', $data);

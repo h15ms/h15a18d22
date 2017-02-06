@@ -30,7 +30,7 @@
 
                         </div>
                         <div class="panel-body collapse in">                                  
-<?php //print_r($hospitals); ?>
+                            <?php //print_r($hospitals); ?>
                             <div class="table-flipscroll table-responsive">
                                 <table cellpadding="0" cellspacing="0" border="0" class="table table-striped table-bordered table-hover datatable" id="customer_table">
                                     <thead>
@@ -46,7 +46,8 @@
                                     </thead>
                                     <tbody>
 
-<?php $i = 1; foreach ($doctors['results'] as $doctor): ?>
+                                        <?php $i = 1;
+                                        foreach ($doctors['results'] as $doctor): ?>
                                             <tr>
                                                 <td><?php echo $i; ?></td>
                                                 <td><?php echo $doctor->clinic_hospital_type; ?></td>
@@ -57,14 +58,17 @@
                                                 <td align="center">
                                                     <a href="<?php echo base_url(); ?>admin/doctor/view/<?php echo $doctor->id; ?>"><i class="fa fa-user"></i></a>&nbsp;
                                                     <a href="<?php echo base_url(); ?>admin/doctor/edit/<?php echo $doctor->id; ?>"><i class="fa fa-pencil-square-o"></i></a>
+                                                    <a href="<?php echo base_url(); ?>admin/doctor/slot/<?php echo $doctor->id; ?>"><i class="fa fa-plus-circle"  title="Slot"></i></a>
                                                 </td>
                                             </tr>
-    <?php $i++;
-endforeach;
-  ?>
+                                            <?php
+                                            $i++;
+                                        endforeach;
+                                         
+                                        ?>
                                     </tbody>
                                 </table>
-                                 <p><?php echo $doctors['links'];// $links; ?></p>
+                                <p><?php echo $doctors['links']; // $links;  ?></p>
 
                             </div>
                         </div>
