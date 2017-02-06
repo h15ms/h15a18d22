@@ -86,6 +86,13 @@ class UserModelcrm  extends CI_Model
         $res= $this->db->select('*')->get_where('mi_customer', array('email' => $email));
         $out = $res->num_rows();
         return $out; 
+  }  
+
+  public function allEmployee($id)
+  {        
+        $res= $this->db->select('*')->get_where('mi_customer', array('agent_id' => $id));
+        $out = $res->result();
+        return $out; 
   }
     
   public function savePassword($clientid,$newpw)

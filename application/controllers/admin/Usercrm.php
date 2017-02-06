@@ -24,11 +24,11 @@ class Usercrm extends CI_Controller
     
   public function index() 
   { 
-    $title         = "Manage employees | MiConsulting";
-    $headline      = "Manage employees";
+    $title         = "Manage Agents | MiConsulting";
+    $headline      = "Manage Agents";
     
     $data1 = array(
-        'page_title' => 'Manage employees | MiConsulting'
+        'page_title' => 'Manage Agents | MiConsulting'
     );
     // print_r($this->session);
 
@@ -63,6 +63,22 @@ class Usercrm extends CI_Controller
 
     $this->load->view('admin/temp/headercrm',$data1);
     $this->load->view('admin/usercrm/user',$data);
+    $this->load->view('admin/temp/footercrm');
+  }  
+
+
+  public function employee() 
+  {
+    $data1 = array(
+        'page_title' => 'Edit employees | MiConsulting'
+    );
+  
+   $users = $this->model->allEmployee($this->uri->segment('4'));
+
+    $data=array('headline'=>"Manage Employees","page"=>$page,"user"=>$users);
+
+    $this->load->view('admin/temp/headercrm',$data1);
+    $this->load->view('admin/usercrm/employee',$data);
     $this->load->view('admin/temp/footercrm');
   }
 

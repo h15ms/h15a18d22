@@ -36,7 +36,7 @@ var ap = angular.module('hospitaleditApp', []).controller('hospitaleditCtrl', fu
 });
 
 
-var appl=angular.module('specializationAPP',[]).controller('specializationCtrl', function($scope, $http,$sce){
+var appl=angular.module('specializationAPP',['angularjs-dropdown-multiselect']).controller('specializationCtrl', function($scope, $http,$sce){
     var id=$('#pageno').val();
      $http.get(BASEURL+'admin/specialization/getsonSpecialization?id='+id)
     .then(function(response) {
@@ -79,14 +79,7 @@ var appl=angular.module('specializationAPP',[]).controller('specializationCtrl',
 //************************End AngularJS******************/
 
 
-$(document).ready(function(){
-alert('hi');
-$('#specialization').multiselect({
-    columns: 1,
-    placeholder: 'Select Specialization',
-    search: true
-});
-});
+
 function delpopup(id , name ){
 
      $('#appid').val(id);
