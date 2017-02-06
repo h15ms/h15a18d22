@@ -1,3 +1,5 @@
+<?php error_reporting(0);?>
+
 <div id="page-content">
     <div id="wrap">
     
@@ -51,7 +53,8 @@
 					</thead>
 					<tbody>
 
-                        <?php $i = '1'; foreach($users as $user){   ?>
+
+                        <?php $i = '1'; foreach($user as $user){   ?>
 
                         <tr>
                             <td><?php echo $i;?></td>
@@ -74,7 +77,7 @@
                                     }
 
                                 ?></td>
-                            <td align="center"><a href="usercrm/employee/<?php echo $user->id;?>"><i class="fa fa-eye"></i></a></td>
+                            <td align="center"><a href="usercrm/user/<?php echo $user->id;?>"><i class="fa fa-eye"></i></a></td>
                             <td align="center"><a href="usercrm/user/<?php echo $user->id;?>"><i class="fa fa-pencil"></i></a></td>
                         </tr>
                         <?php $i++; } ?>
