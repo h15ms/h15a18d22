@@ -22,7 +22,6 @@ class Applycrm extends Base {
 
      $header = array('page_title' => 'All Applications | MiConsulting');
      $content = array('headline'=>'All Applications', 'applys'=>$applys);
-
      $this->getLayout('admin/applycrm/index', $header, $left, $content, $footer);
 
   }  
@@ -34,7 +33,6 @@ class Applycrm extends Base {
      
      $header = array('page_title' => 'My Applications | MiConsulting');
      $content = array('headline'=>'My Applications', 'applys'=>$applys);
-
      $this->getLayout('admin/applycrm/index', $header, $left, $content, $footer);
 
   }
@@ -45,7 +43,6 @@ class Applycrm extends Base {
 
      $header = array('page_title' => 'Profile | MiConsulting');
      $content = array('headline'=> 'Applicant Profile','apply'=>$applys);
-
      $this->getLayout('admin/applycrm/profil', $header, $left, $content, $footer);
 
       

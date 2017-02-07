@@ -5,42 +5,16 @@ require_once('Base.php');
 
 class Doctor extends Base {
 
-<<<<<<< HEAD
+
     function __construct()
     {
         parent:: __construct();  
         $this->isLoggedIn();   
         $this->load->model('admin/Doctor_model', 'app');
-=======
-    function __construct() {
-        parent:: __construct();
-        error_reporting(0);
-        if (isset($_SESSION['logged_in'])) {
-            $this->session = $this->session->userdata('logged_in');
-            if (( $this->session['user_level'] != '1' && $this->session['user_level_status'] != '1' ) || ( $this->session['user_level'] != '2' && $this->session['user_level_status'] != '1' )) {
-                redirect('home', 'refresh');
-            }//header ('Location: '.base_url().'home '); }
-        } else {
-            redirect('login', 'refresh');
-        }
-
-
-        $this->load->helper('form');
-        $this->load->library('form_validation');
-        $this->load->library('session');
-        $this->load->model('admin/Doctor_model', 'app');
-        $this->load->helper("url");
-        $this->load->library("pagination");
->>>>>>> origin/master
     }
 
     public function index() {
-        
-        
-        
-        
-        
-        
+
         $doctors = $this->app->fetchAll();
 
         $config = array();
@@ -53,22 +27,13 @@ class Doctor extends Base {
         $this->pagination->initialize($config);
         $page = ($this->uri->segment(4)) ? $this->uri->segment(4) : 0;
         $data["results"] = $this->app->fetchAll($config["per_page"], $page);
-        $data["links"] = $this->pagination->create_links();
-<<<<<<< HEAD
-        
+        $data["links"] = $this->pagination->create_links();        
 
         $header = array('page_title' => 'All Doctor | MiConsulting');
         $content = array('headline' => 'All Doctor', 'doctors' => $data);
 
         $this->getLayout('admin/doctor/index', $header, $left, $content, $footer);
-=======
 
-        $dataCollection = array('headlines' => 'All Doctor', 'doctors' => $data);
-        $title = array('page_title' => "All Doctor | MiConsulting");
-        $this->load->view('admin/temp/headercrm', $title);
-        $this->load->view('admin/doctor/index', $dataCollection);
-        $this->load->view('admin/temp/footercrm');
->>>>>>> origin/master
     }
 
     public function add() {
@@ -116,7 +81,7 @@ class Doctor extends Base {
 //        else {
 //            $this->load->view('add_form');
 //        }
-<<<<<<< HEAD
+
         
         $doctors = array();
         
@@ -128,20 +93,6 @@ class Doctor extends Base {
         $footer = array('js' => "doctor.js"); //  Angular Js file name
 
         $this->getLayout('admin/doctor/add', $header, $left, $content, $footer);
-=======
-
-        $title = array('page_title' => "Add Doctor | MiConsulting");
-        $js = array('js' => "doctor.js");  //  Angular Js file name
-
-        $doctors = array();
-
-        $states = $this->state_city_india();
-        $dataCollection = array('headline' => 'Add Doctor', 'states' => $states, 'doctor' => $doctors);
-
-        $this->load->view('admin/temp/headercrm', $title);
-        $this->load->view('admin/doctor/add', $dataCollection);
-        $this->load->view('admin/temp/footercrm', $js);
->>>>>>> origin/master
     }
 
     public function edit() {
@@ -198,7 +149,7 @@ class Doctor extends Base {
 //            $this->load->view('add_form');
 //        }
 
-<<<<<<< HEAD
+
         $doctors = array();
         $states =  $this->state_city_india();
 
@@ -221,43 +172,19 @@ public function view() {
         $footer = array('js' => "doctor.js"); //  Angular Js file name
 
         $this->getLayout('admin/doctor/view', $header, $left, $content, $footer);
-        
-=======
-        $title = array('page_title' => "Edit Doctor | MiConsulting");
-        $js = array('js' => "doctor.js");  //  Angular Js file name
-
-        $doctors = array();
-        $states = $this->state_city_india();
-        $dataCollection = array('headline' => 'Edit Doctor', 'states' => $states, 'doctor' => $doctor[0]);
-
-        $this->load->view('admin/temp/headercrm', $title);
-        $this->load->view('admin/doctor/edit', $dataCollection);
-        $this->load->view('admin/temp/footercrm', $js);
+    
     }
 
-    public function view() {
-
-        $title = array('page_title' => "View Doctor | MiConsulting");
-        $js = array('js' => "doctor.js");  //  Angular Js file name
-        $id = $this->uri->segment('4');
-        $doctors = $this->app->fetchById($id);
-        $states = $this->state_city_india();
-        $dataCollection = array('headline' => 'View Doctor', 'states' => $states, 'doctor' => $doctors);
-        $this->load->view('admin/temp/headercrm', $title);
-        $this->load->view('admin/doctor/view', $dataCollection);
-        $this->load->view('admin/temp/footercrm', $js);
-    }
     public function profile() {
 
-        $title = array('page_title' => "Doctor profile | MiConsulting");
-        $js = array('js' => "doctor.js");  //  Angular Js file name
         $id = $this->uri->segment('4');
         $doctors = $this->app->fetchById($id);
-        $dataCollection = array('headline' => 'View Doctor', 'data' => $doctors);
-        $this->load->view('admin/temp/headercrm', $title);
-        $this->load->view('admin/doctor/profile', $dataCollection);
-        $this->load->view('admin/temp/footercrm', $js);
->>>>>>> origin/master
+
+        $header = array('page_title' => 'Doctor profile | MiConsulting');
+        $content = array('headline' => 'Doctor profile', 'data' => $doctors);
+        $footer = array('js' => "doctor.js"); //  Angular Js file name
+
+        $this->getLayout('admin/doctor/profile', $header, $left, $content, $footer);
     }
     
     public function slotTime() {
@@ -310,25 +237,19 @@ public function view() {
                     }
                 }
                 
-               unset($savedata); 
+               unset($savedata);
                 
             }
         }
 
-        $title = array('page_title' => " Doctor Slot | MiConsulting");
-        $js = array('js' => "doctor.js");  //  Angular Js file name
-
         $doctors = array();
         $states = $this->state_city_india();
         
-        //  
-        
-        //$doctor[0]['slotData'] = $slotData;
-        $dataCollection = array('headline' => ' Doctor Slot', 'doctor' => $doctor[0],'existSlot' => $slotData);
+        $header = array('page_title' => 'Doctor Slot | MiConsulting');
+        $content = array('headline' => 'Doctor Slot', 'doctor' => $doctor[0],'existSlot' => $slotData);
+        $footer = array('js' => "doctor.js"); //  Angular Js file name
 
-        $this->load->view('admin/temp/headercrm', $title);
-        $this->load->view('admin/doctor/slot', $dataCollection);
-        $this->load->view('admin/temp/footercrm', $js);
+        $this->getLayout('admin/doctor/slot', $header, $left, $content, $footer);
     }
 
     public function ajax() {

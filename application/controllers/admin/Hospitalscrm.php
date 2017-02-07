@@ -50,13 +50,10 @@ class Hospitalscrm extends Base {
   
 
   public function addhospital()
-<<<<<<< HEAD
-  {   
-=======
   {
       
     $message='';
->>>>>>> origin/master
+
     if(isset($_POST['send']) && ($_POST['send']=="1"))
     {
          
@@ -65,87 +62,38 @@ class Hospitalscrm extends Base {
         $folder="assets/img/hospitals/";
         $move=$folder.$pic;
         move_uploaded_file($_FILES['hospital_image']['tmp_name'],$move);
-<<<<<<< HEAD
-        $hospList=$this->model->addhospitalDetail($_POST,$pic);
-    
+
+        $hospList=$this->model->addhospitalDetail($_POST,$pic,$this->session['user_id']);
+        $message="Hospital Added Successfully";
     }
     
     $hospList=$this->model->gethospitallist();
     $speciliztion=$this->model->getspeciliztions();
 
     $header = array('page_title' => 'Add Hospital | MiConsulting');
-    $content = array('headline'=>'Add Hospital','hospList'=>$hospList,'speciliztion'=>$speciliztion);
+    $content = array('headline'=>'Add Hospital','hospList'=>$hospList,'speciliztion'=>$speciliztion,'message'=>$message);
     $this->getLayout('admin/hospitalscrm/addhospital', $header, $left, $content, $footer);
 
-=======
-        $hospList=$this->app->addhospitalDetail($_POST,$pic,$this->session['user_id']);
-        $message="Hospital Added Successfully";
-    }
-    
-    $hospList=$this->app->gethospitallist();
-    $speciliztion=$this->app->getspeciliztions();
-    
-    $data1 = array(
-        'page_title' => 'Add Hospital | MiConsulting'
-    );
-    $data=array("headline"=>"Add Hospital",'hospList'=>$hospList,'speciliztion'=>$speciliztion,'message'=>$message);
-    
-    $this->load->view('admin/temp/headercrm',$data1);
-    $this->load->view('admin/hospitalscrm/addhospital',$data);
-    $this->load->view('admin/temp/footercrm');
->>>>>>> origin/master
 
   }
   public function addhospitalname(){
   
     $hospitalName=$_GET['hospitl'];
-<<<<<<< HEAD
-    $hsp=$this->model->addHospitalname($hospitalName);
-=======
+
     if($hospitalName!=''){
-    $hsp=$this->app->addHospitalname($hospitalName);
->>>>>>> origin/master
+    $hsp=$this->model->addHospitalname($hospitalName);
+
     if(count($hsp)>=1){
      //$bank=$model->insertnewbank($_GET['bankName']);
      echo '<span style="color:green;" >'.$hospitalName.' Add Successfully</sapn>'; 
     }else{
      echo '<span style="color:red;" >'.$hospitalName.' Already Exist </span>'; 
     }
-<<<<<<< HEAD
-    
-  }
-  public function updateGetNewHospital(){
-      
-      $hospList=$this->model->gethospitallist();
-      $html='';
-     foreach($hospList as $val):
-      $html.='<option value="'.$val->id.'_'.$val->name.'">'.$val->name.'</option>' ;  
-     endforeach;
-     $html.='<option value="oth">Other</option>' ;  
-     echo $html;
-  }
-=======
     }else{
      echo '<span style="color:red;" >Please Enter Hospital Name.</span>';  
     }
 }
-public function updateGetNewHospital(){
-    
-    $hospList=$this->app->gethospitallist();
-    $html='';
-   foreach($hospList as $val):
-    $html.='<option value="'.$val->id.'_'.$val->name.'">'.$val->name.'</option>' ;  
-   endforeach;
-   $html.='<option value="oth">Other</option>' ;  
-   echo $html;
-}
-  public function viewhospital(){
-    $hospital = $this->app->hospitalById($this->uri->segment('4')); 
-    
-  
-    $data=array('headline' => 'Hospital Profile','hospital'=>$hospital);
-    $data1=array('page_title'=>"Profile | MiConsulting");
->>>>>>> origin/master
+
     
   public function viewhospital(){
     $hospital = $this->model->hospitalById($this->uri->segment('4')); 
@@ -158,31 +106,16 @@ public function updateGetNewHospital(){
 
    public function viewhospitaldata(){
   
-<<<<<<< HEAD
-       $hospital = $this->model->hospitalById($_GET['id']); 
+       $hospital = $this->model->hospitalById($_GET['id']);
+       $specil=$this->app->getspecialization($hospital[0]->specialization);     
+       $ar=array('hospital'=>$hospital,'sepecial'=>$specil); 
        echo json_encode($hospital); 
-=======
-       $hospital = $this->app->hospitalById($_GET['id']); 
-       $specil=$this->app->getspecialization($hospital[0]->specialization);
-     
-       $ar=array('hospital'=>$hospital,'sepecial'=>$specil);
-     
-       echo json_encode($ar); 
->>>>>>> origin/master
       
   }
+  
   public function edithospital()
   {
-<<<<<<< HEAD
        
-    if(isset($_POST['send']) && ($_POST['send']=="1")){
-
-      $hospList=$this->model->edithospitalDetail($_POST,$this->uri->segment('4'));
-    }
-    
-    $editdata=$this->model->hospitalById($this->uri->segment('4')); 
-    $hospList=$this->model->gethospitallist();
-=======
     $message=''; 
     if(isset($_POST['send']) && ($_POST['send']=="1"))
     {
@@ -190,18 +123,12 @@ public function updateGetNewHospital(){
       $message='Updated Successfully';
     }
     $speciliztion=$this->app->getspeciliztions();
-    $editdata=$this->app->hospitalById($this->uri->segment('4')); 
+    $editdata=$this->model->hospitalById($this->uri->segment('4')); 
     $specil=$this->app->getspecialization($editdata[0]->specialization);
-    $hospList=$this->app->gethospitallist();
-    $data1 = array( 'page_title' => 'Add Hospital | MiConsulting');
-    $data=array("headline"=>"Add Hospital",'hospList'=>$hospList,'editdata'=>$editdata,'message'=>$message,'specil'=>$specil,'speciliztion'=>$speciliztion);    
-    $this->load->view('admin/temp/headercrm',$data1);
-    $this->load->view('admin/hospitalscrm/edithospital',$data);
-    $this->load->view('admin/temp/footercrm');
->>>>>>> origin/master
-
+    $hospList=$this->model->gethospitallist();
+    
     $header = array('page_title' => 'Add Hospital | MiConsulting');
-    $content = array('headline'=>'Add Hospital','hospList'=>$hospList,'editdata'=>$editdata);
+    $content = array('headline'=>'Add Hospital','hospList'=>$hospList,'editdata'=>$editdata,'message'=>$message,'specil'=>$specil,'speciliztion'=>$speciliztion);
     $this->getLayout('admin/hospitalscrm/edithospital', $header, $left, $content, $footer);
   }
   
