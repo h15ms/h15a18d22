@@ -17,7 +17,7 @@ class Base extends CI_Controller
 	{
 		if(isset($_SESSION['logged_in'])){
 
-		  if(( $this->session['user_level'] != '1' && $this->session['user_level_status'] != '1' ) || ( $this->session['user_level'] != '2' && $this->session['user_level_status'] != '1' ))
+		  if(( $this->session['user_level'] != '1' && $this->session['user_level_status'] != '1' ) || ( $this->session['user_level'] != '2' && $this->session['user_level_status'] != '1' ) || ( $this->session['user_level'] != '3' && $this->session['user_level_status'] != '1' ) || ( $this->session['user_level'] != '4' && $this->session['user_level_status'] != '1' ))
 		  {  
 		  	redirect('home','refresh');
 		  }
@@ -25,6 +25,20 @@ class Base extends CI_Controller
 		}else{
 		  redirect('login','refresh');
 		} 
+	} 	
+
+	public function access()
+	{
+		$user_level = $this->session['user_level'];
+		if($user_level == '1'){
+			return "admin";
+		}elseif($user_level == '2'){
+			return "agent";
+		}elseif($user_level == '3'){
+			return "member";
+		}elseif($user_level == '4'){
+			return "customer";
+		}
 	} 
 
 
