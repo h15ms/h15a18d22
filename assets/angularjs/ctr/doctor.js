@@ -1,3 +1,6 @@
+var BASEURL = 'http://localhost/h15a18d22/';
+
+
 angular
         .module('admin', [])
         .run(function ($rootScope) {
@@ -260,15 +263,7 @@ angular
 //                  ,
 //                    'AU': {'New South Wales': ['Sydney'], 'Victoria': ['Melbourne'] }
                 };
-
-
-                // $scope.GetState($scope.country);
-
-                // console.log($scope.states['IN']);
-                // console.log($scope.states['UK']);
-                //  console.log($scope.states['IN']);
-
-
+                
                 $scope.GetState = function () {
                    // console.log($scope.states[$scope.country]);
                     var option = '';
@@ -293,39 +288,73 @@ angular
                 
                 
                 
-                
-                //  Data Post //
-                
-               /// alert($scope.country);
-                //submitForm
-//                $scope.submitForm = function (){
-//                     
-//                     $scope.formAdata.country = $scope.country;
-//                     $scope.formAdata.state = $('#state').val();//$scope.state;
-//                    console.log($.param($scope.formAdata));
-//                    
-//                    
-//                    
-//                    $http({
-//                        url: "http://localhost/h15a18d22/admin/doctor/add",
-//                        method: "POST",
-//                        headers: {'Content-Type': 'application/json'},
-//                        data: $.param($scope.formAdata)
-//                    }).success(function (data, status, headers, config) {
-//                        $scope.status = status;
-//                    }).error(function (data, status, headers, config) {
-//                        $scope.status = status;
-//                    });
-//                }
+            }
+        ]).controller('appointmentController', ['$scope','$http', '$sce','$filter',function ($scope,$http, $sce,$filter) {
                 
                 
+                $http.get(BASEURL + "admin/doctor/slotTime/2").then(
+                        function (response) {
+                          //  var slotsData = response.data; 
+                            //$scope.slots = response.data; 
+                            
+                            
+                            alert(JSON.stringify(response.data));
+                            console.log(JSON.parse(response.data));
+                              angular.forEach(response.data, function (value, key) {
+                                      console.log(value + ": ===> " + key);
+                            });
+                            
+                            
+                            
+                            
+                            
+                            
+                });
                 
                 
+                //console.log(slotsData);
                 
-                // End Here 
+              
                 
                 
                 
+                 
+                 // var today = new Date();  //  9:30:AM - 10:45:PM
+//            $scope.ddMMyyyy = $filter('date')(new Date(), 'dd/MM/yyyy');
+//            $scope.ddMMMMyyyy = $filter('date')(new Date(), 'dd, MMMM yyyy');
+//            $scope.HHmmss = $filter('date')(new Date(), 'HH:mm:ss');
+//            $scope.hhmmsstt = $filter('date')(new Date(), 'hh:mm:ss a');
+            
+            $scope.today = new Date();
+            $scope.currentTime = $filter('date')(new Date(), 'hh:mm:ss a');
+                 
+                 alert($scope.currentTime);
+                 
+                 
+                 var d2 = new Date();
+                 var d1 = new Date("2014-02-02 23:54:04");
+                 
+                 var h1 = new Date('9:30:AM');
+                 var h2 = new Date('03:47:25 PM');
+                 
+               //  alert(((d2-d1)/1000).toString());
+                 
+                 if(h1 > h2){
+                     alert('h1');
+                 }else{
+                     alert('h2');
+                 }
+                 
+                 
+                 //  Appointment
+                 
+                 console.log($scope.date);
+                
+
+                $scope.appointmentList = [
+                    {name: 'Afghanistan', code: 'AF'},
+                    {name: 'Zimbabwe', code: 'ZW'}
+                ];
                 
             }
         ]);

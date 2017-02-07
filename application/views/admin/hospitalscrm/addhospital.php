@@ -1,5 +1,9 @@
 <style>
+<<<<<<< HEAD
     .ms-options ul li{
+=======
+    .ms-options ul li {
+>>>>>>> origin/master
         list-style: none;
     }
     </style>
@@ -13,10 +17,10 @@
             <ol class="breadcrumb">
                 <li><a href="<?php echo base_url()?>admin">Dashboard</a></li>
                 <li><a href="<?php echo base_url()?>admin/hospitalscrm">Hospitals</a></li>
-                <li class='active'><?php echo $headline; ?></li>
+                <li class='active'><?php echo $headline; ?> </li>
             </ol>
 
-            <h1><?php echo $headline; ?></h1>
+            <h1><?php echo $headline; ?></h1>  <h3><?php echo $message ? '<span style="color:green">'.$message.'</span>' :'' ; ?></h3>
             <div class="options">
                 <div class="btn-toolbar">
                 	<a href="<?php echo base_url()?>admin/hospitalscrm" class="btn btn-default hidden-xs"><i class="fa fa-files-o"></i> All Hospitals</a>
@@ -36,11 +40,13 @@
     <div class="col-sm-12">
         <div class="panel panel-inverse">
             <div class="panel-heading">
-                <h4><i class="fa fa-hospital-o"></i> <span>Add Hospitals</span></h4>                         
+                <h4><i class="fa fa-hospital-o"></i> <span>Add Hospitals</span></h4>     
+               
             </div>
-          <div class="panel-body collapse in">                                  
+            <div class="panel-body collapse in" >                                  
            
-              <form method="post" action="hospitalscrm/addhospital'?>" role="form" enctype="multipart/form-data" >
+              
+              <form method="post" enctype="multipart/form-data" >
             <input type="hidden" name="send" value="1">                        
               
             <div class="col-xs-12 col-sm-12 col-md-12"> 
@@ -114,16 +120,21 @@
                </div>
 <!--                        {{specilization[0].id}}-->
                  <div class="col-xs-6 col-sm-6 col-md-6 form-group">   
-                     <label>Specialization <span style="font-size: 8px;"></span></label>
+                     <label>Specialization <span style="font-size: 8px;">(Add comma ( , ) seprated value with )</span></label>
 <!--               <input type="text" class="form-control" name="specialization"  id="specialization" value="" placeholder="Specialization" required>-->
                      
-                 <select name="specialization[]" multiple id="specialization">
-                    <?php       
-                        foreach($speciliztion as $val){ ?>
-                            <option value="<?php echo $val->id; ?>"><?php  echo $val->sepcialization; ?></option>
-                        <?php } ?>
+<!--                     <select class="form-control" ng-repeat="x in specilization" multiple name="specialization[]"  id="specialization">
+                         
+                         <option value="{{x.id}}">{{x.sepcialization}}</option>
+                         
+                     </select>-->
+                     <select name="specialization[]" multiple id="specialization">
+                    <?php foreach($speciliztion as $val ){?>
 
-                 </select>
+                          <option value="<?php echo $val->id;?>"><?php echo $val->sepcialization ;?></option>
+                          <?php } ?>
+
+                  </select>
                </div>
             </div>
             

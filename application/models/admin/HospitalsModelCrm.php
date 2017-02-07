@@ -41,9 +41,21 @@ class HospitalsModelcrm extends CI_Model
             return false;
         }   
   }
+  public function getspecialization($inids){
+     
+      $query=$this->db->query('SELECT sepcialization FROM mi_specialization where id IN ('.$inids.')');
+
+      return   $res=$query->result();
+  
+       
+  }
  public function getallhospitallist(){
     $this->db->select('*, d.id appID')->from(PR.'hospital_detail  d');
+<<<<<<< HEAD
     $this->db->join(PR.'hospital  h' , 'h.id=d.	hospital_id ', 'left');
+=======
+    $this->db->join('mi_hospital  h' , 'h.id=d.	hospital_id ', 'left');
+>>>>>>> origin/master
     $this->db->where(array('h.status'=>1, 'd.status'=>1));
     $this->db->order_by('d.id','asc');         
     $getdata = $this->db->get(); 
@@ -85,11 +97,18 @@ public function addHospitalname($arr){
       return $insertID;
 }
 
+<<<<<<< HEAD
 public function addhospitalDetail($arr,$pic){
    $hosId=explode('_',$arr['hospitalssel']); 
 
       
       $data=array('hospital_id'=>$hosId[0],
+=======
+public function addhospitalDetail($arr,$pic,$userID){
+        $hosId=explode('_',$arr['hospitalssel']); 
+        $specStr= implode(',', $arr['specialization']);  
+        $data=array('hospital_id'=>$hosId[0],
+>>>>>>> origin/master
           'address'=> $arr['address'],
           'city'=> $arr['city'],
           'state'=> $arr['state'],
@@ -101,8 +120,9 @@ public function addhospitalDetail($arr,$pic){
           'emergency_services'=> $arr['emergency_services'],
           'hospital_type'=> $arr['hospital_type'],
           'image'=>$pic,
-          'specialization'=> $arr['specialization'],
+          'specialization'=> $specStr,
           'createdtime'=>time(),
+<<<<<<< HEAD
           'createdby'=> $this->session['user_id'] ); 
       $insertID = $this->db->insert(PR.'hospital_detail', $data);
       return $insertID;  
@@ -112,6 +132,15 @@ public function edithospitalDetail($arr,$id){
 
 
       $data=array(
+=======
+          'createdby'=> $userID ); 
+      
+      $insertID = $this->db->insert(PR.'hospital_detail', $data);
+      return $insertID;  
+} 
+public function edithospitalDetail($arr,$id,$userID){
+           $data=array(
+>>>>>>> origin/master
           'address'=> $arr['address'],
           'city'=> $arr['city'],
           'state'=> $arr['state'],
@@ -122,10 +151,9 @@ public function edithospitalDetail($arr,$id){
           'distance_from_airport'=>$arr['distance_from_airport'],
           'emergency_services'=> $arr['emergency_services'],
           'hospital_type'=> $arr['hospital_type'],
-        
           'specialization'=> $arr['specialization'],
           'createdtime'=>time(),
-           ); 
+          'createdby'=>$userID); 
             
             $this->db->where('id',$id);
             $this->db->update(PR.'hospital_detail',$data);
@@ -136,10 +164,6 @@ public function udpatehospitalstatus($id){
    //$hosId=explode('_',$arr['hospitalssel']); 
     
   
-        
-
-
-
       $data=array(
          
           'status'=>0,

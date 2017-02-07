@@ -18,7 +18,7 @@ define('ASSETS', base_url() . 'assets/');
     <link rel="stylesheet" href="<?php echo URL_ADMIN;?>fonts/font-awesome/css/font-awesome.css">
     <link href='<?php echo URL_ADMIN;?>demo/variations/default.css' rel='stylesheet' type='text/css' media='all' id='styleswitcher'>     
     <link href='<?php echo URL_ADMIN;?>demo/variations/header-white.css' rel='stylesheet' type='text/css' media='all' id='headerswitcher'> 
-    <link rel='stylesheet' type='text/css' href='<?php echo URL_ADMIN;?>css/jquery.multiselect.css' />
+    
     <link rel='stylesheet' type='text/css' href='<?php echo URL_ADMIN;?>plugins/form-daterangepicker/daterangepicker-bs3.css' />
     <link rel='stylesheet' type='text/css' href='<?php echo URL_ADMIN;?>plugins/fullcalendar/fullcalendar.css' />
     <link rel='stylesheet' type='text/css' href='<?php echo URL_ADMIN;?>plugins/form-markdown/css/bootstrap-markdown.min.css' />
@@ -35,6 +35,8 @@ define('ASSETS', base_url() . 'assets/');
     <link rel='stylesheet' type='text/css' href='<?php echo URL_ADMIN;?>plugins/jquery-fileupload/css/jquery.fileupload-ui.css' />
      <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"> -->
     <link rel='stylesheet' type='text/css' href='<?php echo URL_ADMIN;?>plugins/dropzone/css/dropzone.css' />
+    <link rel='stylesheet' type='text/css' href='<?php echo URL_ADMIN;?>css/jquery.multiselect.css' />
+    
     <script type='text/javascript' src='<?php echo URL_ADMIN ; ?>js/less.js'></script>
     
 
