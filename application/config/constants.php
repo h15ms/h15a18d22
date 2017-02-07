@@ -355,6 +355,7 @@ $slot = array(
 );
 
 
+
 defined('SLOT')  OR define('SLOT', serialize($slot)); // SLOT
 
 
@@ -407,3 +408,9 @@ $USER_PERMISSION['PATIENT']  = array('SELF'=>'RW');
 
 
 defined('USER_PERMISSION')  OR define('USER_PERMISSION', serialize($USER_PERMISSION)); // USER PERMISSION
+
+defined('SLOT')  OR define('SLOT', serialize($slot)); // SLOT
+
+$days = array('Su'=>"Sunday",'Mo'=> "Monday",'Tu'=> "Tuesday", 'We'=>"Wednesday",'Th'=> "Thursday", 'Fr'=>"Friday", 'Sa'=>"Saturday"); 
+defined('DAYS')  OR define('DAYS', serialize($days)); // SLOT
+
