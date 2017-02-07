@@ -1,36 +1,19 @@
 <?php
-class Usercrm extends CI_Controller
-{
 
-  public $session;
+defined('BASEPATH') OR exit('No direct script access allowed');
+require_once('Base.php');
+class Usercrm extends Base
+{
 
   function __construct()
   {
-    parent:: __construct();
-    error_reporting(0);
-    if(isset($_SESSION['logged_in'])){
-      $this->session = $this->session->userdata('logged_in');
-      if(( $this->session['user_level'] != '1' && $this->session['user_level_status'] != '1' ) || ( $this->session['user_level'] != '2' && $this->session['user_level_status'] != '1' ) ){  redirect('home','refresh');}//header ('Location: '.base_url().'home '); }
-    }else{
-      redirect('login','refresh');
-    }      
-
-      $this->load->model('admin/userModelCrm' , 'model');
-
+    parent:: __construct();   
+    $this->isLoggedIn();
+    $this->load->model('admin/userModelCrm' , 'model');
   }
-
-    
-
-    
+   
   public function index() 
   { 
-    $title         = "Manage Agents | MiConsulting";
-    $headline      = "Manage Agents";
-    
-    $data1 = array(
-        'page_title' => 'Manage Agents | MiConsulting'
-    );
-    // print_r($this->session);
 
     if($this->session['user_level'] == '1'){
       $users=$this->model->allUsersAdmin();
@@ -38,48 +21,60 @@ class Usercrm extends CI_Controller
       $users=$this->model->allUsersAgent($this->session['user_id']);
     }
 
-    $data = array('headline'=>$headline,'users'=>$users);
-    $this->load->view('admin/temp/headercrm',$data1 );
-    $this->load->view('admin/usercrm/index',$data);
-    $this->load->view('admin/temp/footercrm',$data);
+    $header = array('page_title' => 'Manage Agents | MiConsulting ');
+    $content = array('headline'=>'Manage Agents','users'=>$users);
+
+    $this->getLayout('admin/usercrm/index', $header, $left, $content, $footer);
+
   }
 
     
   public function user() 
   {
-    $data1 = array(
-        'page_title' => 'Edit employees | MiConsulting'
-    );
-  
+
    $page = $this->model->user($this->uri->segment('4'));
-     
-    if($this->session['user_level'] == '1'){
-     $users = $this->model->allUsersAdmin();
-    }else{
-      $users=$this->model->allUsersAgent($this->session['user_id']);
-    }
+   
+   if($this->session['user_level'] == '1'){
+    $users = $this->model->allUsersAdmin();
+   }elseif($this->session['user_level'] == '2'){
+     $users=$this->model->allUsersAgent($this->session['user_id']);
+   }
 
-    $data=array('headline'=>"Edit employees","page"=>$page,"user"=>$users);
+    $header = array('page_title' => 'Edit employees | MiConsulting ');
+    $content = array('headline'=>'Edit employees','page'=>$page,'user'=>$users);
 
-    $this->load->view('admin/temp/headercrm',$data1);
-    $this->load->view('admin/usercrm/user',$data);
-    $this->load->view('admin/temp/footercrm');
+    $this->getLayout('admin/usercrm/user', $header, $left, $content, $footer);
+
   }  
 
 
+  public function allEmployee() 
+  {
+
+   $id = $this->session['user_id'];
+   $users = $this->model->allEmployee($id);
+
+    //$data=array('headline'=>"All Employees","page"=>$page,"user"=>$users);
+
+
+    $header = array('page_title' => 'All employees | MiConsulting ');
+    $content = array('headline'=>'Edit employees','page'=>$page,'user'=>$users);
+
+    $this->getLayout('admin/usercrm/employee', $header, $left, $content, $footer);
+
+
+  }  
+
   public function employee() 
   {
-    $data1 = array(
-        'page_title' => 'Edit employees | MiConsulting'
-    );
   
-   $users = $this->model->allEmployee($this->uri->segment('4'));
+    $users = $this->model->employee($this->uri->segment('4'));
 
-    $data=array('headline'=>"Manage Employees","page"=>$page,"user"=>$users);
+    $header = array('page_title' => 'Edit employees | MiConsulting');
+    $content = array('headline'=>'Manage Employees','page'=>$page,'user'=>$users);
 
-    $this->load->view('admin/temp/headercrm',$data1);
-    $this->load->view('admin/usercrm/employee',$data);
-    $this->load->view('admin/temp/footercrm');
+    $this->getLayout('admin/usercrm/employee', $header, $left, $content, $footer);
+
   }
 
   public function userUpdate(){
@@ -99,15 +94,11 @@ class Usercrm extends CI_Controller
     
   public function adduser()
   {
-  
-    $data1 = array(
-        'page_title' => 'Add employee | MiConsulting'
-    );
-    $data=array("headline"=>"Add employee");
-    
-    $this->load->view('admin/temp/headercrm',$data1);
-    $this->load->view('admin/usercrm/adduser',$data);
-    $this->load->view('admin/temp/footercrm');
+
+    $header = array('page_title' => 'Add employees | MiConsulting');
+    $content = array('headline'=>'Add employee');
+
+    $this->getLayout('admin/usercrm/adduser', $header, $left, $content, $footer);
   }
   
   public function delUser(){
@@ -176,19 +167,21 @@ public function addNewUser(){
         }
 
       }else{
-        
-        $data = array('userexist' => '1');
-        $this->load->view('admin/temp/headercrm',$data1);
-        $this->load->view('admin/usercrm/adduser',$data);
-        $this->load->view('admin/temp/footercrm');
       
+
+      $header = array('page_title' => 'Add employees | MiConsulting');
+      $content = array('headline'=>'Add employee','userexist' => '1');
+
+      $this->getLayout('admin/usercrm/adduser', $header, $left, $content, $footer);
+
+
       }
 
 
 
     }   
  }
-  
+
 
 
   

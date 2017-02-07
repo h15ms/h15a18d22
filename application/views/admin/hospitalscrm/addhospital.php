@@ -1,4 +1,4 @@
-<STYLE>
+<style>
     .ms-options ul li{
         list-style: none;
     }

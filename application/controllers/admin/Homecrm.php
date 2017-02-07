@@ -1,75 +1,52 @@
 <?php
 
-class Homecrm extends CI_Controller {
+defined('BASEPATH') OR exit('No direct script access allowed');
+require_once('Base.php');
+class Homecrm extends Base {
 
-
-  public $session;
 
   function __construct()
   {
-    parent:: __construct();
-    error_reporting(0);
-    if(isset($_SESSION['logged_in'])){
-      $this->session = $this->session->userdata('logged_in');
-      if(( $this->session['user_level'] != '1' && $this->session['user_level_status'] != '1' ) || ( $this->session['user_level'] != '2' && $this->session['user_level_status'] != '1' ) ){  redirect('home','refresh');}//header ('Location: '.base_url().'home '); }
-    }else{
-      redirect('login','refresh');
-    }      
-     
-
-      $this->load->model('admin/HomeModelCrm' , 'hmc'); 
-      
-
+    parent:: __construct();     
+    $this->isLoggedIn();
+    $this->load->model('admin/HomeModelCrm' , 'model'); 
   }
 
 
   public function index() {
 
-      $countnewapplys = $this->hmc->countNewApplys();
-      $countApplys = $this->hmc->countApplys();
-      $allNewApplys = $this->hmc->allNewApplys();
-      $allUpdatedApplys = $this->hmc->allUpdatedApplys();
+    $countnewapplys = $this->model->countNewApplys();
+    $countApplys = $this->model->countApplys();
+    $allNewApplys = $this->model->allNewApplys();
+    $allUpdatedApplys = $this->model->allUpdatedApplys();
 
-      $data = array(
-          'headline' => "Dashboard",
-          'countnewapplys' => $countnewapplys,
-          'countapplys' => $countApplys,
-          'allnewapplys' => $allNewApplys,
-          'allupdatedapplys' => $allUpdatedApplys
-      );
-        $data1=array('page_title'=>"Dashboard | MiConsulting");
-        $this->load->view('admin/temp/headercrm' , $data1);
-        $this->load->view('admin/homecrm/index', $data);
-        $this->load->view('admin/temp/footercrm');
-    }
+    $header = array('page_title' => 'Dashboard | MiConsulting');
+    $content = array('headline' => "Dashboard", 'countnewapplys' => $countnewapplys, 'countapplys' => $countApplys, 'allnewapplys' => $allNewApplys, 'allupdatedapplys' => $allUpdatedApplys);
+
+    $this->getLayout('admin/homecrm/index', $header, $left, $content, $footer);
+
+
+  }
     
- public function applyprofil() {
+  public function applyprofil() {
       
-      $apply = $this->hmc->applyById($this->uri->segment('4')); 
-   
-      $data = array(
-          'headline' => "Application Profile",
-          'apply' => $apply);
-        $data1=array('page_title'=>"Application Profile | MiConsulting");
-        $this->load->view('admin/temp/headercrm' , $data1);
-        $this->load->view('admin/applycrm/profil', $data);
-        $this->load->view('admin/temp/footercrm');
-    } 
+    $apply = $this->model->applyById($this->uri->segment('4')); 
+    $header = array('page_title' => 'Application Profile | MiConsulting');
+    $content = array('headline'=>'Application Profile','apply' => $apply);
+
+    $this->getLayout('admin/applycrm/profil', $header, $left, $content, $footer);
+
+  } 
 
     public function editProfile() {
-         
-      $sess = $this->session->userdata();
-      $id = $sess['logged_in']['user_id'];
-      $data1 = $this->hmc->editProfile($id);
 
-      $data = array(
-          'headline' => "Edit Profile",
-          'data' => $data1['0']
-        );
+      $out = $this->model->editProfile($this->session['user_id']);
 
-      $this->load->view('admin/temp/headercrm');
-      $this->load->view('admin/homecrm/editprofile', $data);
-      $this->load->view('admin/temp/footercrm');
+      $header = array('page_title' => 'Application Profile | MiConsulting');
+      $content = array('headline'=>'Edit Profile','data' => $out['0']);
+
+      $this->getLayout('admin/homecrm/editprofile', $header, $left, $content, $footer); 
+  
     }
 
     public function editProfileAction() {
@@ -85,8 +62,8 @@ class Homecrm extends CI_Controller {
         'avatar' => $this->input->post('avatar')
         );
 
-      $data1 = $this->hmc->editProfileAction($data);
-      echo $data1;
+      $out = $this->model->editProfileAction($data);
+      echo $out;
       
     }
  

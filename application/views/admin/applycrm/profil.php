@@ -149,6 +149,8 @@
                         echo "Confirmed";
                     }elseif($apply[0]->status=="3"){ 
                       echo "Rejected";
+                    }elseif($apply[0]->status=="4"){ 
+                      echo "Closed";
                     }
                   ?>
                   

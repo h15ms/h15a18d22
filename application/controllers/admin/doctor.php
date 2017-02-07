@@ -1,28 +1,15 @@
 <?php
 
-class Doctor extends CI_Controller {
+defined('BASEPATH') OR exit('No direct script access allowed');
+require_once('Base.php');
 
-    public $session;
+class Doctor extends Base {
 
     function __construct()
     {
-      parent:: __construct();
-      error_reporting(0);
-      if(isset($_SESSION['logged_in'])){
-        $this->session = $this->session->userdata('logged_in');
-        if(( $this->session['user_level'] != '1' && $this->session['user_level_status'] != '1' ) || ( $this->session['user_level'] != '2' && $this->session['user_level_status'] != '1' ) ){  redirect('home','refresh');}//header ('Location: '.base_url().'home '); }
-      }else{
-        redirect('login','refresh');
-      }      
-    
-      
-        $this->load->helper('form');
-        $this->load->library('form_validation');
-        $this->load->library('session');
+        parent:: __construct();  
+        $this->isLoggedIn();   
         $this->load->model('admin/Doctor_model', 'app');
-        $this->load->helper("url");
-        $this->load->library("pagination");
-
     }
 
     public function index() {
@@ -40,11 +27,11 @@ class Doctor extends CI_Controller {
         $data["results"] = $this->app->fetchAll($config["per_page"], $page);
         $data["links"] = $this->pagination->create_links();
         
-        $dataCollection = array('headlines' => 'All Doctor', 'doctors' => $data);
-        $title = array('page_title' => "All Doctor | MiConsulting");
-        $this->load->view('admin/temp/headercrm', $title);
-        $this->load->view('admin/doctor/index', $dataCollection);
-        $this->load->view('admin/temp/footercrm');
+
+        $header = array('page_title' => 'All Doctor | MiConsulting');
+        $content = array('headline' => 'All Doctor', 'doctors' => $data);
+
+        $this->getLayout('admin/doctor/index', $header, $left, $content, $footer);
     }
 
     public function add() {
@@ -92,19 +79,17 @@ class Doctor extends CI_Controller {
 //        else {
 //            $this->load->view('add_form');
 //        }
-
-        $title = array('page_title' => "Add Doctor | MiConsulting");
-        $js = array('js' => "doctor.js");  //  Angular Js file name
         
         $doctors = array();
         
-        $states =  $this->state_city_india();
-        $dataCollection = array('headline' => 'Add Doctor','states'=>$states, 'doctor' => $doctors);
-        
-        $this->load->view('admin/temp/headercrm', $title);
-        $this->load->view('admin/doctor/add', $dataCollection);
-        $this->load->view('admin/temp/footercrm',$js );
-        
+        $states =  $this->state_city_india();        
+
+
+        $header = array('page_title' => 'Add Doctor | MiConsulting');
+        $content = array('headline' => 'Add Doctor','states'=>$states, 'doctor' => $doctors);
+        $footer = array('js' => "doctor.js"); //  Angular Js file name
+
+        $this->getLayout('admin/doctor/add', $header, $left, $content, $footer);
     }
     
     public function edit() {
@@ -161,29 +146,28 @@ class Doctor extends CI_Controller {
 //            $this->load->view('add_form');
 //        }
 
-        $title = array('page_title' => "Edit Doctor | MiConsulting");
-        $js = array('js' => "doctor.js");  //  Angular Js file name
-        
         $doctors = array();
         $states =  $this->state_city_india();
-        $dataCollection = array('headline' => 'Edit Doctor','states'=>$states, 'doctor' => $doctor[0]);
-        
-        $this->load->view('admin/temp/headercrm', $title);
-        $this->load->view('admin/doctor/edit', $dataCollection);
-        $this->load->view('admin/temp/footercrm',$js );
+
+        $header = array('page_title' => 'Edit Doctor | MiConsulting');
+        $content = array('headline' => 'Edit Doctor','states'=>$states, 'doctor' => $doctor[0]);
+        $footer = array('js' => "doctor.js"); //  Angular Js file name
+
+        $this->getLayout('admin/doctor/edit', $header, $left, $content, $footer);
         
     }
 public function view() {
          
-        $title = array('page_title' => "View Doctor | MiConsulting");
-        $js = array('js' => "doctor.js");  //  Angular Js file name
+
         $id = $this->uri->segment('4');
         $doctors = $this->app->fetchById($id);
         $states =  $this->state_city_india();
-        $dataCollection = array('headline' => 'View Doctor','states'=>$states, 'doctor' => $doctors);
-        $this->load->view('admin/temp/headercrm', $title);
-        $this->load->view('admin/doctor/view', $dataCollection);
-        $this->load->view('admin/temp/footercrm',$js );
+
+        $header = array('page_title' => 'View Doctor | MiConsulting');
+        $content = array('headline' => 'View Doctor','states'=>$states, 'doctor'=> $doctors);
+        $footer = array('js' => "doctor.js"); //  Angular Js file name
+
+        $this->getLayout('admin/doctor/view', $header, $left, $content, $footer);
         
     }
     

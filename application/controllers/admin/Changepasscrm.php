@@ -1,44 +1,32 @@
 <?php 
 
 if (!defined('BASEPATH')) exit('No direct script access allowed');
-
-class Changepasscrm extends CI_Controller {
-
-    public $session;
+require_once('Base.php');
+class Changepasscrm extends Base {
 
     function __construct()
     {
       parent:: __construct();
-      error_reporting(0);
-      if(isset($_SESSION['logged_in'])){
-        $this->session = $this->session->userdata('logged_in');
-        if(( $this->session['user_level'] != '1' && $this->session['user_level_status'] != '1' ) || ( $this->session['user_level'] != '2' && $this->session['user_level_status'] != '1' ) ){  redirect('home','refresh');}//header ('Location: '.base_url().'home '); }
-      }else{
-        redirect('login','refresh');
-      }
-
-       $this->load->model('admin/ChangepassModelCrm' , 'model');
+      $this->load->model('admin/ChangepassModelCrm' , 'model');
+      $this->isLoggedIn();
     }  
 
 
     public function index() 
     { 
-      $data1 = array('page_title' => 'Change Password | MiConsulting');
 
       $user_id = $this->session['user_id'];
       $userdata = $this->model->usersData($user_id);
-      $headline = "Change Password";
       $send = $this->input->post('send');
       
       if(isset($send)){
-        $res = $this->Changepassword($this->input->post() , $userdata);
+        $out = $this->Changepassword($this->input->post() , $userdata);
       }
 
-      $data = array('headline' => $headline,'user' => $userdata, 'result' => $res);
+      $header = array('page_title' => 'Change Password | MiConsulting');
+      $content = array('headline'=>'Change Password', 'user' => $userdata, 'result' => $out);
 
-      $this->load->view('admin/temp/headercrm',$data1 );
-      $this->load->view('admin/chngpw/index',$data);
-      $this->load->view('admin/temp/footercrm',$data);
+      $this->getLayout('admin/chngpw/index', $header, $left, $content, $footer);
     }
 
     public function Changepassword($data , $profileData)

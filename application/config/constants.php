@@ -354,4 +354,56 @@ $slot = array(
     'NIGHT' => array('7:45:PM', '8:00:PM', '8:15:PM', '8:30:PM', '8:45:PM', '9:00:PM', '9:15:PM', '9:30:PM', '9:45:PM', '10:00:PM', '10:15:PM', '10:30:PM', '10:45:PM')
 );
 
+
 defined('SLOT')  OR define('SLOT', serialize($slot)); // SLOT
+
+
+
+//  AUTHENTICATION
+
+
+$role['ROLE'] = array(
+    'ADMIN'=>array(
+        'ADMIN',
+        'EMBASSY',
+        'AGENT',
+        'EMPLOYEE',
+        'CUSTOMER',
+        'PATIENT'
+        ),
+    'EMBASSY'=>array(
+        'EMBASSY',
+        'AGENT',
+        'EMPLOYEE',
+        'CUSTOMER',
+        'PATIENT'
+        ),
+    'AGENT'=>array(
+        'AGENT',
+        'EMPLOYEE',
+        'CUSTOMER',
+        'PATIENT'
+        ),
+    'EMPLOYEE'=>array(
+        'EMPLOYEE',
+        'CUSTOMER',
+        'PATIENT'
+        ),
+    'CUSTOMER'=>array(
+        'CUSTOMER'
+        ),
+    'PATIENT'=>array(
+        'PATIENT'
+        ));
+
+defined('ROLE') OR define('ROLE', serialize($role)); 
+
+$USER_PERMISSION = array();
+$USER_PERMISSION['ADMIN']  = array('R','W','RW');
+$USER_PERMISSION['EMBASSY']  = array('R','W','RW');
+$USER_PERMISSION['AGENT']  = array('R','W','RW');
+$USER_PERMISSION['CUSTOMER']  = array('SELF'=>'RW');
+$USER_PERMISSION['PATIENT']  = array('SELF'=>'RW');
+
+
+defined('USER_PERMISSION')  OR define('USER_PERMISSION', serialize($USER_PERMISSION)); // USER PERMISSION
