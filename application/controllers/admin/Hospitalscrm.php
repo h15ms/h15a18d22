@@ -100,7 +100,7 @@ class Hospitalscrm extends Base {
 
     $header = array('page_title' => 'Hospital Profile | MiConsulting');
     $content = array('headline'=>'Hospital Profile','hospital'=>$hospital);
-    $this->getLayout('admin/hospitalscrm/viewhospital', $header, $left, $content, $footer);
+    $this->getLayout('admin/hospitalscrm/viewHospital', $header, $left, $content, $footer);
       
   }
 
