@@ -11,6 +11,8 @@ class Base extends CI_Controller
         error_reporting(0);
 		parent::__construct();
 		$this->session = $this->session->userdata('logged_in');
+
+
 	}
 
 	public function isLoggedIn()
@@ -46,7 +48,7 @@ class Base extends CI_Controller
 
 
 public function getLayout($view = NULL ,$header = NULL, $left = NULL, $content = NULL, $footer = NULL){
-
+	
 	$dataConfig = array();
 	$dataConfig['header'] = $header;
 	$dataConfig['left'] = $left;

@@ -8,7 +8,7 @@ class Hospitalscrm extends Base {
   {
     parent:: __construct();
     $this->isLoggedIn();
-		$this->load->model('admin/HospitalsModelCrm','model');
+    $this->load->model('admin/HospitalsModelCrm','model');
 	}
 
 

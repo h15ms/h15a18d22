@@ -414,3 +414,6 @@ defined('SLOT')  OR define('SLOT', serialize($slot)); // SLOT
 $days = array('Su'=>"Sunday",'Mo'=> "Monday",'Tu'=> "Tuesday", 'We'=>"Wednesday",'Th'=> "Thursday", 'Fr'=>"Friday", 'Sa'=>"Saturday"); 
 defined('DAYS')  OR define('DAYS', serialize($days)); // SLOT
 
+
+$user_level = array('0'=>'Developer','1'=>'Admin','2'=>'Agent','3'=>'Customer','4'=>'Member');
+defined('USER_LEVEL') OR define('USER_LEVEL' , serialize($user_level));

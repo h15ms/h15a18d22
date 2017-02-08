@@ -30,7 +30,7 @@
     <div class="col-sm-12">
         <div class="panel panel-inverse">
             <div class="panel-heading">
-                <h4><i class="fa fa-users"></i> <?php echo $headline; ?></h4>
+                <h4><i class="fa fa-cubes"></i> <?php echo $headline; ?></h4>
             </div>
           <div class="panel-body collapse in">                                  
             
@@ -41,41 +41,63 @@
 						<th style="width:auto;">ID</th>
                         <th style="width:auto;">Name</th>
 						<th style="width:auto;">Action</th>
-						<th style="width:auto;">View</th>
-						<th style="width:auto;">Delete</th>
-                        <th style="width:auto;">Update</th>                       
-                        <th style="width:auto;">User Level</th>                     
+						<th style="width:auto; text-align: center;">View</th>
+						<th style="width:auto; text-align: center;">Delete</th>
+                        <th style="width:auto; text-align: center;">Update</th>                       
+                        <th style="width:auto;">User Type</th>                     
 						<th style="width:auto;">Status</th>						
-						<th style="width:auto;" align="center">Edit</th>			
+						<th style="width:auto; text-align: center;">Edit</th>			
 					</tr>
 					</thead>
 					<tbody>
 
-                        <?php $i = '1'; foreach($users as $user){   ?>
+                        <?php $i = '1'; foreach($data as $user){   ?>
 
                         <tr>
                             <td><?php echo $i;?></td>
+                            <td><?php echo $user->module;?></td>
+                            <td><?php echo $user->action;?></td>
+                            <td align="center"><?php if($user->view == '1'){?>
+                                    <i class="fa fa-check"></i>
+                                <?php }else{?>
+                                    <i class="fa fa-times"></i>
+                                <?php } ?>
+                            </td>
+                            <td align="center"><?php if($user->delete == '1'){?>
+                                    <i class="fa fa-check"></i>
+                                <?php }else{?>
+                                    <i class="fa fa-times"></i>
+                                <?php } ?>
+                            </td>
+                            <td align="center"><?php if($user->update == '1'){?>
+                                    <i class="fa fa-check"></i>
+                                <?php }else{?>
+                                    <i class="fa fa-times"></i>
+                                <?php } ?>
+                            </td>
                             <td><?php 
-                                if($user->user_type == '1'){
+                                if($user->user_level == '0'){
+                                    echo 'Developer';
+                                }elseif($user->user_level == '1'){
                                     echo 'Admin';
-                                }elseif($user->user_type == '2'){
+                                }elseif($user->user_level == '2'){
                                     echo 'Agent';
+                                }elseif($user->user_level == '3'){
+                                    echo 'Customer';
+                                }elseif($user->user_level == '4'){
+                                    echo 'Member';
                                 }
                                 ?></td>
-                            <td><?php echo $user->firstname." ".$user->lastname;?></td>
-                            <td><?php echo $user->email;?></td>
-                            <td><?php echo $user->phone;?></td>
 
-                            <td><?php echo date('d-m-Y', $user->date);?></td>
-                            <td><?php if($user->registration_status == '0'){
-                                        echo "<p style='color:red;'>Not Approved</p>";
-                                    }elseif($user->registration_status == '1'){
-                                        echo "<p style='color:green;'>Approved</p>";
+                            <td><?php if($user->status == '0'){
+                                        echo "<p style='color:red;'>Deactive</p>";
+                                    }elseif($user->status == '1'){
+                                        echo "<p style='color:green;'>Active</p>";
                                     }
 
                                 ?></td>
-                            <td align="center"><a href="usercrm/employee/<?php echo $user->id;?>"><i class="fa fa-eye"></i></a></td>
-                            <td align="center"><a href="usercrm/user/<?php echo $user->id;?>"><i class="fa fa-pencil"></i></a></td>
+                            
+                            <td align="center"><a href="module/updateModule/<?php echo $user->id;?>"><i class="fa fa-pencil"></i></a></td>
                         </tr>
                         <?php $i++; } ?>
 					</tbody>

@@ -32,7 +32,7 @@
                        
                     </div>
                     <div class="panel-body collapse in" >                                  
-                   
+                   <?php print_r($data); ?>
                       
                       <form method="post" action="index" >
                     <input type="hidden" name="send" value="1">                        
@@ -41,7 +41,7 @@
                         <div class="col-xs-6 col-sm-6 col-md-6 form-group"> 
                             <label>User Level:</label> 
                           <select name="user_level" class="form-control" id="level">
-                            <?php foreach(unserialize(USER_LEVEL) as $key => $val ){?>
+                            <?php foreach($data->user_level as $key => $val ){?>
                               <option value="<?php echo $key; ?>"><?php echo $val;?></option>
                             <?php } ?>
                           </select> 
