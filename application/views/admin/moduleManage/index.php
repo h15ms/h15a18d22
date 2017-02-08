@@ -20,7 +20,7 @@
 
 
 
-
+<p><?php echo $message ? '<span style="color:green">'.$message.'</span>' :'' ; ?></p>
 
         <div class="container">
            
@@ -90,9 +90,9 @@
                                 ?></td>
 
                             <td><?php if($user->status == '0'){
-                                        echo "<p style='color:red;'>Deactive</p>";
+                                        echo "<p><a style='color:red;' href='#'>Deactive</a></p>";
                                     }elseif($user->status == '1'){
-                                        echo "<p style='color:green;'>Active</p>";
+                                        echo "<p><a style='color:green;' href=''>Active</a></p>";
                                     }
 
                                 ?></td>

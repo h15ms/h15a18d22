@@ -50,10 +50,24 @@ class Module extends Base {
     $id = $this->uri->segment(4);
     $data = $this->model->dataFetchById($id);      
 
+    $post = $this->input->post();
+    if(isset($post['send'])){
+      $out = $this->model->moduleUpdate($post);
+      if($out == 'OK'){
+        $msg = 'Updated Successfully'; 
+      }else{
+        $msg = 'Oopss Error Occured Try Again!';
+      }
+    }
+
     $header = array('page_title' => 'Update Module | MiConsulting');
-    $content = array('headline' => "Update Module", 'data'=> $data);
+    $content = array('headline' => "Update Module", 'data'=> $data, 'message'=>$msg );
     $this->getLayout('admin/moduleManage/updateModule', $header, $left, $content, $footer);
 
+  }
+
+  public function updateStatus($id){
+    
   }
 
 

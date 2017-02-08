@@ -13,25 +13,20 @@ class ModuleManage  extends CI_Model
   }
 
     
-  public function updateModule($arr)
+  public function moduleUpdate($arr)
   {  
-    print_r($arr);
-    exit;
+
     $data=array(
-     'user_type'=>$arr['user_level'],
-     'firstname'=>$arr['firstname'],
-     'lastname'=>$arr['lastname'],
-     'city'=>$arr['city'],
-     'zip'=>$arr['zip'],
-     'street'=>$arr['street'],
-     'state'=>$arr['state'],
-     'country'=>$arr['country'],
-     'email'=>$arr['email'],
-     'phone'=>$arr['phone']
+     'user_level'=>$arr['user_level'],
+     'module'=>$arr['module_name'],
+     'action'=>$arr['action'],
+     'view'=>$arr['view'],
+     'delete'=>$arr['delete'],
+     'update'=>$arr['update']
      ); 
      
      $this->db->where('id', $arr['id']);
-     $this->db->update(PR.'customer', $data);
+     $this->db->update(PR.'module', $data);
 
      return 'OK';
 

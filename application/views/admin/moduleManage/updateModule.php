@@ -14,7 +14,7 @@
                 <li class='active'><?php echo $headline; ?> </li>
             </ol>
 
-            <h1><?php echo $headline; ?></h1>  <h3><?php echo $message ? '<span style="color:green">'.$message.'</span>' :'' ; ?></h3>
+            <h1><?php echo $headline; ?></h1>  
             <div class="options">
                 <div class="btn-toolbar">
                 	<a href="<?php echo base_url()?>admin/module" class="btn btn-default hidden-xs"><i class="fa fa-files-o"></i> Manage Modules</a>
@@ -23,7 +23,7 @@
         </div>
 
         <div class="container">
-           
+        
         <div class="row">
             <div class="col-sm-12">
                 <div class="panel panel-inverse">
@@ -32,10 +32,10 @@
                        
                     </div>
                     <div class="panel-body collapse in" >                                  
-                   <?php print_r($data); ?>
                       
                       <form method="post" action="index" >
                     <input type="hidden" name="send" value="1">                        
+                    <input type="hidden" name="id" value="<?php echo $data['0']->id; ?>">                        
                       
                     <div class="col-xs-12 col-sm-12 col-md-12"> 
                         <div class="col-xs-6 col-sm-6 col-md-6 form-group"> 
@@ -68,7 +68,7 @@
                         </div>
 
                         <div class="col-xs-6 col-sm-6 col-md-1">
-                          <input type="checkbox" <?php  ?> value="1" class="form-control" name="view"> 
+                          <input type="checkbox" <?php if($data['0']->view == '1'){echo 'checked';} ?> value="1" class="form-control" name="view"> 
                         </div>
 
                         <div class="col-xs-6 col-sm-6 col-md-1" style="margin-top: 10px;">
@@ -76,7 +76,7 @@
                         </div>
 
                         <div class="col-xs-6 col-sm-6 col-md-1">
-                         <input type="checkbox" value="1" class="form-control" name="delete">
+                         <input type="checkbox" <?php if($data['0']->delete == '1'){echo 'checked';} ?> value="1" class="form-control" name="delete">
                         </div>
 
                         <div class="col-xs-6 col-sm-6 col-md-1" style="margin-top: 10px;">
@@ -84,7 +84,7 @@
                         </div>
 
                         <div class="col-xs-6 col-sm-6 col-md-1">
-                          <input type="checkbox" value="1" class="form-control" name="update">
+                          <input type="checkbox" <?php if($data['0']->update == '1'){echo 'checked';} ?> value="1" class="form-control" name="update">
                         </div>
 
                        </div>
@@ -93,7 +93,7 @@
                     
                     <div class="col-xs-12 col-sm-12 col-md-12 mt20">    
                         
-                        <input style="width: 20%" type="submit" class="btn btn-lg btn-success pull-right" value="Add Module"> 
+                        <input style="width: 20%" type="submit" class="btn btn-lg btn-success pull-right" value="Update Module"> 
                     </div>
                     
                     </form>
