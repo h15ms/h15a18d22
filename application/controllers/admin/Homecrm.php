@@ -7,7 +7,7 @@ class Homecrm extends Base {
 
   function __construct()
   {
-    parent:: __construct();     
+    parent:: __construct(); 
     $this->isLoggedIn();
     $this->load->model('admin/HomeModelCrm' , 'model');  
   }
@@ -19,7 +19,7 @@ class Homecrm extends Base {
     $countApplys = $this->model->countApplys();
     $allNewApplys = $this->model->allNewApplys();
     $allUpdatedApplys = $this->model->allUpdatedApplys();              
-
+       
     $header = array('page_title' => 'Dashboard | MiConsulting');
     $content = array('headline' => "Dashboard", 'countnewapplys' => $countnewapplys, 'countapplys' => $countApplys, 'allnewapplys' => $allNewApplys, 'allupdatedapplys' => $allUpdatedApplys);
 

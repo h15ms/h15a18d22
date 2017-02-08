@@ -2,7 +2,7 @@
     .ms-options ul li {
         list-style: none;
     }
-    </style>
+</style>
 
 <div  id="page-content">
     <div id="wrap">

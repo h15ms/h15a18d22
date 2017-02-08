@@ -11,7 +11,7 @@ class Login extends CI_Controller
 		$this->load->helper('form');
 		$this->load->library('form_validation');
 		$this->load->library('session');
-		$this->load->model('login_model');
+		$this->load->model('login_model', 'model');
 		
 		$this->active['current_page'] = $this->uri->segment(1);
 	}
@@ -49,7 +49,7 @@ class Login extends CI_Controller
 				'password' => $this->input->post('password')
 			);
 
-		$result = $this->login_model->check_new_user($data);
+		$result = $this->model->check_new_user($data);
 
 		if($result->result_id->num_rows == "1")
 		{
@@ -60,11 +60,11 @@ class Login extends CI_Controller
 		
 		}else{
 
-			$inserted_id = $this->login_model->registration_insert($data);
+			$inserted_id = $this->model->registration_insert($data);
 			
 			if(isset($inserted_id))
 			{
-				$data = $this->login_model->retrieve_sess_data($inserted_id);
+				$data = $this->model->retrieve_sess_data($inserted_id);
 				$result = $data->result();
 
 				$session_data = array(
@@ -109,17 +109,16 @@ class Login extends CI_Controller
 			'password' => $this->input->post('pass')
 		);
 
+		
+
 		ob_start();
-		 $result = $this->login_model->login($data); 
+		 $result = $this->model->login($data); 
 
 		if ($result == 'TRUE')
 			{
 			$email = $this->input->post('email');
-
-			$result = $this->login_model->login_fetch($email); 
-
+			$result = $this->model->login_fetch($email); 
 			if ($result != false)
-				
 				{
 					$session_data = array(
 					'user_id' => $result[0]->id,
@@ -129,31 +128,20 @@ class Login extends CI_Controller
 					'avatar' => $result[0]->avatar,
 					'user_level' => $result[0]->user_type,
 					'user_level_status' => $result[0]->registration_status
-				);
-
-
-				// Add user data in session
-
-				$this->session->set_userdata('logged_in', $session_data);
-
-				$session = $this->session->userdata('logged_in');
-
-				if($session['user_level'] == '3'){
-
-					//header('Location:'.base_url().'Home');
-                                echo '<script> window.location.href = "'.base_url().'home"; </script>';
-
-				}elseif( ($session['user_level'] == '2' && $session['user_level_status'] == '1') || ($session['user_level'] == '1' && $session['user_level_status'] == '1')){
-
-					//header('Location:'.base_url().'admin/homecrm');
-				echo '<script> window.location.href = "'.base_url().'admin/homecrm"; </script>';
-
-				}else{
-					
-					//header('Location:'.base_url().'home');
-				 echo '<script> window.location.href = "'.base_url().'home"; </script>';
-				}
-
+					);
+					// Add user data in session
+					$this->session->set_userdata('logged_in', $session_data);
+					$session = $this->session->userdata('logged_in');
+					if($session['user_level'] == '3'){
+						//header('Location:'.base_url().'Home');
+	                	echo '<script> window.location.href = "'.base_url().'home"; </script>';
+					}elseif(($session['user_level'] == '0' && $session['user_level_status'] == '1') || ($session['user_level'] == '2' && $session['user_level_status'] == '1') || ($session['user_level'] == '1' && $session['user_level_status'] == '1')){
+						//header('Location:'.base_url().'admin/homecrm');
+						echo '<script> window.location.href = "'.base_url().'admin/homecrm"; </script>';
+					}else{
+						//header('Location:'.base_url().'home');
+					 	echo '<script> window.location.href = "'.base_url().'home"; </script>';
+					}
 
 				}
 			}
@@ -179,9 +167,7 @@ class Login extends CI_Controller
 	public function logout()
 	{
 		$sess_array = array('username' => '');
-
 		$this->session->unset_userdata('logged_in', $sess_array);
-
 		$data['message_display'] = 'Successfully Logout';
 		$this->load->view('template/header' , $this->active);
 		$this->load->view('login/index', $data);

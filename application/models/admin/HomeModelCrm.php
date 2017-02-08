@@ -9,7 +9,9 @@ class HomeModelCrm extends CI_Model
      
     $user = $this->session['user_level'];
 
-    if($user == '1'){
+    if($user == '0'){
+      $result = $this->db->select('id')->get_where(PR.'apply', array('status' => "0")); // developer
+    }elseif($user == '1'){
       $result = $this->db->select('id')->get_where(PR.'apply', array('status' => "0")); // admin
     }elseif($user == '2'){
       $result = $this->db->select('id')->get_where(PR.'apply', array('status' => "0")); // agent
