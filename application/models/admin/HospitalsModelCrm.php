@@ -27,6 +27,7 @@ class HospitalsModelcrm extends CI_Model
     
   public function hospitalById($appid) 
   {  
+
      //$getdata = $this->db->select('*')->get_where(PR.'hospital_detail',array('d.id'=>$appid,'h.status'=>1 ));
     //  $result = $getdata->get();
     $this->db->select('*')->from(PR.'hospital_detail  d');
@@ -34,7 +35,7 @@ class HospitalsModelcrm extends CI_Model
     $this->db->where(array('d.id'=>$appid,'h.status'=>1 ));
     $this->db->order_by('d.id','asc');         
     $getdata = $this->db->get(); 
-    
+     
         if ($getdata->num_rows() > 0) {
             return $getdata->result();
         } else {

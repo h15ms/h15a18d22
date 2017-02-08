@@ -107,7 +107,7 @@ class Hospitalscrm extends Base {
    public function viewhospitaldata(){
   
        $hospital = $this->model->hospitalById($_GET['id']);
-       $specil=$this->app->getspecialization($hospital[0]->specialization);     
+       $specil=$this->model->getspecialization($hospital[0]->specialization);     
        $ar=array('hospital'=>$hospital,'sepecial'=>$specil); 
        echo json_encode($hospital); 
       
@@ -119,12 +119,12 @@ class Hospitalscrm extends Base {
     $message=''; 
     if(isset($_POST['send']) && ($_POST['send']=="1"))
     {
-      $hospList=$this->app->edithospitalDetail($_POST,$this->uri->segment('4'),$this->session['user_id']);
+      $hospList=$this->model->edithospitalDetail($_POST,$this->uri->segment('4'),$this->session['user_id']);
       $message='Updated Successfully';
     }
-    $speciliztion=$this->app->getspeciliztions();
+    $speciliztion=$this->model->getspeciliztions();
     $editdata=$this->model->hospitalById($this->uri->segment('4')); 
-    $specil=$this->app->getspecialization($editdata[0]->specialization);
+    $specil=$this->model->getspecialization($editdata[0]->specialization);
     $hospList=$this->model->gethospitallist();
     
     $header = array('page_title' => 'Add Hospital | MiConsulting');

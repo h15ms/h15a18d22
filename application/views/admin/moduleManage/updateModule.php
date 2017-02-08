@@ -41,8 +41,8 @@
                         <div class="col-xs-6 col-sm-6 col-md-6 form-group"> 
                             <label>User Level:</label> 
                           <select name="user_level" class="form-control" id="level">
-                            <?php foreach($data->user_level as $key => $val ){?>
-                              <option value="<?php echo $key; ?>"><?php echo $val;?></option>
+                            <?php foreach(unserialize(USER_LEVEL) as $key => $val ){?>
+                              <option <?php if($key == $data['0']->user_level){echo 'selected';} ?> value="<?php echo $key; ?>"><?php echo $val;?></option>
                             <?php } ?>
                           </select> 
                         </div>
@@ -51,11 +51,11 @@
                     <div class="col-xs-12 col-sm-12 col-md-12"> 
                         <div class="col-xs-6 col-sm-6 col-md-6 form-group"> 
                              <label>Module Name:</label> 
-                          <input type="text" class="form-control" name="module_name" id="address" value="" placeholder="Module Name*" required> 
+                          <input type="text" class="form-control" name="module_name" id="address" value="<?php echo $data['0']->module; ?>" placeholder="Module Name*" required> 
                         </div>
                         <div class="col-xs-6 col-sm-6 col-md-6 form-group">   
                          <label>Action</label>
-                        <input type="text" class="form-control" name="action" value="" placeholder="Action" required>
+                        <input type="text" class="form-control" name="action" value="<?php echo $data['0']->action; ?>" placeholder="Action" required>
                         </div>
 
                     </div>    
@@ -68,7 +68,7 @@
                         </div>
 
                         <div class="col-xs-6 col-sm-6 col-md-1">
-                          <input type="checkbox" value="1" class="form-control" name="view"> 
+                          <input type="checkbox" <?php  ?> value="1" class="form-control" name="view"> 
                         </div>
 
                         <div class="col-xs-6 col-sm-6 col-md-1" style="margin-top: 10px;">
