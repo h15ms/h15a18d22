@@ -11,8 +11,6 @@ class Base extends CI_Controller
         error_reporting(0);
 		parent::__construct();
 		$this->session = $this->session->userdata('logged_in');
-
-
 	}
 
 	public function isLoggedIn()

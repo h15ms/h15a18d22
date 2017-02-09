@@ -1,28 +1,13 @@
 <?php
-
-class Appointment extends CI_Controller {
-
-    public $session;
+require_once 'Base.php';
+class Appointment extends Base {
 
     function __construct() {
 
-        //error_reporting(0);
+        error_reporting(0);
         parent::__construct();
-        $this->load->library('user_agent');
-        $userData = $this->session->userdata();
-        if ($userData['logged_in']['user_level'] != '1' && $userData['logged_in']['user_level_status'] != '1') {
-            redirect(base_url() . 'home ', 'location');
-        } elseif ($userData['logged_in']['user_level'] != '2' && $userData['logged_in']['user_level_status'] != '1') {
-            redirect(base_url() . 'home ', 'location');
-        }
-
-        $this->load->helper('form');
-        $this->load->library('form_validation');
-        $this->load->library('session');
+        ob_start();
         $this->load->model('admin/Appointment_model', 'app');
-        //$this->session->keep_flashdata('notification');
-        //$this->load->helper("url");
-        // $this->load->library("pagination");
     }
 
 //    function __construct()
@@ -41,23 +26,21 @@ class Appointment extends CI_Controller {
 
     public function index() {
 
-        $title = array('page_title' => "Add Appointment | MiConsulting");
-        $js = array('js' => "appointment.js");  // Angular Js file name
+
         $filterArray = array();
         $filterArray['hospital'] = '';
         $filterArray['speciality'] = '';
         $id = $this->uri->segment('4');
         $appointment = $this->app->fetchById($id);
-        $dataCollection = array('headline' => 'Add appointment', 'appointment' => $appointment);
-        $this->load->view('admin/temp/headercrm', $title);
-        $this->load->view('admin/appointment/index', $dataCollection);
-        $this->load->view('admin/temp/footercrm', $js);
+        
+        $header = array('page_title' => 'Add Appointment | MiConsulting');
+        $content = array('headline' => 'Add appointment', 'appointment' => $appointment);
+        $footer = array('js' => "appointment.js");
+        $this->getLayout('admin/appointment/index', $header, $left, $content, $footer);
     }
 
     public function schedule() {
 
-        $title = array('page_title' => "Schedule Appointment | MiConsulting");
-        $js = array('js' => "appointment.js");  // Angular Js file name
         $doctor_id = $this->uri->segment('4');
         $this->load->model('admin/Doctor_model', 'slot');
         $slots = $this->slot->slotById($doctor_id);
@@ -134,13 +117,12 @@ class Appointment extends CI_Controller {
             $postParam['data']['appointment']['status'] = 1;
             $postParam['data']['appointment']['doctor_id'] = $doctor_id;
              if($patient_id !='' ){
-                $data['data']['appointment']['patient_id'] = $patient_id?$patient_id:'';
+                $postParam['data']['appointment']['patient_id'] = $patient_id?$patient_id:'';
                 $res = $this->app->patient_appointment_exist($postParam);
             } else {
               $res = $this->app->patient_appointment_new($postParam);  
             }
-
-            
+      
             if ($res) {
                 $this->session->set_flashdata('success', ' Your appointment is scheduled!');
                 redirect('admin/doctor/profile/' . $doctor_id);
@@ -148,25 +130,34 @@ class Appointment extends CI_Controller {
         }
 
         
-        $dataCollection = array('headline' => 'Schedule appointment', 'slotData' => $slotData, 'filter' => $filter,'patientData'=>$patientDataCollection);
-        $this->load->view('admin/temp/headercrm', $title);
-        $this->load->view('admin/appointment/schedule', $dataCollection);
-        $this->load->view('admin/temp/footercrm', '');
+       // $dataCollection = array('headline' => 'Schedule appointment', 'slotData' => $slotData, 'filter' => $filter,'patientData'=>$patientDataCollection);
+//        $this->load->view('admin/temp/headercrm', $title);
+//        $this->load->view('admin/appointment/schedule', $dataCollection);
+//        $this->load->view('admin/temp/footercrm', '');
+        
+        
+        $header = array('page_title' => "Schedule Appointment | MiConsulting");
+        $content = array('headline' => 'Schedule appointment', 'slotData' => $slotData, 'filter' => $filter,'patientData'=>$patientDataCollection);
+        $footer = array('js' => "appointment.js");
+        $this->getLayout('admin/appointment/schedule', $header, $left, $content, $footer);
+        
+        
     }
 
     public function create() {
-
-        $title = array('page_title' => "Create Appointment | MiConsulting");
-        $js = array('js' => "appointment.js");  // Angular Js file name
+        
         $filterArray = array();
         $filterArray['hospital'] = '';
         $filterArray['speciality'] = '';
         $id = $this->uri->segment('4');
         $appointment = $this->app->fetchById($id);
-        $dataCollection = array('headline' => 'Add appointment', 'appointment' => $appointment);
-        $this->load->view('admin/temp/headercrm', $title);
-        $this->load->view('admin/appointment/create', $dataCollection);
-        $this->load->view('admin/temp/footercrm', $js);
+        
+        $header = array('page_title' => "Create Appointment | MiConsulting");
+        $content = array('headline' => 'Add appointment', 'appointment' => $appointment);
+        $footer = array('js' => "appointment.js");
+        $this->getLayout('admin/appointment/create', $header, $left, $content, $footer);
+        
+        
     }
 
     public function hospital() {

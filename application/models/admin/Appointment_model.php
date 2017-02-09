@@ -256,9 +256,8 @@ class Appointment_model extends CI_Model {
           
 
             $appointment = $this->db->select('*')->get_where(PR . 'patient_appointment', array('doctor_id' => $data['data']['appointment']['doctor_id'], 'patient_id' => $data['data']['appointment']['patient_id'], 'appointment_date' => $data['data']['appointment']['appointment_date'], 'slot' => $data['data']['appointment']['slot']));
-            //$appointment = $appointment->result();
+           
             if ($appointment->num_rows() > 0) {
-                
                  $condition  = array('doctor_id' => $data['data']['appointment']['doctor_id'], 'patient_id' => $data['data']['appointment']['patient_id'], 'appointment_date' => $data['data']['appointment']['appointment_date'], 'slot' => $data['data']['appointment']['slot']);
                  $this->db->where($condition);
                 return $updateID = $this->db->update(PR . 'patient_appointment',$data['data']['appointment']);

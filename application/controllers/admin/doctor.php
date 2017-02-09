@@ -1,17 +1,18 @@
 <?php
-
+defined('BASEPATH') OR exit('No direct script access allowed');
+require_once('Base.php');
 class Doctor extends Base {
     
     function __construct() {
         parent:: __construct();
         $this->isLoggedIn();
         $this->load->model('admin/Doctor_model', 'app');
-        $this->load->helper('form');
-        $this->load->library('form_validation');
-        $this->load->library('session');
-        $this->load->model('admin/Doctor_model', 'app');
-        $this->load->helper("url");
-        $this->load->library("pagination");
+//        $this->load->helper('form');
+//        $this->load->library('form_validation');
+//        $this->load->library('session');
+//        $this->load->model('admin/Doctor_model', 'app');
+//        $this->load->helper("url");
+//        $this->load->library("pagination");
     }
 
     public function index() {
@@ -186,14 +187,14 @@ public function view() {
             $slotData['slot'][$slot->days][$slot->shift][]  = $slot->slot;
         }
         
-        $dataCollection = array('headline' => 'View Doctor', 'data' => $doctors , 'slotData' => $slotData,'notification'=>$notification);
-        $this->load->view('admin/temp/headercrm', $title);
-        $this->load->view('admin/doctor/profile', $dataCollection);
-        $this->load->view('admin/temp/footercrm', $js);
+//        $dataCollection = array('headline' => 'View Doctor', 'data' => $doctors , 'slotData' => $slotData,'notification'=>$notification);
+//        $this->load->view('admin/temp/headercrm', $title);
+//        $this->load->view('admin/doctor/profile', $dataCollection);
+//        $this->load->view('admin/temp/footercrm', $js);
 
 
         $header = array('page_title' => 'Doctor profile | MiConsulting');
-        $content = array('headline' => 'Doctor profile', 'data' => $doctors);
+        $content = array('headline' => 'View Doctor', 'data' => $doctors , 'slotData' => $slotData,'notification'=>$notification);
         $footer = array('js' => "doctor.js"); //  Angular Js file name
         $this->getLayout('admin/doctor/profile', $header, $left, $content, $footer);
     }
