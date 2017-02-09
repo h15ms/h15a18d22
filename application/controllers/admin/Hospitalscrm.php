@@ -63,7 +63,7 @@ class Hospitalscrm extends Base {
         $move=$folder.$pic;
         move_uploaded_file($_FILES['hospital_image']['tmp_name'],$move);
 
-        $hospList=$this->model->addhospitalDetail($_POST,$pic,$this->session['user_id']);
+        $hospList=$this->model->addhospitalDetail($_POST,$pic,$this->session_data['user_id']);
         $message="Hospital Added Successfully";
     }
     
@@ -121,16 +121,24 @@ class Hospitalscrm extends Base {
     $message=''; 
     if(isset($_POST['send']) && ($_POST['send']=="1"))
     {
-      $hospList=$this->model->edithospitalDetail($_POST,$this->uri->segment('4'),$this->session['user_id']);
+      $hospList=$this->model->edithospitalDetail($_POST,$this->uri->segment('4'),$this->session_data['user_id']);
       $message='Updated Successfully';
     }
+    $sp='';
+    $listspe='';
     $speciliztion=$this->model->getspeciliztions();
     $editdata=$this->model->hospitalById($this->uri->segment('4')); 
-    $specil=$this->model->getspecialization($editdata[0]->specialization);
+    if($editdata[0]->specialization!=''){
+    $listspe=$this->model->getspecialization($editdata[0]->specialization);
+   
+    foreach($listspe as $v){
+        $sp.=$v->sepcialization.',';
+    }
+    }
     $hospList=$this->model->gethospitallist();
     
     $header = array('page_title' => 'Add Hospital | MiConsulting');
-    $content = array('headline'=>'Add Hospital','hospList'=>$hospList,'editdata'=>$editdata,'message'=>$message,'specil'=>$specil,'speciliztion'=>$speciliztion);
+    $content = array('headline'=>'Add Hospital','hospList'=>$hospList,'editdata'=>$editdata,'message'=>$message,'specil'=>$listspe,'speciliztion'=>$speciliztion,'listspe'=> $sp);
     $this->getLayout('admin/hospitalscrm/edithospital', $header, $left, $content, $footer);
   }
   
@@ -140,4 +148,5 @@ class Hospitalscrm extends Base {
     
     
   }
+  
 }

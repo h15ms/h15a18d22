@@ -10,15 +10,21 @@ var app = angular.module('hospitalApp', []).run(function ($rootScope) {
         })
 .controller('hospitalCtrl', function($scope, $http) {
     $http.get(BASEURL+"admin/hospitalscrm/getindexjson")
-    .then(function (response) {$scope.hosPital = response.data;});
+    .then(function (response) {$scope.hosPital = response.data;
+    $scope.delpopupn = function(id,name){
+     $('#appid').val(id);
+     $('#hospitalname').html(name);
+     $('#new_bankpop').modal('show');
+   }
+    
+    
+    });
    
 });
 
 
-//var ap = angular.module('hospitaleditApp', []);
 var ap = angular.module('hospitaleditApp', []).controller('hospitaleditCtrl', function($scope, $http,$sce) {
             var id=$('#hospitalID').val();
-//            alert(id);
      $http.get(BASEURL+"admin/hospitalscrm/viewhospitaldata?id="+id)
     .then(function (response) {
         $scope.hosPitaledit = response.data;

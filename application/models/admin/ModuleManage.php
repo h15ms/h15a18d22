@@ -29,14 +29,24 @@ class ModuleManage  extends CI_Model
      $this->db->update(PR.'module', $data);
 
      return 'OK';
-
   }
     
     
   public function dataFetch()
   {          
-      $newid = $this->db->select('*')->get_where(PR.'module');
+      $this->db->select('*');
+      $this->db->order_by('module', 'asc'); 
+      $newid = $this->db->get(PR.'module');
       return $newid->result();
+  }   
+
+  public function updateStatusId($id, $status)
+  {          
+
+      $this->db->where('id', $id);
+      $out = $this->db->update(PR.'module', array('status' => $status));
+
+      return $out;
   }   
 
   public function dataFetchById($id)

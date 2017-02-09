@@ -112,7 +112,7 @@ public function addhospitalDetail($arr,$pic){
           'image'=>$pic,
           'specialization'=> $arr['specialization'],
           'createdtime'=>time(),
-          'createdby'=> $this->session['user_id'] ); 
+          'createdby'=> $this->session_data['user_id'] ); 
       $insertID = $this->db->insert(PR.'hospital_detail', $data);
       return $insertID;  
 } 

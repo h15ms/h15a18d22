@@ -43,8 +43,16 @@ class HospitalsModelcrm extends CI_Model
         }   
   }
   public function getspecialization($inids){
-     
+    
       $query=$this->db->query('SELECT sepcialization FROM mi_specialization where id IN ('.$inids.')');
+
+      return   $res=$query->result();
+  
+       
+  }
+  public function getspecializ(){
+     
+      $query=$this->db->query('SELECT sepcialization FROM mi_specialization ');
 
       return   $res=$query->result();
   
@@ -120,6 +128,7 @@ public function addhospitalDetail($arr,$pic,$userID){
       return $insertID;  
 } 
 public function edithospitalDetail($arr,$id,$userID){
+     $specStr= implode(',', $arr['specialization']);  
            $data=array(
           'address'=> $arr['address'],
           'city'=> $arr['city'],
@@ -131,7 +140,7 @@ public function edithospitalDetail($arr,$id,$userID){
           'distance_from_airport'=>$arr['distance_from_airport'],
           'emergency_services'=> $arr['emergency_services'],
           'hospital_type'=> $arr['hospital_type'],
-          'specialization'=> $arr['specialization'],
+          'specialization'=>$specStr,
           'createdtime'=>time(),
           'createdby'=>$userID); 
             

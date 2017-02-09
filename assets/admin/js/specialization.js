@@ -34,6 +34,7 @@ function opennewpopup(){
 
 }
 $(document).ready(function(){
+
 $('#ad_n_b').click(function(){
    var hospitl=$('#n_b_name').val(); 
          $.ajax({url:"addhospitalname",

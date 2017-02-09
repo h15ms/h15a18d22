@@ -15,10 +15,10 @@ class Usercrm extends Base
   public function index() 
   { 
 
-    if($this->session['user_level'] == '1'){
+    if($this->session_data['user_level'] == '1'){
       $users=$this->model->allUsersAdmin();
-    }elseif($this->session['user_level'] == '2'){
-      $users=$this->model->allUsersAgent($this->session['user_id']);
+    }elseif($this->session_data['user_level'] == '2'){
+      $users=$this->model->allUsersAgent($this->session_data['user_id']);
     }
 
     $header = array('page_title' => 'Manage Agents | MiConsulting ');
@@ -34,10 +34,10 @@ class Usercrm extends Base
 
    $page = $this->model->user($this->uri->segment('4'));
    
-   if($this->session['user_level'] == '1'){
+   if($this->session_data['user_level'] == '1'){
     $users = $this->model->allUsersAdmin();
-   }elseif($this->session['user_level'] == '2'){
-     $users=$this->model->allUsersAgent($this->session['user_id']);
+   }elseif($this->session_data['user_level'] == '2'){
+     $users=$this->model->allUsersAgent($this->session_data['user_id']);
    }
 
     $header = array('page_title' => 'Edit employees | MiConsulting ');
@@ -51,7 +51,7 @@ class Usercrm extends Base
   public function allEmployee() 
   {
 
-   $id = $this->session['user_id'];
+   $id = $this->session_data['user_id'];
    $users = $this->model->allEmployee($id);
 
     //$data=array('headline'=>"All Employees","page"=>$page,"user"=>$users);

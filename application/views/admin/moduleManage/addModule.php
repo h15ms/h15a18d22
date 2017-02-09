@@ -55,7 +55,7 @@
                         </div>
                         <div class="col-xs-6 col-sm-6 col-md-6 form-group">   
                          <label>Action</label>
-                        <input type="text" class="form-control" name="action" value="" placeholder="Action" required>
+                        <input type="text" class="form-control" name="action" value="" placeholder="Action">
                         </div>
 
                     </div>    
@@ -68,7 +68,7 @@
                         </div>
 
                         <div class="col-xs-6 col-sm-6 col-md-1">
-                          <input type="checkbox" value="1" class="form-control" name="view"> 
+                          <input type="checkbox" value="1" class="form-control" checked name="view"> 
                         </div>
 
                         <div class="col-xs-6 col-sm-6 col-md-1" style="margin-top: 10px;">
@@ -76,7 +76,7 @@
                         </div>
 
                         <div class="col-xs-6 col-sm-6 col-md-1">
-                         <input type="checkbox" value="1" class="form-control" name="delete">
+                         <input type="checkbox" value="1" class="form-control" checked name="delete">
                         </div>
 
                         <div class="col-xs-6 col-sm-6 col-md-1" style="margin-top: 10px;">
@@ -84,7 +84,7 @@
                         </div>
 
                         <div class="col-xs-6 col-sm-6 col-md-1">
-                          <input type="checkbox" value="1" class="form-control" name="update">
+                          <input type="checkbox" value="1" class="form-control" checked name="update">
                         </div>
 
                        </div>

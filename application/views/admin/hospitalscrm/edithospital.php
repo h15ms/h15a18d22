@@ -115,13 +115,26 @@
                         
                         
             </div>
-             
+            <input type="hidden" name="countofspecificaiton" id="countofspecificaiton" value="<?php echo  count($speciliztion); ?>" />
+            <input type="hidden" name="sele_specificaiton" id="sele_specificaiton" value="<?php echo  $editdata[0]->specialization; ?>" />
+             <input type="hidden" name="sp" id="sp" value="<?php echo  $listspe; ?>" />
+         
                     <div class="col-xs-12 col-sm-12 col-md-12"> 
               
                  <div class="col-xs-6 col-sm-6 col-md-12 form-group">   
+                     
                      <label>Specialization <span style="font-size: 8px;">(Add comma ( , ) seprated value )</span></label>
-               <input type="text" class="form-control" name="specialization"  id="specialization" value="<?php echo isset($editdata[0]->specialization)?$editdata[0]->specialization:''; ?>" placeholder="Specialization" required>
-               </div>
+                          <select name="specialization[]" multiple id="specialization">
+                    <?php  foreach($speciliztion as $val ){  ?>
+                        
+                             
+                          <option value="<?php echo $val->id;?>"  ><?php echo $val->sepcialization ;?></option>
+                    <?php }  ?>
+
+                  </select>
+                     
+<!--               <input type="text" class="form-control" name="specialization"  id="specialization" value="<?php //echo isset($editdata[0]->specialization)?$editdata[0]->specialization:''; ?>" placeholder="Specialization" required>
+               </div>-->
                         
 <!--                    <div class="col-xs-6 col-sm-6 col-md-6 form-group">   
                 <label>Hospital Image</label>
@@ -134,18 +147,8 @@
                  <div class="col-xs-6 col-sm-6 col-md-6 form-group">   
                </div>
             </div>
-            
-            
-            
-            
-          
-              
+                        <input type="hidden" id="pagename" name="pagename" value="<?php echo $this->uri->segment(3)?$this->uri->segment(3):'index';?>"/>
             <div class="col-xs-12 col-sm-12 col-md-12 mt20">    
-                
-                
-                
-                
-                
                 <input style="width: 20%" type="submit" class="btn btn-lg btn-success pull-right" value="Save"> 
             </div>
             

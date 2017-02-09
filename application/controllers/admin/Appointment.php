@@ -6,6 +6,7 @@ class Appointment extends Base {
 
         error_reporting(0);
         parent::__construct();
+
         ob_start();
         $this->load->model('admin/Appointment_model', 'app');
     }
