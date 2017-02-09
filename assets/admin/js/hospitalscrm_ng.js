@@ -23,10 +23,8 @@ var app = angular.module('hospitalApp', []).run(function ($rootScope) {
 });
 
 
-//var ap = angular.module('hospitaleditApp', []);
 var ap = angular.module('hospitaleditApp', []).controller('hospitaleditCtrl', function($scope, $http,$sce) {
             var id=$('#hospitalID').val();
-//            alert(id);
      $http.get(BASEURL+"admin/hospitalscrm/viewhospitaldata?id="+id)
     .then(function (response) {
         $scope.hosPitaledit = response.data;
