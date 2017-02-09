@@ -14,10 +14,10 @@ class Applycrm extends Base {
   public function index() 
   {
      
-    if($this->session['user_level'] == '1'){
+    if($this->session_data['user_level'] == '1'){
       $applys = $this->model->allApplysAdmin(); 
-    }elseif($this->session['user_level'] == '2'){
-      $applys = $this->model->allApplysAgent($this->session['user_id']); 
+    }elseif($this->session_data['user_level'] == '2'){
+      $applys = $this->model->allApplysAgent($this->session_data['user_id']); 
     }
 
      $header = array('page_title' => 'All Applications | MiConsulting');
@@ -28,7 +28,7 @@ class Applycrm extends Base {
 
   public function agentapplication() 
   {
-     $id = $this->session['user_id'];
+     $id = $this->session_data['user_id'];
      $applys = $this->model->agentapplication($id); 
      
      $header = array('page_title' => 'My Applications | MiConsulting');

@@ -8,17 +8,6 @@ class Appointment extends CI_Controller {
 
         //error_reporting(0);
         parent::__construct();
-        $this->load->library('user_agent');
-        $userData = $this->session->userdata();
-        if ($userData['logged_in']['user_level'] != '1' && $userData['logged_in']['user_level_status'] != '1') {
-            redirect(base_url() . 'home ', 'location');
-        } elseif ($userData['logged_in']['user_level'] != '2' && $userData['logged_in']['user_level_status'] != '1') {
-            redirect(base_url() . 'home ', 'location');
-        }
-
-        $this->load->helper('form');
-        $this->load->library('form_validation');
-        $this->load->library('session');
         $this->load->model('admin/Appointment_model', 'app');
         //$this->session->keep_flashdata('notification');
         //$this->load->helper("url");

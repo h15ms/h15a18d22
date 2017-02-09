@@ -75,7 +75,7 @@ public function updateVisaId($app_id, $visaId, $status)
  {
    
    $this->db->where('app_id' , $app_id);
-   $update = $this->db->update( PR.'apply', array('visa_id' => $visaId, 'emp_working' => $this->session['user_name'], 'status' => $status));
+   $update = $this->db->update( PR.'apply', array('visa_id' => $visaId, 'emp_working' => $this->session_data['user_name'], 'status' => $status));
 
    if(isset($update))
    {
@@ -90,7 +90,7 @@ public function updateEmbassyId($app_id, $embId, $status)
  {
 
    $this->db->where('app_id' , $app_id);
-   $update = $this->db->update( PR.'apply', array('embassy_id' => $embId, 'emp_working' => $this->session['user_name'], 'status' => $status));
+   $update = $this->db->update( PR.'apply', array('embassy_id' => $embId, 'emp_working' => $this->session_data['user_name'], 'status' => $status));
 
    if(isset($update))
    {
@@ -105,7 +105,7 @@ public function updateEmbassyId($app_id, $embId, $status)
  {
 
    $this->db->where('app_id' , $app_id);
-   $update = $this->db->update( PR.'apply', array('emp_working' => $this->session['user_name'], 'status' => $status));
+   $update = $this->db->update( PR.'apply', array('emp_working' => $this->session_data['user_name'], 'status' => $status));
 
    if(isset($update))
    {

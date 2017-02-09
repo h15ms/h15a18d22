@@ -26,6 +26,14 @@ class Homecrm extends Base {
     $this->getLayout('admin/homecrm/index', $header, $left, $content, $footer);
 
 
+  }  
+
+  public function hello() {
+
+    echo "<pre>";
+        print_r($this->access());
+    exit;
+
   }
     
   public function applyprofil() {
@@ -40,7 +48,7 @@ class Homecrm extends Base {
 
     public function editProfile() {
 
-      $out = $this->model->editProfile($this->session['user_id']);
+      $out = $this->model->editProfile($this->session_data['user_id']);
 
       $header = array('page_title' => 'Application Profile | MiConsulting');
       $content = array('headline'=>'Edit Profile','data' => $out['0']);

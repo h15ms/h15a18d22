@@ -67,7 +67,7 @@ class UserModelcrm  extends CI_Model
 
      $data=array(
          'password'=>$pass,
-         'agent_id'=> $this->session['user_id'],
+         'agent_id'=> $this->session_data['user_id'],
          'user_type'=>$arr['user_level'],
          'firstname'=>$arr['firstname'],
          'lastname'=>$arr['lastname'],

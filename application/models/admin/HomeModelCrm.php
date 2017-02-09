@@ -7,7 +7,7 @@ class HomeModelCrm extends CI_Model
   public function countNewApplys() 
   { 
      
-    $user = $this->session['user_level'];
+    $user = $this->session_data['user_level'];
 
     if($user == '0'){
       $result = $this->db->select('id')->get_where(PR.'apply', array('status' => "0")); // developer

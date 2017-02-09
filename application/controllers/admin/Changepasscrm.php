@@ -15,7 +15,7 @@ class Changepasscrm extends Base {
     public function index() 
     { 
 
-      $user_id = $this->session['user_id'];
+      $user_id = $this->session_data['user_id'];
       $userdata = $this->model->usersData($user_id);
       $send = $this->input->post('send');
       
@@ -36,7 +36,7 @@ class Changepasscrm extends Base {
 
           if($data['oldpass'] == $profileData['0']->password){
 
-            $result = $this->model->setNewPass($this->session['user_id'], $data['newpass']);
+            $result = $this->model->setNewPass($this->session_data['user_id'], $data['newpass']);
              
               if(isset($result)){
                 return "4"; // Successfully Changed

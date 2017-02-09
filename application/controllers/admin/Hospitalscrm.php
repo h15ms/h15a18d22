@@ -63,7 +63,7 @@ class Hospitalscrm extends Base {
         $move=$folder.$pic;
         move_uploaded_file($_FILES['hospital_image']['tmp_name'],$move);
 
-        $hospList=$this->model->addhospitalDetail($_POST,$pic,$this->session['user_id']);
+        $hospList=$this->model->addhospitalDetail($_POST,$pic,$this->session_data['user_id']);
         $message="Hospital Added Successfully";
     }
     
@@ -121,7 +121,7 @@ class Hospitalscrm extends Base {
     $message=''; 
     if(isset($_POST['send']) && ($_POST['send']=="1"))
     {
-      $hospList=$this->model->edithospitalDetail($_POST,$this->uri->segment('4'),$this->session['user_id']);
+      $hospList=$this->model->edithospitalDetail($_POST,$this->uri->segment('4'),$this->session_data['user_id']);
       $message='Updated Successfully';
     }
     $sp='';

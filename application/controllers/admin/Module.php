@@ -11,10 +11,8 @@ class Module extends Base {
     $this->isLoggedIn();
     $this->load->model('admin/moduleManage', 'model');
     
-    if($this->session['user_id'] == '0'){
-      echo "Hello Developer";
-    }else{
-      echo "!!! For Developer Only !!!";
+    if($this->session_data['user_level'] != '0'){
+      redirect('admin/homecrm','location');
     }
 
   }
@@ -25,16 +23,15 @@ class Module extends Base {
     $post = $this->input->post();
     if(isset($post['send'])){
       $out = $this->model->moduleInsert($post);
+      redirect(base_url().'admin/module','location');
     }
 
-    $id = $this->uri->segment(4);
-    $this->updateStatus($id);
-    
     $data = $this->model->dataFetch();
     $header = array('page_title' => 'Manage Module | MiConsulting');
     $content = array('headline' => "Manage Modules", 'data' => $data);
 
     $this->getLayout('admin/moduleManage/index', $header, $left, $content, $footer);
+
   }
 
 
@@ -56,6 +53,7 @@ class Module extends Base {
       $out = $this->model->moduleUpdate($post);
       if($out == 'OK'){
         $msg = 'Updated Successfully'; 
+        redirect(base_url().'admin/module','location');
       }else{
         $msg = 'Oopss Error Occured Try Again!';
       }
@@ -67,9 +65,13 @@ class Module extends Base {
 
   }
 
-  public function updateStatus($id){
-   // $this->model->updateStatus($id);
+  public function updateStatus(){
+    $id = $this->uri->segment(5);
+    $status = $this->uri->segment(4);
 
+    $res = $this->model->updateStatusId($id, $status);
+
+    redirect('admin/module','location');
 
   }
 
