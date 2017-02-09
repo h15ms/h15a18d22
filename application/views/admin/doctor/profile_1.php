@@ -51,16 +51,8 @@
             </style>
 
             <div class="row" data-ng-controller="appointmentController">
-                <?php
-                if (isset($_SESSION['success'])) { ?>
-                    <div class="row">
-                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                            <div class="alert alert-success">
-                                <?php echo $_SESSION['success']; ?>
-                            </div>
-                        </div>
-                    </div>
-                <?php } ?>
+                
+                
                 
                 
                 <div class="col-sm-12">
@@ -68,8 +60,6 @@
                         <div class="panel-heading">
                             <h4><i class="fa fa-hospital-o"></i> <span>Doctor Profile</span></h4>                         
                         </div>
-                        
-                        
                         <div class="panel-body collapse in"> 
                             
                                 <div class="col-xs-12 col-sm-12 col-md-12"> 
@@ -125,11 +115,9 @@
                                                     ?>
                                                
                                                 <li>
-<!--                                                    <span class="req-app" >
-                                                        <i class="fa fa-calendar"></i><a href="javascript:void(0);" ng-click="Getappoinment();">Request Appointment</a>
-                                                    </span>-->
-<!--                                                    <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal"></button>-->
-                                                    <a class="btn btn-info btn-lg" href="<?php echo base_url(); ?>admin/appointment/schedule/<?php echo $data[0]->id; ?>"><i class="fa fa-calendar"></i> Appointment </a>
+                                                    <span class="req-app" >
+                                                        <i class="fa fa-calendar"></i><a href="javascript:void(0);" >Request Appointment</a>
+                                                    </span>
                                                 </li>
                                             </ul>
                                         </div>
@@ -137,11 +125,30 @@
                                     
                                     
                                     
+                                    <?php
                                     
+                                    
+                                    echo '<pre>';
+                                         prin_r($schedules);
+                                    echo '</pre>';
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    ?>
+                                    
+                                    
+                                    
+                                    <!---   ng-click="Getappoinment();"   --->
                                     <!------------Deepak Appoinment-------------->
-                             
+<!--                                    {{timeTableDoc}}-->
                                     <div class="mi_filterresult col-md-9 col-sm-9 col-xs-12">
-<!--                                        <div class="row" >
+                                        <div class="row" >
                                             <div class="mi_doctorbook col-md-12">
                                                 <div class="mi_doctortimeslot">
                                                     <div class="mi_date mi-lt-grey pt10 pb10">
@@ -370,10 +377,60 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>-->
+                                        </div>
 
+
+
+
+                                        <!------- End Here -------->
+
+
+
+
+                                        <!---------SLOT-------------->
                                         
+                                        <br/> <br/> <br/> <br/> <br/>
                                         
+                                        <div class="row" id="" style="" >
+
+
+                                            <div class="col-xs-2 col-sm-2 col-md-2" ng-repeat="slotTime in timeTableDoc">
+                                                <p>{{slotTime.slot}}</p>
+                                            </div>
+
+
+                                            <div ng-bind-html="timeTable"></div>
+
+                                            <form class="slot-viewer" method="GET" action="#">
+                                                <div ng-bind-html="apt"></div>
+
+
+                                                <div class="slots-group" style="display: table;">
+
+                                                    <input type="button" value="Next Day"  ng-show = "next" ng-click="ShowHide()" />
+                                                    <br />
+                                                    <br />
+                                                    <input type="hidden" ng-model="appointmentTime" name="appointmentTime" id="appointmentTime" value="<?php echo $data[0]->id; ?>" />
+                                                    <div ng-show = "IsVisible1"><label id="IsVisible1">4:30:PM</label></div>
+                                                    <div ng-show = "IsVisible2"><label id="IsVisible2">5:30:PM</label></div>
+                                                    <div ng-show = "IsVisible3"><label id="IsVisible3">6:30:PM</label></div>
+                                                    <div ng-show = "IsVisible4"><label id="IsVisible4">7:30:PM</label></div>
+                                                    <div ng-show = "IsVisible5"><label id="IsVisible5">8:30:PM</label></div>
+                                                    <div ng-show = "IsVisible6"><label id="IsVisible6">9:30:PM</label></div>
+                                                    <div ng-show = "IsVisible7"><label id="IsVisible7">10:00:PM</label></div>
+                                                    <div ng-show = "IsVisible8"><label id="IsVisible8">11:30:PM</label></div>
+                                                    <div ng-show = "IsVisible9"><label id="IsVisible9">12:00:PM</label></div>
+
+                                                    <input type="button" value="Privious Day" ng-show = "privious" ng-click="ShowHideMinuse()" />
+
+
+                                                </div>
+
+                                            </form>
+
+                                            <!--------End Here ---------->
+
+                                        </div>  
 
                                         <div class="col-xs-12 col-sm-12 col-md-12"> 
                                             <div class="row"><h3 class="doctor-head">Qualifications</h3></div>
@@ -405,49 +462,6 @@
 
     </div> <!--wrap -->
 </div> <!-- page-content -->
-
-
-
-<!-- Modal -->
-<div id="myModal" class="modal fade" role="dialog">
-  <div class="modal-dialog">
-
-    <!-- Modal content-->
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title">Schedule Appointment</h4>
-      </div>
-      <div class="modal-body">
-<!--        <p>Some text in the modal.</p>-->
-        
-        
-        <?php
-        
-        echo '<pre>';
-          print_r($schedules);
-        echo '</pre>';
-        
-        
-        echo $day=  date('l', strtotime(date("Y-m-d")));
-        //echo $day=  date('d');
-        
-        
-        
-        $schedules['Mo'];
-       $dayCode =   substr($day, 0, 2);  // bcd
-        
-        ?>
-        
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-      </div>
-    </div>
-
-  </div>
-</div>
-
 
 
 

@@ -42,7 +42,7 @@
                                                 <td><?php echo $list->email; ?></td>
                                                 <td align="center">
                                                     <a href="<?php echo base_url(); ?>admin/patient/view/<?php echo $list->id; ?>"><i class="fa fa-user"></i></a>&nbsp;
-                                                    <a href="<?php echo base_url(); ?>admin/appointment /<?php echo $list->id; ?>"><i class="fa fa-calendar" title="Please take appointment"></i></a>&nbsp;
+                                                    <a href="<?php echo base_url(); ?>admin/appointment?pid=<?php echo $list->id; ?>"><i class="fa fa-calendar" title="Please take appointment"></i></a>&nbsp;
                                                     <a href="<?php echo base_url(); ?>admin/patient/edit/<?php echo $list->id; ?>"><i class="fa fa-pencil-square-o"></i></a>
                                                 </td>
                                             </tr>

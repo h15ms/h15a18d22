@@ -1,3 +1,13 @@
+<?php
+@$pid = $_GET['pid'];
+
+if(isset($pid)){
+    $pid = "/$pid";
+}else{
+     $pid = "";
+}
+
+?>
 <div id="page-content">
     <div id="wrap">
         <div id="page-heading">
@@ -7,7 +17,7 @@
                 <li class='active'><?php echo $headline; ?></li>
             </ol>
 
-            <h1><?php echo $headline; ?></h1>
+            <h1><?php //echo $headline; ?></h1>
             <div class="options">
                 <div class="btn-toolbar">
                     <a href="<?php echo base_url() ?>admin/doctor" class="btn btn-default hidden-xs"><i class="fa fa-files-o"></i> All Doctor</a>
@@ -22,7 +32,7 @@
                 <div class="col-sm-12">
                     <div class="panel panel-inverse">
                         <div class="panel-heading">
-                            <h4><i class="fa fa-hospital-o"></i> <span>Add Doctor</span></h4>                         
+                            <h4><i class="fa fa-hospital-o"></i> <span>Take Doctor</span></h4>                         
                         </div>
                         <div class="panel-body collapse in"> 
                             
@@ -66,11 +76,13 @@
                                         <p style="">Experience : {{doctor.experience}} Years</p>
                                         <p style="">{{doctor.hospital_name}}</p>
                                         <div class="row">
-                                            <div class="col-xs-8 col-sm-9 col-md-8">
-                                                <p class="rd_more margintop10"><a href="<?php echo base_url(); ?>/admin/doctor/profile/{{doctor.id}}"><i class="fa fa-eye"></i> View Profile</a></p>
+                                            <div class="col-xs-6 col-sm-6 col-md-6">
+                                                <p class="rd_more margintop10"><a href="<?php echo base_url(); ?>admin/doctor/profile/{{doctor.id}}"><i class="fa fa-eye"></i> View Profile</a></p>
                                             </div>
-                                            <div class="col-xs-4 col-sm-3 col-md-4">
-                                                <p class="rd_more margintop10"><a><i class="fa fa-calendar"></i></a></p>
+                                            <div class="col-xs-6 col-sm-6 col-md-6">
+                                                <p class="rd_more margintop10" style="float: left;">
+                                                    <a href="<?php echo base_url(); ?>admin/appointment/schedule/{{doctor.id}}<?php echo $pid;?>"><i class="fa fa-calendar"></i>Book Appointment</a>
+                                                </p>
                                             </div>
                                         </div>
                                     </div>

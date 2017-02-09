@@ -56,7 +56,7 @@
                                                 <td><?php echo $doctor->email; ?></td>
                                                 <td><?php echo $doctor->city . ' , ' . $doctor->state; ?></td>        
                                                 <td align="center">
-                                                    <a href="<?php echo base_url(); ?>admin/doctor/view/<?php echo $doctor->id; ?>"><i class="fa fa-user"></i></a>&nbsp;
+                                                    <a href="<?php echo base_url(); ?>admin/doctor/profile/<?php echo $doctor->id; ?>"><i class="fa fa-user"></i></a>&nbsp;
                                                     <a href="<?php echo base_url(); ?>admin/doctor/edit/<?php echo $doctor->id; ?>"><i class="fa fa-pencil-square-o"></i></a>
                                                     <a href="<?php echo base_url(); ?>admin/doctor/slot/<?php echo $doctor->id; ?>"><i class="fa fa-plus-circle"  title="Slot"></i></a>
                                                 </td>

@@ -50,9 +50,9 @@
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular.min.js"></script>
   
       <script type='text/javascript' src='<?php echo URL_ADMIN; ?>js/hospital.js'></script>
-<?php } if($js!='')  { ?>
-      <script type='text/javascript' src='<?php echo ASSETS; ?>angularjs/angular.min.1.6.1.js'></script>
-      <script type='text/javascript' src='<?php echo ASSETS; ?>angularjs/ctr/<?php echo $js; ?>'></script>
+<?php }else if($js!='')  { ?>
+ <script type='text/javascript' src='<?php echo ASSETS; ?>angularjs/angular.min.1.6.1.js'></script>
+ <script type='text/javascript' src='<?php echo ASSETS; ?>angularjs/ctr/<?php echo $js; ?>'></script>
   <?php } ?>
     
   <script type='text/javascript' src='<?php echo URL_ADMIN;?>demo/demo.js'></script>

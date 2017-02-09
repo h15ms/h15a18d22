@@ -5,6 +5,7 @@ class Doctor extends CI_Controller {
     public $session;
 
     function __construct() {
+        
         parent:: __construct();
         error_reporting(0);
         if (isset($_SESSION['logged_in'])) {
@@ -15,20 +16,17 @@ class Doctor extends CI_Controller {
         } else {
             redirect('login', 'refresh');
         }
-
-
+        //$this->session->keep_flashdata('notification');
         $this->load->helper('form');
         $this->load->library('form_validation');
         $this->load->library('session');
         $this->load->model('admin/Doctor_model', 'app');
         $this->load->helper("url");
         $this->load->library("pagination");
+        $this->load->library('session');
     }
 
     public function index() {
-        
-        
-        
         
         
         
@@ -196,7 +194,16 @@ class Doctor extends CI_Controller {
         $js = array('js' => "doctor.js");  //  Angular Js file name
         $id = $this->uri->segment('4');
         $doctors = $this->app->fetchById($id);
-        $dataCollection = array('headline' => 'View Doctor', 'data' => $doctors);
+        
+        $slots = $this->app-> slotById($id);
+        $slotData = array();
+        foreach ($slots as $key => $slot) {
+            $slotData['slot'][$slot->days][$slot->shift][]  = $slot->slot;
+        }
+        
+
+        
+        $dataCollection = array('headline' => 'View Doctor', 'data' => $doctors , 'slotData' => $slotData,'notification'=>$notification);
         $this->load->view('admin/temp/headercrm', $title);
         $this->load->view('admin/doctor/profile', $dataCollection);
         $this->load->view('admin/temp/footercrm', $js);
@@ -204,11 +211,77 @@ class Doctor extends CI_Controller {
     
     public function slotTime() {
         $doctor_id = $this->uri->segment('4');
-       echo $doctors = $this->app->timeSlot($doctor_id);
+        $slots = $this->app->slotById($doctor_id);
+        
+        
+        
+    // echo   $jm =   date("j M", strtotime(date("Y-m-d", strtotime(date("Y-m-d"))) . " +1 day"));
+    // echo      $day=  date('l', strtotime(date("Y-m-d", strtotime(date("Y-m-d"))) . " +1 day"));
+          
+          
+          
+          
+          
+        //  die;
+        
+        
+        
+        
+       // $slots = $this->app-> slotById($id);
+        
+//         echo '<pre>';
+//               print_r($slots);
+//            echo '</pre>';
+        
+        
+        
+        $slotData = array();
+        foreach ($slots as $key => $slot) {
+            $slotData[$slot->days][$slot->shift][]  = $slot->slot;
+        }
+        
+        
+       // echo $today = date("j M");    //  F j, Y, g:i a
+        
+           // $date = date("j M", strtotime(date("Y-m-d", strtotime($date)) . " +1 day"));
+        
+        $timeCollection = array();
+        for($i=0;$i<14;$i++){
+          $jm =   date("j M", strtotime(date("Y-m-d", strtotime(date("Y-m-d"))) . " +$i day"));
+          $day=  date('l', strtotime(date("Y-m-d", strtotime(date("Y-m-d"))) . " +$i day"));
+            $timeCollection[$i]['m'] =   $jm; 
+            $timeCollection[$i]['d'] =  $day; // die;
+           $timeCollection[$i] =  $slotData;
+          // unset($jm);
+          // unset($day);
+        }
+        
         
         echo '<pre>';
-            print_r(json_decode($doctors));            
-        echo '<pre>';
+        print_r($timeCollection);
+        echo '</pre>';
+        die;
+//
+//
+//
+//        die;
+//            
+//            echo '<pre>';
+//               print_r($slotData);
+//            echo '</pre>';
+//            die;
+//        
+//        die;
+        
+        echo json_encode($timeCollection);
+        
+        
+        
+      // echo $doctors = $this->app->timeSlot($doctor_id);
+       // json_decode($doctors);
+//        echo '<pre>';
+//            print_r(json_decode($doctors));            
+//        echo '<pre>';
         
         // echo  json_encode($doctors);
     }

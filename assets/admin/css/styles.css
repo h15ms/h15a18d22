@@ -13125,3 +13125,143 @@ color: #527f26;
  margin-top:20px;   
 }
 
+
+
+
+/**********Time Slot***********/
+
+.mi_date {border:1px solid #b6b6b6;}
+.mi_date .nav.nav-tabs{ border-bottom:0px;}
+.mi_date .nav{ margin-left:0; text-align: center;}
+.mi_date .nav li {
+    width: 19%;
+    text-align: center;
+    border: 1px solid #ddd;
+                color: #414141;
+                box-shadow: 1px 1px 1px #B1B1B1,inset 1px 1px 1px #959595;
+}
+.mi_date .nav  li{display:inline-block !important; float:inherit; }
+.mi_date .nav  li.active{
+                box-shadow: 1px 1px 1px #000000,inset 1px 1px 1px #000000; 
+                
+                }
+.mi_date  .nav-tabs  li.active > a, 
+.mi_date  .nav-tabs  li.active > a:hover, 
+.mi_date  .nav-tabs  li.active > a:focus {
+    color: #555;
+    cursor: default;
+    background-color:transparent;
+    border: 0px solid #ddd;
+    border-bottom-color: transparent;
+}              
+                
+.mi_date .nav li > a ,.mi_date .nav li > a:hover ,.mi_date .nav li > a:focus{ text-decoration:none; border:0px; background-color: transparent; padding:0px;}
+.mi_date .nav li > a > strong{
+                font-size: 22px;
+                display:inline-block;
+                margin-right:5px;
+                color: #414141;
+}
+.mi_date .nav li > a > span{
+                color: #414141;
+}
+.mi_doctortimes{ 
+    background:#ffffff; 
+                border:1px solid #b6b6b6; border-top:0px solid #b6b6b6; 
+    width:100%; float:left;}
+.mi_doctortimeslotmain .mi_doctortimeslotmainbox{border-bottom:1px solid #b6b6b6; }           
+.mi_doctortimeslotmain .mi_doctortimeslotmainbox .mi_timetab{
+                width: 100%;
+                float: left;
+                padding: 5px 10px;
+                border-bottom: 1px solid #f2f2f2;
+                color: #9f9f9f;
+                font-size: 18px;
+}
+.mi_doctortimeslotmain .mi_doctortimeslotmainbox  .mi_tabcontentime{
+                display:inline-block; padding:15px 10px; cursor:pointer;
+}
+.mi_morningicon{
+                width:35px; height:35px; display:inline-block;
+                background:url(../img/sprite.png) no-repeat;
+                background-position:-273px top;
+                vertical-align: middle;
+}
+.mi_afternoonicon{
+    width:35px; height:35px; display:inline-block;
+                background:url(../img/sprite.png) no-repeat;
+                background-position:-321px top;
+                vertical-align: middle;
+                }
+
+.mi_eveningicon{
+    width:35px; height:35px; display:inline-block;
+                background:url(../img/sprite.png) no-repeat;
+                background-position:-361px top;
+                vertical-align: middle;
+                }
+.mi_pagination{    
+    width: 100%;
+    float: left;}      
+.mi_prev a{
+                width: 40px;
+    height: 40px;
+    position: absolute;
+    background: url(../img/sprite.png) no-repeat;
+    background-position: left -25px;
+    left: 30px;
+                top: 22px;
+}
+.mi_nxt a{
+                width:40px;
+                height:40px;
+                position:absolute;           
+                background:url(../img/sprite.png) no-repeat;
+                background-position:-37px -25px;
+                right: 30px;
+                top: 22px;
+}
+
+.mt10{ margin-top:10px;}
+.mt20{ margin-top:20px;}
+.mt30{ margin-top:30px;}
+.mt40{ margin-top:40px;}
+.mt50{ margin-top:50px;}
+
+.mb10{ margin-bottom:10px;}
+.mb20{ margin-bottom:20px;}
+.mb30{ margin-bottom:30px;}
+.mb40{ margin-bottom:40px;}
+.mb50{ margin-bottom:50px;}
+
+.pt10{ padding-top:10px;}
+.pt20{ padding-top:20px;}
+.pt30{ padding-top:30px;}
+.pt40{ padding-top:40px;}
+.pt50{ padding-top:50px;}
+
+.pb10{ padding-bottom:10px;}
+.pb20{ padding-bottom:20px;}
+.pb30{ padding-bottom:30px;}
+.pb40{ padding-bottom:40px;}
+.pb50{ padding-bottom:50px;}
+
+
+@media screen and (max-width: 480px){
+.mi_doctortimeslotmain .mi_doctortimeslotmainbox .mi_tabcontentime {
+    padding: 15px 7px;
+}
+
+.mi_date .nav li {
+    text-align: center;
+                width:30%;
+    margin-top: 5px;
+}
+.mi_prev a{
+                top: 85px;
+}
+.mi_nxt a{
+                top: 85px;
+}
+}
+

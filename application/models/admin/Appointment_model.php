@@ -1,6 +1,8 @@
 <?php
 
 class Appointment_model extends CI_Model {
+    
+    
 
     public function __construct() {
         parent:: __construct();
@@ -217,9 +219,62 @@ class Appointment_model extends CI_Model {
         }
         
         
-        
-        
+    }
+    
+    
+    public function patient_appointment_new($data) {
+
+        $patient = $this->db->select('*')->get_where(PR . 'patient', array('mobile' => $data['data']['patient']['mobile']));
+        if ($patient->num_rows() > 0) {
+            $patient = $patient->result();
+            $data['data']['appointment']['patient_id'] = $patient[0]->id;
+
+            $appointment = $this->db->select('*')->get_where(PR . 'patient_appointment', array('doctor_id' => $data['data']['appointment']['doctor_id'], 'patient_id' => $data['data']['appointment']['patient_id'], 'appointment_date' => $data['data']['appointment']['appointment_date'], 'slot' => $data['data']['appointment']['slot']));
+            //$appointment = $appointment->result();
+            if ($appointment->num_rows() > 0) {
+                
+                 $condition  = array('doctor_id' => $data['data']['appointment']['doctor_id'], 'patient_id' => $data['data']['appointment']['patient_id'], 'appointment_date' => $data['data']['appointment']['appointment_date'], 'slot' => $data['data']['appointment']['slot']);
+                 $this->db->where($condition);
+                return $updateID = $this->db->update(PR . 'patient_appointment',$data['data']['appointment']);
+                
+            } else {
+                $insertID = $this->db->insert(PR . 'patient_appointment', $data['data']['appointment']);
+                return $insertID;
+            }
+        } else {
+            $insertID = $this->db->insert(PR . 'patient', $data['data']['patient']);
+            if ($this->db->insert_id() != '') {
+                $data['data']['appointment']['patient_id'] = $this->db->insert_id();
+                $insertID = $this->db->insert(PR . 'patient_appointment', $data['data']['appointment']);
+                return $insertID;
+            }
+            return $insertID;
+        }
+    }
+    
+    public function patient_appointment_exist($data) {
+          
+
+            $appointment = $this->db->select('*')->get_where(PR . 'patient_appointment', array('doctor_id' => $data['data']['appointment']['doctor_id'], 'patient_id' => $data['data']['appointment']['patient_id'], 'appointment_date' => $data['data']['appointment']['appointment_date'], 'slot' => $data['data']['appointment']['slot']));
+            //$appointment = $appointment->result();
+            if ($appointment->num_rows() > 0) {
+                
+                 $condition  = array('doctor_id' => $data['data']['appointment']['doctor_id'], 'patient_id' => $data['data']['appointment']['patient_id'], 'appointment_date' => $data['data']['appointment']['appointment_date'], 'slot' => $data['data']['appointment']['slot']);
+                 $this->db->where($condition);
+                return $updateID = $this->db->update(PR . 'patient_appointment',$data['data']['appointment']);
+                
+            } else {
+                $insertID = $this->db->insert(PR . 'patient_appointment', $data['data']['appointment']);
+                return $insertID;
+            }
         
     }
+
+    public function patient_appointment($data) {
+        $insertID = $this->db->insert(PR.'patient_appointment', $data);
+        return $insertID;
+    }
+    
+    
 
 }

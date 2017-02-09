@@ -43,6 +43,18 @@ class Doctor_model extends CI_Model {
         }
     }
     
+    public function patientById($patient) {
+
+        $getdata = $this->db->select('*')->get_where(PR.'patient', array('id' => $patient));
+        if ($getdata->num_rows() > 0) {
+            return $getdata->result();
+        } else {
+            return false;
+        }
+    }
+    
+    
+    
     public function timeSlot($doctor_id) {
 
         if (empty($doctor_id)) {
@@ -90,7 +102,9 @@ class Doctor_model extends CI_Model {
         return $insertID;
     }
     
-    public function slot($data) {
+    
+    
+     public function slot($data) {
         $insertID = $this->db->insert(PR.'slot', $data);
         return $insertID;
     }
