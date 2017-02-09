@@ -38,7 +38,7 @@
         <div class="container">
     
            
-                 {{hosPitaledit}}
+             
                          
                                 
                                        

@@ -6,7 +6,7 @@ var BASEURL='http://localhost/h15a18d22/';
 
 
 var app = angular.module('hospitalApp', []).run(function ($rootScope) {
-            $rootScope.title = 'Doctor ';
+            $rootScope.title = 'Hospital ';
         })
 .controller('hospitalCtrl', function($scope, $http) {
     $http.get(BASEURL+"admin/hospitalscrm/getindexjson")

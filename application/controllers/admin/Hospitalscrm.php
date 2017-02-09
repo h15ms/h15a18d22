@@ -107,9 +107,11 @@ class Hospitalscrm extends Base {
    public function viewhospitaldata(){
   
        $hospital = $this->model->hospitalById($_GET['id']);
-       $specil=$this->model->getspecialization($hospital[0]->specialization);     
+       $specil=$this->model->getspecialization($hospital[0]->specialization);   
+      
        $ar=array('hospital'=>$hospital,'sepecial'=>$specil); 
-       echo json_encode($hospital); 
+     
+       echo json_encode($ar); 
       
   }
   
