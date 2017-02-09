@@ -54,7 +54,7 @@
                                             
                                             <td> {{$index+1}}</td>
                                             <td>{{x.sepcialization }}</td>
-                                         <td >
+<!--                                         <td >
                                              <span ng-if="x.status==='1'">
                                                  ACTIVE 
                                              </span> 
@@ -63,13 +63,13 @@
                                              </span> 
                                           
                                          
-                                         </td> 
+                                         </td> -->
                                           <td >
                                              <span ng-if="x.status==='1'">
-                                                   <a href="javascript:void(0)" ng-click="updateSpecif(x.id,0)">IN ACTIVE</a>
+                                                 <a href="javascript:void(0)" ng-click="updateSpecif(x.id,0)"><span style="color:green;">ACTIVE</span></a>
                                              </span> 
                                          <span ng-if="x.status==='0'">
-                                                   <a href="javascript:void(0)" ng-click="updateSpecif(x.id,1)">ACTIVE</a>
+                                             <a href="javascript:void(0)" ng-click="updateSpecif(x.id,1)"><span style="color:red;">DACTIVE</span></a>
                                              </span> 
                                           
                                          
