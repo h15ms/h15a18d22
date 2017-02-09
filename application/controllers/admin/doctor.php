@@ -1,8 +1,10 @@
 <?php
+
 defined('BASEPATH') OR exit('No direct script access allowed');
 require_once('Base.php');
+
 class Doctor extends Base {
-    
+
     function __construct() {
         parent:: __construct();
         $this->isLoggedIn();
@@ -28,13 +30,12 @@ class Doctor extends Base {
         $this->pagination->initialize($config);
         $page = ($this->uri->segment(4)) ? $this->uri->segment(4) : 0;
         $data["results"] = $this->app->fetchAll($config["per_page"], $page);
-        $data["links"] = $this->pagination->create_links();        
+        $data["links"] = $this->pagination->create_links();
 
         $header = array('page_title' => 'All Doctor | MiConsulting');
         $content = array('headline' => 'All Doctor', 'doctors' => $data);
 
         $this->getLayout('admin/doctor/index', $header, $left, $content, $footer);
-
     }
 
     public function add() {
@@ -83,13 +84,13 @@ class Doctor extends Base {
 //            $this->load->view('add_form');
 //        }
 
-        
+
         $doctors = array();
-        $states =  $this->state_city_india();        
+        $states = $this->state_city_india();
 
 
         $header = array('page_title' => 'Add Doctor | MiConsulting');
-        $content = array('headline' => 'Add Doctor','states'=>$states, 'doctor' => $doctors);
+        $content = array('headline' => 'Add Doctor', 'states' => $states, 'doctor' => $doctors);
         $footer = array('js' => "doctor.js"); //  Angular Js file name
 
         $this->getLayout('admin/doctor/add', $header, $left, $content, $footer);
@@ -151,28 +152,27 @@ class Doctor extends Base {
 
 
         $doctors = array();
-        $states =  $this->state_city_india();
+        $states = $this->state_city_india();
 
         $header = array('page_title' => 'Edit Doctor | MiConsulting');
-        $content = array('headline' => 'Edit Doctor','states'=>$states, 'doctor' => $doctor[0]);
+        $content = array('headline' => 'Edit Doctor', 'states' => $states, 'doctor' => $doctor[0]);
         $footer = array('js' => "doctor.js"); //  Angular Js file name
 
         $this->getLayout('admin/doctor/edit', $header, $left, $content, $footer);
-        
     }
-public function view() {
-         
+
+    public function view() {
+
 
         $id = $this->uri->segment('4');
         $doctors = $this->app->fetchById($id);
-        $states =  $this->state_city_india();
+        $states = $this->state_city_india();
 
         $header = array('page_title' => 'View Doctor | MiConsulting');
-        $content = array('headline' => 'View Doctor','states'=>$states, 'doctor'=> $doctors);
+        $content = array('headline' => 'View Doctor', 'states' => $states, 'doctor' => $doctors);
         $footer = array('js' => "doctor.js"); //  Angular Js file name
 
         $this->getLayout('admin/doctor/view', $header, $left, $content, $footer);
-    
     }
 
     public function profile() {
@@ -180,13 +180,13 @@ public function view() {
         $id = $this->uri->segment('4');
         $doctors = $this->app->fetchById($id);
 
-        
-        $slots = $this->app-> slotById($id);
+
+        $slots = $this->app->slotById($id);
         $slotData = array();
         foreach ($slots as $key => $slot) {
-            $slotData['slot'][$slot->days][$slot->shift][]  = $slot->slot;
+            $slotData['slot'][$slot->days][$slot->shift][] = $slot->slot;
         }
-        
+
 //        $dataCollection = array('headline' => 'View Doctor', 'data' => $doctors , 'slotData' => $slotData,'notification'=>$notification);
 //        $this->load->view('admin/temp/headercrm', $title);
 //        $this->load->view('admin/doctor/profile', $dataCollection);
@@ -194,59 +194,71 @@ public function view() {
 
 
         $header = array('page_title' => 'Doctor profile | MiConsulting');
-        $content = array('headline' => 'View Doctor', 'data' => $doctors , 'slotData' => $slotData,'notification'=>$notification);
+        $content = array('headline' => 'View Doctor', 'data' => $doctors, 'slotData' => $slotData, 'notification' => $notification);
         $footer = array('js' => "doctor.js"); //  Angular Js file name
         $this->getLayout('admin/doctor/profile', $header, $left, $content, $footer);
     }
-    
+    public function appointment() {
+
+        $id = $this->uri->segment('4');
+        $doctors = $this->app->fetchById($id);
+
+
+        $slots = $this->app->slotById($id);
+        $slotData = array();
+        foreach ($slots as $key => $slot) {
+            $slotData['slot'][$slot->days][$slot->shift][] = $slot->slot;
+        }
+
+//        $dataCollection = array('headline' => 'View Doctor', 'data' => $doctors , 'slotData' => $slotData,'notification'=>$notification);
+//        $this->load->view('admin/temp/headercrm', $title);
+//        $this->load->view('admin/doctor/profile', $dataCollection);
+//        $this->load->view('admin/temp/footercrm', $js);
+
+
+        $header = array('page_title' => 'Doctor profile | MiConsulting');
+        $content = array('headline' => 'View Doctor', 'data' => $doctors, 'slotData' => $slotData, 'notification' => $notification);
+        $footer = array('js' => "doctor.js"); //  Angular Js file name
+        $this->getLayout('admin/doctor/profile', $header, $left, $content, $footer);
+    }
+
     public function slotTime() {
         $doctor_id = $this->uri->segment('4');
         $slots = $this->app->slotById($doctor_id);
-        
-        
-        
-    // echo   $jm =   date("j M", strtotime(date("Y-m-d", strtotime(date("Y-m-d"))) . " +1 day"));
-    // echo      $day=  date('l', strtotime(date("Y-m-d", strtotime(date("Y-m-d"))) . " +1 day"));
-          
-          
-          
-          
-          
+
+
+
+        // echo   $jm =   date("j M", strtotime(date("Y-m-d", strtotime(date("Y-m-d"))) . " +1 day"));
+        // echo      $day=  date('l', strtotime(date("Y-m-d", strtotime(date("Y-m-d"))) . " +1 day"));
         //  die;
-        
-        
-        
-        
-       // $slots = $this->app-> slotById($id);
-        
+        // $slots = $this->app-> slotById($id);
 //         echo '<pre>';
 //               print_r($slots);
 //            echo '</pre>';
-        
-        
-        
+
+
+
         $slotData = array();
         foreach ($slots as $key => $slot) {
-            $slotData[$slot->days][$slot->shift][]  = $slot->slot;
+            $slotData[$slot->days][$slot->shift][] = $slot->slot;
         }
-        
-        
-       // echo $today = date("j M");    //  F j, Y, g:i a
-        
-           // $date = date("j M", strtotime(date("Y-m-d", strtotime($date)) . " +1 day"));
-        
+
+
+        // echo $today = date("j M");    //  F j, Y, g:i a
+        // $date = date("j M", strtotime(date("Y-m-d", strtotime($date)) . " +1 day"));
+
         $timeCollection = array();
-        for($i=0;$i<14;$i++){
-          $jm =   date("j M", strtotime(date("Y-m-d", strtotime(date("Y-m-d"))) . " +$i day"));
-          $day=  date('l', strtotime(date("Y-m-d", strtotime(date("Y-m-d"))) . " +$i day"));
-            $timeCollection[$i]['m'] =   $jm; 
-            $timeCollection[$i]['d'] =  $day; // die;
-           $timeCollection[$i] =  $slotData;
-          // unset($jm);
-          // unset($day);
+        for ($i = 0; $i < 14; $i++) {
+            $jm = date("j M", strtotime(date("Y-m-d", strtotime(date("Y-m-d"))) . " +$i day"));
+            $day = date('l', strtotime(date("Y-m-d", strtotime(date("Y-m-d"))) . " +$i day"));
+            $timeCollection[$i]['m'] = $jm;
+            $timeCollection[$i]['d'] = $day; // die;
+            $timeCollection[$i] = $slotData;
+            // unset($jm);
+            // unset($day);
         }
-        
-        
+
+
         echo '<pre>';
         print_r($timeCollection);
         echo '</pre>';
@@ -262,17 +274,16 @@ public function view() {
 //            die;
 //        
 //        die;
-        
+
         echo json_encode($timeCollection);
-        
-        
-        
-      // echo $doctors = $this->app->timeSlot($doctor_id);
-       // json_decode($doctors);
+
+
+
+        // echo $doctors = $this->app->timeSlot($doctor_id);
+        // json_decode($doctors);
 //        echo '<pre>';
 //            print_r(json_decode($doctors));            
 //        echo '<pre>';
-        
         // echo  json_encode($doctors);
     }
 
@@ -282,49 +293,48 @@ public function view() {
 
         $id = $this->uri->segment('4');
         $doctor = $this->app->fetchById($id);
-        
-        $slots = $this->app-> slotById($id);
-        
-        
+
+        $slots = $this->app->slotById($id);
+
+
         $slotData = array();
         foreach ($slots as $key => $slot) {
-            $slotData['slot'][$slot->days][$slot->shift][]  = $slot->slot;
+            $slotData['slot'][$slot->days][$slot->shift][] = $slot->slot;
         }
-     
+
         if ($this->input->server('REQUEST_METHOD') === 'POST' && $_POST['send'] == 1) {
             $data = array();
             $data['id'] = $_POST['id'] ? $_POST['id'] : $id;
             $this->app->delete_slot($data['id']);
             $postParam = $_POST;
-             $counter = 0;
+            $counter = 0;
             foreach ($postParam as $key => $value) {
                 $saveData = array();
-                if($key != 'send' && $key != 'id'){
-                    list($days,$shift) = explode("_",$key);
+                if ($key != 'send' && $key != 'id') {
+                    list($days, $shift) = explode("_", $key);
                     $saveData['doctor_id'] = $_POST['id'] ? $_POST['id'] : $id;
                     $saveData['days'] = $days;
                     $saveData['shift'] = $shift;
                     $saveData['type'] = 1;
-                    if(is_array($value)){
-                        foreach ($value  as $k => $time) {
-                            if($time != ''){
-                                 $saveData['slot'] = trim($time);
-                                 $this->app->slot($saveData);
+                    if (is_array($value)) {
+                        foreach ($value as $k => $time) {
+                            if ($time != '') {
+                                $saveData['slot'] = trim($time);
+                                $this->app->slot($saveData);
                             }
                         }
                     }
                 }
-                
-               unset($savedata);
-                
+
+                unset($savedata);
             }
         }
 
         $doctors = array();
         $states = $this->state_city_india();
-        
+
         $header = array('page_title' => 'Doctor Slot | MiConsulting');
-        $content = array('headline' => 'Doctor Slot', 'doctor' => $doctor[0],'existSlot' => $slotData);
+        $content = array('headline' => 'Doctor Slot', 'doctor' => $doctor[0], 'existSlot' => $slotData);
         $footer = array('js' => "doctor.js"); //  Angular Js file name
 
         $this->getLayout('admin/doctor/slot', $header, $left, $content, $footer);
