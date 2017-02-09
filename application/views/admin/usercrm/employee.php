@@ -1,4 +1,3 @@
-<?php error_reporting(0);?>
 
 <div id="page-content">
     <div id="wrap">
@@ -15,7 +14,7 @@
             <h1><?php echo $headline; ?></h1>
             <div class="options">
                 <div class="btn-toolbar">
-                	<a href='<?php base_url()?>usercrm/adduser' class="btn btn-success hidden-xs"><i class="fa fa-plus-circle"></i> Add Employee</a>					           
+                	<a href='adduser' class="btn btn-success hidden-xs"><i class="fa fa-plus-circle"></i> Add Employee</a>					           
                 </div>
             </div>
         </div>

@@ -1,32 +1,18 @@
 <?php
 
-class Patient extends CI_Controller {
-
-    public $session;
+defined('BASEPATH') OR exit('No direct script access allowed');
+require_once('Base.php');
+class Patient extends Base {
 
     function __construct()
     {
       parent:: __construct();
-      error_reporting(0);
-      if(isset($_SESSION['logged_in'])){
-        $this->session = $this->session->userdata('logged_in');
-        if(( $this->session['user_level'] != '1' && $this->session['user_level_status'] != '1' ) || ( $this->session['user_level'] != '2' && $this->session['user_level_status'] != '1' ) ){  redirect('home','refresh');}//header ('Location: '.base_url().'home '); }
-      }else{
-        redirect('login','refresh');
-      }      
-
-        
-        $this->load->helper('form');
-        $this->load->library('form_validation');
-        $this->load->library('session');
-        $this->load->model('admin/Patient_model', 'app');
-        $this->load->helper("url");
-        $this->load->library("pagination");
-
+      $this->isLoggedIn();
+      $this->load->model('admin/Patient_model', 'model');
     }
 
     public function index() {
-        $patients = $this->app->fetchAll();
+        $patients = $this->model->fetchAll();
         
         $config = array();
         $config["base_url"] = base_url() . "admin/patient/index";
@@ -37,22 +23,19 @@ class Patient extends CI_Controller {
         $config["num_links"] = round($choice);
         $this->pagination->initialize($config);
         $page = ($this->uri->segment(4)) ? $this->uri->segment(4) : 0;
-        $data["results"] = $this->app->fetchAll($config["per_page"], $page);
+        $data["results"] = $this->model->fetchAll($config["per_page"], $page);
         $data["links"] = $this->pagination->create_links();
-        
-        $dataCollection = array('headlines' => 'All Patients', 'patients' => $data);
-        $title = array('page_title' => "All Patients | MiConsulting");
-        $this->load->view('admin/temp/headercrm', $title);
-        $this->load->view('admin/patient/index', $dataCollection);
-        $this->load->view('admin/temp/footercrm');
+
+        $header = array('page_title' => 'All Patients | MiConsulting');
+        $content = array('headline'=>'All Patients', 'patients' => $data);
+        $this->getLayout('admin/patient/index', $header, $left, $content, $footer);
     }
 
     public function add() {
          
          $data = array();     
          extract($_POST);
-         
-         
+
          if ($this->input->server('REQUEST_METHOD') === 'POST'  && $send == 1) {
              $data = array();
              $data['first_name'] = $first_name;
@@ -68,8 +51,6 @@ class Patient extends CI_Controller {
              $data['patient_uid'] = $patient_uid;
              $data['created'] = date('Y-m-d h:i:s');
              $data['modified'] = date('Y-m-d h:i:s');
-             
-             
              
             $reports = $_FILES['reports']['name']?$_FILES['reports']['name']:'';
             if ($reports != '') {
@@ -88,20 +69,19 @@ class Patient extends CI_Controller {
                 $data['avatar'] = $name;
                 $file_moved = move_uploaded_file($_FILES['avatar']['tmp_name'], $avatar);
             }
-            $res = $this->app->add($data);
+            $res = $this->model->add($data);
             unset($_POST);
             redirect('/admin/patient/', 'location');
         }
         
 
-        $title = array('page_title' => "Add Patient | MiConsulting");
-        $js = array('js' => "patient.js");  // Angular Js file name
+
         $patients = array();
-        $dataCollection = array('headline' => 'Add Patient', 'patient' => $patients);
-        
-        $this->load->view('admin/temp/headercrm', $title);
-        $this->load->view('admin/patient/add', $dataCollection);
-        $this->load->view('admin/temp/footercrm',$js );
+
+        $header = array('page_title' => 'Add Patients | MiConsulting');
+        $content = array('headline'=>'Add Patients', 'patient' => $patients);
+        $footer = array('js' => "patient.js");
+        $this->getLayout('admin/patient/index', $header, $left, $content, $footer);
         
     }
     
@@ -109,7 +89,7 @@ class Patient extends CI_Controller {
          
         $data = array(); 
         $id = $this->uri->segment('4');
-        $patient = $this->app->fetchById($id);
+        $patient = $this->model->fetchById($id);
          if ($this->input->server('REQUEST_METHOD') === 'POST'  && $_POST['send'] == 1) {
               extract($_POST);
              $data = array();
@@ -170,7 +150,7 @@ class Patient extends CI_Controller {
                 $file_moved = move_uploaded_file($_FILES['avatar']['tmp_name'], $avatar);
             }
             
-            $res = $this->app->update($data);
+            $res = $this->model->update($data);
             unset($_POST);
             redirect('/admin/patient/', 'location');
             
@@ -180,29 +160,27 @@ class Patient extends CI_Controller {
 //        else {
 //            $this->load->view('add_form');
 //        }
+        
 
-        $title = array('page_title' => "Edit Doctor | MiConsulting");
-        $js = array('js' => "patient.js");  // Angular Js file name
-        
-       
-        //$states =  $this->state_city_india();
-        $dataCollection = array('headline' => 'Edit Doctor','patient' => $patient[0]);
-        $this->load->view('admin/temp/headercrm', $title);
-        $this->load->view('admin/patient/edit', $dataCollection);
-        $this->load->view('admin/temp/footercrm',$js );
-        
+        $header = array('page_title' => 'Edit Doctor | MiConsulting');
+        $content = array('headline'=>'Edit Doctor','patient' => $patient[0]);
+        $footer = array('js' => "patient.js");
+        $this->getLayout('admin/patient/edit', $header, $left, $content, $footer);
     }
-public function view() {
+
+
+    public function view() {
          
-        $title = array('page_title' => "Add Doctor | MiConsulting");
-        $js = array('js' => "patient.js");  // Angular Js file name
+
+  // Angular Js file name
         $id = $this->uri->segment('4');
-        $patients = $this->app->fetchById($id);
+        $patients = $this->model->fetchById($id);
        /// $states =  $this->state_city_india();
-        $dataCollection = array('headline' => 'Add Doctor','states'=>$states, 'doctor' => $patients);
-        $this->load->view('admin/temp/headercrm', $title);
-        $this->load->view('admin/patient/view', $dataCollection);
-        $this->load->view('admin/temp/footercrm',$js );
+
+        $header = array('page_title' => 'Add Doctor | MiConsulting');
+        $content = array('headline'=>'Add Doctor','states'=>$states, 'doctor' => $patients);
+        $footer = array('js' => "patient.js");
+        $this->getLayout('admin/patient/view', $header, $left, $content, $footer);
         
     }
     

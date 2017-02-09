@@ -1,14 +1,14 @@
-<?php error_reporting(0);?>
+
 <div id="page-content">
     <div id="wrap">
         
         <div id="page-heading">
             <ol class="breadcrumb">
                 <li><a href="">Dashboard</a></li>                
-                <li class='active'><?php echo $headlines;?></li>
+                <li class='active'><?php echo $headline;?></li>
             </ol>
 
-            <h1><?php echo $headlines;?></h1>
+            <h1><?php echo $headline;?></h1>
             <div class="options">
                 <div class="btn-toolbar">                	                   
                 </div>
@@ -24,7 +24,7 @@
     <div class="col-sm-12">
         <div class="panel panel-inverse">
             <div class="panel-heading">
-                <h4><i class="fa fa-group"></i> <?php echo $headlines;?></h4>
+                <h4><i class="fa fa-group"></i> <?php echo $headline;?></h4>
                 
             </div>
           <div class="panel-body collapse in">                                  
@@ -68,6 +68,8 @@
                                     echo "Confirmed";
                                 }elseif($client->status =="3"){ 
                                   echo "Rejected";
+                                }elseif($client->status =="4"){ 
+                                  echo "Closed";
                                 }
                               ?>
                             </td>

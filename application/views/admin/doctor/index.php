@@ -1,4 +1,4 @@
-<?php error_reporting(0); ?>
+
 
 <div id="page-content">
     <div id="wrap">

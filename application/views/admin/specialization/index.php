@@ -5,7 +5,6 @@
     
 </style>
 
-<?php error_reporting(0);?>
 <div ng-app="specializationAPP" id="page-content">
     <div id="wrap">
     

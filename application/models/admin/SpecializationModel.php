@@ -1,4 +1,5 @@
 <?php
+if (!defined('BASEPATH')) exit('No direct script access allowed');
 class SpecializationModel extends CI_Model
 {
 
@@ -12,7 +13,7 @@ class SpecializationModel extends CI_Model
   public function allspecialization($specif)
   {
       
-      $getdata = $this->db->select('*')->from('mi_specialization')->where("sepcialization LIKE '%$specif%'");
+      $getdata = $this->db->select('*')->from(PR.'specialization')->where("sepcialization LIKE '%$specif%'");
       $result = $getdata->get();
    
         if ($result->num_rows() > 0) {
@@ -23,33 +24,35 @@ class SpecializationModel extends CI_Model
 
   }
     
-    public function fetchAll($limit = '', $start = '') {
-       
-        if ($limit != '') {
-            $getdata = $this->db->select('*')->from(PR . 'specialization')->limit($limit, $start);
-            $getdata->order_by('sepcialization','ASC');
-            $result = $getdata->get();
-        } else {
-            $getdata = $this->db->select('*')->from(PR . 'specialization');
-            $result = $getdata->get();
-        }
-        if ($result->num_rows() > 0) {
-            return $result->result();
-        } else {
-            return false;
-        }
-    }
-    public function insert($table, $data){
-        $insertID = $this->db->insert($table, $data);
-        return $insertID; 
-        
-    }
+  public function fetchAll($limit = '', $start = '') {
+     
+      if ($limit != '') {
+          $getdata = $this->db->select('*')->from(PR . 'specialization')->limit($limit, $start);
+          $getdata->order_by('sepcialization','ASC');
+          $result = $getdata->get();
+      } else {
+          $getdata = $this->db->select('*')->from(PR . 'specialization');
+          $result = $getdata->get();
+      }
+      if ($result->num_rows() > 0) {
+          return $result->result();
+      } else {
+          return false;
+      }
+  }
+
+  public function insert($table, $data){
+      $insertID = $this->db->insert($table, $data);
+      return $insertID; 
+      
+  }
+
   public function hospitalById($appid) 
   {  
-     //$getdata = $this->db->select('*')->get_where('mi_hospital_detail',array('d.id'=>$appid,'h.status'=>1 ));
+     //$getdata = $this->db->select('*')->get_where(PR.'hospital_detail',array('d.id'=>$appid,'h.status'=>1 ));
     //  $result = $getdata->get();
-    $this->db->select('*')->from('mi_hospital_detail  d');
-    $this->db->join('mi_hospital  h' , 'h.id=d.hospital_id', 'left');
+    $this->db->select('*')->from(PR.'hospital_detail  d');
+    $this->db->join(PR.'hospital  h' , 'h.id=d.hospital_id', 'left');
     $this->db->where(array('d.id'=>$appid,'h.status'=>1 ));
     $this->db->order_by('d.id','asc');         
     $getdata = $this->db->get(); 
@@ -61,8 +64,8 @@ class SpecializationModel extends CI_Model
         }   
   }
  public function getallhospitallist(){
-    $this->db->select('*, d.id appID')->from('mi_hospital_detail  d');
-    $this->db->join('mi_hospital  h' , 'h.id=d.	hospital_id ', 'left');
+    $this->db->select('*, d.id appID')->from(PR.'hospital_detail  d');
+    $this->db->join(PR.'hospital  h' , 'h.id=d.	hospital_id ', 'left');
     $this->db->where(array('h.status'=>1, 'd.status'=>1));
     $this->db->order_by('d.id','asc');         
     $getdata = $this->db->get(); 
@@ -76,7 +79,7 @@ class SpecializationModel extends CI_Model
 } 
 
 public function gethospitallist(){
-    $getdata = $this->db->select('*')->get_where('mi_hospital', array('status'=>1));
+    $getdata = $this->db->select('*')->get_where(PR.'hospital', array('status'=>1));
     
     //$result = $getdata->get();
        
@@ -88,15 +91,12 @@ public function gethospitallist(){
 }
 public function addHospitalname($arr){
       $data=array('name'=>$arr,'created'=> time()); 
-      $insertID = $this->db->insert('mi_hospital', $data);
+      $insertID = $this->db->insert(PR.'hospital', $data);
       return $insertID;
 }
 
 public function addhospitalDetail($arr,$pic){
    $hosId=explode('_',$arr['hospitalssel']); 
-    
-  
-        $sess = $this->session->userdata();
       
       $data=array('hospital_id'=>$hosId[0],
           'address'=> $arr['address'],
@@ -112,18 +112,13 @@ public function addhospitalDetail($arr,$pic){
           'image'=>$pic,
           'specialization'=> $arr['specialization'],
           'createdtime'=>time(),
-          'createdby'=> $sess['logged_in']['user_id'] ); 
-      $insertID = $this->db->insert('mi_hospital_detail', $data);
+          'createdby'=> $this->session['user_id'] ); 
+      $insertID = $this->db->insert(PR.'hospital_detail', $data);
       return $insertID;  
 } 
 public function edithospitalDetail($arr,$id){
    //$hosId=explode('_',$arr['hospitalssel']); 
     
-  
-        $sess = $this->session->userdata();
-
-
-
       $data=array(
           'address'=> $arr['address'],
           'city'=> $arr['city'],
@@ -141,7 +136,7 @@ public function edithospitalDetail($arr,$id){
            ); 
             
             $this->db->where('id',$id);
-            $this->db->update('mi_hospital_detail',$data);
+            $this->db->update(PR.'hospital_detail',$data);
 
       return;
 } 

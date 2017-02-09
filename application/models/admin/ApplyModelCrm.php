@@ -1,18 +1,17 @@
 <?php
+if (!defined('BASEPATH')) exit('No direct script access allowed');
 class ApplyModelcrm extends CI_Model
 {
 
   
   function __construct() {
-     
-      parent::__construct(); // call parent constructor
-      $this->load->database();
+      parent::__construct(); 
   }
 
 
   public function allApplysAdmin()
   {
-      $getdata = $this->db->select('*')->from('mi_apply');
+      $getdata = $this->db->select('*')->from( PR.'apply');
       $result = $getdata->get();
       
         if ($result->num_rows() > 0) {
@@ -26,7 +25,7 @@ class ApplyModelcrm extends CI_Model
 
   public function allApplysAgent($id)
   {
-      $query = "SELECT c.*, a.* FROM `mi_customer` c  inner join  mi_apply a on c.id=a.user_id WHERE c.`agent_id` =".$id." OR c.`id` = ".$id;
+      $query = "SELECT c.*, a.* FROM `".PR."customer` c  inner join  ".PR."apply a on c.id=a.user_id WHERE c.`agent_id` =".$id." OR c.`id` = ".$id;
       $getdata = $this->db->query($query);
 
         if ($getdata->conn_id->affected_rows > 0) {
@@ -39,14 +38,14 @@ class ApplyModelcrm extends CI_Model
     
   public function agentapplication($id)
   {
-      $getdata = $this->db->select('*')->get_where('mi_apply', array('user_id' => $id));
+      $getdata = $this->db->select('*')->get_where( PR.'apply', array('user_id' => $id));
       return $getdata->result();
   }  
     
   public function applyById($appid) 
   {     
        
-     $getdata = $this->db->select('*')->get_where('mi_apply',array('app_id'=>$appid ));
+     $getdata = $this->db->select('*')->get_where( PR.'apply',array('app_id'=>$appid ));
           
         if ($getdata->num_rows() > 0) {
             return $getdata->result();
@@ -59,7 +58,7 @@ class ApplyModelcrm extends CI_Model
  {
 
   $this->db->where('app_id' , $appid);
-  $update = $this->db->update('mi_apply', array('notice' => $notice));
+  $update = $this->db->update( PR.'apply', array('notice' => $notice));
 
   if(isset($update))
   {
@@ -74,11 +73,9 @@ class ApplyModelcrm extends CI_Model
 
 public function updateVisaId($app_id, $visaId, $status)
  {
-    $sess = $this->session->userdata();
-    $sessName = $sess['logged_in']['user_name'];
    
    $this->db->where('app_id' , $app_id);
-   $update = $this->db->update('mi_apply', array('visa_id' => $visaId, 'emp_working' => $sessName, 'status' => $status));
+   $update = $this->db->update( PR.'apply', array('visa_id' => $visaId, 'emp_working' => $this->session['user_name'], 'status' => $status));
 
    if(isset($update))
    {
@@ -91,11 +88,9 @@ public function updateVisaId($app_id, $visaId, $status)
 
 public function updateEmbassyId($app_id, $embId, $status)
  {
-  $sess = $this->session->userdata();
-  $sessName = $sess['logged_in']['user_name'];
 
    $this->db->where('app_id' , $app_id);
-   $update = $this->db->update('mi_apply', array('embassy_id' => $embId, 'emp_working' => $sessName, 'status' => $status));
+   $update = $this->db->update( PR.'apply', array('embassy_id' => $embId, 'emp_working' => $this->session['user_name'], 'status' => $status));
 
    if(isset($update))
    {
@@ -108,11 +103,9 @@ public function updateEmbassyId($app_id, $embId, $status)
 
  public function updateStatus($app_id, $status)
  {
-  $sess = $this->session->userdata();
-  $sessName = $sess['logged_in']['user_name'];
 
    $this->db->where('app_id' , $app_id);
-   $update = $this->db->update('mi_apply', array('emp_working' => $sessName, 'status' => $status));
+   $update = $this->db->update( PR.'apply', array('emp_working' => $this->session['user_name'], 'status' => $status));
 
    if(isset($update))
    {

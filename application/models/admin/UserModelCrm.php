@@ -1,4 +1,7 @@
 <?php
+
+if (!defined('BASEPATH')) exit('No direct script access allowed');
+
 class UserModelcrm  extends CI_Model
 {
 
@@ -13,14 +16,14 @@ class UserModelcrm  extends CI_Model
   public function allUsersAdmin() 
   {     
     $query = "user_type = '2' OR user_type = '1'";
-    $res= $this->db->select('*')->get_where('mi_customer', $query);   // select Employee or agents And Admins
+    $res= $this->db->select('*')->get_where(PR.'customer', $query);   // select Employee or agents And Admins
     $out = $res->result();
     return $out; 
   }  
 
   public function allUsersAgent($id) 
   {     
-    $res= $this->db->select('*')->get_where('mi_customer', array('agent_id' => $id));   // select Employee of any agent OR Admin
+    $res= $this->db->select('*')->get_where(PR.'customer', array('agent_id' => $id));   // select Employee of any agent OR Admin
     $out = $res->result();
     return $out;            
   }
@@ -29,7 +32,7 @@ class UserModelcrm  extends CI_Model
   public function user($uid)
   {        
     
-    $res= $this->db->select('*')->get_where('mi_customer', array('id ' => $uid));
+    $res= $this->db->select('*')->get_where(PR.'customer', array('id ' => $uid));
     $out = $res->result();
     return $out; 
   }  
@@ -52,7 +55,7 @@ class UserModelcrm  extends CI_Model
      ); 
      
      $this->db->where('id', $arr['id']);
-     $this->db->update('mi_customer', $data);
+     $this->db->update(PR.'customer', $data);
 
      return 'OK';
 
@@ -64,7 +67,7 @@ class UserModelcrm  extends CI_Model
 
      $data=array(
          'password'=>$pass,
-         'agent_id'=> $_SESSION['logged_in']['user_id'],
+         'agent_id'=> $this->session['user_id'],
          'user_type'=>$arr['user_level'],
          'firstname'=>$arr['firstname'],
          'lastname'=>$arr['lastname'],
@@ -77,20 +80,27 @@ class UserModelcrm  extends CI_Model
          'phone'=>$arr['phone'],
          'regtime'=> time()); 
       
-      $newid = $this->db->insert('mi_customer', $data);
+      $newid = $this->db->insert(PR.'customer', $data);
       return $newid;
   }
 
   public function userexistcheck($email)
   {        
-        $res= $this->db->select('*')->get_where('mi_customer', array('email' => $email));
+        $res= $this->db->select('*')->get_where(PR.'customer', array('email' => $email));
         $out = $res->num_rows();
         return $out; 
   }  
 
   public function allEmployee($id)
   {        
-        $res= $this->db->select('*')->get_where('mi_customer', array('agent_id' => $id));
+        $res= $this->db->query('SELECT * FROM `'.PR.'customer` c inner join '.PR.'apply a ON a.user_id = c.id where c.id = '.$id.' or c.agent_id = '.$id);
+        $out = $res->result();
+        return $out; 
+  }  
+
+  public function employee($id)
+  {        
+        $res= $this->db->select('*')->get_where(PR.'customer', array('agent_id' => $id));
         $out = $res->result();
         return $out; 
   }
@@ -100,21 +110,21 @@ class UserModelcrm  extends CI_Model
     
       $data=array('cpass'=>$newpw);
       $this->db->where('clientID', $clientid);
-      $this->db->update('mi_customer', $data);
+      $this->db->update(PR.'customer', $data);
       
   }
     
     
   public function userdel($id)
   {   
-      $result= $this->db->delete('mi_customer', array('id ' => $id));
+      $result= $this->db->delete(PR.'customer', array('id ' => $id));
       return "deleted";
   }   
 
   public function userapprovelevel($id)
   {   
       $this->db->where('id' , $id);
-      $out = $this->db->update('mi_customer', array('registration_status' => '1'));
+      $out = $this->db->update(PR.'customer', array('registration_status' => '1'));
       return $out;
   }  
 

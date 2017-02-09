@@ -13,10 +13,10 @@
             <ol class="breadcrumb">
                 <li><a href="<?php echo base_url()?>admin">Dashboard</a></li>
                 <li><a href="<?php echo base_url()?>admin/hospitalscrm">Hospitals</a></li>
-                <li class='active'><?php echo $headline; ?></li>
+                <li class='active'><?php echo $headline; ?> </li>
             </ol>
 
-            <h1><?php echo $headline; ?></h1>
+            <h1><?php echo $headline; ?></h1>  <h3><?php echo $message ? '<span style="color:green">'.$message.'</span>' :'' ; ?></h3>
             <div class="options">
                 <div class="btn-toolbar">
                 	<a href="<?php echo base_url()?>admin/hospitalscrm" class="btn btn-default hidden-xs"><i class="fa fa-files-o"></i> All Hospitals</a>
@@ -36,7 +36,8 @@
     <div class="col-sm-12">
         <div class="panel panel-inverse">
             <div class="panel-heading">
-                <h4><i class="fa fa-hospital-o"></i> <span>Add Hospitals</span></h4>                         
+                <h4><i class="fa fa-hospital-o"></i> <span>Add Hospitals</span></h4>     
+               
             </div>
             <div class="panel-body collapse in" >                                  
            
