@@ -27,13 +27,14 @@ class Module extends Base {
       $out = $this->model->moduleInsert($post);
     }
 
+    $id = $this->uri->segment(4);
+    $this->updateStatus($id);
+    
     $data = $this->model->dataFetch();
     $header = array('page_title' => 'Manage Module | MiConsulting');
     $content = array('headline' => "Manage Modules", 'data' => $data);
 
     $this->getLayout('admin/moduleManage/index', $header, $left, $content, $footer);
-
-
   }
 
 
@@ -67,7 +68,9 @@ class Module extends Base {
   }
 
   public function updateStatus($id){
-    
+   // $this->model->updateStatus($id);
+
+
   }
 
 

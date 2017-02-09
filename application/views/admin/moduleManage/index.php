@@ -90,9 +90,9 @@
                                 ?></td>
 
                             <td><?php if($user->status == '0'){
-                                        echo "<p><a style='color:red;' href='#'>Deactive</a></p>";
+                                        echo "<p><a style='color:red;' href='module/updateStatus/1'>Deactive</a></p>";
                                     }elseif($user->status == '1'){
-                                        echo "<p><a style='color:green;' href=''>Active</a></p>";
+                                        echo "<p><a style='color:green;' href='module/updateStatus/0'>Active</a></p>";
                                     }
 
                                 ?></td>
