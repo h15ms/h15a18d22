@@ -20,18 +20,7 @@
 
 
   <script type='text/javascript' src='<?php echo URL_ADMIN;?>js/bootstrap.min.js'></script>
-  <script type="text/javascript">
-  $(document).ready(function(){
-
-    $('#specialization').multiselect({
-        columns: 1,
-        placeholder: 'Select Languages',
-        search: true,
-        selectAll: true
-    });
-
-  });
-  </script>
+  
   <?php if($this->uri->segment(3) == 'addhospital' )  { ?>
      
         <script type='text/javascript' src='<?php echo URL_ADMIN; ?>js/'<?php echo $this->uri->segment(2).'.js';?> ></script>
@@ -50,12 +39,13 @@
   <script type='text/javascript' src='<?php echo URL_ADMIN;?>plugins/dropzone/dropzone.min.js'></script>
   <script type='text/javascript' src='<?php echo URL_ADMIN;?>js/placeholdr.js'></script>
   <script type='text/javascript' src='<?php echo URL_ADMIN;?>js/application.js'></script>
+  <script type='text/javascript' src='<?php echo URL_ADMIN; ?>js/<?php echo $this->uri->segment(2);?>.js'></script>
   <?php 
  
   if (($this->uri->segment(2) == 'hospitalscrm' && $this->uri->segment(3)=='')|| $this->uri->segment(3)=='viewhospital'|| $this->uri->segment(2) == 'specialization') { ?>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular.min.js"></script>
   
-      <script type='text/javascript' src='<?php echo URL_ADMIN; ?>js/hospital_ng.js'></script>
+      <script type='text/javascript' src='<?php echo URL_ADMIN; ?>js/<?php echo $this->uri->segment(2);?>_ng.js'></script>
 <?php } if($js!='')  { ?>
       <script type='text/javascript' src='<?php echo ASSETS; ?>angularjs/angular.min.1.6.1.js'></script>
       <script type='text/javascript' src='<?php echo ASSETS; ?>angularjs/ctr/<?php echo $js; ?>'></script>
