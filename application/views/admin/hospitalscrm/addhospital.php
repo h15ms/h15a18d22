@@ -150,7 +150,7 @@
               
             <div class="col-xs-12 col-sm-12 col-md-12 mt20">    
                 
-                
+             <input type="hidden" id="pagename" name="pagename" value="<?php echo $this->uri->segment(3)?$this->uri->segment(3):'index';?>"/>   
                 
                 
                 

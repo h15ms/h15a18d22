@@ -23,7 +23,7 @@
   
   <?php //if($this->uri->segment(3) == 'addhospital' )  { ?>
      
-        <script type='text/javascript' src='<?php echo URL_ADMIN; ?>js/'<?php echo $this->uri->segment(2).'.js';?> ></script>
+        <script type='text/javascript' src='<?php echo URL_ADMIN; ?>js/<?php echo $this->uri->segment(2);?>.js' ></script>
       
        <?php //}?>
   <script type='text/javascript' src='<?php echo URL_ADMIN;?>js/enquire.js'></script>

@@ -10,7 +10,16 @@ var app = angular.module('hospitalApp', []).run(function ($rootScope) {
         })
 .controller('hospitalCtrl', function($scope, $http) {
     $http.get(BASEURL+"admin/hospitalscrm/getindexjson")
-    .then(function (response) {$scope.hosPital = response.data;});
+    .then(function (response) {$scope.hosPital = response.data;
+    $scope.delpopupn = function(id,name){
+        alert(name);
+     $('#appid').val(id);
+     $('#hospitalname').html(name);
+     $('#new_bankpop').modal('show');
+   }
+    
+    
+    });
    
 });
 

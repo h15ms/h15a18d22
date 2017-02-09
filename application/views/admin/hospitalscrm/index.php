@@ -19,13 +19,11 @@
         </div>
 
 
-{{hosPital}}
-
 
 
         <div class="container">
            
-          
+      
            
 <div class="row">
     <div class="col-sm-12">
@@ -58,7 +56,7 @@
 					</thead>
 					<tbody>
                                             <tr ng-repeat="x in hosPital"> 
-                                            
+                                           
                                             <td> {{$index+1}}</td>
                                             <td nowrap >{{x.name }}</td>
                                             <td >{{x.address }}</td> 
@@ -91,7 +89,7 @@
                            
                             <td align="center"><a href="<?php echo base_url(); ?>admin/hospitalscrm/viewhospital/{{x.appID }}"><i class="fa fa-eye 2x"></i></a>
                             <a href="<?php echo base_url(); ?>admin/hospitalscrm/edithospital/{{x.appID }}"><i class="fa fa-pencil-square-o"></i></a>
-                            <a href="javascript:void(0)" onclick="delpopup({{x.appID }}, '{{x.name }}')"><i class="fa fa-trash-o"></i></a>
+                            <a href="javascript:void(0)" ng-click='delpopupn( x.appID , x.name )' ><i class="fa fa-trash-o"></i></a>
                             
                             
                             
@@ -165,7 +163,7 @@
             </form>
             </div></div>
        
-    
+    <input type="hidden" id="pagename" name="pagename" value="<?php echo $this->uri->segment(3)?$this->uri->segment(3):'index';?>"/>
     </div>  
     </div>  
     </div>  
