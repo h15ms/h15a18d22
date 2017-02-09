@@ -96,6 +96,7 @@ class Hospitalscrm extends Base {
 
     
   public function viewhospital(){
+      
     $hospital = $this->model->hospitalById($this->uri->segment('4')); 
 
     $header = array('page_title' => 'Hospital Profile | MiConsulting');

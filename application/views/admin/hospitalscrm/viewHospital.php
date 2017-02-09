@@ -2,9 +2,10 @@
 <div id="page-content" >
     <div id="wrap" ng-app="hospitaleditApp" ng-controller="hospitaleditCtrl">
         <div id="page-heading"  >
+          
             <ol class="breadcrumb">
-                <li><a href="index.php">Dashboard</a></li>
-                <li><a href="index.php?c=apply">All Applies</a></li>
+                <li><a href="/<?php echo BASEURLA; ?>/admin">Dashboard</a></li>
+                <li><a href="../../hospitalscrm/index">All Hospitals</a></li>
                 <li class='active'><?php echo $headline;?> ID: {{hosPitaledit['hospital'][0].id}}; </li>
             </ol>
             <h1><?php echo $headline;?></h1>

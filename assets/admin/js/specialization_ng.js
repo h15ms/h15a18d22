@@ -5,38 +5,9 @@ var BASEURL='http://localhost/h15a18d22/';
 //**********Start Angular Js for Hospital Module [Harpreet:27JAN17]***********/
 
 
-var app = angular.module('hospitalApp', []).run(function ($rootScope) {
-            $rootScope.title = 'Doctor ';
-        })
-.controller('hospitalCtrl', function($scope, $http) {
-    $http.get(BASEURL+"admin/hospitalscrm/getindexjson")
-    .then(function (response) {$scope.hosPital = response.data;});
-   
-});
 
 
-//var ap = angular.module('hospitaleditApp', []);
-var ap = angular.module('hospitaleditApp', []).controller('hospitaleditCtrl', function($scope, $http,$sce) {
-            var id=$('#hospitalID').val();
-//            alert(id);
-     $http.get(BASEURL+"admin/hospitalscrm/viewhospitaldata?id="+id)
-    .then(function (response) {
-        $scope.hosPitaledit = response.data;
-            var special= $scope.hosPitaledit['sepecial'];
-            var html=""
-            angular.forEach(special, function(value, key){
-            html+='<li> - '+value.sepcialization+'</li>';
-            
-         });
-        $scope.htmlAdText = $sce.trustAsHtml(html);
-      
-        });
- 
-   
-});
-
-
-var appl=angular.module('specializationAPP',[]).controller('specializationCtrl', function($scope, $http,$sce){
+var appl=angular.module('specializationAPP',[]).controller('specializationCtrl', function($scope, $http,$sce,$window){
     var id=$('#pageno').val();
      $http.get(BASEURL+'admin/specialization/getsonSpecialization?id='+id)
     .then(function(response) {
@@ -45,6 +16,7 @@ var appl=angular.module('specializationAPP',[]).controller('specializationCtrl',
      $scope.updateSpecif = function(id,st){
      $http.get(BASEURL+'admin/specialization/changestatus?id='+id+'&status='+st).then(function(res){
      $scope.speciliz=response.data;
+     $window.location.reload(); 
      });
     }
     

@@ -42,30 +42,6 @@ var ap = angular.module('hospitaleditApp', []).controller('hospitaleditCtrl', fu
 });
 
 
-var appl=angular.module('specializationAPP',[]).controller('specializationCtrl', function($scope, $http,$sce){
-    var id=$('#pageno').val();
-     $http.get(BASEURL+'admin/specialization/getsonSpecialization?id='+id)
-    .then(function(response) {
-     $scope.speciliz=response.data;
-     $scope.pagination = $sce.trustAsHtml(response.data.links);
-     $scope.updateSpecif = function(id,st){
-     $http.get(BASEURL+'admin/specialization/changestatus?id='+id+'&status='+st).then(function(res){
-     $scope.speciliz=response.data;
-     });
-    }
-    
-    });
-}).controller('addspecialCtrl', function ($scope, $http, $window, $sce) {
-    $scope.addpopup = function () {
-        var speci = angular.element('#n_b_name').val();
-        $http.get(BASEURL + 'admin/specialization/addspecilization?specifi=' + speci).then(function (rese) {
-            $scope.responseres = $sce.trustAsHtml(rese.data);
-            setTimeout(function () {
-                $window.location.reload(1);
-            }, 2000);
-        });
-    }
-});
 
 // var app = angular.module('hospitalApp',[]);
 //    app.controller('bookController',function($scope,$http){	
