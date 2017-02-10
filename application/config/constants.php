@@ -418,3 +418,35 @@ defined('DAYS')  OR define('DAYS', serialize($days)); // SLOT
 
 $user_level = array('0'=>'Developer','1'=>'Admin','2'=>'Agent','3'=>'Customer','4'=>'Member');
 defined('USER_LEVEL') OR define('USER_LEVEL' , serialize($user_level));
+
+$timearray=array('9'=>'9:00 AM',
+                    '9.5'=>'9:30 AM',
+                    '10'=>'10:00 AM',
+                    '10.5'=>'10:30 AM',
+                    '11'=>'11:00 AM',
+                    '11.5'=>'11:30 AM',
+                    '12'=>'12:00 PM',
+                    '12.5'=>'12:30 PM',
+                    '13'=>'1:00 PM',
+                    '13.5'=>'1:30 PM',
+                    '14'=>'2:00 PM',
+                    '14.5'=>'2:30 PM',
+                    '15'=>'3:00 PM',
+                    '15.5'=>'3:30 PM',
+                    '16'=>'4:00 PM',
+                    '16.5'=>'4:30 PM',
+                    '17'=>'5:00 PM',
+                    '17.5'=>'5:30 PM',
+                    '18'=>'6:00 PM',
+                    '18.5'=>'6:30 PM',
+                    '19'=>'7:00 PM',
+                    '19.5'=>'7:30 PM',
+                    '20'=>'8:00 PM',
+                    '20.5'=>'8:30 PM',
+                    '21'=>'9:00 PM',
+                    '21.5'=>'9:30 PM',
+                    '22'=>'10:00 PM',
+                    '22.5'=>'10:30 PM'
+            );
+
+ defined('TIME_ARRAY') OR define('TIME_ARRAY' , serialize($timearray));

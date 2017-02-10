@@ -1,0 +1,46 @@
+@charset "utf-8";
+/* CSS Document */
+
+@font-face {
+        font-family:'segoeui';
+        font-weight: normal;
+        font-style: normal;
+        src: url('segoeui.eot?v=3');
+        src: url('segoeui.eot?v=3#iefix') format('embedded-opentype'), 
+          url('segoeui.woff') format('woff'), 
+          url('segoeui.ttf') format('truetype'), 
+          url('segoeui.svg') format('svg');
+}
+@font-face {
+        font-family:'segoeuib';
+        font-weight: normal;
+        font-style: normal;
+        src: url('segoeuib.eot?v=3');
+        src: url('segoeuib.eot?v=3#iefix') format('embedded-opentype'), 
+          url('segoeuib.woff') format('woff'), 
+          url('segoeuib.ttf') format('truetype'), 
+          url('segoeuib.svg') format('svg');
+}
+@font-face {
+        font-family:'segoeuii';
+        font-weight: normal;
+        font-style: normal;
+        src: url('segoeuii.eot?v=3');
+        src: url('segoeuii.eot?v=3#iefix') format('embedded-opentype'), 
+          url('segoeuii.woff') format('woff'), 
+          url('segoeuii.ttf') format('truetype'), 
+          url('segoeuii.svg') format('svg');
+}
+@font-face {
+        font-family:'seguisb';
+        font-weight: normal;
+        font-style: normal;
+        src: url('seguisb.eot?v=3');
+        src: url('seguisb.eot?v=3#iefix') format('embedded-opentype'), 
+          url('seguisb.woff') format('woff'), 
+          url('seguisb.ttf') format('truetype'), 
+          url('seguisb.svg') format('svg');
+}
+
+
+

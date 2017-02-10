@@ -1,6 +1,3 @@
-var BASEURL = 'http://localhost/h15a18d22/';
-
-
 angular
         .module('admin', [])
         .run(function ($rootScope) {
@@ -263,7 +260,15 @@ angular
 //                  ,
 //                    'AU': {'New South Wales': ['Sydney'], 'Victoria': ['Melbourne'] }
                 };
-                
+
+
+                // $scope.GetState($scope.country);
+
+                // console.log($scope.states['IN']);
+                // console.log($scope.states['UK']);
+                //  console.log($scope.states['IN']);
+
+
                 $scope.GetState = function () {
                    // console.log($scope.states[$scope.country]);
                     var option = '';
@@ -288,284 +293,39 @@ angular
                 
                 
                 
-            }
-        ]).controller('appointmentController', ['$scope','$http', '$sce','$filter',function ($scope,$http, $sce,$filter) {
+                
+                //  Data Post //
+                
+               /// alert($scope.country);
+                //submitForm
+//                $scope.submitForm = function (){
+//                     
+//                     $scope.formAdata.country = $scope.country;
+//                     $scope.formAdata.state = $('#state').val();//$scope.state;
+//                    console.log($.param($scope.formAdata));
+//                    
+//                    
+//                    
+//                    $http({
+//                        url: "http://localhost/h15a18d22/admin/doctor/add",
+//                        method: "POST",
+//                        headers: {'Content-Type': 'application/json'},
+//                        data: $.param($scope.formAdata)
+//                    }).success(function (data, status, headers, config) {
+//                        $scope.status = status;
+//                    }).error(function (data, status, headers, config) {
+//                        $scope.status = status;
+//                    });
+//                }
                 
                 
-                $http.get(BASEURL + "admin/doctor/slotTime/2").then(
-                        function (response) {
-                            
-                             $scope.timeTableDoc = response.data;
-                            
-//                              angular.forEach(response.data, function (value, key) {
-//                                      console.log(value + ": ===> " + key);
-//                            });
-                            
-                            
-                   //         var html_appointment = '<div id="timeTable">';
-                   // angular.forEach(response.data, function (value, key) {
-                   //     html_appointment += "<p ng-show = 'IsVisible8' class='apt-active' id='aptm_" + value.id + "'>" + value.shift +'  '+ value.slot + "</p>";
-                   // });
-
-                   // html_appointment += '</div>';
-                    
-                   // $scope.timeTable = $sce.trustAsHtml(html_appointment);
-                    
-                   // console.log(html_appointment);
-                    //alert(html_appointment);
-                            
-                            
-                            
-                });
                 
-             // var fff =   $(this).validate();
-             //   alert(fff);
                 
-               console.log('====');
-            
-            $scope.today = new Date();
-            $scope.currentTime = $filter('date')(new Date(), 'hh:mm:ss a');
-                 
                 
-                 
-//                 var timeNow = new Date().getTime();
-//                 var twoHoursIntoFuture = new Date(timeNow + 1000 * 60 * 60 * 2);
-//                 var timeNow = new Date(timeNow);
-//                 if(timeNow < twoHoursIntoFuture){
-//                     alert('lesss timeNow');
-//                 }else{
-//                     alert('!=');
-//                 }
-                 
-                 
-                 
-                 
-                 
-            var responseRowData =    [{"id":"101","type":"1","shift":"MORNING","days":"Su","doctor_id":"2","hospital_id":"0","slot":"9:30:AM"},
-                                {"id":"102","type":"1","shift":"MORNING","days":"Su","doctor_id":"2","hospital_id":"0","slot":"10:30:AM"},
-                                {"id":"103","type":"1","shift":"MORNING","days":"Su","doctor_id":"2","hospital_id":"0","slot":"10:45:AM"},
-                                {"id":"104","type":"1","shift":"MORNING","days":"Su","doctor_id":"2","hospital_id":"0","slot":"11:30:AM"},
-                                {"id":"105","type":"1","shift":"AFTERNOON","days":"Su","doctor_id":"2","hospital_id":"0","slot":"1:15:PM"},
-                                {"id":"106","type":"1","shift":"AFTERNOON","days":"Su","doctor_id":"2","hospital_id":"0","slot":"1:45:PM"},
-                                {"id":"107","type":"1","shift":"EVENING","days":"Su","doctor_id":"2","hospital_id":"0","slot":"6:45:PM"},
-                                {"id":"108","type":"1","shift":"NIGHT","days":"Su","doctor_id":"2","hospital_id":"0","slot":"10:45:PM"},
-                                {"id":"109","type":"1","shift":"MORNING","days":"Mo","doctor_id":"2","hospital_id":"0","slot":"9:30:AM"},
-                                {"id":"110","type":"1","shift":"MORNING","days":"Mo","doctor_id":"2","hospital_id":"0","slot":"10:00:AM"},
-                                {"id":"111","type":"1","shift":"AFTERNOON","days":"Mo","doctor_id":"2","hospital_id":"0","slot":"2:45:PM"},
-                                {"id":"112","type":"1","shift":"EVENING","days":"Mo","doctor_id":"2","hospital_id":"0","slot":"6:45:PM"},
-                                {"id":"113","type":"1","shift":"EVENING","days":"Mo","doctor_id":"2","hospital_id":"0","slot":"7:15:PM"},
-                                {"id":"114","type":"1","shift":"EVENING","days":"Mo","doctor_id":"2","hospital_id":"0","slot":"7:30:PM"},
-                                {"id":"115","type":"1","shift":"MORNING","days":"Tu","doctor_id":"2","hospital_id":"0","slot":"9:30:AM"},
-                                {"id":"116","type":"1","shift":"AFTERNOON","days":"Tu","doctor_id":"2","hospital_id":"0","slot":"1:15:PM"},
-                                {"id":"117","type":"1","shift":"AFTERNOON","days":"Tu","doctor_id":"2","hospital_id":"0","slot":"1:30:PM"},
-                                {"id":"118","type":"1","shift":"AFTERNOON","days":"Tu","doctor_id":"2","hospital_id":"0","slot":"1:45:PM"},
-                                {"id":"119","type":"1","shift":"EVENING","days":"Tu","doctor_id":"2","hospital_id":"0","slot":"5:30:PM"},
-                                {"id":"120","type":"1","shift":"EVENING","days":"Tu","doctor_id":"2","hospital_id":"0","slot":"5:45:PM"},
-                                {"id":"121","type":"1","shift":"EVENING","days":"Tu","doctor_id":"2","hospital_id":"0","slot":"6:00:PM"},
-                                {"id":"122","type":"1","shift":"NIGHT","days":"Tu","doctor_id":"2","hospital_id":"0","slot":"9:15:PM"},
-                                {"id":"123","type":"1","shift":"MORNING","days":"We","doctor_id":"2","hospital_id":"0","slot":"9:30:AM"},
-                                {"id":"124","type":"1","shift":"MORNING","days":"We","doctor_id":"2","hospital_id":"0","slot":"9:45:AM"},
-                                {"id":"125","type":"1","shift":"MORNING","days":"We","doctor_id":"2","hospital_id":"0","slot":"10:00:AM"},
-                                {"id":"126","type":"1","shift":"AFTERNOON","days":"We","doctor_id":"2","hospital_id":"0","slot":"11:45:AM"},
-                                {"id":"127","type":"1","shift":"AFTERNOON","days":"We","doctor_id":"2","hospital_id":"0","slot":"12:45:PM"},
-                                {"id":"128","type":"1","shift":"EVENING","days":"We","doctor_id":"2","hospital_id":"0","slot":"5:00:PM"},
-                                {"id":"129","type":"1","shift":"MORNING","days":"Th","doctor_id":"2","hospital_id":"0","slot":"9:30:AM"},
-                                {"id":"130","type":"1","shift":"MORNING","days":"Th","doctor_id":"2","hospital_id":"0","slot":"9:45:AM"},
-                                {"id":"131","type":"1","shift":"MORNING","days":"Th","doctor_id":"2","hospital_id":"0","slot":"10:00:AM"},
-                                {"id":"132","type":"1","shift":"AFTERNOON","days":"Th","doctor_id":"2","hospital_id":"0","slot":"11:45:AM"},
-                                {"id":"133","type":"1","shift":"AFTERNOON","days":"Th","doctor_id":"2","hospital_id":"0","slot":"12:15:PM"},
-                                {"id":"134","type":"1","shift":"EVENING","days":"Th","doctor_id":"2","hospital_id":"0","slot":"4:00:PM"},
-                                {"id":"135","type":"1","shift":"EVENING","days":"Th","doctor_id":"2","hospital_id":"0","slot":"4:15:PM"},
-                                {"id":"136","type":"1","shift":"NIGHT","days":"Th","doctor_id":"2","hospital_id":"0","slot":"7:45:PM"},
-                                {"id":"137","type":"1","shift":"NIGHT","days":"Th","doctor_id":"2","hospital_id":"0","slot":"10:45:PM"},
-                                {"id":"138","type":"1","shift":"MORNING","days":"Fr","doctor_id":"2","hospital_id":"0","slot":"9:30:AM"},
-                                {"id":"139","type":"1","shift":"MORNING","days":"Sa","doctor_id":"2","hospital_id":"0","slot":"10:30:AM"},
-                                {"id":"140","type":"1","shift":"AFTERNOON","days":"Sa","doctor_id":"2","hospital_id":"0","slot":"1:45:PM"},
-                                {"id":"141","type":"1","shift":"AFTERNOON","days":"Sa","doctor_id":"2","hospital_id":"0","slot":"2:30:PM"},
-                                {"id":"142","type":"1","shift":"EVENING","days":"Sa","doctor_id":"2","hospital_id":"0","slot":"5:30:PM"},
-                                {"id":"143","type":"1","shift":"EVENING","days":"Sa","doctor_id":"2","hospital_id":"0","slot":"5:45:PM"},
-                                {"id":"144","type":"1","shift":"EVENING","days":"Sa","doctor_id":"2","hospital_id":"0","slot":"6:00:PM"},
-                                {"id":"145","type":"1","shift":"NIGHT","days":"Sa","doctor_id":"2","hospital_id":"0","slot":"9:15:PM"}
-                            ];
-                 
-                 
-                 
-                 
-                  
-                 var html_appointment = '<ul class="apt">';
-                    angular.forEach(responseRowData, function (value, key) {
-                        html_appointment += "<li ng-show = 'IsVisible8' class='apt-active' id='aptm_" + value.id + "'>" + value.shift +'  '+ value.slot + "</li>";
-                    });
-
-                    html_appointment += '</ul>';
-
-                 
-               //  alert(html_appointment);
-                 
-                 
-                  $scope.Getappoinment = function () {
-                      console.log(html_appointment);
-                  return  $scope.apt = $sce.trustAsHtml(html_appointment);
-              }
-                 
-                 
-                 
-                 
-                 
-                 
-                 //$scope.IsVisible = false;
-                 var clickCounter = 1;
-                 
-                 
-               /********Default Case ********/  
-                 
-                $scope.IsVisible1 = true;
-                $scope.IsVisible2 = true;
-                $scope.IsVisible3 = true;
-                $scope.IsVisible4 = false;
-                $scope.IsVisible5 = false;
-                $scope.IsVisible6 = false;
-                $scope.IsVisible7 = false;
-                $scope.IsVisible8 = false;
-                $scope.IsVisible9 = false;
-                $scope.next = true;
-                $scope.privious = false;
-             /********End here ********/ 
+                // End Here 
                 
-               var doctor_id = angular.element('#appointmentTime').val(); 
-               // alert($scope.appointmentTime);
-            
-            $scope.ShowHide = function () {
-                //If DIV is visible it will be hidden and vice versa.
-                //$scope.IsVisible = $scope.IsVisible ? false : true;
-                if(clickCounter < 3){
-                     clickCounter = clickCounter +1;
-                }
-               
-                 if (clickCounter == 1) {
-                    $scope.IsVisible1 = true;
-                    $scope.IsVisible2 = true;
-                    $scope.IsVisible3 = true;
-                    $scope.IsVisible4 = false;
-                    $scope.IsVisible5 = false;
-                    $scope.IsVisible6 = false;
-                    $scope.IsVisible7 = false;
-                    $scope.IsVisible8 = false;
-                    $scope.IsVisible9 = false;
-                    // hide scope
-                    $scope.next = true;
-                    $scope.privious = false;
-
-                }
-
-                if (clickCounter == 2) {
-                    $scope.IsVisible1 = false;
-                    $scope.IsVisible2 = false;
-                    $scope.IsVisible3 = false;
-                    $scope.IsVisible4 = true;
-                    $scope.IsVisible5 = true;
-                    $scope.IsVisible6 = true;
-                    $scope.IsVisible7 = false;
-                    $scope.IsVisible8 = false;
-                    $scope.IsVisible9 = false;
-                    // hide scope
-                    $scope.next = true;
-                    $scope.privious = true;
-                }
-
-
-                if (clickCounter == 3) {
-                    $scope.IsVisible1 = false;
-                    $scope.IsVisible2 = false;
-                    $scope.IsVisible3 = false;
-                    $scope.IsVisible4 = false;
-                    $scope.IsVisible5 = false;
-                    $scope.IsVisible6 = false;
-                    $scope.IsVisible7 = true;
-                    $scope.IsVisible8 = true;
-                    $scope.IsVisible9 = true;
-                    // hide scope
-                    $scope.next = false;
-                    $scope.privious = true;
-                }
-
                 
-              
-
-        }
-        
-            $scope.ShowHideMinuse = function () {
-                //If DIV is visible it will be hidden and vice versa.
-                //$scope.IsVisible = $scope.IsVisible ? false : true;
-                if(clickCounter > 1){
-                   clickCounter = clickCounter -1; 
-                } 
-                //alert(clickCounter);
-                if (clickCounter == 1) {
-                    $scope.IsVisible1 = true;
-                    $scope.IsVisible2 = true;
-                    $scope.IsVisible3 = true;
-                    $scope.IsVisible4 = false;
-                    $scope.IsVisible5 = false;
-                    $scope.IsVisible6 = false;
-                    $scope.IsVisible7 = false;
-                    $scope.IsVisible8 = false;
-                    $scope.IsVisible9 = false;
-                    // hide scope
-                    $scope.next = true;
-                    $scope.privious = false;
-
-                }
-
-                if (clickCounter == 2) {
-                    $scope.IsVisible1 = false;
-                    $scope.IsVisible2 = false;
-                    $scope.IsVisible3 = false;
-                    $scope.IsVisible4 = true;
-                    $scope.IsVisible5 = true;
-                    $scope.IsVisible6 = true;
-                    $scope.IsVisible7 = false;
-                    $scope.IsVisible8 = false;
-                    $scope.IsVisible9 = false;
-                    // hide scope
-                    $scope.next = true;
-                    $scope.privious = true;
-                }
-
-
-                if (clickCounter == 3) {
-                    $scope.IsVisible1 = false;
-                    $scope.IsVisible2 = false;
-                    $scope.IsVisible3 = false;
-                    $scope.IsVisible4 = false;
-                    $scope.IsVisible5 = false;
-                    $scope.IsVisible6 = false;
-                    $scope.IsVisible7 = true;
-                    $scope.IsVisible8 = true;
-                    $scope.IsVisible9 = true;
-                    // hide scope
-                    $scope.next = false;
-                    $scope.privious = true;
-                }
-
-
-                            
-
-        }
-            
-            
-                 
                 
-                  
-                 //  Appointment
-                 
-                 console.log($scope.date);
-                
-
-//                $scope.appointmentList = [
-//                    {name: 'Afghanistan', code: 'AF'},
-//                    {name: 'Zimbabwe', code: 'ZW'}
-//                ];
                 
             }
         ]);

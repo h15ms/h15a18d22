@@ -1,0 +1,45 @@
+.ripple{
+  overflow:hidden;
+}
+.ripple-effect{
+  position: absolute;
+  border-radius: 50%;
+  width: 60px;
+  height: 50px;
+  background: white;
+  animation: ripple-animation 2s ease 2;
+}
+.rippleblk{
+  overflow:hidden;
+}
+.rippleblk-effect{
+  position: absolute;
+  border-radius: 50%;
+  width: 60px;
+  height: 50px;
+  background: #b6b6b6;
+  animation: ripple-animation 2s ease 2;
+}
+
+.ripplegrey{
+  overflow:hidden;
+}
+.ripplegrey-effect{
+  position: absolute;
+  border-radius: 50%;
+  width: 60px;
+  height: 50px;
+  background: #b6b6b6;
+  animation: ripple-animation 2s ease 2;
+}
+
+@keyframes ripple-animation {
+    from {
+      transform: scale(1);
+      opacity: 0.4;
+    }
+    to {
+      transform: scale(100);
+      opacity: 0;
+    }
+}

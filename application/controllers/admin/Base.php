@@ -29,9 +29,7 @@ class Base extends CI_Controller
 		  redirect('login','refresh');
 		} 
 	} 	
-
-
-	public function access()
+        public function access()
 	{
 		$this->load->model('admin/BaseModel' , 'models');  
 
@@ -66,9 +64,7 @@ class Base extends CI_Controller
 
 	} 
 
-
-
-public function getLayout($view = NULL ,$header = NULL, $left = NULL, $content = NULL, $footer = NULL){
+    public function getLayout($view = NULL ,$header = NULL, $left = NULL, $content = NULL, $footer = NULL){
 	
 	$dataConfig = array();
 	$dataConfig['header'] = $header;

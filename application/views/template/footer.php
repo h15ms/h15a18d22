@@ -1,103 +1,201 @@
+<footer  class="mi-cl mi-drk-grey mi-footer  pt20">
+    <div class="container">
+    <div class="row">
+       <div class="col-md-3 col-sm-3 col-xs-12 mi-footer-blk">
+        <span class="mb20 mt20">NAVIGATION</span>
+        <ul class="mi-ftrlinks">
+        <li><a href="#">Home</a></li>
+        <li><a href="#">Services</a></li>
+        <li><a href="#">About us</a></li>
+        <li><a href="#">Contact</a></li>
+        <li><a href="#">Reviews</a></li>
+        <li><a href="#">Sitemap</a></li>
+        </ul>
+       </div>
+       <div class="col-md-3 col-sm-2 col-xs-12 mi-footer-blk">
+        <span class="mb20 mt20">SERVICES</span>
+        <ul class="mi-ftrlinks">
+        <li><a href="#">Hospital</a></li>
+        <li><a href="#">Visa</a></li>
+        <li><a href="#">Flight</a></li>
+        <li><a href="#">Hotel</a></li>
+        <li><a href="#">Taxi / Buses</a></li>
+        </ul>
+       </div>
+       <div class="col-md-3 col-sm-3 col-xs-12 mi-footer-blk">
+        <span class="mb20 mt20">CONTACT</span>
+        <p>
+        Office Address:<br/>
+        MiConsulting <br/>
+        Paras Trade Centre<br/>
+        Gurgaon - Faridabad Rd, Sector 2<br/>
+        Gurgaon, India<br/>
+        Phone: +91 88268 66295 
+        </p>
+       </div>
+       <div class="col-md-3 col-sm-4 col-xs-12 mi-footer-blk ">
+        <span class="mb20 mt20">NEWSLETTER</span>
+        <div class="newsletter">
+        <form>
+        <input type="text" name="newsletter" placeholder="Email Address"/>
+        <button class="submitnews" type="button">Subscribe</button>
+        <p class="text-center mt10">Subscribe for news</p>
+        </form>
+        </div>
+        </div>
+       </div>
+    </div>
+    <div class="mi-copyrt mi-blk mt40 pt10 pb10">
+       <div class="container">
+       <div class="row">
+          <div class="col-md-8 col-sm-7 col-xs-12  mi-btm-ftrlinks "> © Copyright 2015 - <a href="#"><img src="<?php echo URL; ?>assets/images/mi_sm_logo.png"></a> a Company of 
+             <a href="#"><img src="<?php echo URL; ?>assets/images/misoft_sm_logo.png"></a></div>      
+          <div class="col-md-4 col-sm-5 col-xs-12 mi-btm-ftrlinks text-right"><a href="#">Home</a> <a href="#">Services</a> <a href="#">About us</a> <a href="#">Contact</a> </div>
+         </div>
+       </div>
+    </div>
+</footer>
 
+<!--model-->
+<!-- Modal -->
+<div id="myModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
 
-<div class='container_wrap footer_color' id='footer'>
-
-					<div class='container'>
-
-						<div class='flex_column av_one_third  first el_before_av_one_third'><section id="nav_menu-2" class="widget clearfix widget_nav_menu"><h3 class="widgettitle">Navigation</h3><div class="menu-footer-1-container"><ul id="menu-footer-1" class="menu"><li id="menu-item-206" class="menu-item menu-item-type-custom menu-item-object-custom current-menu-item current_page_item menu-item-home menu-item-206"><a href="<?php echo URL;?>">Home</a></li>
-<li id="menu-item-210" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-210"><a href="<?php echo URL;?>service/">Services</a></li>
-<li id="menu-item-207" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-207"><a href="<?php echo URL;?>about/">About us</a></li>
-<?php if($_SESSION[user_key]){?>
-	
-<li id="menu-item-208" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-208"><a href="<?php echo URL;?>apply/">Apply</a></li>
- <?php }else{ ?>
-<li id="menu-item-208" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-208"><a href="<?php echo URL;?>login/">Apply</a></li>
-
- <?php } ?>
-<li id="menu-item-209" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-209"><a href="<?php echo URL;?>contact/">Contact</a></li>
-<li id="menu-item-248" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-248"><a href="<?php echo URL;?>review/">Reviews</a></li>
-<li id="menu-item-244" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-244"><a href="<?php echo URL;?>sitemap/">Sitemap</a></li>
-</ul></div><span class="seperator extralight-border"></span></section></div><div class='flex_column av_one_third  el_after_av_one_third  el_before_av_one_third '><section id="nav_menu-3" class="widget clearfix widget_nav_menu"><h3 class="widgettitle">Services</h3><div class="menu-footer-2-container"><ul id="menu-footer-2" class="menu"><li id="menu-item-362" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-362"><a href="<?php echo URL;?>service/visaservices/">Visa Services</a></li>
-<li id="menu-item-363" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-363"><a href="<?php echo URL;?>service/businessservices/">Business Services</a></li>
-<li id="menu-item-364" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-364"><a href="<?php echo URL;?>service/passportservices/">Passport Services</a></li>
-<li id="menu-item-365" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-365"><a href="<?php echo URL;?>service/travelingservices/">Traveling Services</a></li>
-<li id="menu-item-366" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-366"><a href="<?php echo URL;?>service/ticketingservices/">Ticketing Services</a></li>
-<li id="menu-item-367" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-367"><a href="<?php echo URL;?>service/medicalservices/">Medical Services</a></li>
-<li id="menu-item-368" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-368"><a href="<?php echo URL;?>service/touristvisa/">Tourism Services</a></li>
-</ul></div><span class="seperator extralight-border"></span></section></div><div class='flex_column av_one_third  el_after_av_one_third  el_before_av_one_third '><section id="text-2" class="widget clearfix widget_text"><h3 class="widgettitle">Contact</h3>			<div class="textwidget"><small>Office Address:</small><br>
-<b>MiConsulting</b><br>
-301 - Paras Trade Centre<br>
-Gurgaon - Faridabad Rd, Sector 2<br>
-Gurgaon, India<br>
-<br>
-Phone: +91 88268 66295
-<br><br>
-</div>
-		<span class="seperator extralight-border"></span></section></div>
-
-					</div>
-
-
-				<!-- ####### END FOOTER CONTAINER ####### -->
-				</div>
-
-	
-
-
-			
-
-			
-				<footer class='container_wrap socket_color' id='socket'  role="contentinfo" itemscope="itemscope" itemtype="https://schema.org/WPFooter" >
-                    <div class='container'>
-
-                        <span class='copyright'>© Copyright - MiConsulting a Company of MiSoftTech</span>
-
-                        <nav class='sub_menu_socket'  role="navigation" itemscope="itemscope" itemtype="https://schema.org/SiteNavigationElement" ><div class="avia3-menu">
-                        <ul id="avia3-menu" class="menu">
-                        <li id="menu-item-218" class="menu-item menu-item-type-custom menu-item-object-custom current-menu-item current_page_item menu-item-home menu-item-top-level menu-item-top-level-1"><a href="<?php echo URL;?>" itemprop="url"><span class="avia-bullet"></span><span class="avia-menu-text">Home</span><span class="avia-menu-fx"><span class="avia-arrow-wrap"><span class="avia-arrow"></span></span></span></a></li>
-<li id="menu-item-222" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-top-level menu-item-top-level-2"><a href="<?php echo URL;?>service/" itemprop="url"><span class="avia-bullet"></span><span class="avia-menu-text">Services</span><span class="avia-menu-fx"><span class="avia-arrow-wrap"><span class="avia-arrow"></span></span></span></a></li>
-<li id="menu-item-219" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-top-level menu-item-top-level-3"><a href="<?php echo URL;?>about/" itemprop="url"><span class="avia-bullet"></span><span class="avia-menu-text">About us</span><span class="avia-menu-fx"><span class="avia-arrow-wrap"><span class="avia-arrow"></span></span></span></a></li>
-<li id="menu-item-221" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-top-level menu-item-top-level-4"><a href="<?php echo URL;?>contact/" itemprop="url"><span class="avia-bullet"></span><span class="avia-menu-text">Contact</span><span class="avia-menu-fx"><span class="avia-arrow-wrap"><span class="avia-arrow"></span></span></span></a></li>
-</ul></div></nav>
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Clinic</h4>
+      </div>
+      <div class="modal-body">
+         <form>
+                <div class="mi-modelfilter">
+                    <div class="row">
+                        <div class="col-md-4 col-sm-4 col-xs-12">
+                        <div class="form-group">
+                        <label class="fontnormal"> Select Clinic</label>
+                        <select name="hospitals" class="form-control  mi-modelinput">
+                              <option value="0" data-image="<?php echo URL; ?>assets/images/hlogo1.png"> Fortish</option>
+                              <option value="1" data-image="<?php echo URL; ?>assets/images/hlogo1.png"> MAX</option>
+                              <option value="2" data-image="<?php echo URL; ?>assets/images/hlogo1.png"> APPOLO</option>
+                        </select>
+                        </div>
+                        </div>
+                        <div class="col-md-4 col-sm-4 col-xs-12">
+                         <div class="form-group">
+                        <label class="fontnormal"> Select Location </label>
+                        <select class="form-control  mi-modelinput">
+                            <option>Delhi</option>
+                            <option>Chandigarh</option>
+                            <option>Punjab</option>
+                            <option>Hariyana</option>
+                        </select>
+                        </div>
+                        </div>
+                        <div class="col-md-4 col-sm-4 col-xs-12">
+                         <div class="form-group">
+                        <label class="fontnormal"> Select Speciality</label>
+                        <select class="form-control  mi-modelinput">
+                            <option>Dental</option>
+                            <option>Ophthalmologist</option>
+                            <option>Neurologist</option>
+                            <option>Urologist</option>
+                        </select>
+                        </div>
+                        </div>
                     </div>
+                </div>
+              </form>
+      </div>
+      <div class="modal-footer">
+       <button class="btn btn-outline-blk pull-right rippleblk">SUBMIT</button>
+      </div>
+    </div>
 
-	            <!-- ####### END SOCKET CONTAINER ####### -->
-				</footer>
+  </div>
+</div>
 
 
-					<!-- end main -->
-		</div>
-		
-		<!-- end wrap_all --></div>
+
+<!--angular-->
+<script src="<?php echo URL; ?>assets/js/angular.min.1.6.1.js" type="text/javascript" ></script> 
+<!--angular-->
 
 
-  <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-  <link rel="stylesheet" href="/resources/demos/style.css">
+<!--mi- cinsulting script--> 
+<script src="<?php echo URL; ?>assets/js/jquery.min.js" type="text/javascript" ></script> 
+
+<script src="<?php echo URL; ?>assets/js/bootstrap.js" type="text/javascript" ></script> 
+
+
+<!--select--> 
+<script src="<?php echo URL; ?>assets/plugin/select/jquery.dd.min.js"></script>
+<script>
+$(document).ready(function() {
+	$("select").msDropdown();
+})
+</script>
+<!--select-->
+
+<!--owlslider-->  
+<script src="<?php echo URL; ?>assets/plugin/owlcarousel/owl.carousel.js"></script>
+<!--owlslider-->
+
+<!--smoothscroll-->  
+<script src="<?php echo URL; ?>assets/plugin/swiper/swiper.min.js"></script>
+ <script>
+    var swiper = new Swiper('.swiper-container', {
+        scrollbar: '.swiper-scrollbar',
+        scrollbarHide: true,
+        slidesPerView: 'auto',
+        centeredSlides: true,
+        spaceBetween: 30,
+        grabCursor: true
+    });
  
- <script type='text/javascript' src='<?php echo URL;?>assets/js/avia.js'></script>
-<script type='text/javascript' src='<?php echo URL;?>assets/js/shortcodes.js'></script>
-<script type='text/javascript' src='<?php echo URL;?>assets/js/jquery.magnific-popup.min.js'></script>
-
-
-<script src="https://code.jquery.com/jquery-3.1.1.js"></script>
-<script type='text/javascript' src='<?php echo URL;?>assets/js/main.js'></script>
-
-
-  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-
-
-<!--
-
-<script type='text/javascript' src='<?php echo URL;?>assets/js/mediaelement-and-player.min.js'></script>
-<script type='text/javascript' src='<?php echo URL;?>assets/js/wp-mediaelement.min.js'></script>
-<script type='text/javascript' src='<?php echo URL;?>assets/js/wp-embed.min.js'></script>
--->
+    </script>
+<!--smoothscroll-->
 
 
 
-<a href='#top' title='Scroll to top' id='scroll-top-link' aria-hidden='true' data-av_icon='' data-av_iconfont='entypo-fontello'><span class="avia_hidden_link_text">Scroll to top</span></a>
 
-<div id="fb-root"></div>
+
+
+<!--datepicker--> 
+<script src="<?php echo URL; ?>assets/plugin/datepicker/highlight.min.js"></script>
+<script src="<?php echo URL; ?>assets/plugin/datepicker/jquery.easing.min.js"></script>
+<script src="<?php echo URL; ?>assets/plugin/datepicker/datepicker.js"></script>
+<script src="<?php echo URL; ?>assets/plugin/datepicker/i18n/datepicker.en.js"></script>
+<!--datepicker--> 
+
+<!--slider--> 
+<script src="<?php echo URL; ?>assets/js/responsiveslides.min.js"></script> 
+<!--slider--> 
+
+<!--rangeslider-->
+<script src="<?php echo URL; ?>assets/plugin/rangeslider/bootstrap-slider.js"></script> 
+<!--rangeslider-->
+
+<!--scroller-->
+<script src="<?php echo URL; ?>assets/plugin/scrollbar/jquery.mCustomScrollbar.min.js"></script> 
+<!--scroller-->
+
+
+
+
+
+
+<script  src="<?php echo URL; ?>assets/js/micostum.js" type="text/javascript" ></script> 
+<script src="<?php echo URL; ?>assets/js/wow.js" type="text/javascript" ></script> 
+<script>
+	new WOW().init();
+</script> 
+<!--mi- cinsulting script-->
+<?php //echo $this->uri->segment(2);
+ if($this->uri->segment(2)=='result'){?>
+<!--lightbox-->
+<script src="<?php echo URL; ?>assets/plugin/lightbox/lightbox.js"></script>
+<!--lightbox-->
+<?php }?>
 </body>
 </html>
