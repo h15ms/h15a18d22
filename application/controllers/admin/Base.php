@@ -5,6 +5,7 @@ class Base extends CI_Controller
 {
 
 	public $session_data;
+	public $left;
 		
 	function __construct()
 	{
@@ -12,7 +13,10 @@ class Base extends CI_Controller
 		parent::__construct();
 
 		$this->session_data = $this->session->userdata('logged_in');
+		$this->isLoggedIn();
 		$this->access();
+		//$this->removeIndexFromURL(); // Add Modules is not working using this fn() because of it remove index from url
+		$this->left = $this->setLeftSideBar();
 
 	}
 
@@ -29,7 +33,9 @@ class Base extends CI_Controller
 		  redirect('login','refresh');
 		} 
 	} 	
-        public function access()
+
+
+	public function access()
 	{
 		$this->load->model('admin/BaseModel' , 'models');  
 
@@ -47,7 +53,8 @@ class Base extends CI_Controller
 				$out = $this->models->retrieveUserAccessController($level, ucfirst($adminController));
 		
 			}
-		}else{ 
+		}else{
+
 			echo "Not Admin Panel Go to the base access";
 		}
 
@@ -64,80 +71,38 @@ class Base extends CI_Controller
 
 	} 
 
-    public function getLayout($view = NULL ,$header = NULL, $left = NULL, $content = NULL, $footer = NULL){
+	public function removeIndexFromURL(){
 	
-	$dataConfig = array();
-	$dataConfig['header'] = $header;
-	$dataConfig['left'] = $left;
-	$dataConfig['content'] = $content;
-	$dataConfig['footer'] = $footer;
+		$url = uri_string();
+		$url_array = array(explode('/', $url));
 
-	$user_type = $this->session_data['user_level']; 
+		if(end($url_array[0]) == 'index'){
 
-	switch ($user_type) {
-	   case '0':
-	        $this->layout_developer($view ? $view : "admin/module" ,$dataConfig);
-	        break; 
-	   case '1':
-	        $this->layout_admin($view ? $view : "admin/homecrm/index" ,$dataConfig);
-	        break;
-	   case '2':
-	        $this->layout_agent($view ? $view : "admin/homecrm/index" ,$dataConfig);
-	        break;
-	   case '3':
-	        $this->layout_customer($view ? $view : "admin/homecrm/index" ,$dataConfig);
-	        break;
-	   case '4':
-	        $this->layout_member($view ,$dataConfig);
-	        break;
+			 $oldURL = base_url(uri_string());
+			 $newURL = str_replace("/index", "", $oldURL );
+			 redirect(rtrim($newURL, '/'),'location');
+		}
 	}
 
 
-  }
 
+	public function getLayout($view = NULL ,$header = NULL, $left = NULL, $content = NULL, $footer = NULL){
 
-  public function layout_developer($view ,$dataConfig = array()) {
-      
-     $template = array();
-     echo $template['header']   = $this->load->view('admin/temp/headercrm', $dataConfig['header'], true);
-     echo $template['left']   = $this->load->view('admin/temp/leftcrm_developer', $dataConfig['left'], true);
-     echo $template['content'] = $this->load->view($view, $dataConfig['content'], true);
-     echo $template['footer'] = $this->load->view('admin/temp/footercrm', $dataConfig['footer'], true);
+	
+	$left_new = array('left_base' => $this->left, 'left'=>$left);
 
-  }  
+	$dataConfig = array();
+	$dataConfig['header'] = $header;
+	$dataConfig['left'] = $left_new;
+	$dataConfig['content'] = $content;
+	$dataConfig['footer'] = $footer;
 
-  public function layout_admin($view ,$dataConfig = array()) {
-      
-     $template = array();
-     echo $template['header']   = $this->load->view('admin/temp/headercrm', $dataConfig['header'], true);
-     echo $template['left']   = $this->load->view('admin/temp/leftcrm_admin', $dataConfig['left'], true);
-     echo $template['content'] = $this->load->view($view, $dataConfig['content'], true);
-     echo $template['footer'] = $this->load->view('admin/temp/footercrm', $dataConfig['footer'], true);
+	$this->layout_decide($view ? $view : "admin/homecrm" ,$dataConfig);
 
   }
 
-  public function layout_agent($view ,$dataConfig = array()) {
-      
 
-     $template = array();
-     echo $template['header']   = $this->load->view('admin/temp/headercrm', $dataConfig['header'], true);
-     echo $template['left']   = $this->load->view('admin/temp/leftcrm_agent', $dataConfig['left'], true);
-     echo $template['content'] = $this->load->view($view, $dataConfig['content'], true);
-     echo $template['footer'] = $this->load->view('admin/temp/footercrm', $dataConfig['footer'], true);
-
-  }
-
-  public function layout_member($view ,$dataConfig = array()) {
-      
-     $template = array();
-     echo $template['header']   = $this->load->view('admin/temp/headercrm', $dataConfig['header'], true);
-     echo $template['left']   = $this->load->view('admin/temp/leftcrm_member', $dataConfig['left'], true);
-     echo $template['content'] = $this->load->view($view, $dataConfig['content'], true);
-     echo $template['footer'] = $this->load->view('admin/temp/footercrm', $dataConfig['footer'], true);
-
-  }
-
-  public function layout_customer($view ,$dataConfig = array()) {
+  public function layout_decide($view ,$dataConfig = array()) {
       
      $template = array();
      echo $template['header']   = $this->load->view('admin/temp/headercrm', $dataConfig['header'], true);
@@ -145,7 +110,54 @@ class Base extends CI_Controller
      echo $template['content'] = $this->load->view($view, $dataConfig['content'], true);
      echo $template['footer'] = $this->load->view('admin/temp/footercrm', $dataConfig['footer'], true);
 
+  }  
+
+
+
+  public function setLeftSideBar(){
+
+	$data = $this->models->retrieveLeftPanelBySession();
+		    $navigationCollection = array();
+		
+
+		foreach ($data as $node => $value) {
+			
+			if( $value->sub_id == 0 ){
+			    $navigationCollection[$value->id]['nav'] = $value->root_heading;
+			    $navigationCollection[$value->id]['icon'] = $value->icon;
+			    $navigationCollection[$value->id]['url'] = $value->url;
+			}else{
+			  $navigationCollection[$value->sub_id]['sub-nav'][$value->id] = array(
+			  																		'url' => $value->url, 
+			  																		'sub_heading' => $value->sub_heading
+			  																	);
+			}
+
+		}
+		     return $navigationCollection;
+		
   }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
