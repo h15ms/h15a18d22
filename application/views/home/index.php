@@ -13,7 +13,7 @@
             <!-- Nav tabs -->
             <div class="tabbox">
               <ul class="nav nav-tabs" role="tablist">
-                <li role="presentation" class="active"><a href="#hospital" aria-controls="Hospital"><i class="iconhospital tabiconnone"></i><span class="mhide">Hospital</span></a></li>
+                  <li role="presentation" class="active"><a href="<?php base_url(); ?>hospital" aria-controls="Hospital"><i class="iconhospital tabiconnone"></i><span class="mhide">Hospital</span></a></li>
                 <li role="presentation"><a href="#vissa"  aria-controls="Vissa" ><i class="iconvissa tabiconnone"></i><span class="mhide">Vissa</span></a></li>
                 <li role="presentation"><a href="#flight" aria-controls="Flight"><i class="iconflight tabiconnone"></i><span class="mhide">Flight</span></a></li>
                 <li role="presentation"><a href="#hotels" aria-controls="Hotels" ><i class="iconhotels tabiconnone"></i><span class="mhide">Hotels</span></a></li>

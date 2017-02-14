@@ -1,8 +1,12 @@
-<style>
-    #ex1Slider .slider-selection {
-	background: #BABABA;
+<?php 
+foreach(){
+    
 }
-    </style>
+
+
+
+?>
+
 
 <section class="mi_cl mi_topmenu mi-lt-grey pt10 pb10">
 <div class="container text-center">
@@ -44,87 +48,39 @@ Location
 </div>
 
 <ul class="mi_radiobox_block">
+    <?php foreach($hospitalLocation as $location){ ?>
 <li>
   <label for="rohini"> 
-   <input type="radio" id="rohini" name="miradioselect" class="radiobox radiobox-inline mi_radioboxicon"/> Rohini
+   <input type="radio" id="rohini" name="miradioselect" class="radiobox radiobox-inline mi_radioboxicon"/> <?php echo $location->location_area; ?>
    <span></span>
   </label>
  
 </li>
-<li>
-  <label for="dwarka">
-  <input type="radio" id="dwarka" name="miradioselect" class="radiobox  radiobox-inline mi_radioboxicon"/> Dwarka
-  <span></span>
-  </label>
-</li>
-<li>
-  <label for="pitampura">
-  <input type="radio" id="pitampura" name="miradioselect" class="radiobox  radiobox-inline mi_radioboxicon"/> Pitampura
-  <span></span>
-  </label>
-</li>
-<li>
-  <label for="shahdara">
-  <input type="radio" id="shahdara" name="miradioselect" class="radiobox  radiobox-inline mi_radioboxicon"/> Shahdara
-  <span></span>
-  </label>
-</li>
-<li>
-  <label for="paschimvihar">
-  <input type="radio" id="paschimvihar" name="miradioselect" class="radiobox  radiobox-inline mi_radioboxicon"/> Paschim Vihar
-  <span></span>
-  </label>
-</li>
-<li>
-  <label for="lajpatnagar">
-  <input type="radio" id="lajpatnagar" name="miradioselect" class="radiobox  radiobox-inline mi_radioboxicon"/> Lajpat Nagar
-  <span></span>
-  </label>
-</li>
-<li>
-  <label for="janakpuri">
-  <input type="radio" id="janakpuri" name="miradioselect" class="radiobox  radiobox-inline mi_radioboxicon"/> Janak Puri
-  <span></span>
-  </label>
-</li>
-<li>
-  <label for="krishnanagar">
-  <input type="radio" id="krishnanagar" name="miradioselect" class="radiobox  radiobox-inline mi_radioboxicon"/> Krishna Nagar
-  <span></span>
-  </label>
-</li>
-<li>
-  <label for="uttamnagar">
-  <input type="radio" id="uttamnagar" name="miradioselect" class="radiobox  radiobox-inline mi_radioboxicon"/> Uttam Nagar
-  <span></span>
-  </label>
-</li>
-<li>
-  <label for="kalkaji">
-  <input type="radio" id="kalkaji" name="miradioselect" class="radiobox  radiobox-inline mi_radioboxicon"/> Kalkaji
-  <span></span>
-  </label>
-</li>
+    <?php } ?>
+
 </ul>
-<div class="mi_filtertitle">
+<!--<div class="mi_filtertitle">
 Availavility
 </div>
-   
-    
-
-<div class="datepicker-here datepicker-promo pull-left"></div>
+<div class="datepicker-here datepicker-promo pull-left"></div>-->
 
 <div class="mi_range-slide pull-left mb10 text-center">
-<span class="mi_rangevalue" id="slider1Value">9:00 AM</span> <span class="mi_rangevalue">22:00 PM</span>
-<input id="ex1" data-slider-id='ex1Slider' type="text" data-slider-min="9" data-slider-max="22" data-slider-step="0.50" data-slider-value="14"/>
-
+<span class="mi_rangevalue">12:00 AM</span> <span class="mi_rangevalue1"></span>
+<input id="timerange" type="text" class="span2"/> 
 </div>
 
 <div class="mi_range-slide pull-left mb10 ">
-<div class="mi_filtertitle">
-Consulting Fee - <span class="mi_rangevalue"> ( 1000+ )</span> 
+<!--<div class="mi_filtertitle">
+Consulting Fee - <span class="mi_rangevaluec"> ( 1000+ )</span> 
 </div>
-<input id="pricerange" type="text" class="span2"/> 
+<input id="pricerange" type="text" class="span2"/> -->
+ <select name="specializationw[]" multiple id="specializationw">
+                    <?php foreach($speciliztion as $val ){?>
+
+                          <option value="<?php echo $val->id;?>"><?php echo $val->sepcialization ;?></option>
+                          <?php } ?>
+
+                  </select>
 </div>
 
 
@@ -168,7 +124,21 @@ Consulting Fee - <span class="mi_rangevalue"> ( 1000+ )</span>
                           <div class="form-group">
                             <label> Select Location </label>
                             <select class="form-control mi-input">
-                              <option>Delhi</option>
+                            <?php foreach($speciliztion as $spec){?>
+                                
+                               <option value="<?php echo $val->id;?>"><?php echo $val->sepcialization ;?></option>  
+                                
+                            <?php }?>
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                <option>Delhi</option>
                               <option>Chandigarh</option>
                               <option>Punjab</option>
                               <option>Hariyana</option>
@@ -176,13 +146,18 @@ Consulting Fee - <span class="mi_rangevalue"> ( 1000+ )</span>
                           </div>
                         </div>
                         <div class="col-md-4 col-sm-4 col-xs-12">
-                          <div class="form-group">
+                          <div class="form-group clearfix">
                             <label> Select Speciality</label>
                             <select class="form-control mi-input">
-                              <option>Dental</option>
-                              <option>Ophthalmologist</option>
-                              <option>Neurologist</option>
-                              <option>Urologist</option>
+                              
+                              
+                              
+                               <?php echo $vari; ?>
+                              
+                              
+                              
+                              
+                              
                             </select>
                           </div>
                         </div>

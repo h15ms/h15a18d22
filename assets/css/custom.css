@@ -782,6 +782,64 @@ h1{ color:#1f1f1f;}
 
 }
 
+.mi_menulist{ position:relative;}
+.mi_sub-menu{
+    position: absolute;
+    width: 180px;
+    margin-top: 0px;
+    left:0;
+    z-index: 9;
+    display: none;
+    animation:menuslide .5s linear 1;
+}
+
+@keyframes menuslide{   
+    0%{top:100px;}
+    100%{}
+}
+.mi_sub-menu li{
+  padding:5px 10px; 
+  background: #ffffff;
+  font-size: 12px;
+}
+.mi_sub-menu li:hover{
+  background: #ffffff; 
+  background-color: #e7e7e7;
+  transition:all 1s ease;
+}
+.mi_sub-menu li a{ text-decoration: none;}
+.mi_menulist:hover .mi_sub-menu{
+    display: block;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 @media screen and (max-width: 1024px){

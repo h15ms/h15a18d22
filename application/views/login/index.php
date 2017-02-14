@@ -131,7 +131,7 @@
             <h2 style="font-weight:100;color:#404040;margin:20px 0 60px 0;">
               <i class="fa fa-sign-in"></i> Sign In
             </h2>
-            <form action="login/login_check" method="post">
+              <form action="<?php echo URL; ?>login/login_check" method="post">
               <input type="hidden" name="send" value="signin">
               <input type="email" name="email" value="" placeholder="Email address" class="form-control input-lg" required>
               <input type="password" name="pass" value="" placeholder="Password" class="form-control input-lg" style="margin-top:10px;" required>

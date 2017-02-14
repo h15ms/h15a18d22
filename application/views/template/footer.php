@@ -180,7 +180,7 @@ $(document).ready(function() {
 <script src="<?php echo URL; ?>assets/plugin/scrollbar/jquery.mCustomScrollbar.min.js"></script> 
 <!--scroller-->
 
-
+ <script type='text/javascript' src='<?php echo URL_ADMIN;?>js/jquery.multiselect.js'></script>
 
 
 
@@ -189,13 +189,16 @@ $(document).ready(function() {
 <script src="<?php echo URL; ?>assets/js/wow.js" type="text/javascript" ></script> 
 <script>
 	new WOW().init();
+            
 </script> 
 <!--mi- cinsulting script-->
 <?php //echo $this->uri->segment(2);
  if($this->uri->segment(2)=='result'){?>
 <!--lightbox-->
 <script src="<?php echo URL; ?>assets/plugin/lightbox/lightbox.js"></script>
+
 <!--lightbox-->
 <?php }?>
+
 </body>
 </html>
