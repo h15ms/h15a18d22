@@ -1,6 +1,39 @@
 @charset "utf-8";
 /* CSS Document */
 
+
+.mi_menulist{ position:relative;}
+.mi_sub-menu{
+    position: absolute;
+    width: 180px;
+    margin-top: 0px;
+    left:0;
+    z-index: 9;
+    display: none;
+    animation:menuslide .5s linear 1;
+}
+
+@keyframes menuslide{   
+    0%{top:100px;}
+    100%{}
+}
+.mi_sub-menu li{
+  padding:5px 10px; 
+  background: #ffffff;
+  font-size: 12px;
+}
+.mi_sub-menu li:hover{
+  background: #ffffff; 
+  background-color: #e7e7e7;
+  transition:all 1s ease;
+}
+.mi_sub-menu li a{ text-decoration: none;}
+.mi_menulist:hover .mi_sub-menu{
+    display: block;
+}
+
+
+
 @import url("../fonts/customfonts.css");
 body{ font-family:'segoeui', Arial, Helvetica, sans-serif; background-color:#ffffff; color:#000000; overflow-x:hidden;}
 *{ outline:0; border:0;}
@@ -782,64 +815,6 @@ h1{ color:#1f1f1f;}
 
 }
 
-.mi_menulist{ position:relative;}
-.mi_sub-menu{
-    position: absolute;
-    width: 180px;
-    margin-top: 0px;
-    left:0;
-    z-index: 9;
-    display: none;
-    animation:menuslide .5s linear 1;
-}
-
-@keyframes menuslide{   
-    0%{top:100px;}
-    100%{}
-}
-.mi_sub-menu li{
-  padding:5px 10px; 
-  background: #ffffff;
-  font-size: 12px;
-}
-.mi_sub-menu li:hover{
-  background: #ffffff; 
-  background-color: #e7e7e7;
-  transition:all 1s ease;
-}
-.mi_sub-menu li a{ text-decoration: none;}
-.mi_menulist:hover .mi_sub-menu{
-    display: block;
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 @media screen and (max-width: 1024px){
@@ -1141,7 +1116,8 @@ h1{ color:#1f1f1f;}
 .mi-copyrt{ font-size:12px;}
 #popular-hospitals .owl-nav .owl-prev{display:block; text-indent:999px;}
 #popular-hospitals .owl-nav .owl-next{display:block; text-indent:999px;}
-.mi-btm-ftrlinks{ text-align:center !important;}		
+.mi-btm-ftrlinks{ text-align:center !important;}
+
 @keyframes rotate searchslide{
 	0%{	transform:rotate(-90deg); box-shadow: 3px 3px 2px #282828;}
 	100%{transform:rotate(360deg);   box-shadow: 3px 3px 2px #282828;}
@@ -1197,7 +1173,9 @@ h1{font-size:30px;}
 /*filter page top menu*/
 .mi_topmenu{
 	
-}	
+}
+
+
 	
 	
 	
