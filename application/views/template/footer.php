@@ -48,8 +48,8 @@
     <div class="mi-copyrt mi-blk mt40 pt10 pb10">
        <div class="container">
        <div class="row">
-          <div class="col-md-8 col-sm-7 col-xs-12  mi-btm-ftrlinks "> © Copyright 2015 - <a href="#"><img src="<?php echo URL; ?>assets/images/mi_sm_logo.png"></a> a Company of 
-             <a href="#"><img src="<?php echo URL; ?>assets/images/misoft_sm_logo.png"></a></div>      
+          <div class="col-md-8 col-sm-7 col-xs-12  mi-btm-ftrlinks "> © Copyright 2015 - <a href="#"><img src="<?php base_url(); ?>assets/images/mi_sm_logo.png"></a> a Company of 
+             <a href="#"><img src="<?php base_url(); ?>assets/images/misoft_sm_logo.png"></a></div>      
           <div class="col-md-4 col-sm-5 col-xs-12 mi-btm-ftrlinks text-right"><a href="#">Home</a> <a href="#">Services</a> <a href="#">About us</a> <a href="#">Contact</a> </div>
          </div>
        </div>
@@ -75,9 +75,9 @@
                         <div class="form-group">
                         <label class="fontnormal"> Select Clinic</label>
                         <select name="hospitals" class="form-control  mi-modelinput">
-                              <option value="0" data-image="<?php echo URL; ?>assets/images/hlogo1.png"> Fortish</option>
-                              <option value="1" data-image="<?php echo URL; ?>assets/images/hlogo1.png"> MAX</option>
-                              <option value="2" data-image="<?php echo URL; ?>assets/images/hlogo1.png"> APPOLO</option>
+                              <option value="0" data-image="<?php base_url(); ?>assets/images/hlogo1.png"> Fortish</option>
+                              <option value="1" data-image="<?php base_url(); ?>assets/images/hlogo1.png"> MAX</option>
+                              <option value="2" data-image="<?php base_url(); ?>assets/images/hlogo1.png"> APPOLO</option>
                         </select>
                         </div>
                         </div>
@@ -118,18 +118,18 @@
 
 
 <!--angular-->
-<script src="<?php echo URL; ?>assets/js/angular.min.1.6.1.js" type="text/javascript" ></script> 
+<script src="<?php base_url(); ?>assets/js/angular.min.1.6.1.js" type="text/javascript" ></script> 
 <!--angular-->
 
 
 <!--mi- cinsulting script--> 
-<script src="<?php echo URL; ?>assets/js/jquery.min.js" type="text/javascript" ></script> 
+<script src="<?php base_url(); ?>assets/js/jquery.min.js" type="text/javascript" ></script> 
 
-<script src="<?php echo URL; ?>assets/js/bootstrap.js" type="text/javascript" ></script> 
+<script src="<?php base_url(); ?>assets/js/bootstrap.js" type="text/javascript" ></script> 
 
 
 <!--select--> 
-<script src="<?php echo URL; ?>assets/plugin/select/jquery.dd.min.js"></script>
+<script src="<?php base_url(); ?>assets/plugin/select/jquery.dd.min.js"></script>
 <script>
 $(document).ready(function() {
 	$("select").msDropdown();
@@ -138,11 +138,11 @@ $(document).ready(function() {
 <!--select-->
 
 <!--owlslider-->  
-<script src="<?php echo URL; ?>assets/plugin/owlcarousel/owl.carousel.js"></script>
+<script src="<?php base_url(); ?>assets/plugin/owlcarousel/owl.carousel.js"></script>
 <!--owlslider-->
 
 <!--smoothscroll-->  
-<script src="<?php echo URL; ?>assets/plugin/swiper/swiper.min.js"></script>
+<script src="<?php base_url(); ?>assets/plugin/swiper/swiper.min.js"></script>
  <script>
     var swiper = new Swiper('.swiper-container', {
         scrollbar: '.swiper-scrollbar',
@@ -162,22 +162,22 @@ $(document).ready(function() {
 
 
 <!--datepicker--> 
-<script src="<?php echo URL; ?>assets/plugin/datepicker/highlight.min.js"></script>
-<script src="<?php echo URL; ?>assets/plugin/datepicker/jquery.easing.min.js"></script>
-<script src="<?php echo URL; ?>assets/plugin/datepicker/datepicker.js"></script>
-<script src="<?php echo URL; ?>assets/plugin/datepicker/i18n/datepicker.en.js"></script>
+<script src="<?php base_url(); ?>assets/plugin/datepicker/highlight.min.js"></script>
+<script src="<?php base_url(); ?>assets/plugin/datepicker/jquery.easing.min.js"></script>
+<script src="<?php base_url(); ?>assets/plugin/datepicker/datepicker.js"></script>
+<script src="<?php base_url(); ?>assets/plugin/datepicker/i18n/datepicker.en.js"></script>
 <!--datepicker--> 
 
 <!--slider--> 
-<script src="<?php echo URL; ?>assets/js/responsiveslides.min.js"></script> 
+<script src="<?php base_url(); ?>assets/js/responsiveslides.min.js"></script> 
 <!--slider--> 
 
 <!--rangeslider-->
-<script src="<?php echo URL; ?>assets/plugin/rangeslider/bootstrap-slider.js"></script> 
+<script src="<?php base_url(); ?>assets/plugin/rangeslider/bootstrap-slider.js"></script> 
 <!--rangeslider-->
 
 <!--scroller-->
-<script src="<?php echo URL; ?>assets/plugin/scrollbar/jquery.mCustomScrollbar.min.js"></script> 
+<script src="<?php base_url(); ?>assets/plugin/scrollbar/jquery.mCustomScrollbar.min.js"></script> 
 <!--scroller-->
 
  <script type='text/javascript' src='<?php echo URL_ADMIN;?>js/jquery.multiselect.js'></script>
@@ -185,8 +185,8 @@ $(document).ready(function() {
 
 
 
-<script  src="<?php echo URL; ?>assets/js/micostum.js" type="text/javascript" ></script> 
-<script src="<?php echo URL; ?>assets/js/wow.js" type="text/javascript" ></script> 
+<script  src="<?php base_url(); ?>assets/js/micostum.js" type="text/javascript" ></script> 
+<script src="<?php base_url(); ?>assets/js/wow.js" type="text/javascript" ></script> 
 <script>
 	new WOW().init();
             
@@ -195,7 +195,7 @@ $(document).ready(function() {
 <?php //echo $this->uri->segment(2);
  if($this->uri->segment(2)=='result'){?>
 <!--lightbox-->
-<script src="<?php echo URL; ?>assets/plugin/lightbox/lightbox.js"></script>
+<script src="<?php base_url(); ?>assets/plugin/lightbox/lightbox.js"></script>
 
 <!--lightbox-->
 <?php }?>

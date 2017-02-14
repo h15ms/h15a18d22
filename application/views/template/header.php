@@ -1,5 +1,5 @@
 <?php $url=base_url(); 
-define('$url_ADMIN', base_url() . 'assets/admin/'); 
+define('URL_ADMIN', base_url() . 'assets/admin/'); 
 ?>
 
 <!DOCTYPE html>
@@ -49,14 +49,14 @@ define('$url_ADMIN', base_url() . 'assets/admin/');
 <!--scroller-->
 <link rel="stylesheet" href="<?php echo $url; ?>assets/plugin/scrollbar/jquery.mCustomScrollbar.css">
 <!--scroller-->
- <link rel='stylesheet' type='text/css' href='<?php echo $url_ADMIN;?>css/jquery.multiselect.css' />
+ <link rel='stylesheet' type='text/css' href='<?php echo URL_ADMIN ;?>css/jquery.multiselect.css' />
 
 <?php //echo $this->uri->segment(2);
  if($this->uri->segment(2)=='result'){?>
 
 
 
-<?php }?>
+<?php  } ?>
 
 </head>
 <body>
