@@ -84,15 +84,17 @@ class Module extends Base {
   public function updateSidePanel() {
 
     $id = $this->uri->segment(4);
+
     $data = $this->model->sideBarFetchById($id); 
     $rootheading = $this->model->fetchRootHeading();     
 
     $post = $this->input->post();
-    if(isset($post['send'])){
-      $out = $this->model->moduleUpdate($post);
+    if(isset($post['sidebar_update'])){
+
+      $out = $this->model->sidebarUpdate($post, $id);
       if($out == 'OK'){
         $msg = 'Updated Successfully'; 
-        redirect(base_url().'admin/module','location');
+        redirect(base_url().'admin/module/showPanelData','location');
       }else{
         $msg = 'Oopss Error Occured Try Again!';
       }

@@ -32,8 +32,8 @@
                     </div>
                     <div class="panel-body collapse in" >                                  
                    
-                      <form method="post" action="updateSidePanel" >
-                    <input type="hidden" name="sidebar_insert" value="1">                        
+                      <form method="post" action="" >
+                    <input type="hidden" name="sidebar_update" value="1">                        
                       
                     <div class="col-xs-12 col-sm-12 col-md-12"> 
                         <div class="col-xs-6 col-sm-6 col-md-6 form-group"> 
@@ -68,7 +68,7 @@
                               <label>This Root Heading contains own URL?</label>
                             </div>
                             <div class="col-xs-6 col-sm-6 col-md-1">
-                              <input type="checkbox" value="yes" id="contains_url_id" onclick="valueChanged()" class="form-control pull-left" name="contains_url"> 
+                              <input type="checkbox" value="yes" id="contains_url_id" onclick="valueChanged()" checked class="form-control pull-left" name="contains_url"> 
                             </div>
 
                         </div>
@@ -78,7 +78,7 @@
                         </div>
 
                     </div> 
-                    <script type="text/javascript">
+                  <!--   <script type="text/javascript">
                       function rootheading(att)
                       {
                         var val = att.options[att.selectedIndex].value;
@@ -99,19 +99,19 @@
 
                     </script>
                     <?php 
+                        // if(isset($data['0']->icon)){
 
-if(isset($data['0']->icon)){
-    echo "<script> document.getElementById('root_hide_new').style.display = 'block' ; </script>";
-}
-
-                     ?>
+                        //     echo "<script> document.getElementById('root_heading_icon').style.display = 'block' ; </script>";
+                        //     echo "<script> document.getElementById('root_hide').style.display = 'block' ; </script>";
+                        // }
+                     ?> -->
 
                     <div class="col-xs-12 col-sm-12 col-md-12" id="sub_heading_div"> 
                         <div class="col-xs-6 col-sm-6 col-md-6 form-group"> 
                             <label>Sub Heading:</label> 
                             <input type="text" class="form-control" name="sub_heading" value="<?php echo $data['0']->sub_heading; ?>" placeholder="Sub Heading">
                         </div>
-                        <div class="col-xs-6 col-sm-6 col-md-6 form-group">   
+                        <div class="col-xs-6 col-sm-6 col-md-6 form-group">
                           <label>Sub Heading URL</label>
                           <input type="text" class="form-control" name="sub_heading_url" value="<?php echo $data['0']->url; ?>" placeholder="Sub Heading URL">
                         </div>

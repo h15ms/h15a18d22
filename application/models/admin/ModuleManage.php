@@ -29,6 +29,35 @@ class ModuleManage  extends CI_Model
      $this->db->update(PR.'module', $data);
 
      return 'OK';
+  }  
+
+  public function sidebarUpdate($arr, $id)
+  {  
+
+    if(isset($arr['new_root_heading_url'])){
+        $url = $arr['new_root_heading_url'];
+    }else{
+        $url = $arr['sub_heading_url'];
+    }
+    if(isset($arr['new_root_heading'])){
+        $root_heading = $arr['new_root_heading'];
+    }else{
+        $root_heading = $arr['root_heading'];
+    }
+
+    $data=array(
+     'root_heading'=>$root_heading,
+     'icon'=>$arr['root_heading_icon'],
+     'sub_heading'=>$arr['sub_heading'],
+     'url'=>$url
+     ); 
+     
+     $this->db->where('id', $id);
+     $this->db->update(PR.'leftpanel', $data);
+
+     return 'OK';
+
+
   }
     
     
