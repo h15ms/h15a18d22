@@ -16,8 +16,19 @@ class Hospital extends CI_Controller {
   
 
 $speciliztion=$this->model->getspeciliztions();
+ $speOption=''; 
+ foreach($speciliztion as $val ){
+
+                          $speOption.="<option value=".$val->id.">".$val->sepcialization."</option>";
+                         
+                          
+                          
+ }
+                          
+  $allhospital=$this->model->getallhospital();      
+                          
 $hospitalLocation=$this->model->gethospitalarea();
-$data=array('speciliztion'=>$speciliztion,'hospitalLocation'=>$hospitalLocation);
+$data=array('speciliztion'=>$speciliztion,'hospitalLocation'=>$hospitalLocation,'speOption'=>$speOption,"allhospital"=>$allhospital );
      $this->load->view('template/header');
      $this->load->view('hospital/index.php',$data);
      $this->load->view('template/footer',$data);

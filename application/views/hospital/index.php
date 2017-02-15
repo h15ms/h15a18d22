@@ -1,11 +1,5 @@
-<?php 
-foreach(){
-    
-}
 
 
-
-?>
 
 
 <section class="mi_cl mi_topmenu mi-lt-grey pt10 pb10">
@@ -48,15 +42,15 @@ Location
 </div>
 
 <ul class="mi_radiobox_block">
-    <?php foreach($hospitalLocation as $location){ ?>
+    <?php $i=1; foreach($hospitalLocation as $location){ ?>
 <li>
-  <label for="rohini"> 
-   <input type="radio" id="rohini" name="miradioselect" class="radiobox radiobox-inline mi_radioboxicon"/> <?php echo $location->location_area; ?>
+  <label for="rohini_<?php echo $i;?>"> 
+   <input type="radio" id="rohini_<?php echo $i;?>" name="miradioselect" class="radiobox radiobox-inline mi_radioboxicon"/> <?php echo $location->location_area; ?>
    <span></span>
   </label>
  
 </li>
-    <?php } ?>
+    <?php $i++; } ?>
 
 </ul>
 <!--<div class="mi_filtertitle">
@@ -95,7 +89,7 @@ Consulting Fee - <span class="mi_rangevaluec"> ( 1000+ )</span>
 
 <div class="mi_filterresult col-md-9 col-sm-9 col-xs-12">
 <div class="mi_modifyfilter col-md-12 col-sm-12 col-xs-12 text-right mb10">
-<span class="pull-left mi_filtermatches hidden-xs">203 matches Found for <span class="mi-drktxt-grey">Dental Clinics</span></span> 
+<span class="pull-left mi_filtermatches hidden-xs"><?php echo count($allhospital);?> matches Found for <span class="mi-drktxt-grey">Dental Clinics</span></span> 
 <a href="javascript:void(0)" class="mi_shortby">
 <i class="mi_filtericon"></i><span>Short By</span>
 </a>
@@ -123,36 +117,23 @@ Consulting Fee - <span class="mi_rangevaluec"> ( 1000+ )</span>
                         <div class="col-md-4 col-sm-4 col-xs-12">
                           <div class="form-group">
                             <label> Select Location </label>
-                            <select class="form-control mi-input">
-                            <?php foreach($speciliztion as $spec){?>
+                         
+                            <select id="selectLocation" class="form-control mi-input">
+                            <?php foreach($hospitalLocation as $location){?>
+                                <option value="<?php echo $location->id;?>"> <?php echo $location->location_area;?></option>
                                 
-                               <option value="<?php echo $val->id;?>"><?php echo $val->sepcialization ;?></option>  
-                                
-                            <?php }?>
-                                
-                                
-                                
-                                
-                                
-                                
-                                
-                                
-                                
-                                <option>Delhi</option>
-                              <option>Chandigarh</option>
-                              <option>Punjab</option>
-                              <option>Hariyana</option>
+                            <?php } ?>
                             </select>
                           </div>
                         </div>
                         <div class="col-md-4 col-sm-4 col-xs-12">
                           <div class="form-group clearfix">
                             <label> Select Speciality</label>
-                            <select class="form-control mi-input">
+                            <select id="selectSpe" class="form-control mi-input">
                               
                               
                               
-                               <?php echo $vari; ?>
+                              <?php echo $speOption;?>
                               
                               
                               
@@ -171,17 +152,19 @@ Consulting Fee - <span class="mi_rangevaluec"> ( 1000+ )</span>
 				  </div>
 </div>
 <div class="mi_filterdata">
+    
+    <?php  foreach($allhospital as $hospitalval){?>
    <div class="mi_filterdatabox mi-lt-grey mb10 wow fadeInUp">
       <div class="mi-hospitalimage"> 
-	  <img src="<?php echo base_url(); ?>assets/images/appolo.jpg" class="img-responsive">
+          <a href="<?php echo $hospitalval->website ;?>" target="_blank"> <img src="<?php echo base_url(); ?>assets/img/hospitals/<?php echo $hospitalval->image ;?>" class="img-responsive"></a>
 	  </div>
 	  <div class="mi-hospitaldetails pl0">      
 		    <div class="col-md-10  col-sm-10 col-xs-10">
-			 <span class="mi_filtertitle">Appollo in Delhi</span>
+			 <span class="mi_filtertitle"><?php echo $hospitalval->name.' In '. $hospitalval->city ;?></span>
 			 <span class="mi_doctortype">1 Dentist , 2 Cosmetict </span>
 			</div>
             <div class="col-md-2 col-sm-2 col-xs-2">
-			<img src="<?php echo base_url(); ?>assets/images/hospital-logo/appolo.png" class="img-responsive">
+			<img src="<?php echo base_url(); ?>assets/img/hospitals/<?php echo $hospitalval->image ;?>" class="img-responsive">
 			</div>
             <div class="col-md-12 mi_hospitalservices mt5 pull-left">
                   <span class="mi_hospitalservicetab">Cardiology</span>
@@ -194,17 +177,17 @@ Consulting Fee - <span class="mi_rangevaluec"> ( 1000+ )</span>
 			
 			<!--maxlimit5 and one is default show in front-->
 			<div class="col-md-12 mi_hospitalgallery mt10 pull-left">
-			  <a class="example-image-link" href="<?php echo base_url(); ?>assets/images/appolo.jpg" data-lightbox="example-set" data-title="Click the the image to move forward.">
-			  <img class="example-image" src="<?php echo base_url(); ?>assets/images/appolo.jpg" alt=""/>
+			  <a class="example-image-link" href="<?php echo base_url(); ?>assets/img/hospitals/<?php echo $hospitalval->image ;?>" data-lightbox="example-set" data-title="Click the the image to move forward.">
+			  <img class="example-image" src="<?php echo base_url(); ?>assets/img/hospitals/<?php echo $hospitalval->image ;?>" alt=""/>
 			  </a>
-			  <a class="example-image-link" href="<?php echo base_url(); ?>assets/images/appolo.jpg" data-lightbox="example-set" data-title="Or press the right arrow on your keyboard.">
-			  <img class="example-image" src="<?php echo base_url(); ?>assets/images/appolo.jpg" alt="" />
+			  <a class="example-image-link" href="<?php echo base_url(); ?>assets/img/hospitals/<?php echo $hospitalval->image ;?>" data-lightbox="example-set" data-title="Or press the right arrow on your keyboard.">
+			  <img class="example-image" src="<?php echo base_url(); ?>assets/img/hospitals/<?php echo $hospitalval->image ;?>" alt="" />
 			  </a>
-			  <a class="example-image-link" href="<?php echo base_url(); ?>assets/images/appolo.jpg" data-lightbox="example-set" data-title="The set is preloaded as you're viewing.">
-			  <img class="example-image" src="<?php echo base_url(); ?>assets/images/appolo.jpg" alt="" />
+			  <a class="example-image-link" href="<?php echo base_url(); ?>assets/img/hospitals/<?php echo $hospitalval->image ;?>" data-lightbox="example-set" data-title="The set is preloaded as you're viewing.">
+			  <img class="example-image" src="<?php echo base_url(); ?>assets/img/hospitals/<?php echo $hospitalval->image ;?>" alt="" />
 			  </a>
-			  <a class="example-image-link" href="<?php echo base_url(); ?>assets/images/appolo.jpg" data-lightbox="example-set" data-title="Click or the X to the right to close.">
-			  <img class="example-image" src="<?php echo base_url(); ?>assets/images/appolo.jpg" alt="" />
+			  <a class="example-image-link" href="<?php echo base_url(); ?>assets/img/hospitals/<?php echo $hospitalval->image ;?>" data-lightbox="example-set" data-title="Click or the X to the right to close.">
+			  <img class="example-image" src="<?php echo base_url(); ?>assets/img/hospitals/<?php echo $hospitalval->image ;?>" alt="" />
 			  </a>
 			</div>
 			  <div class="col-md-12 mi_filterbottom mt20  pull-left">
@@ -225,236 +208,9 @@ Consulting Fee - <span class="mi_rangevaluec"> ( 1000+ )</span>
 	  </div>
    </div>
    
+    <?php } ?>
    
-   <div class="mi_filterdatabox mi-lt-grey mb10 wow fadeInUp">
-      <div class="mi-hospitalimage"> 
-	  <img src="<?php echo base_url(); ?>assets/images/appolo.jpg" class="img-responsive">
-	  </div>
-	  <div class="mi-hospitaldetails pl0"> 
-	     
-		    <div class="col-md-10  col-sm-10 col-xs-10">
-			 <span class="mi_filtertitle">Appollo in Delhi</span>
-			 <span class="mi_doctortype">1 Dentist , 2 Cosmetict </span>
-			</div>
-            <div class="col-md-2 col-sm-2 col-xs-2">
-			<img src="<?php echo base_url(); ?>assets/images/hospital-logo/appolo.png" class="img-responsive">
-			</div>
-            <div class="col-md-12 mi_hospitalservices mt5 pull-left">
-                  <span class="mi_hospitalservicetab">Cardiology</span>
-				  <span class="mi_hospitalservicetab">Neurology</span>
-				  <span class="mi_hospitalservicetab">Dermatology </span>
-				  <span class="mi_hospitalservicetab">Urology  </span>
-				  <span class="mi_hospitalservicetab">Liver Transplant   </span>
-				   <span class="mi_hospitalservicetab">Orthopaedic.   </span>
-			</div>
-			
-			<!--maxlimit5 and one is default show in front-->
-			<div class="col-md-12 mi_hospitalgallery mt10 pull-left">
-			  <a class="example-image-link" href="<?php echo base_url(); ?>assets/images/appolo.jpg" data-lightbox="example-set" data-title="Click the the image to move forward.">
-			  <img class="example-image" src="<?php echo base_url(); ?>assets/images/appolo.jpg" alt=""/>
-			  </a>
-			  <a class="example-image-link" href="<?php echo base_url(); ?>assets/images/appolo.jpg" data-lightbox="example-set" data-title="Or press the right arrow on your keyboard.">
-			  <img class="example-image" src="<?php echo base_url(); ?>assets/images/appolo.jpg" alt="" />
-			  </a>
-			  <a class="example-image-link" href="<?php echo base_url(); ?>assets/images/appolo.jpg" data-lightbox="example-set" data-title="The set is preloaded as you're viewing.">
-			  <img class="example-image" src="<?php echo base_url(); ?>assets/images/appolo.jpg" alt="" />
-			  </a>
-			  <a class="example-image-link" href="<?php echo base_url(); ?>assets/images/appolo.jpg" data-lightbox="example-set" data-title="Click or the X to the right to close.">
-			  <img class="example-image" src="<?php echo base_url(); ?>assets/images/appolo.jpg" alt="" />
-			  </a>
-			</div>
-			  <div class="col-md-12 mi_filterbottom mt20  pull-left">
-			  <a href="javascript:void(0)" class="mi_viewservice"> View all Services </a>
-			  <span class="mi_hospitalsuggested"> <i class="micheckicon"></i> Suggest By Mi consulting</span>
-			  </div>
-	  
-	  </div>
-	  <div class="mi_hospitalinformation"> 
-		
-			<div class="mi_hospitalinformationbox"> <i class="mi_chaticon"></i> <div class="mi_hospitalinformationbox-in">27 Feedback</div> </div>
-			<div class="mi_hospitalinformationbox"> <i class="mi_timeicon"></i> <div class="mi_hospitalinformationbox-in">Mon - Sat <br/>
-                    8:30am to 1:30pm ,  5:00pm to 8:00pm </div></div>
-			<div class="mi_hospitalinformationbox"> <i class="mi_addressicon"></i> <div class="mi_hospitalinformationbox-in">Tower A, Unitech Business Park,
-               Block - F, South City 1, Sector - 41 </div></div>
-			<div class="mi_hospitalinformationbox text-center">   
-		      <button class="btn btn-outline-grey ripplegrey mt10 ">Book Appointment</button>
-	        </div>
-	  </div>
-   </div>
-   
-   
-   <div class="mi_filterdatabox mi-lt-grey mb10 wow fadeInUp">
-      <div class="mi-hospitalimage"> 
-	  <img src="<?php echo base_url(); ?>assets/images/appolo.jpg" class="img-responsive">
-	  </div>
-	  <div class="mi-hospitaldetails pl0"> 
-	     
-		    <div class="col-md-10  col-sm-10 col-xs-10">
-			 <span class="mi_filtertitle">Appollo in Delhi</span>
-			 <span class="mi_doctortype">1 Dentist , 2 Cosmetict </span>
-			</div>
-            <div class="col-md-2 col-sm-2 col-xs-2">
-			<img src="<?php echo base_url(); ?>assets/images/hospital-logo/appolo.png" class="img-responsive">
-			</div>
-            <div class="col-md-12 mi_hospitalservices mt5 pull-left">
-                  <span class="mi_hospitalservicetab">Cardiology</span>
-				  <span class="mi_hospitalservicetab">Neurology</span>
-				  <span class="mi_hospitalservicetab">Dermatology </span>
-				  <span class="mi_hospitalservicetab">Urology  </span>
-				  <span class="mi_hospitalservicetab">Liver Transplant   </span>
-				   <span class="mi_hospitalservicetab">Orthopaedic.   </span>
-			</div>
-			
-			<!--maxlimit5 and one is default show in front-->
-			<div class="col-md-12 mi_hospitalgallery mt10 pull-left">
-			  <a class="example-image-link" href="<?php echo base_url(); ?>assets/images/appolo.jpg" data-lightbox="example-set" data-title="Click the the image to move forward.">
-			  <img class="example-image" src="<?php echo base_url(); ?>assets/images/appolo.jpg" alt=""/>
-			  </a>
-			  <a class="example-image-link" href="<?php echo base_url(); ?>assets/images/appolo.jpg" data-lightbox="example-set" data-title="Or press the right arrow on your keyboard.">
-			  <img class="example-image" src="<?php echo base_url(); ?>assets/images/appolo.jpg" alt="" />
-			  </a>
-			  <a class="example-image-link" href="<?php echo base_url(); ?>assets/images/appolo.jpg" data-lightbox="example-set" data-title="The set is preloaded as you're viewing.">
-			  <img class="example-image" src="<?php echo base_url(); ?>assets/images/appolo.jpg" alt="" />
-			  </a>
-			  <a class="example-image-link" href="<?php echo base_url(); ?>assets/images/appolo.jpg" data-lightbox="example-set" data-title="Click or the X to the right to close.">
-			  <img class="example-image" src="<?php echo base_url(); ?>assets/images/appolo.jpg" alt="" />
-			  </a>
-			</div>
-			  <div class="col-md-12 mi_filterbottom mt20  pull-left">
-			  <a href="javascript:void(0)" class="mi_viewservice"> View all Services </a>
-			  <span class="mi_hospitalsuggested"> <i class="micheckicon"></i> Suggest By Mi consulting</span>
-			  </div>
-	  
-	  </div>
-	  <div class="mi_hospitalinformation"> 
-		
-			<div class="mi_hospitalinformationbox"> <i class="mi_chaticon"></i> <div class="mi_hospitalinformationbox-in">27 Feedback</div> </div>
-			<div class="mi_hospitalinformationbox"> <i class="mi_timeicon"></i> <div class="mi_hospitalinformationbox-in">Mon - Sat <br/>
-                    8:30am to 1:30pm ,  5:00pm to 8:00pm </div></div>
-			<div class="mi_hospitalinformationbox"> <i class="mi_addressicon"></i> <div class="mi_hospitalinformationbox-in">Tower A, Unitech Business Park,
-               Block - F, South City 1, Sector - 41 </div></div>
-			<div class="mi_hospitalinformationbox text-center">   
-		      <button class="btn btn-outline-grey ripplegrey mt10 ">Book Appointment</button>
-	        </div>
-	  </div>
-   </div>
-   
-   
-   <div class="mi_filterdatabox mi-lt-grey mb10 wow fadeInUp">
-      <div class="mi-hospitalimage"> 
-	  <img src="<?php echo base_url(); ?>assets/images/appolo.jpg" class="img-responsive">
-	  </div>
-	  <div class="mi-hospitaldetails pl0"> 
-	     
-		    <div class="col-md-10  col-sm-10 col-xs-10">
-			 <span class="mi_filtertitle">Appollo in Delhi</span>
-			 <span class="mi_doctortype">1 Dentist , 2 Cosmetict </span>
-			</div>
-            <div class="col-md-2 col-sm-2 col-xs-2">
-			<img src="<?php echo base_url(); ?>assets/images/hospital-logo/appolo.png" class="img-responsive">
-			</div>
-            <div class="col-md-12 mi_hospitalservices mt5 pull-left">
-                  <span class="mi_hospitalservicetab">Cardiology</span>
-				  <span class="mi_hospitalservicetab">Neurology</span>
-				  <span class="mi_hospitalservicetab">Dermatology </span>
-				  <span class="mi_hospitalservicetab">Urology  </span>
-				  <span class="mi_hospitalservicetab">Liver Transplant   </span>
-				   <span class="mi_hospitalservicetab">Orthopaedic.   </span>
-			</div>
-			
-			<!--maxlimit5 and one is default show in front-->
-			<div class="col-md-12 mi_hospitalgallery mt10 pull-left">
-			  <a class="example-image-link" href="<?php echo base_url(); ?>assets/images/appolo.jpg" data-lightbox="example-set" data-title="Click the the image to move forward.">
-			  <img class="example-image" src="<?php echo base_url(); ?>assets/images/appolo.jpg" alt=""/>
-			  </a>
-			  <a class="example-image-link" href="<?php echo base_url(); ?>assets/images/appolo.jpg" data-lightbox="example-set" data-title="Or press the right arrow on your keyboard.">
-			  <img class="example-image" src="<?php echo base_url(); ?>assets/images/appolo.jpg" alt="" />
-			  </a>
-			  <a class="example-image-link" href="<?php echo base_url(); ?>assets/images/appolo.jpg" data-lightbox="example-set" data-title="The set is preloaded as you're viewing.">
-			  <img class="example-image" src="<?php echo base_url(); ?>assets/images/appolo.jpg" alt="" />
-			  </a>
-			  <a class="example-image-link" href="<?php echo base_url(); ?>assets/images/appolo.jpg" data-lightbox="example-set" data-title="Click or the X to the right to close.">
-			  <img class="example-image" src="<?php echo base_url(); ?>assets/images/appolo.jpg" alt="" />
-			  </a>
-			</div>
-			  <div class="col-md-12 mi_filterbottom mt20  pull-left">
-			  <a href="javascript:void(0)" class="mi_viewservice"> View all Services </a>
-			  <span class="mi_hospitalsuggested"> <i class="micheckicon"></i> Suggest By Mi consulting</span>
-			  </div>
-	  
-	  </div>
-	  <div class="mi_hospitalinformation"> 
-		
-			<div class="mi_hospitalinformationbox"> <i class="mi_chaticon"></i> <div class="mi_hospitalinformationbox-in">27 Feedback</div> </div>
-			<div class="mi_hospitalinformationbox"> <i class="mi_timeicon"></i> <div class="mi_hospitalinformationbox-in">Mon - Sat <br/>
-                    8:30am to 1:30pm ,  5:00pm to 8:00pm </div></div>
-			<div class="mi_hospitalinformationbox"> <i class="mi_addressicon"></i> <div class="mi_hospitalinformationbox-in">Tower A, Unitech Business Park,
-               Block - F, South City 1, Sector - 41 </div></div>
-			<div class="mi_hospitalinformationbox text-center">   
-		      <button class="btn btn-outline-grey ripplegrey mt10 ">Book Appointment</button>
-	        </div>
-	  </div>
-   </div>
-   
-    <div class="mi_filterdatabox mi-lt-grey mb10 wow fadeInUp">
-      <div class="mi-hospitalimage"> 
-	  <img src="<?php echo base_url(); ?>assets/images/appolo.jpg" class="img-responsive">
-	  </div>
-	  <div class="mi-hospitaldetails pl0"> 
-	     
-		    <div class="col-md-10  col-sm-10 col-xs-10">
-			 <span class="mi_filtertitle">Appollo in Delhi</span>
-			 <span class="mi_doctortype">1 Dentist , 2 Cosmetict </span>
-			</div>
-            <div class="col-md-2 col-sm-2 col-xs-2">
-			<img src="<?php echo base_url(); ?>assets/images/hospital-logo/appolo.png" class="img-responsive">
-			</div>
-            <div class="col-md-12 mi_hospitalservices mt5 pull-left">
-                  <span class="mi_hospitalservicetab">Cardiology</span>
-				  <span class="mi_hospitalservicetab">Neurology</span>
-				  <span class="mi_hospitalservicetab">Dermatology </span>
-				  <span class="mi_hospitalservicetab">Urology  </span>
-				  <span class="mi_hospitalservicetab">Liver Transplant   </span>
-				   <span class="mi_hospitalservicetab">Orthopaedic.   </span>
-			</div>
-			
-			<!--maxlimit5 and one is default show in front-->
-			<div class="col-md-12 mi_hospitalgallery mt10 pull-left">
-			  <a class="example-image-link" href="<?php echo base_url(); ?>assets/images/appolo.jpg" data-lightbox="example-set" data-title="Click the the image to move forward.">
-			  <img class="example-image" src="<?php echo base_url(); ?>assets/images/appolo.jpg" alt=""/>
-			  </a>
-			  <a class="example-image-link" href="<?php echo base_url(); ?>assets/images/appolo.jpg" data-lightbox="example-set" data-title="Or press the right arrow on your keyboard.">
-			  <img class="example-image" src="<?php echo base_url(); ?>assets/images/appolo.jpg" alt="" />
-			  </a>
-			  <a class="example-image-link" href="<?php echo base_url(); ?>assets/images/appolo.jpg" data-lightbox="example-set" data-title="The set is preloaded as you're viewing.">
-			  <img class="example-image" src="<?php echo base_url(); ?>assets/images/appolo.jpg" alt="" />
-			  </a>
-			  <a class="example-image-link" href="<?php echo base_url(); ?>assets/images/appolo.jpg" data-lightbox="example-set" data-title="Click or the X to the right to close.">
-			  <img class="example-image" src="<?php echo base_url(); ?>assets/images/appolo.jpg" alt="" />
-			  </a>
-			</div>
-			  <div class="col-md-12 mi_filterbottom mt20  pull-left">
-			  <a href="javascript:void(0)" class="mi_viewservice"> View all Services </a>
-			  <span class="mi_hospitalsuggested"> <i class="micheckicon"></i> Suggest By Mi consulting</span>
-			  </div>
-	  
-	  </div>
-	  <div class="mi_hospitalinformation"> 
-		
-			<div class="mi_hospitalinformationbox"> <i class="mi_chaticon"></i> <div class="mi_hospitalinformationbox-in">27 Feedback</div> </div>
-			<div class="mi_hospitalinformationbox"> <i class="mi_timeicon"></i> <div class="mi_hospitalinformationbox-in">Mon - Sat <br/>
-                    8:30am to 1:30pm ,  5:00pm to 8:00pm </div></div>
-			<div class="mi_hospitalinformationbox"> <i class="mi_addressicon"></i> <div class="mi_hospitalinformationbox-in">Tower A, Unitech Business Park,
-               Block - F, South City 1, Sector - 41 </div></div>
-			<div class="mi_hospitalinformationbox text-center">   
-		      <button class="btn btn-outline-grey ripplegrey mt10 ">Book Appointment</button>
-	        </div>
-	  </div>
-   </div>
-   
-   
-   
-   
+    
    
    
    

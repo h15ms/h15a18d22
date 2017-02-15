@@ -26,7 +26,7 @@ class HospitalModel extends CI_Model
 } 
   public function gethospitalarea(){  
       
-    $this->db->select('location_area')->from(PR.'hospital_detail');
+    $this->db->select('id, location_area')->from(PR.'hospital_detail');
      $this->db->order_by('location_area','asc');         
     $getdata = $this->db->get(); 
     //$result = $getdata->get();
@@ -36,5 +36,19 @@ class HospitalModel extends CI_Model
         } else {
             return false;
         }   
+}
+  public function getallhospital(){  
+      
+    $this->db->select('*')->from(PR.'hospital_detail  d');
+    $this->db->join(PR.'hospital  h' , 'h.id=d.hospital_id', 'left');
+    $this->db->where(array('h.status'=>1 ));
+    $this->db->order_by('d.id','asc');         
+    $getdata = $this->db->get(); 
+     
+        if ($getdata->num_rows() > 0) {
+            return $getdata->result();
+        } else {
+            return false;
+        }
 }
 }

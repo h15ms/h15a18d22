@@ -182,15 +182,6 @@ $(function () {
 	  
 	  
 	  //scroll//
-
-	  
-	  
-	  
-	  
-	  
-	  
-	  
-	  
 	  
 	  
 });
@@ -199,5 +190,17 @@ $(function () {
         placeholder: 'Select Specialization',
         search: true,
         selectAll: true
+    });
+ $('#selectSpe').multiselect({
+       // columns: 1,
+        placeholder: 'Select Specialization',
+       // search: true,
+       //selectAll: true
+    });
+    $('#selectLocation').multiselect({
+       // columns: 1,
+        placeholder: 'Select Specialization',
+       // search: true,
+       //selectAll: true
     });
  

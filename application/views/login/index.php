@@ -131,7 +131,7 @@
             <h2 style="font-weight:100;color:#404040;margin:20px 0 60px 0;">
               <i class="fa fa-sign-in"></i> Sign In
             </h2>
-              <form action="<?php echo URL; ?>login/login_check" method="post">
+              <form action="<?php echo base_url(); ?>login/login_check" method="post">
               <input type="hidden" name="send" value="signin">
               <input type="email" name="email" value="" placeholder="Email address" class="form-control input-lg" required>
               <input type="password" name="pass" value="" placeholder="Password" class="form-control input-lg" style="margin-top:10px;" required>
@@ -150,7 +150,7 @@
               <i class="fa fa-user">
               </i> Create an account
             </h2>                    
-            <form action="index.php/login/registration" method="post">
+            <form action="<?php echo base_url(); ?>login/registration" method="post">
               <div class="col-md-6">
                 <input type="text" name="firstname" value="" placeholder="First Name*" class="form-control input-lg" autocomplete="off" required>
               </div>

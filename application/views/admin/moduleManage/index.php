@@ -13,7 +13,8 @@
             <h1><?php echo $headline; ?></h1>
             <div class="options">
                 <div class="btn-toolbar">
-                	<a href='<?php base_url()?>module/addModule' class="btn btn-success hidden-xs"><i class="fa fa-plus-circle"></i> Add Module</a>					           
+                    <a href='<?php base_url()?>module/showPanelData' class="btn btn-primary hidden-xs"><i class="fa fa-plus-circle"></i> Manage Sidebar</a>   
+                    <a style="margin-left: 10px;" href='<?php base_url()?>module/addModule' class="btn btn-success hidden-xs"><i class="fa fa-plus-circle"></i> Add Module</a>                          
                 </div>
             </div>
         </div>
