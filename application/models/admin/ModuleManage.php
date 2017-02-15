@@ -67,6 +67,12 @@ class ModuleManage  extends CI_Model
       return $out->result();
   }   
   
+  public function retrieveLeftPanelBychange($id)
+  {          
+      $out = $this->db->select('*')->get_where(PR.'leftpanel' , array('user_level' => $id));
+      return $out->result();
+  }   
+  
   public function dataFetch()
   {          
       $this->db->select('*');
@@ -78,7 +84,7 @@ class ModuleManage  extends CI_Model
   public function showpaneldata()
   {          
       $this->db->select('*');
-      $this->db->order_by('root_heading', 'asc'); 
+      $this->db->order_by('sub_id', 'asc'); 
       $newid = $this->db->get(PR.'leftpanel');
       return $newid->result();
   }   

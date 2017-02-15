@@ -17,7 +17,7 @@
             <h1><?php echo $headline; ?></h1>  <h3><?php echo $message ? '<span style="color:green">'.$message.'</span>' :'' ; ?></h3>
             <div class="options">
                 <div class="btn-toolbar">
-                	<a href="<?php echo base_url()?>admin/module" class="btn btn-default hidden-xs"><i class="fa fa-files-o"></i> Manage Modules</a>
+                	<a href="<?php echo base_url()?>admin/module/showPanelData" class="btn btn-default hidden-xs"><i class="fa fa-files-o"></i> Manage Sidepanel</a>
                 </div>
             </div>
         </div>
@@ -53,10 +53,16 @@
                             <select name="root_heading" class="form-control" id="root_heading" onclick="rootheading(this);">
                                 <option value=""> -- Select -- </option>
                                 <option id="new_root_heading" value="new_root_heading">Add New Root Heading</option>
-                              <?php foreach($rootheading as $val ){?>
-                                <option value="<?php echo $val->id; ?>"><?php echo $val->root_heading;?></option>
+                              <?php 
+                              $user = unserialize(USER_LEVEL);
+                              foreach($rootheading as $val ){?>
+                                <option value="<?php echo $val->id; ?>"><?php  echo "(".$user[$val->user_level].") ".$val->root_heading; ?></option>
                               <?php } ?>
                             </select> 
+<!-- 
+                            <?php echo '<pre>';
+                            print_r($rootheading);
+                            echo '</pre>'; ?> -->
                         </div>
                         <div class="col-xs-6 col-sm-6 col-md-6 form-group root" id="root_hide" style="display: none;">   
                           <label>New Root Heading</label>

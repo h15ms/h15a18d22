@@ -20,16 +20,17 @@ class BaseModel extends CI_Model {
     public function retrieveLeftPanelBySession(){
 
     	$user_level = $this->session_data['user_level'];
-    	$out = $this->db->select('*')->get_where(PR.'leftpanel' , array('user_level' => $user_level));
+    	$this->db->order_by('root_heading', 'asc');
+        $out = $this->db->select('*')->get_where(PR.'leftpanel' , array('user_level' => $user_level, 'status'=>'1'));
     	return $out->result();
     }    
 
-    public function retrieveRootHeading(){
+    // public function retrieveRootHeading(){
 
-    	$user_level = $this->session_data['user_level'];
-    	$out = $this->db->select('*')->get_where(PR.'leftpanel' , array('user_level' => $user_level, 'sub_id'=> '0'));
-    	return $out->result();
-    }
+    // 	$user_level = $this->session_data['user_level'];
+    // 	$out = $this->db->select('*')->get_where(PR.'leftpanel' , array('user_level' => $user_level, 'sub_id'=> '0'));
+    // 	return $out->result();
+    // }
 
 
 

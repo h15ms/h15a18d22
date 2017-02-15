@@ -14,10 +14,19 @@ $('#addSidePanel').multiselect({
   // alert('dsafhjk');
 
     	$("#user_ajax").change(function(){
-    	  // alert("admin/fetchsidepanel");
-    	    $.get("admin/fetchsidepanel", function(data, status){
-    	        alert("Data: " + data + "\nStatus: " + status);
-    	    });
+    	 	var e = document.getElementById("user_ajax");
+    	 	var index = e.options[e.selectedIndex].value;
+
+    	    $.ajax({url:"fetchsidepanel",
+    	     		data:{id:index},
+		    	    success:function(result)
+    	            { 
+    	           		// alert(result);
+    	           		$('.output-of-ajax').text(result);
+    	            	// console.log(result);
+    	            }
+    	       });
+
     	});
 
     });

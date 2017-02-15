@@ -50,14 +50,9 @@ class Module extends Base {
     foreach ($data as $node => $value) {
       
       if( $value->sub_id == 0 ){
-          $navigationCollection[$value->id]['nav'] = $value->root_heading;
-          $navigationCollection[$value->id]['icon'] = $value->icon;
-          $navigationCollection[$value->id]['url'] = $value->url;
+          $navigationCollection[$value->id]['root-heading'] = $value->root_heading;
       }else{
-        $navigationCollection[$value->sub_id]['sub-nav'][$value->id] = array(
-                                            'url' => $value->url, 
-                                            'sub_heading' => $value->sub_heading
-                                          );
+        $navigationCollection[$value->sub_id]['sub-heading'][$value->id] = $value->sub_heading;
       }
 
     }
@@ -87,7 +82,21 @@ class Module extends Base {
 
   public function fetchsidepanel() { 
 
-    return "ankit Vikalp";
+    $id = $_GET['id'];
+    $data = $this->model->retrieveLeftPanelBychange($id);
+    
+    foreach ($data as $node => $value) {
+      
+      if( $value->sub_id == 0 ){
+          $navigation[$value->id]['root_heading'] = $value->root_heading;
+      }else{
+        $navigation[$value->sub_id]['sub_heading'][$value->id] = $value->sub_heading;
+      }
+
+    }
+
+    print_r($navigation);
+
   }
 
   public function updateModule() {
