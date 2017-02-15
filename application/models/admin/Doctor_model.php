@@ -1,6 +1,8 @@
 <?php
 
-if (!defined('BASEPATH')) exit('No direct script access allowed');
+if (!defined('BASEPATH'))
+    exit('No direct script access allowed');
+
 class Doctor_model extends CI_Model {
 
     public function __construct() {
@@ -24,7 +26,7 @@ class Doctor_model extends CI_Model {
 
     public function fetchById($id) {
 
-        $getdata = $this->db->select('*')->get_where(PR.'doctors', array('id' => $id));
+        $getdata = $this->db->select('*')->get_where(PR . 'doctors', array('id' => $id));
         //  $result = $getdata->get();
 
         if ($getdata->num_rows() > 0) {
@@ -33,29 +35,27 @@ class Doctor_model extends CI_Model {
             return false;
         }
     }
-    
+
     public function slotById($doctor_id) {
 
-        $getdata = $this->db->select('*')->get_where(PR.'slot', array('doctor_id' => $doctor_id));
+        $getdata = $this->db->select('*')->get_where(PR . 'slot', array('doctor_id' => $doctor_id));
         if ($getdata->num_rows() > 0) {
             return $getdata->result();
         } else {
             return false;
         }
     }
-    
+
     public function patientById($patient) {
 
-        $getdata = $this->db->select('*')->get_where(PR.'patient', array('id' => $patient));
+        $getdata = $this->db->select('*')->get_where(PR . 'patient', array('id' => $patient));
         if ($getdata->num_rows() > 0) {
             return $getdata->result();
         } else {
             return false;
         }
     }
-    
-    
-    
+
     public function timeSlot($doctor_id) {
 
         if (empty($doctor_id)) {
@@ -76,7 +76,7 @@ class Doctor_model extends CI_Model {
 
     public function fetchByName($name) {
 
-        $getdata = $this->db->select('*')->get_where(PR.'doctors', array('app_id' => $appid));
+        $getdata = $this->db->select('*')->get_where(PR . 'doctors', array('app_id' => $appid));
         //  $result = $getdata->get();
 
         if ($getdata->num_rows() > 0) {
@@ -85,10 +85,10 @@ class Doctor_model extends CI_Model {
             return false;
         }
     }
-    
+
     public function fetchByToken($token) {
 
-        $getdata = $this->db->select('*')->get_where(PR.'doctors', array('app_id' => $appid));
+        $getdata = $this->db->select('*')->get_where(PR . 'doctors', array('app_id' => $appid));
         //  $result = $getdata->get();
 
         if ($getdata->num_rows() > 0) {
@@ -99,17 +99,15 @@ class Doctor_model extends CI_Model {
     }
 
     public function add($data) {
-        $insertID = $this->db->insert(PR.'doctors', $data);
+        $insertID = $this->db->insert(PR . 'doctors', $data);
         return $insertID;
     }
-    
-    
-    
-     public function slot($data) {
-        $insertID = $this->db->insert(PR.'slot', $data);
+
+    public function slot($data) {
+        $insertID = $this->db->insert(PR . 'slot', $data);
         return $insertID;
     }
-    
+
     public function delete_slot($doctor_id) {
 
         if (empty($doctor_id)) {
@@ -124,9 +122,49 @@ class Doctor_model extends CI_Model {
     }
 
     public function update($data) {
-         $this->db->where('id', $data['id']);
-        $insertID = $this->db->update(PR.'doctors', $data);
+        $this->db->where('id', $data['id']);
+        $insertID = $this->db->update(PR . 'doctors', $data);
         return $insertID;
+    }
+    
+     public function getAppointment($doctor_id) {
+
+        if (empty($doctor_id)) {
+            return FALSE;
+        }
+
+        $this->db->select('slot');
+        $this->db->where('id', $doctor_id);
+        $query = $this->db->get(PR . 'doctors');
+
+        if ($query->num_rows() == 1) {
+            $result = $query->result_array();
+            return $result[0]['slot'];
+        } else {
+            return FALSE;
+        }
+        
+        
+        
+        
+        
+        $this->db->select('*');
+        $this->db->from(PR . 'patient_appointment AS APT');
+        $this->db->join(PR . 'doctors AS D', 'APT.doctor_id  = D.id', 'INNER');
+        $this->db->where('APT.doctor_id', $doctor_id);
+        $query = $this->db->get();
+        
+        
+        
+//        $this->db->select('*');
+//        $this->db->from(PR . 'patient_appointment AS APT');// I use aliasing make joins easier
+//        $this->db->join(PR . 'doctors AS D', 'A.ID = C.TableAId', 'INNER');
+//        
+//        $result = $this->db->get();
+        
+        
+        
+        
     }
 
 }

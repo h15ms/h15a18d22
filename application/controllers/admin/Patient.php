@@ -185,6 +185,32 @@ class Patient extends Base {
     }
     
     
+    public  function tab(){
+         $this->tab1(5, 1);
+        
+    }
+    
+    
+    private function tab1($number, $i){
+        
+        if($i > 10){
+            //break;
+            //$found = TRUE;
+            //break;
+            
+            //continue;
+        }else{
+            echo '<br/>';
+            echo $number*$i;
+            $this->tab1($number, ++$i);
+        }
+        
+        
+        
+        
+    }
+    
+    
  
 
     

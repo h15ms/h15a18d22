@@ -107,23 +107,23 @@ class Doctor extends Base {
         if ($this->input->server('REQUEST_METHOD') === 'POST' && $_POST['send'] == 1) {
             extract($_POST);
             $data = array();
-            $data['first_name'] = $first_name ? $first_name : $doctor[0]->first_name;
-            $data['last_name'] = $last_name ? $last_name : $doctor[0]->last_name;
-            $data['email'] = $email ? $email : $doctor[0]->email;
-            $data['phone_no'] = $phone_no ? $phone_no : $doctor[0]->phone_no;
-            $data['mobile'] = $mobile ? $mobile : $doctor[0]->mobile;
-            $data['address'] = $address ? $address : $doctor[0]->address;
-            $data['registration_no'] = $registration_no ? $registration_no : $doctor[0]->registration_no;
-            $data['qualification'] = $qualification ? $qualification : $doctor[0]->qualification;
-            $data['experience'] = $experience ? $experience : $doctor[0]->experience;
-            $data['consultancy_fee'] = $consultancy_fee ? $consultancy_fee : $doctor[0]->consultancy_fee;
-            $data['specialization'] = $specialization ? $specialization : $doctor[0]->specialization;
-            $data['clinic_hospital_type'] = $clinic_hospital_type ? $clinic_hospital_type : $doctor[0]->clinic_hospital_type;
-            $data['country'] = $country ? $country : $doctor[0]->country;
-            $data['state'] = $state ? $state : $doctor[0]->state;
-            $data['city'] = $city ? $city : $doctor[0]->city;
-            $data['zipcode'] = $zipcode ? $zipcode : $doctor[0]->zipcode;
-            $data['id'] = $id ? $id : $doctor[0]->id;
+            $data['first_name'] = isset($first_name) ? $first_name : $doctor[0]->first_name;
+            $data['last_name'] = isset($last_name) ? $last_name : $doctor[0]->last_name;
+            $data['email'] = isset($email) ? $email : $doctor[0]->email;
+            $data['phone_no'] = isset($phone_no) ? $phone_no : $doctor[0]->phone_no;
+            $data['mobile'] = isset($mobile) ? $mobile : $doctor[0]->mobile;
+            $data['address'] = isset($address) ? $address : $doctor[0]->address;
+            $data['registration_no'] = isset($registration_no) ? $registration_no : $doctor[0]->registration_no;
+            $data['qualification'] = isset($qualification) ? $qualification : $doctor[0]->qualification;
+            $data['experience'] = isset($experience) ? $experience : $doctor[0]->experience;
+            $data['consultancy_fee'] = isset($consultancy_fee) ? $consultancy_fee : $doctor[0]->consultancy_fee;
+            $data['specialization'] = isset($specialization) ? $specialization : $doctor[0]->specialization;
+            $data['clinic_hospital_type'] = isset($clinic_hospital_type) ? $clinic_hospital_type : $doctor[0]->clinic_hospital_type;
+            $data['country'] = isset($country) ? $country : $doctor[0]->country;
+            $data['state'] = isset($state) ? $state : $doctor[0]->state;
+            $data['city'] = isset($city) ? $city : $doctor[0]->city;
+            $data['zipcode'] = isset($zipcode)? $zipcode : $doctor[0]->zipcode;
+            $data['id'] = isset($id) ? $id : $doctor[0]->id;
             $data['modified'] = date('Y-m-d h:i:s');
 
             $name = $_FILES['avatar']['name'] ? $_FILES['avatar']['name'] : '';
@@ -198,6 +198,7 @@ class Doctor extends Base {
         $footer = array('js' => "doctor.js"); //  Angular Js file name
         $this->getLayout('admin/doctor/profile', $header, $left, $content, $footer);
     }
+    
     public function appointment() {
 
         $id = $this->uri->segment('4');
@@ -209,11 +210,9 @@ class Doctor extends Base {
         foreach ($slots as $key => $slot) {
             $slotData['slot'][$slot->days][$slot->shift][] = $slot->slot;
         }
-
-//        $dataCollection = array('headline' => 'View Doctor', 'data' => $doctors , 'slotData' => $slotData,'notification'=>$notification);
-//        $this->load->view('admin/temp/headercrm', $title);
-//        $this->load->view('admin/doctor/profile', $dataCollection);
-//        $this->load->view('admin/temp/footercrm', $js);
+        
+        $appointments = $this->app->getAppointment($id);
+        
 
 
         $header = array('page_title' => 'Doctor profile | MiConsulting');
