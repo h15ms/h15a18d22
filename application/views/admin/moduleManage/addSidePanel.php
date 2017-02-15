@@ -39,7 +39,7 @@
                     <div class="col-xs-12 col-sm-12 col-md-12"> 
                         <div class="col-xs-6 col-sm-6 col-md-6 form-group"> 
                             <label>User Level:</label> 
-                          <select name="user_level" class="form-control" id="level">
+                          <select name="user_level[]" multiple class="form-control" id="addSidePanel">
                             <?php foreach(unserialize(USER_LEVEL) as $key => $val ){?>
                               <option value="<?php echo $key; ?>"><?php echo $val;?></option>
                             <?php } ?>

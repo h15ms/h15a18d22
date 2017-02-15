@@ -58,9 +58,15 @@ class ModuleManage  extends CI_Model
      return 'OK';
 
 
-  }
+  }  
     
-    
+  public function retrieveLeftPanelBySession()
+  {          
+      $user_level = $this->session_data['user_level'];
+      $out = $this->db->select('*')->get_where(PR.'leftpanel' , array('user_level' => $user_level));
+      return $out->result();
+  }   
+  
   public function dataFetch()
   {          
       $this->db->select('*');
@@ -72,7 +78,7 @@ class ModuleManage  extends CI_Model
   public function showpaneldata()
   {          
       $this->db->select('*');
-      $this->db->order_by('sub_id', 'asc'); 
+      $this->db->order_by('root_heading', 'asc'); 
       $newid = $this->db->get(PR.'leftpanel');
       return $newid->result();
   }   
@@ -135,23 +141,27 @@ class ModuleManage  extends CI_Model
         $input['url'] = ''; // if not contains URL then URL = "":
       }
       $input['icon'] = $arr['root_heading_icon'];
-      $input['user_level'] = $arr['user_level'];
+      $input_new['user_level'] = $arr['user_level'];
       $input['sub_id'] = '0'; // root heading id will be 0 always. 
       $input['sub_heading'] = ''; // root heading id will be 0 always. 
 
     }else{
       
       $input['sub_id'] = $arr['root_heading']; 
-      $input['user_level'] = $arr['user_level'];
+      $input_new['user_level'] = $arr['user_level'];
       $input['sub_heading'] = $arr['sub_heading'];
       $input['url'] = $arr['sub_heading_url'];
       $input['root_heading'] = "";
       $input['icon'] = "";
     }
 
-      
+    foreach ($input_new['user_level'] as $key => $value) {
+      $input['user_level'] = $value;
       $newid = $this->db->insert(PR.'leftpanel', $input);
-      return $newid;
+    }
+
+    return $newid;
+
   }  
 
   public function fetchRootHeading()

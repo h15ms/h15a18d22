@@ -27,8 +27,9 @@ class Module extends Base {
       redirect(base_url().'admin/module','location');
     }
     if(isset($post['sidebar_insert'])){
+
       $out = $this->model->sidebarInsert($post);
-      redirect(base_url().'admin/module','location');
+      redirect(base_url().'admin/module/showPanelData','location');
     }
 
     $data = $this->model->dataFetch();
@@ -39,6 +40,30 @@ class Module extends Base {
 
   }
 
+
+  public function fetchSidePanelForDeveloper(){
+
+  $data = $this->models->retrieveLeftPanelBySession();
+        $navigationCollection = array();
+    
+
+    foreach ($data as $node => $value) {
+      
+      if( $value->sub_id == 0 ){
+          $navigationCollection[$value->id]['nav'] = $value->root_heading;
+          $navigationCollection[$value->id]['icon'] = $value->icon;
+          $navigationCollection[$value->id]['url'] = $value->url;
+      }else{
+        $navigationCollection[$value->sub_id]['sub-nav'][$value->id] = array(
+                                            'url' => $value->url, 
+                                            'sub_heading' => $value->sub_heading
+                                          );
+      }
+
+    }
+         return $navigationCollection;
+    
+  }
 
   public function addModule() {  
 
@@ -51,12 +76,18 @@ class Module extends Base {
 
   public function showPanelData() { 
 
+    $leftpanel = $this->fetchSidePanelForDeveloper();
     $data = $this->model->showpaneldata();
 
     $header = array('page_title' => 'Manage Sidepanel | MiConsulting');
-    $content = array('headline' => "Manage Sidepanel", 'data'=> $data);
+    $content = array('headline' => "Manage Sidepanel", 'data'=> $data, 'leftpanel' => $leftpanel);
     $this->getLayout('admin/moduleManage/sidePanel', $header, $left, $content, $footer);
 
+  }
+
+  public function fetchsidepanel() { 
+
+    return "ankit Vikalp";
   }
 
   public function updateModule() {

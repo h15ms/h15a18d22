@@ -25,7 +25,36 @@
 
         <div class="container">
            
-           
+
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="panel panel-inverse">
+                    <div class="panel-heading">
+                        <h4><i class="fa fa-life-ring"></i> Structure</h4>
+                    </div>
+                  <div class="panel-body collapse in">                                  
+                    
+                    <div class="col-md-6">
+                        <select class="form-control" id="user_ajax">
+                          <?php foreach(unserialize(USER_LEVEL) as $key => $val ){?>
+                            <option value="<?php echo $key; ?>"><?php echo $val;?></option>
+                          <?php } ?>
+                        </select> 
+                    </div>
+                    <div class="col-md-6">
+                        <?php 
+                            echo "<pre>";
+                            print_r($leftpanel);
+                            echo "</pre>";
+                         ?>
+                    </div>
+                            
+
+                  </div>
+                  
+                </div>
+            </div>
+        </div> 
            
 <div class="row">
     <div class="col-sm-12">

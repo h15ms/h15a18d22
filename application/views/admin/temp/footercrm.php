@@ -39,7 +39,7 @@
   <script type='text/javascript' src='<?php echo URL_ADMIN;?>plugins/dropzone/dropzone.min.js'></script>
   <script type='text/javascript' src='<?php echo URL_ADMIN;?>js/placeholdr.js'></script>
   <script type='text/javascript' src='<?php echo URL_ADMIN;?>js/application.js'></script>
-  <script type='text/javascript' src='<?php echo URL_ADMIN; ?>js/<?php echo $this->uri->segment(2);?>.js'></script>
+ 
   <?php if (isset($js) && $js != '') { ?>
       <script type='text/javascript' src='<?php echo ASSETS; ?>angularjs/angular.min.1.6.1.js'></script>
       <script type='text/javascript' src='<?php echo ASSETS; ?>angularjs/ctr/<?php echo $js; ?>'></script>
