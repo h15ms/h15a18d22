@@ -186,6 +186,7 @@ $(document).ready(function() {
 
 
 <script  src="<?php base_url(); ?>assets/js/micostum.js" type="text/javascript" ></script> 
+<script  src="<?php base_url(); ?>assets/js/<?php echo $this->uri->segment(1);?>.js" type="text/javascript" ></script> 
 <script src="<?php base_url(); ?>assets/js/wow.js" type="text/javascript" ></script> 
 <script>
 	new WOW().init();

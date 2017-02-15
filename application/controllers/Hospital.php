@@ -18,11 +18,7 @@ class Hospital extends CI_Controller {
 $speciliztion=$this->model->getspeciliztions();
  $speOption=''; 
  foreach($speciliztion as $val ){
-
-                          $speOption.="<option value=".$val->id.">".$val->sepcialization."</option>";
-                         
-                          
-                          
+    $speOption.="<option value=".$val->id.">".$val->sepcialization."</option>";
  }
                           
   $allhospital=$this->model->getallhospital();      

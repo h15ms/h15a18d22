@@ -69,7 +69,7 @@ Consulting Fee - <span class="mi_rangevaluec"> ( 1000+ )</span>
 </div>
 <input id="pricerange" type="text" class="span2"/> -->
  <select name="specializationw[]" multiple id="specializationw">
-                    <?php foreach($speciliztion as $val ){?>
+                    <?php foreach($speciliztion as $val ){ $spe[$val->id]=$val->sepcialization;?>
 
                           <option value="<?php echo $val->id;?>"><?php echo $val->sepcialization ;?></option>
                           <?php } ?>
@@ -130,16 +130,8 @@ Consulting Fee - <span class="mi_rangevaluec"> ( 1000+ )</span>
                           <div class="form-group clearfix">
                             <label> Select Speciality</label>
                             <select id="selectSpe" class="form-control mi-input">
-                              
-                              
-                              
                               <?php echo $speOption;?>
-                              
-                              
-                              
-                              
-                              
-                            </select>
+                             </select>
                           </div>
                         </div>
                         <div class="col-md-12">
@@ -147,9 +139,9 @@ Consulting Fee - <span class="mi_rangevaluec"> ( 1000+ )</span>
                         </div>
                       </div>
                     </div>
-                  </form>
-				  </div>
-				  </div>
+                    </form>
+		    </div>
+		    </div>
 </div>
 <div class="mi_filterdata">
     
@@ -161,18 +153,21 @@ Consulting Fee - <span class="mi_rangevaluec"> ( 1000+ )</span>
 	  <div class="mi-hospitaldetails pl0">      
 		    <div class="col-md-10  col-sm-10 col-xs-10">
 			 <span class="mi_filtertitle"><?php echo $hospitalval->name.' In '. $hospitalval->city ;?></span>
-			 <span class="mi_doctortype">1 Dentist , 2 Cosmetict </span>
+			 <span class="mi_doctortype"></span>
 			</div>
             <div class="col-md-2 col-sm-2 col-xs-2">
 			<img src="<?php echo base_url(); ?>assets/img/hospitals/<?php echo $hospitalval->image ;?>" class="img-responsive">
 			</div>
             <div class="col-md-12 mi_hospitalservices mt5 pull-left">
-                  <span class="mi_hospitalservicetab">Cardiology</span>
-				  <span class="mi_hospitalservicetab">Neurology</span>
-				  <span class="mi_hospitalservicetab">Dermatology </span>
-				  <span class="mi_hospitalservicetab">Urology  </span>
-				  <span class="mi_hospitalservicetab">Liver Transplant   </span>
-				   <span class="mi_hospitalservicetab">Orthopaedic.   </span>
+                <?php $selSpe= explode(',', $hospitalval->specialization);
+                
+                
+                
+                for($i=0; $i<=count($hospitalval->specialization); $i++){ //echo '<pre>'; print_r($spe);?>
+                  <span class="mi_hospitalservicetab"><?php echo $spe[$selSpe[$i]]; ?></span>
+                <?php } ?>
+				
+                                   
 			</div>
 			
 			<!--maxlimit5 and one is default show in front-->
@@ -200,8 +195,10 @@ Consulting Fee - <span class="mi_rangevaluec"> ( 1000+ )</span>
 			<div class="mi_hospitalinformationbox"> <i class="mi_chaticon"></i> <div class="mi_hospitalinformationbox-in">27 Feedback</div> </div>
 			<div class="mi_hospitalinformationbox"> <i class="mi_timeicon"></i> <div class="mi_hospitalinformationbox-in">Mon - Sat <br/>
                     8:30am to 1:30pm ,  5:00pm to 8:00pm </div></div>
-			<div class="mi_hospitalinformationbox"> <i class="mi_addressicon"></i> <div class="mi_hospitalinformationbox-in">Tower A, Unitech Business Park,
-               Block - F, South City 1, Sector - 41 </div></div>
+			<div class="mi_hospitalinformationbox"> <i class="mi_addressicon"></i> <div class="mi_hospitalinformationbox-in">
+                            <?php echo $hospitalval->address; ?>
+                            
+                            </div></div>
 			<div class="mi_hospitalinformationbox text-center">   
 		      <button class="btn btn-outline-grey ripplegrey mt10 ">Book Appointment</button>
 	        </div>
